@@ -1,0 +1,1328 @@
+
+/* ============================================
+   1. GLOBAL STYLES & UTILITIES
+   ============================================ */
+   
+html, body {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   2. NAVIGATION BAR STYLES
+   ============================================ */
+
+/* Navigation Bar - Fixed position for all pages */
+.custom-app-bar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Navigation button base styles */
+:deep(.nav-btn .v-btn__overlay) {
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+
+:deep(.nav-btn) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Navigation button hover effect */
+:deep(.nav-btn::after) {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  transition: width 0.3s ease;
+}
+
+:deep(.nav-btn:hover::after) {
+  width: 100%;
+}
+
+:deep(.nav-btn:hover) {
+  color: #0425cc !important; /* optional hover text color */
+}
+
+/* Active navigation link */
+.nav-btn.active-link {
+  color: #0425cc !important; /* Vuetify primary blue */
+  font-weight: 600;
+  border-bottom: 2px solid #0425cc;
+  transition: all 0.3s ease;
+}
+
+/* Active submenu items */
+.active-submenu {
+  background-color: rgba(4, 37, 204, 0.08) !important;
+  color: #0425cc !important;
+  font-weight: 600;
+}
+
+/* Login button hover effect */
+.login-btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.login-btn:hover {
+  transform: scale(1.08);
+  background-color: transparent !important; /* No background color change */
+  box-shadow: none !important; /* No hover shadow */
+}
+
+/* Dropdown menu positioning */
+.v-menu__content {
+  z-index: 2000 !important;
+}
+
+/* Mobile submenu styling */
+.v-list-group__items .v-list-item {
+  padding-left: 40px !important;
+}
+
+/* ============================================
+   3. MAIN CONTENT AREA STYLES
+   ============================================ */
+
+/* Fix v-main margin to prevent navbar overlap */
+.v-main {
+  margin-top: 0 !important;
+}
+
+/* ============================================
+   4. BANNER/HERO SECTION STYLES
+   ============================================ */
+
+/* ===== MAIN WEBSITE BANNER (Homepage) ===== */
+/* =====   .banner-container {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.banner-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 18, 35, 0.85) 8%,
+    rgba(20, 18, 35, 0.75) 24%,
+    rgba(20, 18, 35, 0.45) 50%,
+    rgba(20, 18, 35, 0.15) 80%,
+    transparent 100%
+  );
+}
+===== */
+
+/* ===== MAIN BANNER ===== */
+/* Color Gradient Background for MAIN */
+
+.banner-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+.banner-containers {
+  margin-bottom: 50px;
+}
+
+.products-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.fill-height {
+  height: 100vh;
+}
+
+.color-backgrounds-family {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(83, 160, 247, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(255, 193, 7, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 140, 0, 0.12) 0%, transparent 45%);
+  background-color: #eaf2fb;
+  z-index: 1;
+}
+
+.banner-image-container-family {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding-top: 0;
+}
+
+/* POWER IMAGE */
+.banner-image-family {
+  width: 200%;              
+  max-width: 1200px;         
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  transform: translateX(11%);
+  transition: none;
+}
+
+/* Right column control */
+.banner-image-col-family {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+  margin-top: 135px;
+  padding-right: 0;
+  overflow: visible;      
+}
+
+
+/* ===== GOODLIFE PLANS BANNER ===== */
+/* Color Background with pattern for Goodlife Plans */
+.color-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(3, 166, 53, 0.9) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(2, 148, 47, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(4, 184, 59, 0.7) 0%, transparent 50%);
+  background-color: #03a635;
+  z-index: 1;
+}
+
+/* Subtle pattern overlay for Goodlife Plans */
+.color-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 50px 50px;
+  z-index: 2;
+}
+
+/* ===== MBAI BANNER ===== */
+/* Color Gradient Background for MBAI */
+.color-backgrounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(74, 69, 97, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(62, 58, 91, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(84, 78, 112, 0.7) 0%, transparent 50%);
+  background-color: #4a4561;
+  z-index: 1;
+}
+
+/* Banner image container for products pages */
+.banner-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.banner-image {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.banner-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   5. TYPOGRAPHY STYLES
+   ============================================ */
+
+/* ===== MAIN WEBSITE TYPOGRAPHY ===== */
+.banner-title-family {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 6vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.3px;
+  margin-bottom: 1.6rem;
+  color: #0b2a55;
+  text-shadow: 0 6px 18px rgba(11, 42, 85, 0.18);
+}
+
+.banner-title-highlight-family {
+  font-weight: 600;
+  color: #f5b301;
+  text-shadow: 0 3px 10px rgba(245, 179, 1, 0.35);
+}
+
+.banner-subtitle-family {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.75;
+  margin-bottom: 250px;
+  max-width: 680px;
+  color: #445b78;
+  text-shadow: 0 2px 6px rgba(68, 91, 120, 0.15);
+}
+
+
+/* ===== MBAI PLAN TYPOGRAPHY ===== */
+.banner-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 7vw, 8.6rem);
+  font-weight: 400; /* light */
+  line-height: 1.15;
+  letter-spacing: 0.4px;
+  margin-bottom: 1.6rem;
+  color: #ffffff;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.banner-title-highlight {
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.banner-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.75;
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== GOODLIFE PLANS TYPOGRAPHY ===== */
+.banner-titles-plan {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #f8c128;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.banner-subtitles-plan {
+  font-family: 'Inter', sans-serif; 
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* ===== MBAI TYPOGRAPHY ===== */
+.banner-titles {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner-subtitles {
+  font-family: 'Inter', sans-serif; 
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+/* Section titles for content areas */
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #3e3a5b;
+  letter-spacing: 0.5px;
+}
+
+.section-subtitle {
+  color: #6c6a7c;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-header {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #52a1f8;
+}
+
+/* ===== MINIMALIST TYPOGRAPHY (Goodlife Plans) ===== */
+.text-h4 {
+  font-weight: 300 !important;
+}
+
+.text-h5 {
+  font-weight: 300 !important;
+}
+
+.text-h6 {
+  font-weight: 400 !important;
+}
+
+/* ===== ENHANCED TYPOGRAPHY (MBAI) ===== */
+.text-h5 {
+  letter-spacing: 1px;
+}
+
+.text-subtitle-1 {
+  letter-spacing: 0.5px;
+}
+
+.text-body-2 {
+  line-height: 1.6;
+}
+
+/* Text spacing utilities */
+.line-height-relaxed {
+  line-height: 1.8;
+}
+
+.letter-spacing {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   6. BUTTON STYLES
+   ============================================ */
+
+/* Main website buttons */
+.explore-btn {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #F5F5F5, #e8e8e8) !important;
+  border: 2px solid transparent;
+  width: fit-content;
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  border-color: #0425cc;
+}
+
+.button-text {
+  color: #4a4561 !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+.services-btn {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.services-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(4, 37, 204, 0.25);
+}
+
+/* Services button icon animation */
+.services-btn .v-icon {
+  transition: transform 0.3s ease;
+}
+
+.services-btn:hover .v-icon {
+  transform: translateX(6px);
+}
+
+/* Products page buttons */
+.products-btn { 
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  padding: 10px 22px;
+  transition: all 0.3s ease;
+}
+
+.products-btn:hover {
+  background-color: rgba(25, 118, 210, 0.08);
+  transform: translateY(-1px);
+}
+
+.products-btn.active-link {
+  background-color: rgba(25, 118, 210, 0.12);
+  border-color: #1976d2;
+}
+
+.products-btn .v-icon {
+  transition: transform 0.3s ease;
+}
+
+.products-btn:hover .v-icon {
+  transform: translateX(4px);
+}
+
+/* Active link for Products page */
+.products-page-active {
+  color: #0425cc !important;
+  font-weight: 600;
+}
+
+/* ============================================
+   7. CARD COMPONENT STYLES
+   ============================================ */
+
+/* ===== GENERAL CARD STYLES ===== */
+.v-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.v-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MAIN WEBSITE CARDS ===== */
+.service-card {
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover v-img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.service-title {
+  font-weight: 700;
+  color: #3e3a5b;
+  font-size: 1.1rem;
+}
+
+.service-text {
+  color: #6c6a7c;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* About Section Cards */
+.about-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  transition: all 0.35s ease;
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(74, 69, 97, 0.35);
+}
+
+.about-card h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+/* Centered blue line under about card titles */
+.about-card h3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    #1976d2,
+    #42a5f5
+  );
+}
+
+/* Products page cards */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Document cards for legalities */
+.document-card {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== GOODLIFE PLANS CARD STYLES ===== */
+.transition-hover {
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.hover-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.minimal-wrapper {
+  position: relative;
+}
+
+.minimal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.minimal-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease;
+}
+
+.minimal-card:hover {
+  border-color: rgba(3, 166, 53, 0.3);
+}
+
+.border-primary {
+  border-color: #03a635 !important;
+}
+
+.composition-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease;
+}
+
+.composition-card:hover {
+  border-color: rgba(3, 166, 53, 0.3);
+}
+
+/* ===== MBAI CARD STYLES ===== */
+.minimal-card-1 {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  background-color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.minimal-card-1:hover {
+  border-color: #4a4561 !important;
+  box-shadow: 0 8px 24px rgba(3, 166, 53, 0.08) !important;
+}
+
+.minimal-card-2 {
+  border-color: #4a4561;
+  border-radius: 0 0 12px 12px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.minimal-card-2:hover {
+  border-color: #4a4561;
+  box-shadow: 0 8px 24px rgba(3, 166, 53, 0.08);
+}
+
+.minimal-card-3 {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+/* ============================================
+   8. LIST & ITEM STYLES
+   ============================================ */
+
+/* Core Values list */
+.about-values {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-values li {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  padding-left: 20px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.about-values li:last-child {
+  border-bottom: none;
+}
+
+/* Custom bullet for values list */
+.about-values li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #1976d2;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ===== GOODLIFE PLANS LIST ITEMS ===== */
+.package-item {
+  transition: all 0.2s ease;
+}
+
+.package-item.item-hovered {
+  border-left-color: #edad00 !important;
+  background-color: #f8fafc;
+  padding-left: 12px;
+}
+
+.package-item.item-hovered span {
+  color: #edad00 !important;
+}
+
+.tag-item.tag-hovered {
+  border-color: #edad00 !important;
+  color: #edad00 !important;
+  background-color: #fffaf0;
+  transform: translateY(-1px);
+}
+
+.benefit-item {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.benefit-item:last-child {
+  border-bottom: none;
+}
+
+/* ===== MBAI LIST ITEMS ===== */
+.benefit-item {
+  transition: all 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.benefit-item:hover {
+  background-color: #f8fafc;
+  transform: translateX(4px);
+}
+
+.core-item {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.core-item:hover {
+  border-color: #03a635;
+  background-color: #f8fafc;
+}
+
+/* ============================================
+   9. SPECIAL COMPONENT STYLES
+   ============================================ */
+
+/* ===== GOODLIFE PLANS COMPONENTS ===== */
+.header-line {
+  width: 4px;
+  height: 24px;
+  background-color: #03a635;
+  border-radius: 2px;
+}
+
+.casket-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.casket-image {
+  transition: transform 0.3s ease;
+}
+
+.casket-image:hover {
+  transform: scale(1.01);
+}
+
+.price-calculation {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* ===== MBAI COMPONENTS ===== */
+.icon-circle {
+  transition: all 0.3s ease;
+}
+
+.minimal-card-1:hover .icon-circle {
+  transform: scale(1.05);
+  background-color: #dcfce7 !important;
+}
+
+.insurance-badge {
+  transition: all 0.3s ease;
+}
+
+.minimal-card-1:hover .insurance-badge {
+  border-color: #4a4561;
+  background-color: #f0fdf4;
+}
+
+.details-box {
+  transition: all 0.3s ease;
+}
+
+.contact-info {
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper {
+  transition: all 0.3s ease;
+}
+
+.minimal-card-2:hover .icon-wrapper {
+  border-color: #4a4561;
+}
+
+/* Grid layouts */
+.benefits-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.coverage-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.section-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel {
+  border-radius: 0 8px 8px 0;
+}
+
+/* Spacing Utility */
+.gap-2 {
+  gap: 8px;
+}
+
+/* ============================================
+   10. BACKGROUND & STATS SECTIONS
+   ============================================ */
+
+.stats-section {
+  background: linear-gradient(135deg, #4A4561);
+}
+
+.stat-item {
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================
+   11. ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* bounce height */
+  }
+}
+
+.bounce-animation {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+/* ============================================
+   12. DIALOG & MODAL STYLES
+   ============================================ */
+
+.v-dialog {
+  z-index: 2000 !important;
+}
+
+/* ============================================
+   13. RESPONSIVE DESIGN - MOBILE & TABLET
+   ============================================ */
+
+/* ===== MOBILE (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* Banner adjustments */
+  .banner-container {
+    min-height: 90vh;
+    height: 90vh;
+  }
+  
+  .banner-containers {
+    margin-top: 100px;
+  }
+  
+  .banner-background .v-parallax__image {
+    object-position: center center !important;
+  }
+  
+  .banner-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(245, 245, 245, 0.95) 0%,
+      rgba(245, 245, 245, 0.85) 50%,
+      rgba(245, 245, 245, 0.7) 60%,
+      rgba(245, 245, 245, 0.5) 100%
+    );
+  }
+  
+  .banner-text-column {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .banner-title {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .banner-side-image {
+    max-height: 40vh;
+    margin-top: 2rem;
+  }
+  
+  .explore-btn {
+    margin: 0 auto;
+  }
+  
+  /* Goodlife Plans adjustments */
+  .products-hero {
+    height: 100vh;
+  }
+  
+  .banner-titles-plan {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+  
+  .banner-subtitles-plan {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .banner-image {
+    max-height: 300px;
+    margin-top: 2rem;
+  }
+  
+  .color-background::after {
+    background-size: 40px 40px;
+  }
+  
+  .pr-md-8 {
+    padding-right: 0 !important;
+  }
+  
+  .pl-md-8 {
+    padding-left: 0 !important;
+  }
+  
+  .mt-12 {
+    margin-top: 48px !important;
+  }
+  
+  .pa-4 {
+    padding: 24px !important;
+  }
+  
+  /* MBAI adjustments */
+  .products-hero {
+    height: 100vh;
+  }
+  
+  .banner-titles {
+    font-size: 2.8rem;
+  }
+  
+  .banner-subtitles {
+    font-size: 1.1rem;
+  }
+  
+  .minimal-card-1,
+  .minimal-card-2,
+  .minimal-card-3 {
+    margin-bottom: 32px;
+  }
+  
+  .pr-md-6 {
+    padding-right: 0 !important;
+  }
+  
+  .pl-md-6 {
+    padding-left: 0 !important;
+  }
+  
+  .side-panel {
+    border-left: none;
+    border-top: 3px solid #03a635;
+    border-radius: 8px;
+    margin-top: 24px;
+  }
+}
+
+/* ===== SMALL MOBILE (max-width: 600px) ===== */
+@media (max-width: 600px) {
+  /* Main website adjustments */
+  .banner-container {
+    min-height: 85vh;
+    height: 85vh;
+  }
+  
+  .banner-title {
+    font-size: 1.8rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+  
+  .banner-side-image {
+    max-height: 35vh;
+  }
+  
+  .banner-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 18, 35, 0.85) 8%,
+      rgba(20, 18, 35, 0.75) 24%,
+      rgba(20, 18, 35, 0.45) 60%,
+      rgba(20, 18, 35, 0.15) 90%,
+      transparent 100%
+    );
+  }
+  
+  /* Goodlife Plans adjustments */
+  .products-hero {
+    height: 100vh;
+  }
+  
+  .banner-title {
+    font-size: 2.2rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+  
+  .banner-image {
+    max-height: 250px;
+  }
+  
+  .color-background::after {
+    background-size: 30px 30px;
+  }
+  
+  .text-h3 {
+    font-size: 1.75rem !important;
+  }
+  
+  .text-h5 {
+    font-size: 1.25rem !important;
+  }
+  
+  .tag-item {
+    font-size: 0.8rem !important;
+    padding: 6px 10px !important;
+  }
+  
+  .text-h4 {
+    font-size: 1.75rem !important;
+  }
+  
+  .text-h5 {
+    font-size: 1.25rem !important;
+  }
+  
+  .text-h6 {
+    font-size: 1rem !important;
+  }
+  
+  .pl-7 {
+    padding-left: 16px !important;
+  }
+  
+  .text-h4 {
+    font-size: 1.5rem !important;
+  }
+  
+  .pa-5 {
+    padding: 20px !important;
+  }
+  
+  /* MBAI adjustments */
+  .products-hero {
+    height: 100vh;
+  }
+  
+  .banner-titles {
+    font-size: 2.2rem;
+  }
+  
+  .banner-subtitles {
+    font-size: 1rem;
+  }
+  
+  .color-background::after {
+    background-size: 30px 30px;
+  }
+  
+  .minimal-card-1,
+  .minimal-card-2,
+  .minimal-card-3 {
+    padding: 24px !important;
+  }
+  
+  .benefits-grid,
+  .coverage-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .insurance-badge {
+    padding: 16px !important;
+  }
+  
+  .text-h5 {
+    font-size: 1.5rem !important;
+  }
+  
+  .text-subtitle-1 {
+    font-size: 1rem !important;
+  }
+}
+
+/* ===== TABLET LANDSCAPE (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .banner-container {
+    min-height: 95vh;
+    height: 95vh;
+  }
+  
+  .banner-title {
+    font-size: 2.8rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .banner-side-image {
+    max-height: 60vh;
+  }
+}
+
+/* ===== DESKTOP LARGE (min-width: 1200px) ===== */
+@media (min-width: 1200px) {
+  .banner-container {
+    min-height: 100vh;
+    height: 100vh;
+  }
+  
+  .banner-containers {
+    margin-top: 40px;
+    margin-left: 150px;
+  }
+
+  .banner-content {
+     margin-left: 50px;
+  }
+  
+  .banner-title {
+    font-size: 2.9rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .banner-side-image {
+    max-height: 75vh;
+  }
+}
+
+/* ===== ULTRA-WIDE SCREENS (min-width: 1600px) ===== */
+@media (min-width: 1600px) {
+  .banner-container {
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 1200px;
+  }
+  
+  .banner-title {
+    font-size: 3.3rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.3rem;
+    max-width: 700px;
+    
+  }
+  
+  .banner-side-image {
+    max-height: 80vh;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 960px) {
+  .banner-image-col-family {
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
+  .banner-image-family {
+    max-width: 420px;
+  }
+}
+
+
+/* ===== MOBILE LANDSCAPE (max-height: 600px) ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .banner-container {
+    min-height: 120vh;
+    height: 120vh;
+  }
+  
+  .banner-title {
+    font-size: 2rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .banner-side-image {
+    max-height: 80vh;
+  }
+}
+
+/* ===== iOS SAFARI FIX ===== */
+@supports (-webkit-touch-callout: none) {
+  .banner-container {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .minimal-card-1 {
+    border: 2px solid #000;
+    box-shadow: none !important;
+  }
+  
+  .minimal-card-1:hover {
+    transform: none !important;
+  }
+}
