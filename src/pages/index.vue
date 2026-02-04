@@ -190,7 +190,7 @@
                   members at the time of life's uncertainties
                 </p>
               </v-col>
-                <v-col cols="12" md="5" class="banner-image-col-family">
+                <v-col cols="12" md="5"  class="banner-image-col-family">
                 <div class="banner-image-container-family">
                   <img
                     src="@/assets/images/damayan insurance family.png"

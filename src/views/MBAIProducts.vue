@@ -190,7 +190,7 @@
                   <v-icon end>mdi-chevron-down</v-icon>
                 </v-btn>
               </v-col>
-                    <v-col cols="12" md="5" class="text-center">
+                <v-col cols="12" md="5" class="text-center">
                 <div class="banner-image-container">
                   <img
                     src="@/assets/images/glMbai.png"
