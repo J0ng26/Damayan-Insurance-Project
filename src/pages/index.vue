@@ -169,33 +169,45 @@
 
     <!-- Main Content -->
     <v-main>
-         <div id="home" class="products-hero">
+      <div id="home" class="products-hero">
         <!-- Color Background -->
         <div class="color-backgrounds-family"></div>
 
         <div class="banner-content" data-aos="fade-up">
-          <v-container class="fill-height">
-            <v-row align="center" class="fill-height">
-              <v-col cols="12" md="7" class="text-center text-md-start">
-                  <h2 class="banner-title-family">
-                  SECURE YOUR LIFE,<br />
-                  <span class="banner-title-highlight-family"
-                    >SECURE WITH GOODLIFE</span
-                  >
-                </h2>
+          <v-container class="fill-height d-flex align-center justify-center">
+            <v-row align="center" class="fill-height" justify="center">
+              <!-- Text Column - FIRST on mobile/tablet, LEFT on desktop -->
+              <v-col 
+                cols="12" 
+                md="7" 
+                class="d-flex flex-column align-center justify-center text-center text-md-start text-first-mobile text-first-tablet"
+              >
+                <div class="banner-containers d-flex flex-column align-center">
+                  <h2 class="banner-title-family text-left w-100">
+                    SECURE YOUR LIFE,<br />
+                    <span class="banner-title-highlight-family">SECURE WITH GOODLIFE</span>
+                  </h2>
 
-                <p class="banner-subtitle-family">
-                  At Goodlife, we offer comprehensive individual or family type
-                  of insurance that caters to the needs of your immediate family
-                  members at the time of life's uncertainties
-                </p>
+                  <p class="banner-subtitle-family text-left w-100">
+                    At Goodlife, we offer comprehensive individual or family type
+                    of insurance that caters to the needs of your immediate family
+                    members at the time of life's uncertainties
+                  </p>
+                </div>
               </v-col>
-                <v-col cols="12" md="5"  class="banner-image-col-family">
-                <div class="banner-image-container-family">
+              
+              <!-- Image Column - SECOND on mobile/tablet, RIGHT on desktop -->
+              <v-col 
+                cols="12" 
+                md="5" 
+                class="banner-image-col-family d-flex align-center justify-center image-second-mobile image-second-tablet"
+              >
+                <div class="banner-image-container-family d-flex justify-center justify-md-end w-100">
                   <img
                     src="@/assets/images/damayan insurance family.png"
-                    alt="Goodlife Plans Logo"
+                    alt="Goodlife Damayan Insurance Family"
                     class="banner-image-family"
+                    loading="lazy"
                   />
                 </div>
               </v-col>
@@ -203,7 +215,6 @@
           </v-container>
         </div>
       </div>
-
 
       <!-- About Section -->
       <v-container

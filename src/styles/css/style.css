@@ -1,4 +1,3 @@
-
 /* ============================================
    1. GLOBAL STYLES & UTILITIES
    ============================================ */
@@ -100,51 +99,6 @@ html, body {
    ============================================ */
 
 /* ===== MAIN WEBSITE BANNER (Homepage) ===== */
-/* =====   .banner-container {
-  position: relative;
-  min-height: 100vh;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.banner-background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-}
-
-
-.banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background: linear-gradient(
-    90deg,
-    rgba(20, 18, 35, 0.85) 8%,
-    rgba(20, 18, 35, 0.75) 24%,
-    rgba(20, 18, 35, 0.45) 50%,
-    rgba(20, 18, 35, 0.15) 80%,
-    transparent 100%
-  );
-}
-===== */
-
-/* ===== MAIN BANNER ===== */
-/* Color Gradient Background for MAIN */
-
 .banner-content {
   position: relative;
   z-index: 3;
@@ -154,7 +108,6 @@ html, body {
   align-items: center;
 }
 
-
 .banner-containers {
   margin-bottom: 50px;
 }
@@ -162,15 +115,20 @@ html, body {
 .products-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-
 .fill-height {
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 .color-backgrounds-family {
@@ -205,7 +163,7 @@ html, body {
   border-radius: 0;
   box-shadow: none;
   background: transparent;
-  transform: translateX(9%);
+  transform: translateX(15%) translateY(15%);
   transition: none;
 }
 
@@ -216,11 +174,10 @@ html, body {
   align-items: flex-end;
   justify-content: flex-end;
   height: 100%;
-  margin-top: 135px;
+  margin-top: 170px;
   padding-right: 0;
   overflow: visible;      
 }
-
 
 /* ===== GOODLIFE PLANS BANNER ===== */
 /* Color Background with pattern for Goodlife Plans */
@@ -303,6 +260,7 @@ html, body {
   line-height: 1.15;
   letter-spacing: 0.3px;
   margin-bottom: 1.6rem;
+  transform: translateX(-150px);
   color: #0b2a55;
   text-shadow: 0 6px 18px rgba(11, 42, 85, 0.18);
 }
@@ -319,11 +277,11 @@ html, body {
   font-weight: 400;
   line-height: 1.75;
   margin-bottom: 250px;
+  transform: translateX(-150px);
   max-width: 800px;
   color: #445b78;
   text-shadow: 0 2px 6px rgba(68, 91, 120, 0.15);
 }
-
 
 /* ===== MBAI PLAN TYPOGRAPHY ===== */
 .banner-title {
@@ -951,10 +909,12 @@ html, body {
     height: 90vh;
   }
   
-  .banner-containers {
-    margin-top: 100px;
+ .banner-containers {
+    transform: translateX(148px);
+    text-align: center;
+     padding: 0 16px;
   }
-  
+
   .banner-background .v-parallax__image {
     object-position: center center !important;
   }
@@ -972,29 +932,49 @@ html, body {
   .banner-text-column {
     text-align: center;
     align-items: center;
+    justify-content: center;
   }
   
   .banner-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem !important; /* Larger font */
     text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .banner-title-family {
-    font-size: 2.2rem;
+    font-size: 2.8rem !important; /* Larger font */
     text-align: center;
+    line-height: 1.2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
   }
   
   .banner-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem !important; /* Larger font */
     text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .banner-title-family {
-       font-size: 2.2rem;
-       text-align: center;
+  
+  .banner-subtitle-family {
+    font-size: 1.25rem !important; /* Larger font */
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    width: 100%;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
   }
 
   .banner-side-image {
-    max-height: 40vh;
+    max-height: 50vh;
     margin-top: 2rem;
   }
   
@@ -1004,23 +984,25 @@ html, body {
   
   /* Goodlife Plans adjustments */
   .products-hero {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
   }
   
   .banner-titles-plan {
-    font-size: 2.8rem;
+    font-size: 3rem !important; /* Larger font */
     text-align: center;
   }
   
   .banner-subtitles-plan {
-    font-size: 1.1rem;
+    font-size: 1.3rem !important; /* Larger font */
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px;
   }
   
   .banner-image {
-    max-height: 300px;
+    max-height: 350px; /* Larger image */
     margin-top: 2rem;
   }
   
@@ -1046,15 +1028,17 @@ html, body {
   
   /* MBAI adjustments */
   .products-hero {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
   }
   
   .banner-titles {
-    font-size: 2.8rem;
+    font-size: 3rem !important; /* Larger font */
   }
   
   .banner-subtitles {
-    font-size: 1.1rem;
+    font-size: 1.3rem !important; /* Larger font */
+    padding: 0 20px;
   }
   
   .minimal-card-1,
@@ -1077,6 +1061,239 @@ html, body {
     border-radius: 8px;
     margin-top: 24px;
   }
+  
+
+
+  /* Fix banner content spacing for mobile */
+  .banner-content {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .banner-containers {
+    margin-top: 0;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Ensure proper stacking order - TEXT FIRST on mobile */
+  .text-first-mobile {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .image-second-mobile {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Center all text elements */
+  .banner-content .v-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .banner-content .v-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Center section titles */
+  .section-title {
+    text-align: center !important;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 2rem !important; /* Larger font */
+  }
+  
+  .section-subtitle {
+    text-align: center !important;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 1.1rem !important; /* Larger font */
+  }
+}
+
+/* ===== TABLET LANDSCAPE (769px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .banner-container {
+    min-height: 95vh;
+    height: 95vh;
+  }
+   .banner-containers {
+    transform: translateX(148px);
+    text-align: center;
+     padding: 0 16px;
+  }
+  
+  .banner-title {
+    font-size: 3.2rem !important; /* Larger font */
+    text-align: center;
+    width: 100%;
+  }
+  
+  .banner-title-family {
+    font-size: 4rem !important; /* Larger font */
+    text-align: center;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .banner-subtitle-family {
+    font-size: 1.5rem !important; /* Larger font */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    width: 90%;
+    max-width: 800px;
+    padding: 0 30px;
+    line-height: 1.8;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.4rem !important; /* Larger font */
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .banner-side-image {
+    max-height: 65vh; /* Larger image */
+  }
+  
+  /* TABLET-SPECIFIC BANNER IMAGE FIXES */
+  .banner-image-family {
+    width: 150%;
+    max-width: none;
+    transform: translateX(10px) translateY(8%);
+  }
+  
+  .banner-image-col-family {
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .banner-image-container-family {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Center content on tablet */
+  .banner-containers {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .banner-content {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Ensure proper stacking order - TEXT FIRST, IMAGE SECOND */
+  .text-first-tablet {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .image-second-tablet {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Center all rows and columns */
+  .banner-content .v-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .banner-content .v-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Center section titles for tablet */
+  .section-title {
+    text-align: center !important;
+    width: 100%;
+    font-size: 2.5rem !important; /* Larger font */
+  }
+  
+  .section-subtitle {
+    text-align: center !important;
+    width: 90%;
+    max-width: 700px;
+    font-size: 1.2rem !important; /* Larger font */
+  }
+  
+  /* Goodlife Plans tablet adjustments */
+  .banner-titles-plan {
+    font-size: 3.5rem !important; /* Larger font */
+    text-align: center;
+    width: 100%;
+  }
+  
+  .banner-subtitles-plan {
+    font-size: 1.4rem !important; /* Larger font */
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+  }
+  
+  /* MBAI tablet adjustments */
+  .banner-titles {
+    font-size: 3.5rem !important; /* Larger font */
+    text-align: center;
+    width: 100%;
+  }
+  
+  .banner-subtitles {
+    font-size: 1.4rem !important; /* Larger font */
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+  }
 }
 
 /* ===== SMALL MOBILE (max-width: 600px) ===== */
@@ -1086,17 +1303,43 @@ html, body {
     min-height: 85vh;
     height: 85vh;
   }
+  .banner-image-family {
+    width: 180%;
+    max-width: none;
+    transform: translateX(10px) translateY(15%);
+  }
   
   .banner-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem !important; /* Adjusted for small mobile */
+    text-align: center;
+  }
+  
+  .banner-title-family {
+    font-size: 2.5rem !important; /* Adjusted for small mobile */
+    text-align: center !important;
+  }
+
+  .banner-subtitle-family{
+      font-size: 1.5rem !important; /* Adjusted for small mobile */
+    text-align: center !important
   }
   
   .banner-subtitle {
-    font-size: 1rem;
+    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    text-align: center;
+  }
+  
+  .banner-subtitle-family {
+    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    text-align: center;
+    margin-bottom: 35px;
+    padding: 0 15px;
+    line-height: 1.6;
+    max-width: 95%;
   }
   
   .banner-side-image {
-    max-height: 35vh;
+    max-height: 45vh; /* Adjusted for small mobile */
   }
   
   .banner-overlay {
@@ -1112,19 +1355,20 @@ html, body {
   
   /* Goodlife Plans adjustments */
   .products-hero {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
   }
   
   .banner-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem !important; /* Adjusted for small mobile */
   }
   
   .banner-subtitle {
-    font-size: 1rem;
+    font-size: 1.15rem !important; /* Adjusted for small mobile */
   }
   
   .banner-image {
-    max-height: 250px;
+    max-height: 300px; /* Adjusted for small mobile */
   }
   
   .color-background::after {
@@ -1170,15 +1414,16 @@ html, body {
   
   /* MBAI adjustments */
   .products-hero {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
   }
   
   .banner-titles {
-    font-size: 2.2rem;
+    font-size: 2.5rem !important; /* Adjusted for small mobile */
   }
   
   .banner-subtitles {
-    font-size: 1rem;
+    font-size: 1.15rem !important; /* Adjusted for small mobile */
   }
   
   .color-background::after {
@@ -1207,32 +1452,44 @@ html, body {
   .text-subtitle-1 {
     font-size: 1rem !important;
   }
+  
+  .banner-image-col-family {
+    margin-top: 25px;
+  }
+  
+  .banner-containers {
+    margin-bottom: 25px;
+  }
+  
+  /* Center section titles for small mobile */
+  .section-title {
+    font-size: 1.8rem !important; /* Adjusted for small mobile */
+    padding: 0 15px;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem !important; /* Adjusted for small mobile */
+    padding: 0 15px;
+  }
 }
 
-/* ===== TABLET LANDSCAPE (769px - 1024px) ===== */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .banner-container {
-    min-height: 95vh;
-    height: 95vh;
+/* ===== MEDIUM MOBILE (601px - 768px) ===== */
+@media (min-width: 601px) and (max-width: 768px) {
+  .banner-title-family {
+    font-size: 3rem !important;
+    text-align: center !important; /* Slightly larger for medium mobile */
   }
   
-  .banner-title {
-    font-size: 2.8rem;
-  }
-  .banner-title-family{
-    font-size: 4.5rem;
-  }
-
- .banner-subtitle-family{
-    font-size: 1.5rem;
+  .banner-subtitle-family {
+    font-size: 1.3rem !important; /* Slightly larger for medium mobile */
+    max-width: 85%;
+    text-align: center !important;
   }
   
-  .banner-subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .banner-side-image {
-    max-height: 60vh;
+   .banner-image-family {
+    width: 150%;
+    max-width: none;
+    transform: translateX(10px) translateY(8%);
   }
 }
 
@@ -1245,7 +1502,16 @@ html, body {
   
   .banner-containers {
     margin-top: 40px;
-    margin-left: 150px;
+    margin-left: 120px;
+  }
+
+  .banner-title-family{
+    font-size: 3.6rem;
+    text-align: left;
+  }
+
+  .banner-subtitle-family{
+    text-align: left;
   }
 
   .banner-content {
@@ -1264,6 +1530,7 @@ html, body {
     max-height: 75vh;
   }
 }
+
 
 /* ===== ULTRA-WIDE SCREENS (min-width: 1600px) ===== */
 @media (min-width: 1600px) {
@@ -1289,19 +1556,6 @@ html, body {
   }
 }
 
-@media (max-width: 960px) {
-  .banner-image-col-family {
-    justify-content: center;
-    align-items: center;
-    margin-top: 2.5rem;
-  }
-
-  .banner-image-family {
-    max-width: 420px;
-  }
-
-  
-}
 
 
 /* ===== MOBILE LANDSCAPE (max-height: 600px) ===== */
@@ -1322,6 +1576,15 @@ html, body {
   
   .banner-side-image {
     max-height: 80vh;
+  }
+  
+  /* Mobile landscape image adjustments */
+  .banner-image-family {
+    max-height: 70vh;
+  }
+  
+  .banner-image-col-family {
+    margin-top: 20px;
   }
 }
 

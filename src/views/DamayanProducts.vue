@@ -117,7 +117,6 @@
             class="text-capitalize ml-4 login-btn"
             size="small"
           >
-            <v-icon start>mdi-login</v-icon>
             LOG IN
           </v-btn>
         </div>
@@ -213,70 +212,69 @@
     </v-navigation-drawer>
 
 
-    <v-main style="margin-top: 65px; padding-top: 0;">
-<!-- Products Hero Section with Image Background -->
-<div class="products-hero" style="margin-top: 0; padding-top: 0; position: relative;">
-  <!-- Background Image -->
-  <img
-    src="@/assets/images/family.jpg"
-    alt="Insurance Products Banner"
-    style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-    "
-  />
-  
-  <!-- Dark Overlay (similar to index.vue) -->
-  <div 
-    style="
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        135deg,
-        rgba(62, 58, 91, 0.85) 0%,
-        rgba(74, 69, 97, 0.75) 50%,
-        rgba(106, 100, 141, 0.5) 100%
-      );
-      z-index: 2;
-    "
-  ></div>
-  
-  <v-container style="padding-top: 0; margin-top: 0; position: relative; z-index: 3;">
-    <v-row
-      class="align-center"
-      style="min-height: calc(80vh - 65px); margin-top: 0;"
-      data-aos="fade-up"
-    >
-      <v-col cols="12" md="8" class="text-center text-md-start">
-        <h1 class="text-h2 font-weight-bold mb-4 banner-title" style="color: #FFFFFF; ">
-          Our Insurance Products
-        </h1>
-        <p class="text-h6 mb-8 banner-subtitle" style="color: rgba(255, 255, 255, 0.9)">
-          Discover comprehensive insurance solutions designed to protect
-          what matters most in your life.
-        </p>
-        <v-btn
-          color="white"
-          size="large"
-          class="text-primary text-capitalize"
-          @click="scrollToSection('product-list')"
-        >
-          View All Products
-          <v-icon end>mdi-chevron-down</v-icon>
-        </v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
-</div>
+<v-main style="margin-top: 65px; padding-top: 0;">
+  <!-- Products Hero Section with Image Background - MATCHING HEIGHT -->
+  <div class="products-hero" style="margin-top: 0; padding-top: 0; position: relative; min-height: 100vh;">
+    <!-- Background Image -->
+    <img
+      src="@/assets/images/family.jpg"
+      alt="Insurance Products Banner"
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+      "
+    />
+    
+    <!-- Dark Overlay (similar to index.vue) -->
+    <div 
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(62, 58, 91, 0.85) 0%,
+          rgba(74, 69, 97, 0.75) 50%,
+          rgba(106, 100, 141, 0.5) 100%
+        );
+        z-index: 2;
+      "
+    ></div>
+    
+    <v-container class="fill-height d-flex align-center justify-center" style="position: relative; z-index: 3; padding-top: 0; margin-top: 0;">
+      <v-row
+        class="align-center fill-height"
+        data-aos="fade-up"
+      >
+        <v-col cols="12" md="8" class="text-center text-md-start">
+          <h1 class="banner-title mb-4" style="color: #FFFFFF; text-align: left !important;">
+            Our Insurance Products
+          </h1>
+          <p class="banner-subtitle mb-8" style="color: rgba(255, 255, 255, 0.9); text-align: left !important;">
+            Discover comprehensive insurance solutions designed to protect
+            what matters most in your life.
+          </p>
+          <v-btn
+            color="white"
+            size="large"
+            class="text-primary text-capitalize explore-btn"
+            @click="scrollToSection('product-list')"
+          >
+            <span class="button-text">View All Products</span>
+            <v-icon end>mdi-chevron-down</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 
 <v-container id="product-list" class="py-16">
   <!-- Section Header -->

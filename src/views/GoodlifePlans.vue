@@ -114,7 +114,6 @@
             class="text-capitalize ml-4 login-btn"
             size="small"
           >
-            <v-icon start>mdi-login</v-icon>
             LOG IN
           </v-btn>
         </div>
