@@ -255,10 +255,10 @@
         data-aos="fade-up"
       >
         <v-col cols="12" md="8" class="text-center text-md-start">
-          <h1 class="banner-title mb-4" style="color: #FFFFFF; text-align: left !important;">
+          <h1 class="banner-title mb-4" style="color: #FFFFFF; text-align: left;">
             Our Insurance Products
           </h1>
-          <p class="banner-subtitle mb-8" style="color: rgba(255, 255, 255, 0.9); text-align: left !important;">
+          <p class="banner-subtitle mb-8" style="color: rgba(255, 255, 255, 0.9); text-align: left;">
             Discover comprehensive insurance solutions designed to protect
             what matters most in your life.
           </p>

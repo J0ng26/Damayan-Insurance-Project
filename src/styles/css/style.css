@@ -937,7 +937,7 @@ html, body {
   
   .banner-title {
     font-size: 2.5rem !important; /* Larger font */
-    text-align: center;
+    text-align: center !important; 
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -955,7 +955,7 @@ html, body {
   
   .banner-subtitle {
     font-size: 1.3rem !important; /* Larger font */
-    text-align: center;
+    text-align: center !important;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -1145,7 +1145,7 @@ html, body {
   
   .banner-title {
     font-size: 3.2rem !important; /* Larger font */
-    text-align: center;
+    text-align: center !important;
     width: 100%;
   }
   
@@ -1158,7 +1158,7 @@ html, body {
 
   .banner-subtitle-family {
     font-size: 1.5rem !important; /* Larger font */
-    text-align: center;
+    text-align: center ;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -1170,7 +1170,7 @@ html, body {
   
   .banner-subtitle {
     font-size: 1.4rem !important; /* Larger font */
-    text-align: center;
+    text-align: center !important;
     width: 90%;
     max-width: 700px;
     margin-left: auto;
