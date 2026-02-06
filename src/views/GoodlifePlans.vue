@@ -183,7 +183,7 @@
                   color="white"
                   size="large"
                   class="text-primary text-capitalize"
-                  @click="scrollToSection('plans-overview')"
+                  @click="scrollToSection('premium-table')"
                 >
                   View Plans
                   <v-icon end>mdi-chevron-down</v-icon>

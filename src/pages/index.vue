@@ -350,6 +350,8 @@
         </v-row>
       </v-container>
 
+<div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
+
       <!-- Legalities Section -->
       <v-container
         id="legalities"
@@ -504,6 +506,8 @@
           </v-card>
         </v-dialog>
       </v-container>
+
+      <div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
 
       <!-- Features Section -->
       <v-container
@@ -718,6 +722,8 @@
           </v-row>
         </v-container>
       </v-container>
+
+      <div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
 
       <!-- Achievements Section -->
       <v-container max-width="1200" class="pa-10">

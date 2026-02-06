@@ -183,7 +183,7 @@
                   color="white"
                   size="large"
                   class="text-primary text-capitalize"
-                  @click="scrollToSection('plans-overview')"
+                  @click="scrollToSection('mbai-list')"
                 >
                   View Plans
                   <v-icon end>mdi-chevron-down</v-icon>
@@ -204,7 +204,7 @@
       </div>
 
 <!-- Container 8: Bea MEMBER - Micro Insurance -->
-<v-container class="py-16" data-aos="fade-up">
+<v-container id="mbai-list" class="py-16" data-aos="fade-up">
   <v-row justify="center">
     <v-col cols="12" lg="10">
       <v-card variant="flat" class="minimal-card-1 pa-6">
