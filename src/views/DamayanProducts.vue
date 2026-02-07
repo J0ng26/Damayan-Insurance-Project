@@ -211,1053 +211,1238 @@
       </v-list>
     </v-navigation-drawer>
 
-
-<v-main style="margin-top: 65px; padding-top: 0;">
-  <!-- Products Hero Section with Image Background - MATCHING HEIGHT -->
-  <div class="products-hero" style="margin-top: 0; padding-top: 0; position: relative; min-height: 100vh;">
-    <!-- Background Image -->
-    <img
-      src="@/assets/images/family.jpg"
-      alt="Insurance Products Banner"
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        z-index: 1;
-      "
-    />
-    
-    <!-- Dark Overlay (similar to index.vue) -->
-    <div 
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(62, 58, 91, 0.85) 0%,
-          rgba(74, 69, 97, 0.75) 50%,
-          rgba(106, 100, 141, 0.5) 100%
-        );
-        z-index: 2;
-      "
-    ></div>
-    
-    <v-container class="fill-height d-flex align-center justify-center" style="position: relative; z-index: 3; padding-top: 0; margin-top: 0;">
-      <v-row
-        class="align-center fill-height"
-        data-aos="fade-up"
+    <v-main style="margin-top: 65px; padding-top: 0">
+      <!-- Products Hero Section with Image Background - MATCHING HEIGHT -->
+      <div
+        class="products-hero"
+        style="
+          margin-top: 0;
+          padding-top: 0;
+          position: relative;
+          min-height: 100vh;
+        "
       >
-        <v-col cols="12" md="8" class="text-center text-md-start">
-          <h1 class="banner-title mb-4" style="color: #FFFFFF; text-align: left;">
-            Our Insurance Products
-          </h1>
-          <p class="banner-subtitle mb-8" style="color: rgba(255, 255, 255, 0.9); text-align: left;">
-            Discover comprehensive insurance solutions designed to protect
-            what matters most in your life.
-          </p>
-          <v-btn
-            color="white"
-            size="large"
-            class="text-primary text-capitalize explore-btn"
-            @click="scrollToSection('product-list')"
-          >
-            <span class="button-text">View All Products</span>
-            <v-icon end>mdi-chevron-down</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+        <!-- Background Image -->
+        <img
+          src="@/assets/images/family.jpg"
+          alt="Insurance Products Banner"
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+          "
+        />
 
-<v-container id="product-list" class="py-16">
-  <!-- Section Header -->
-  <v-row class="text-center" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h4 font-weight-bold mt-16 section-title">
-        AVAILABLE INDIVIDUAL INSURANCE PRODUCT
-      </h3>
-      <v-divider
-        class="mx-auto mb-6"
-        thickness="2"
-        style="max-width: 80px; background-color: #03a635;"
-      />
-      <p class="text-body-2 text-grey-darken-1">
-        Choose from our flexible contribution plans
-      </p>
-    </v-col>
-  </v-row>
+        <!-- Dark Overlay (similar to index.vue) -->
+        <div
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              135deg,
+              rgba(62, 58, 91, 0.85) 0%,
+              rgba(74, 69, 97, 0.75) 50%,
+              rgba(106, 100, 141, 0.5) 100%
+            );
+            z-index: 2;
+          "
+        ></div>
 
-  <!-- Individual Insurance Products Header -->
-  <v-row class="mb-8" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h4 font-weight-bold text-center" style="color: #4a4561;">
-        INDI Contribution Terms
-      </h3>
-    </v-col>
-  </v-row>
+        <!-- MICRO INSURANCE LOGO (TOP RIGHT) -->
+        <img
+          src="@/assets/images/micro-insurance.png"
+          alt="Micro Insurance Logo"
+          class="products-banner-logo"
+        />
 
-  <!-- Premium Table Section - Copy from Goodlife Plans Design -->
-  <v-row justify="center">
-    <v-col cols="12" md="10" lg="8">
-      <!-- Minimal Payment Grid -->
-      <v-row class="mb-6" data-aos="fade-up">
-        <v-col 
-          cols="12" 
-          md="6" 
-          v-for="term in contributionTerms" 
-          :key="term.name"
+        <v-container
+          class="fill-height d-flex align-center justify-center"
+          style="position: relative; z-index: 3; padding-top: 0; margin-top: 0"
         >
-          <v-card 
-            variant="outlined" 
-            class="rounded-lg pa-4 h-100"
-            :class="{ 'border-primary': term.mostPopular }"
-          >
-            <!-- Simple Header -->
-            <div class="d-flex align-center mb-4">
-              <v-icon 
-                :icon="term.icon" 
-                size="20" 
-                color="grey-darken-2"
-                class="mr-3"
-              ></v-icon>
-              <span class="text-subtitle-1 font-weight-medium" :class="`text-${term.color}`">
-                {{ term.name }}
-              </span>
-              <v-spacer></v-spacer>
-              <v-chip
-                v-if="term.mostPopular"
-                color="primary"
-                variant="outlined"
-                size="x-small"
-                class="text-caption font-weight-medium"
+          <v-row class="align-center fill-height" data-aos="fade-up">
+            <v-col cols="12" md="8" class="text-center text-md-start">
+              <h1
+                class="banner-title mb-4"
+                style="color: #ffffff; text-align: left"
               >
-                MOST POPULAR
-              </v-chip>
-            </div>
-
-            <!-- Clean Amount Display -->
-            <div class="text-center mb-5">
-              <div class="text-h4 font-weight-regular text-grey-darken-4 mb-1">
-                {{ term.amount }}
-              </div>
-              <div class="text-caption-2 text-grey-darken-2">
-                {{ term.period }}
-              </div>
-            </div>
-
-            <!-- Subtle Divider -->
-            <v-divider class="mb-4"></v-divider>
-
-            <!-- Total Contribution & Term Info -->
-            <div class="text-center">
-              <!-- Total Contribution -->
-              <div class="text-overline text-grey-darken-2 mb-1">
-                Total Contribution
-              </div>
-              <div class="text-h6 font-weight-medium text-grey-darken-4 mb-3">
-                {{ term.total }}
-              </div>
-              
-              <!-- Term Length -->
-              <div v-if="term.termLength" class="mb-3">
-                <div class="text-overline text-grey-darken-2 mb-1">
-                  Term Length
-                </div>
-                <v-chip
-                  color="primary"
-                  variant="outlined"
-                  size="small"
-                  class="text-caption font-weight-medium"
-                >
-                  {{ term.termLength }}
-                </v-chip>
-              </div>
-
-              <!-- Additional Info -->
-              <div 
-                v-if="term.additionalInfo" 
-                class="text-caption text-grey-darken-1 mt-2"
+                Our Insurance Products
+              </h1>
+              <p
+                class="banner-subtitle mb-8"
+                style="color: rgba(255, 255, 255, 0.9); text-align: left"
               >
-                {{ term.additionalInfo }}
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-</v-container>
-
-<v-container id="benefit-coverage" class="py-16">
-  <!-- Centered Header -->
-  <v-row class="text-center mb-12" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c;">
-        Benefit Coverage
-      </h3>
-      <v-divider
-        class="mx-auto mb-4"
-        thickness="2"
-        style="max-width: 60px; background-color: #03a635;"
-      />
-      <h4 class="text-h5 font-weight-bold mb-4" style="color: #2d3748;">INDI</h4>
-      <p class="text-body-1 text-grey-darken-2" style="max-width: 600px; margin: 0 auto;">
-        Upon death of a member, his/her beneficiaries shall be entitled to the following:
-      </p>
-    </v-col>
-  </v-row>
-
-  <!-- Centered Benefits List -->
-  <v-row justify="center" class="mb-12" data-aos="fade-up">
-    <v-col cols="12" md="8" lg="6">
-      <v-row>
-        <v-col 
-          cols="6" 
-          md="3" 
-          v-for="(item, index) in ['Basic Life Insurance Benefit', 'Accidental Death Benefits', 'Waiver of Premium due to Death', 'Cash Assistance']" 
-          :key="item"
-          class="text-center"
-        >
-          <div class="benefit-icon-wrapper mb-3">
-            <v-icon 
-              size="30" 
-              color="primary"
-            >
-              {{ ['mdi-heart', 'mdi-car-brake-alert', 'mdi-shield-check', 'mdi-cash'][index] }}
-            </v-icon>
-          </div>
-          <p class="text-body-1" style="color: #2d3748;">
-            {{ item }}
-          </p>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-
-  <!-- Centered Cards -->
-  <v-row justify="center" data-aos="fade-up">
-    <v-col cols="12" md="10" lg="8">
-      <v-row justify="center">
-        <!-- Basic Life Insurance -->
-        <v-col cols="12" md="4" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold" style="color: #2d3748;">
-                Basic Life Insurance
-              </h4>
-            </div>
-
-            <div class="text-center">
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  APPLICABLE FOR PRINCIPAL:
-                </p>
-                <p class="text-body-1 font-weight-medium">18-60 Years Old</p>
-              </div>
-
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  CASH ASSISTANCE:
-                </p>
-                <p class="text-h5 font-weight-bold text-primary">₱25,000.00</p>
-              </div>
-
-              <div>
-                <p class="text-caption text-grey-darken-2 mb-2">
-                  CONTESTABILITY:
-                </p>
-                <div class="d-flex justify-center">
-                  <span class="text-body-2 font-weight-medium mr-2">1 Year</span>
-                  <v-divider vertical style="height: 20px;"></v-divider>
-                  <span class="text-body-2 font-weight-medium ml-2">12 Months</span>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-
-        <!-- Accidental Death Insurance -->
-        <v-col cols="12" md="4" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold" style="color: #2d3748;">
-                Accidental Death Insurance
-              </h4>
-            </div>
-
-            <div class="text-center">
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  APPLICABLE FOR PRINCIPAL:
-                </p>
-                <p class="text-body-1 font-weight-medium">18-60 Years Old</p>
-              </div>
-
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  CASH ASSISTANCE:
-                </p>
-                <p class="text-h5 font-weight-bold text-primary">₱25,000.00</p>
-              </div>
-
-              <div>
-                <p class="text-caption text-grey-darken-2 mb-2">
-                  CONTESTABILITY:
-                </p>
-                <p class="text-body-1 font-weight-medium mb-2">24 Hours</p>
-                <p class="text-caption text-red" style="font-size: 11px;">
-                  Note: Strictly for Vehicular Accidents
-                </p>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-
-        <!-- Cash Assistance -->
-        <v-col cols="12" md="4" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold" style="color: #2d3748;">
-                Cash Assistance
-              </h4>
-            </div>
-
-            <div class="text-center">
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  APPLICABLE FOR PRINCIPAL:
-                </p>
-                <p class="text-body-1 font-weight-medium">18-60 Years Old</p>
-              </div>
-
-              <div class="mb-3">
-                <p class="text-caption text-grey-darken-2 mb-1">
-                  CASH ASSISTANCE:
-                </p>
-                <p class="text-h5 font-weight-bold text-primary">₱5,000.00</p>
-              </div>
-
-              <div>
-                <p class="text-caption text-grey-darken-2 mb-2">
-                  CONTESTABILITY:
-                </p>
-                <div class="mb-2">
-                         <div class="d-flex justify-center">
-                  <span class="text-body-2 font-weight-medium mr-2">1 Year</span>
-                  <v-divider vertical style="height: 20px;"></v-divider>
-                  <span class="text-body-2 font-weight-medium ml-2">12 Months - Natural</span>
-                </div>
-                  <p class="text-body-2 font-weight-medium">24 Hours - Accident</p>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-</v-container>
-
- <!-- PRINCIPAL BENEFIT COVERAGE SECTION - UPDATED -->
-<v-container id="principal-benefit-coverage" class="py-16">
-  <!-- Section Header - Matching Benefit Coverage Section -->
-  <v-row class="text-center mb-12" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c;">
-        Principal Benefit Coverage | INDI
-      </h3>
-      <v-divider
-        class="mx-auto mb-4"
-        thickness="2"
-        style="max-width: 60px; background-color: #03a635;"
-      />
-      <p class="text-body-1 text-grey-darken-2" style="max-width: 600px; margin: 0 auto;">
-        Sample Detailed Computation
-      </p>
-    </v-col>
-  </v-row>
-
-  <!-- Computation Cards - Using same structure as Benefit Coverage -->
-  <v-row justify="center" data-aos="fade-up">
-    <v-col cols="12" md="10" lg="8">
-      <v-row justify="center">
-        <!-- Natural Death -->
-        <v-col cols="12" md="6" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold mb-2" style="color: #1e3a8a">
-                Natural Death
-              </h4>
-            </div>
-
-            <!-- Requirements -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Requirements:</strong>
+                Discover comprehensive insurance solutions designed to protect
+                what matters most in your life.
               </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Double benefits with 1 year contestability
-                </p>
-                <p class="text-subtitle-2 mb-0" style="color: #ef4444">
-                  (18–60 years old upon application)
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Payment Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Payment Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Total Contract Savings: ₱31,500
-                </p>
-                <p class="text-subtitle-2 mb-0">
-                  • 375 x 12 Months: ₱4,500 <br />
-                  &nbsp;&nbsp;
-                  <span style="color: #ef4444">Balance (waived): ₱27,000</span>
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Coverage Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Coverage Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Basic Life Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Cash Assistance Benefit: ₱5,000
-                </p>
-                <div class="mt-3 pt-2 text-center">
-                  <p class="text-h5 font-weight-bold mb-0" style="color: #1e3a8a">
-                    Total Coverage: ₱30,000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-
-        <!-- Accidental Death -->
-        <v-col cols="12" md="6" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold mb-2" style="color: #dc2626">
-                Accidental Death
-              </h4>
-            </div>
-
-            <!-- Requirements -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Requirements:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Triple benefits with 24 Hours contestability
-                </p>
-                <p class="text-subtitle-2 mb-0" style="color: #ef4444">
-                  (18–60 years old upon application)
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Payment Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Payment Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Total Contract Savings: ₱31,500
-                </p>
-                <p class="text-subtitle-2 mb-0">
-                  • 375 x 1 Month: ₱375 <br />
-                  &nbsp;&nbsp;
-                  <span style="color: #ef4444">Balance (waived): ₱31,125</span>
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Coverage Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Coverage Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Basic Life Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Accidental Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Cash Assistance Benefit: ₱5,000
-                </p>
-                <div class="mt-3 pt-2 text-center">
-                  <p class="text-h5 font-weight-bold mb-0" style="color: #dc2626">
-                    Total Coverage: ₱55,000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-
-  <!-- Comparison Summary - Minimalist -->
-  <v-row class="mt-8" data-aos="fade-up">
-    <v-col cols="12" md="8" class="mx-auto">
-      <v-card class="pa-6 elevation-0 outlined">
-        <div class="text-center">
-          <h4 class="text-h5 font-weight-bold mb-4" style="color: #3e3a5b">
-            Benefit Comparison
-          </h4>
-        </div>
-
-        <v-row class="text-center">
-          <v-col cols="12" md="6">
-            <div class="pa-4">
-              <div class="text-h4 font-weight-bold mb-2" style="color: #1e3a8a">
-                ₱30,000
-              </div>
-              <p class="text-body-2 text-grey-darken-2 mb-0">
-                Natural Death Benefit
-              </p>
-            </div>
-          </v-col>
-
-          <v-col cols="12" md="6">
-            <div class="pa-4">
-              <div class="text-h4 font-weight-bold mb-2" style="color: #dc2626">
-                ₱55,000
-              </div>
-              <p class="text-body-2 text-grey-darken-2 mb-0">
-                Accidental Death Benefit
-              </p>
-            </div>
-          </v-col>
-        </v-row>
-
-        <v-divider class="my-5" />
-      </v-card>
-    </v-col>
-  </v-row>
-</v-container>
-
-<div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
-
-<v-container id="product-list" class="py-16">
-  <!-- Section Header -->
-  <v-row class="text-center mb-12" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h4 font-weight-bold mb-4 mt-16 section-title">
-        FAMILY INSURANCE PRODUCT
-      </h3>
-      <v-divider
-        class="mx-auto mb-6"
-        thickness="2"
-        style="max-width: 80px; background-color: #03a635;"
-      />
-      <p class="text-body-2 text-grey-darken-1">
-        Choose from our flexible family contribution plans
-      </p>
-    </v-col>
-  </v-row>
-
-  <!-- Family Insurance Products Header -->
-  <v-row class="mb-8" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h5 font-weight-bold text-center" style="color: #4a4561;">
-        FAMI Contribution Terms
-      </h3>
-    </v-col>
-  </v-row>
-
-  <!-- Premium Table Section - Same Design as INDI -->
-  <v-row justify="center">
-    <v-col cols="12" md="10" lg="8">
-      <!-- Minimal Payment Grid -->
-      <v-row class="mb-6" data-aos="fade-up">
-        <v-col 
-          cols="12" 
-          md="6" 
-          v-for="term in familyContributionTerms" 
-          :key="term.name"
-        >
-          <v-card 
-            variant="outlined" 
-            class="rounded-lg pa-4 h-100"
-            :class="{ 'border-primary': term.mostPopular }"
-          >
-            <!-- Simple Header -->
-            <div class="d-flex align-center mb-4">
-              <v-icon 
-                :icon="term.icon" 
-                size="20" 
-                color="grey-darken-2"
-                class="mr-3"
-              ></v-icon>
-              <span class="text-subtitle-1 font-weight-medium" :class="`text-${term.color}`">
-                {{ term.name }}
-              </span>
-              <v-spacer></v-spacer>
-              <v-chip
-                v-if="term.mostPopular"
-                color="primary"
-                variant="outlined"
-                size="x-small"
-                class="text-caption font-weight-medium"
+              <v-btn
+                color="white"
+                size="large"
+                class="text-primary text-capitalize explore-btn"
+                @click="scrollToSection('product-list')"
               >
-                MOST POPULAR
-              </v-chip>
-            </div>
+                <span class="button-text">View All Products</span>
+                <v-icon end>mdi-chevron-down</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
 
-            <!-- Clean Amount Display -->
-            <div class="text-center mb-5">
-              <div class="text-h4 font-weight-regular text-grey-darken-4 mb-1">
-                {{ term.amount }}
-              </div>
-              <div class="text-caption-2 text-grey-darken-2">
-                {{ term.period }}
-              </div>
-            </div>
-
-            <!-- Subtle Divider -->
-            <v-divider class="mb-4"></v-divider>
-
-            <!-- Total Contribution & Term Info -->
-            <div class="text-center">
-              <!-- Total Contribution -->
-              <div class="text-overline text-grey-darken-2 mb-1">
-                Total Contribution
-              </div>
-              <div class="text-h6 font-weight-medium text-grey-darken-4 mb-3">
-                {{ term.total }}
-              </div>
-              
-              <!-- Term Length -->
-              <div v-if="term.termLength" class="mb-3">
-                <div class="text-overline text-grey-darken-2 mb-1">
-                  Term Length
-                </div>
-                <v-chip
-                  color="primary"
-                  variant="outlined"
-                  size="small"
-                  class="text-caption font-weight-medium"
-                >
-                  {{ term.termLength }}
-                </v-chip>
-              </div>
-
-              <!-- Additional Info -->
-              <div 
-                v-if="term.additionalInfo" 
-                class="text-caption text-grey-darken-1 mt-2"
-              >
-                {{ term.additionalInfo }}
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-
-      <!-- Additional Information -->
-      <v-row justify="center" data-aos="fade-up">
-        <v-col cols="12" class="text-center">
-          <v-card variant="outlined" class="rounded-lg pa-4">
-            <div class="d-flex align-center justify-center mb-2">
-              <v-icon icon="mdi-home-heart" size="20" color="grey-darken-2" class="mr-2"></v-icon>
-              <span class="text-body-2 font-weight-medium text-grey-darken-3">
-                Family Plan Information
-              </span>
-            </div>
-            <p class="text-caption text-grey-darken-2 mb-0">
-              FAMI plans provide comprehensive family coverage with flexible payment options.
-              Protect your entire family with one convenient plan.
+      <v-container id="product-list" class="py-16">
+        <!-- Section Header -->
+        <v-row class="text-center" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h4 font-weight-bold mt-16 section-title">
+              AVAILABLE INDIVIDUAL INSURANCE PRODUCT
+            </h3>
+            <v-divider
+              class="mx-auto mb-6"
+              thickness="2"
+              style="max-width: 80px; background-color: #03a635"
+            />
+            <p class="text-body-2 text-grey-darken-1">
+              Choose from our flexible contribution plans
             </p>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-</v-container>
-
-<v-container id="principal-benefit-coverage-fami" class="py-16">
-  <!-- Section Header - Matching Benefit Coverage Section -->
-  <v-row class="text-center mb-12" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c;">
-        Principal Benefit Coverage | FAMI
-      </h3>
-      <v-divider
-        class="mx-auto mb-4"
-        thickness="2"
-        style="max-width: 60px; background-color: #03a635;"
-      />
-      <p class="text-body-1 text-grey-darken-2" style="max-width: 600px; margin: 0 auto;">
-        Sample Detailed Computation
-      </p>
-    </v-col>
-  </v-row>
-
-  <!-- Computation Cards - Using same structure as Benefit Coverage -->
-  <v-row justify="center" data-aos="fade-up">
-    <v-col cols="12" md="10" lg="8">
-      <v-row justify="center">
-        <!-- Natural Death -->
-        <v-col cols="12" md="6" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold mb-2" style="color: #1e3a8a">
-                Natural Death
-              </h4>
-            </div>
-
-            <!-- Requirements -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Requirements:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Double benefits with 1 year contestability
-                </p>
-                <p class="text-subtitle-2 mb-0" style="color: #ef4444">
-                  (18–60 years old upon application)
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Payment Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Payment Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Total Contract Savings: ₱39,000
-                </p>
-                <p class="text-subtitle-2 mb-0">
-                  • 650 x 12 Months: ₱7,800 <br />
-                  &nbsp;&nbsp;
-                  <span style="color: #ef4444">Balance (waived): ₱31,200</span>
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Coverage Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Coverage Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Basic Life Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Cash Assistance Benefit: ₱15,000
-                </p>
-                <div class="mt-3 pt-2 text-center">
-                  <p class="text-h5 font-weight-bold mb-0" style="color: #1e3a8a">
-                    Total Coverage: ₱40,000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-
-        <!-- Accidental Death -->
-        <v-col cols="12" md="6" class="text-center mb-6">
-          <v-card variant="outlined" class="rounded-lg pa-4 h-100">
-            <div class="text-center mb-4 mt-5">
-              <h4 class="text-h5 font-weight-bold mb-2" style="color: #dc2626">
-                Accidental Death
-              </h4>
-            </div>
-
-            <!-- Requirements -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Requirements:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Triple benefits with 24 Hours contestability
-                </p>
-                <p class="text-subtitle-2 mb-0" style="color: #ef4444">
-                  (18–60 years old upon application)
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Payment Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Payment Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Total Contract Savings: ₱39,000
-                </p>
-                <p class="text-subtitle-2 mb-0">
-                  • 650 x 1 Month: ₱650 <br />
-                  &nbsp;&nbsp;
-                  <span style="color: #ef4444">Balance (waived): ₱38,350</span>
-                </p>
-              </div>
-            </div>
-
-            <v-divider class="my-4" />
-
-            <!-- Coverage Computation -->
-            <div class="mb-4 text-left">
-              <p class="text-subtitle-2 mb-1">
-                <strong>Coverage Computation:</strong>
-              </p>
-              <div class="pl-3">
-                <p class="text-subtitle-2 mb-1">
-                  • Basic Life Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Accidental Coverage: ₱25,000
-                </p>
-                <p class="text-subtitle-2 mb-1">
-                  • Cash Assistance Benefit: ₱15,000
-                </p>
-                <div class="mt-3 pt-2 text-center">
-                  <p class="text-h5 font-weight-bold mb-0" style="color: #dc2626">
-                    Total Coverage: ₱65,000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-
-  <!-- Comparison Summary - Minimalist -->
-  <v-row class="mt-8" data-aos="fade-up">
-    <v-col cols="12" md="8" class="mx-auto">
-      <v-card class="pa-6 elevation-0 outlined">
-        <div class="text-center">
-          <h4 class="text-h5 font-weight-bold mb-4" style="color: #3e3a5b">
-            Benefit Comparison
-          </h4>
-        </div>
-
-        <v-row class="text-center">
-          <v-col cols="12" md="6">
-            <div class="pa-4">
-              <div class="text-h4 font-weight-bold mb-2" style="color: #1e3a8a">
-                ₱40,000
-              </div>
-              <p class="text-body-2 text-grey-darken-2 mb-0">
-                Natural Death Benefit
-              </p>
-            </div>
-          </v-col>
-
-          <v-col cols="12" md="6">
-            <div class="pa-4">
-              <div class="text-h4 font-weight-bold mb-2" style="color: #dc2626">
-                ₱65,000
-              </div>
-              <p class="text-body-2 text-grey-darken-2 mb-0">
-                Accidental Death Benefit
-              </p>
-            </div>
           </v-col>
         </v-row>
 
-        <v-divider class="my-4" />
-      </v-card>
-    </v-col>
-  </v-row>
-</v-container>
+        <!-- Individual Insurance Products Header -->
+        <v-row class="mb-8" data-aos="fade-up">
+          <v-col cols="12">
+            <h3
+              class="text-h4 font-weight-bold text-center"
+              style="color: #4a4561"
+            >
+              INDI Contribution Terms
+            </h3>
+          </v-col>
+        </v-row>
 
-
-   <v-container id="special-benefit-coverage" class="py-16">
-  <!-- Section Header -->
-  <v-row class="text-center mb-12" data-aos="fade-up">
-    <v-col cols="12">
-      <h3 class="text-h4 font-weight-bold mb-4 section-title">
-        Special Benefit Coverage | FAMI
-      </h3>
-      <v-divider
-        class="mx-auto mb-6"
-        thickness="2"
-        style="max-width: 80px; background-color: #03a635;"
-      />
-      <p class="text-body-2 text-grey-darken-1">
-        Comprehensive family protection coverage
-      </p>
-    </v-col>
-  </v-row>
-
-  <!-- Dependents Coverage - Minimalist Design -->
-  <v-row justify="center" data-aos="fade-up">
-    <v-col cols="12" md="10" lg="8">
-      <v-row>
-        <v-col 
-          cols="12" 
-          md="4" 
-          v-for="(dependent, index) in ['DEPENDENT 1', 'DEPENDENT 2', 'DEPENDENT 3']" 
-          :key="dependent"
-          class="mb-6"
-        >
-          <v-card 
-            variant="outlined" 
-            class="rounded-lg pa-4 h-100"
-          >
-            <!-- Header -->
-            <div class="text-center mb-4">
-              <v-icon 
-                size="32" 
-                :color="['primary', 'primary', 'primary'][index]"
-                class="mb-2"
+        <!-- Premium Table Section - Copy from Goodlife Plans Design -->
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="8">
+            <!-- Minimal Payment Grid -->
+            <v-row class="mb-6" data-aos="fade-up">
+              <v-col
+                cols="12"
+                md="6"
+                v-for="term in contributionTerms"
+                :key="term.name"
               >
-                {{ ['mdi-account', 'mdi-account-multiple', 'mdi-account-group'][index] }}
-              </v-icon>
-              <div class="text-h6 font-weight-bold" style="color: #2d3748;">
-                {{ dependent }}
-              </div>
-            </div>
+                <v-card
+                  variant="outlined"
+                  class="rounded-lg pa-4 h-100"
+                  :class="{ 'border-primary': term.mostPopular }"
+                >
+                  <!-- Simple Header -->
+                  <div class="d-flex align-center mb-4">
+                    <v-icon
+                      :icon="term.icon"
+                      size="20"
+                      color="grey-darken-2"
+                      class="mr-3"
+                    ></v-icon>
+                    <span
+                      class="text-subtitle-1 font-weight-medium"
+                      :class="`text-${term.color}`"
+                    >
+                      {{ term.name }}
+                    </span>
+                    <v-spacer></v-spacer>
+                    <v-chip
+                      v-if="term.mostPopular"
+                      color="primary"
+                      variant="outlined"
+                      size="x-small"
+                      class="text-caption font-weight-medium"
+                    >
+                      MOST POPULAR
+                    </v-chip>
+                  </div>
 
-            <!-- Coverage Details -->
-            <div class="text-center">
-              <div class="mb-4">
-                <div class="text-overline text-grey-darken-2 mb-3">
-                  COVERAGE COMPUTATION
-                </div>
-                
-                <div class="mb-3">
-                  <div class="text-caption text-grey-darken-2 mb-1">
-                    Basic Life Coverage
+                  <!-- Clean Amount Display -->
+                  <div class="text-center mb-5">
+                    <div
+                      class="text-h4 font-weight-regular text-grey-darken-4 mb-1"
+                    >
+                      {{ term.amount }}
+                    </div>
+                    <div class="text-caption-2 text-grey-darken-2">
+                      {{ term.period }}
+                    </div>
                   </div>
-                  <div class="text-h6 font-weight-medium text-grey-darken-4">
-                    ₱25,000
-                  </div>
-                </div>
 
-                <div class="mb-4">
-                  <div class="text-caption text-grey-darken-2 mb-1">
-                    Cash Assistance Benefit
+                  <!-- Subtle Divider -->
+                  <v-divider class="mb-4"></v-divider>
+
+                  <!-- Total Contribution & Term Info -->
+                  <div class="text-center">
+                    <!-- Total Contribution -->
+                    <div class="text-overline text-grey-darken-2 mb-1">
+                      Total Contribution
+                    </div>
+                    <div
+                      class="text-h6 font-weight-medium text-grey-darken-4 mb-3"
+                    >
+                      {{ term.total }}
+                    </div>
+
+                    <!-- Term Length -->
+                    <div v-if="term.termLength" class="mb-3">
+                      <div class="text-overline text-grey-darken-2 mb-1">
+                        Term Length
+                      </div>
+                      <v-chip
+                        color="primary"
+                        variant="outlined"
+                        size="small"
+                        class="text-caption font-weight-medium"
+                      >
+                        {{ term.termLength }}
+                      </v-chip>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div
+                      v-if="term.additionalInfo"
+                      class="text-caption text-grey-darken-1 mt-2"
+                    >
+                      {{ term.additionalInfo }}
+                    </div>
                   </div>
-                  <div class="text-h6 font-weight-medium text-grey-darken-4">
-                    ₱5,000
-                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-container id="benefit-coverage" class="py-16">
+        <!-- Centered Header -->
+        <v-row class="text-center mb-12" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c">
+              Benefit Coverage
+            </h3>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #03a635"
+            />
+            <h4 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+              INDI
+            </h4>
+            <p
+              class="text-body-1 text-grey-darken-2"
+              style="max-width: 600px; margin: 0 auto"
+            >
+              Upon death of a member, his/her beneficiaries shall be entitled to
+              the following:
+            </p>
+          </v-col>
+        </v-row>
+
+        <!-- Centered Benefits List -->
+        <v-row justify="center" class="mb-12" data-aos="fade-up">
+          <v-col cols="12" md="8" lg="6">
+            <v-row>
+              <v-col
+                cols="6"
+                md="3"
+                v-for="(item, index) in [
+                  'Basic Life Insurance Benefit',
+                  'Accidental Death Benefits',
+                  'Waiver of Premium due to Death',
+                  'Cash Assistance',
+                ]"
+                :key="item"
+                class="text-center"
+              >
+                <div class="benefit-icon-wrapper mb-3">
+                  <v-icon size="30" color="primary">
+                    {{
+                      [
+                        "mdi-heart",
+                        "mdi-car-brake-alert",
+                        "mdi-shield-check",
+                        "mdi-cash",
+                      ][index]
+                    }}
+                  </v-icon>
                 </div>
+                <p class="text-body-1" style="color: #2d3748">
+                  {{ item }}
+                </p>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+
+        <!-- Centered Cards -->
+        <v-row justify="center" data-aos="fade-up">
+          <v-col cols="12" md="10" lg="8">
+            <v-row justify="center">
+              <!-- Basic Life Insurance -->
+              <v-col cols="12" md="4" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4 class="text-h5 font-weight-bold" style="color: #2d3748">
+                      Basic Life Insurance
+                    </h4>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        APPLICABLE FOR PRINCIPAL:
+                      </p>
+                      <p class="text-body-1 font-weight-medium">
+                        18-60 Years Old
+                      </p>
+                    </div>
+
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        CASH ASSISTANCE:
+                      </p>
+                      <p class="text-h5 font-weight-bold text-primary">
+                        ₱25,000.00
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="text-caption text-grey-darken-2 mb-2">
+                        CONTESTABILITY:
+                      </p>
+                      <div class="d-flex justify-center">
+                        <span class="text-body-2 font-weight-medium mr-2"
+                          >1 Year</span
+                        >
+                        <v-divider vertical style="height: 20px"></v-divider>
+                        <span class="text-body-2 font-weight-medium ml-2"
+                          >12 Months</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+
+              <!-- Accidental Death Insurance -->
+              <v-col cols="12" md="4" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4 class="text-h5 font-weight-bold" style="color: #2d3748">
+                      Accidental Death Insurance
+                    </h4>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        APPLICABLE FOR PRINCIPAL:
+                      </p>
+                      <p class="text-body-1 font-weight-medium">
+                        18-60 Years Old
+                      </p>
+                    </div>
+
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        CASH ASSISTANCE:
+                      </p>
+                      <p class="text-h5 font-weight-bold text-primary">
+                        ₱25,000.00
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="text-caption text-grey-darken-2 mb-2">
+                        CONTESTABILITY:
+                      </p>
+                      <p class="text-body-1 font-weight-medium mb-2">
+                        24 Hours
+                      </p>
+                      <p class="text-caption text-red" style="font-size: 11px">
+                        Note: Strictly for Vehicular Accidents
+                      </p>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+
+              <!-- Cash Assistance -->
+              <v-col cols="12" md="4" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4 class="text-h5 font-weight-bold" style="color: #2d3748">
+                      Cash Assistance
+                    </h4>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        APPLICABLE FOR PRINCIPAL:
+                      </p>
+                      <p class="text-body-1 font-weight-medium">
+                        18-60 Years Old
+                      </p>
+                    </div>
+
+                    <div class="mb-3">
+                      <p class="text-caption text-grey-darken-2 mb-1">
+                        CASH ASSISTANCE:
+                      </p>
+                      <p class="text-h5 font-weight-bold text-primary">
+                        ₱5,000.00
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="text-caption text-grey-darken-2 mb-2">
+                        CONTESTABILITY:
+                      </p>
+                      <div class="mb-2">
+                        <div class="d-flex justify-center">
+                          <span class="text-body-2 font-weight-medium mr-2"
+                            >1 Year</span
+                          >
+                          <v-divider vertical style="height: 20px"></v-divider>
+                          <span class="text-body-2 font-weight-medium ml-2"
+                            >12 Months - Natural</span
+                          >
+                        </div>
+                        <p class="text-body-2 font-weight-medium">
+                          24 Hours - Accident
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- PRINCIPAL BENEFIT COVERAGE SECTION - UPDATED -->
+      <v-container id="principal-benefit-coverage" class="py-16">
+        <!-- Section Header - Matching Benefit Coverage Section -->
+        <v-row class="text-center mb-12" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c">
+              Principal Benefit Coverage | INDI
+            </h3>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #03a635"
+            />
+            <p
+              class="text-body-1 text-grey-darken-2"
+              style="max-width: 600px; margin: 0 auto"
+            >
+              Sample Detailed Computation
+            </p>
+          </v-col>
+        </v-row>
+
+        <!-- Computation Cards - Using same structure as Benefit Coverage -->
+        <v-row justify="center" data-aos="fade-up">
+          <v-col cols="12" md="10" lg="8">
+            <v-row justify="center">
+              <!-- Natural Death -->
+              <v-col cols="12" md="6" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4
+                      class="text-h5 font-weight-bold mb-2"
+                      style="color: #1e3a8a"
+                    >
+                      Natural Death
+                    </h4>
+                  </div>
+
+                  <!-- Requirements -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Requirements:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Double benefits with 1 year contestability
+                      </p>
+                      <p class="text-subtitle-2 mb-0" style="color: #ef4444">
+                        (18–60 years old upon application)
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Payment Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Payment Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Total Contract Savings: ₱31,500
+                      </p>
+                      <p class="text-subtitle-2 mb-0">
+                        • 375 x 12 Months: ₱4,500 <br />
+                        &nbsp;&nbsp;
+                        <span style="color: #ef4444"
+                          >Balance (waived): ₱27,000</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Coverage Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Coverage Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Basic Life Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Cash Assistance Benefit: ₱5,000
+                      </p>
+                      <div class="mt-3 pt-2 text-center">
+                        <p
+                          class="text-h5 font-weight-bold mb-0"
+                          style="color: #1e3a8a"
+                        >
+                          Total Coverage: ₱30,000
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+
+              <!-- Accidental Death -->
+              <v-col cols="12" md="6" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4
+                      class="text-h5 font-weight-bold mb-2"
+                      style="color: #dc2626"
+                    >
+                      Accidental Death
+                    </h4>
+                  </div>
+
+                  <!-- Requirements -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Requirements:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Triple benefits with 24 Hours contestability
+                      </p>
+                      <p class="text-subtitle-2 mb-0" style="color: #ef4444">
+                        (18–60 years old upon application)
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Payment Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Payment Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Total Contract Savings: ₱31,500
+                      </p>
+                      <p class="text-subtitle-2 mb-0">
+                        • 375 x 1 Month: ₱375 <br />
+                        &nbsp;&nbsp;
+                        <span style="color: #ef4444"
+                          >Balance (waived): ₱31,125</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Coverage Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Coverage Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Basic Life Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Accidental Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Cash Assistance Benefit: ₱5,000
+                      </p>
+                      <div class="mt-3 pt-2 text-center">
+                        <p
+                          class="text-h5 font-weight-bold mb-0"
+                          style="color: #dc2626"
+                        >
+                          Total Coverage: ₱55,000
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+
+        <!-- Comparison Summary - Minimalist -->
+        <v-row class="mt-8" data-aos="fade-up">
+          <v-col cols="12" md="8" class="mx-auto">
+            <v-card class="pa-6 elevation-0 outlined">
+              <div class="text-center">
+                <h4
+                  class="text-h5 font-weight-bold mb-4"
+                  style="color: #3e3a5b"
+                >
+                  Benefit Comparison
+                </h4>
               </div>
+
+              <v-row class="text-center">
+                <v-col cols="12" md="6">
+                  <div class="pa-4">
+                    <div
+                      class="text-h4 font-weight-bold mb-2"
+                      style="color: #1e3a8a"
+                    >
+                      ₱30,000
+                    </div>
+                    <p class="text-body-2 text-grey-darken-2 mb-0">
+                      Natural Death Benefit
+                    </p>
+                  </div>
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <div class="pa-4">
+                    <div
+                      class="text-h4 font-weight-bold mb-2"
+                      style="color: #dc2626"
+                    >
+                      ₱55,000
+                    </div>
+                    <p class="text-body-2 text-grey-darken-2 mb-0">
+                      Accidental Death Benefit
+                    </p>
+                  </div>
+                </v-col>
+              </v-row>
+
+              <v-divider class="my-5" />
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <div
+        style="
+          border-top: 5px solid #e2e8f0;
+          width: 100%;
+          max-width: 1200px;
+          margin: 40px auto;
+        "
+      ></div>
+
+      <v-container id="product-list" class="py-16">
+        <!-- Section Header -->
+        <v-row class="text-center mb-12" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h4 font-weight-bold mb-4 mt-16 section-title">
+              FAMILY INSURANCE PRODUCT
+            </h3>
+            <v-divider
+              class="mx-auto mb-6"
+              thickness="2"
+              style="max-width: 80px; background-color: #03a635"
+            />
+            <p class="text-body-2 text-grey-darken-1">
+              Choose from our flexible family contribution plans
+            </p>
+          </v-col>
+        </v-row>
+
+        <!-- Family Insurance Products Header -->
+        <v-row class="mb-8" data-aos="fade-up">
+          <v-col cols="12">
+            <h3
+              class="text-h5 font-weight-bold text-center"
+              style="color: #4a4561"
+            >
+              FAMI Contribution Terms
+            </h3>
+          </v-col>
+        </v-row>
+
+        <!-- Premium Table Section - Same Design as INDI -->
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="8">
+            <!-- Minimal Payment Grid -->
+            <v-row class="mb-6" data-aos="fade-up">
+              <v-col
+                cols="12"
+                md="6"
+                v-for="term in familyContributionTerms"
+                :key="term.name"
+              >
+                <v-card
+                  variant="outlined"
+                  class="rounded-lg pa-4 h-100"
+                  :class="{ 'border-primary': term.mostPopular }"
+                >
+                  <!-- Simple Header -->
+                  <div class="d-flex align-center mb-4">
+                    <v-icon
+                      :icon="term.icon"
+                      size="20"
+                      color="grey-darken-2"
+                      class="mr-3"
+                    ></v-icon>
+                    <span
+                      class="text-subtitle-1 font-weight-medium"
+                      :class="`text-${term.color}`"
+                    >
+                      {{ term.name }}
+                    </span>
+                    <v-spacer></v-spacer>
+                    <v-chip
+                      v-if="term.mostPopular"
+                      color="primary"
+                      variant="outlined"
+                      size="x-small"
+                      class="text-caption font-weight-medium"
+                    >
+                      MOST POPULAR
+                    </v-chip>
+                  </div>
+
+                  <!-- Clean Amount Display -->
+                  <div class="text-center mb-5">
+                    <div
+                      class="text-h4 font-weight-regular text-grey-darken-4 mb-1"
+                    >
+                      {{ term.amount }}
+                    </div>
+                    <div class="text-caption-2 text-grey-darken-2">
+                      {{ term.period }}
+                    </div>
+                  </div>
+
+                  <!-- Subtle Divider -->
+                  <v-divider class="mb-4"></v-divider>
+
+                  <!-- Total Contribution & Term Info -->
+                  <div class="text-center">
+                    <!-- Total Contribution -->
+                    <div class="text-overline text-grey-darken-2 mb-1">
+                      Total Contribution
+                    </div>
+                    <div
+                      class="text-h6 font-weight-medium text-grey-darken-4 mb-3"
+                    >
+                      {{ term.total }}
+                    </div>
+
+                    <!-- Term Length -->
+                    <div v-if="term.termLength" class="mb-3">
+                      <div class="text-overline text-grey-darken-2 mb-1">
+                        Term Length
+                      </div>
+                      <v-chip
+                        color="primary"
+                        variant="outlined"
+                        size="small"
+                        class="text-caption font-weight-medium"
+                      >
+                        {{ term.termLength }}
+                      </v-chip>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div
+                      v-if="term.additionalInfo"
+                      class="text-caption text-grey-darken-1 mt-2"
+                    >
+                      {{ term.additionalInfo }}
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+
+            <!-- Additional Information -->
+            <v-row justify="center" data-aos="fade-up">
+              <v-col cols="12" class="text-center">
+                <v-card variant="outlined" class="rounded-lg pa-4">
+                  <div class="d-flex align-center justify-center mb-2">
+                    <v-icon
+                      icon="mdi-home-heart"
+                      size="20"
+                      color="grey-darken-2"
+                      class="mr-2"
+                    ></v-icon>
+                    <span
+                      class="text-body-2 font-weight-medium text-grey-darken-3"
+                    >
+                      Family Plan Information
+                    </span>
+                  </div>
+                  <p class="text-caption text-grey-darken-2 mb-0">
+                    FAMI plans provide comprehensive family coverage with
+                    flexible payment options. Protect your entire family with
+                    one convenient plan.
+                  </p>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-container id="principal-benefit-coverage-fami" class="py-16">
+        <!-- Section Header - Matching Benefit Coverage Section -->
+        <v-row class="text-center mb-12" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c">
+              Principal Benefit Coverage | FAMI
+            </h3>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #03a635"
+            />
+            <p
+              class="text-body-1 text-grey-darken-2"
+              style="max-width: 600px; margin: 0 auto"
+            >
+              Sample Detailed Computation
+            </p>
+          </v-col>
+        </v-row>
+
+        <!-- Computation Cards - Using same structure as Benefit Coverage -->
+        <v-row justify="center" data-aos="fade-up">
+          <v-col cols="12" md="10" lg="8">
+            <v-row justify="center">
+              <!-- Natural Death -->
+              <v-col cols="12" md="6" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4
+                      class="text-h5 font-weight-bold mb-2"
+                      style="color: #1e3a8a"
+                    >
+                      Natural Death
+                    </h4>
+                  </div>
+
+                  <!-- Requirements -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Requirements:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Double benefits with 1 year contestability
+                      </p>
+                      <p class="text-subtitle-2 mb-0" style="color: #ef4444">
+                        (18–60 years old upon application)
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Payment Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Payment Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Total Contract Savings: ₱39,000
+                      </p>
+                      <p class="text-subtitle-2 mb-0">
+                        • 650 x 12 Months: ₱7,800 <br />
+                        &nbsp;&nbsp;
+                        <span style="color: #ef4444"
+                          >Balance (waived): ₱31,200</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Coverage Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Coverage Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Basic Life Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Cash Assistance Benefit: ₱15,000
+                      </p>
+                      <div class="mt-3 pt-2 text-center">
+                        <p
+                          class="text-h5 font-weight-bold mb-0"
+                          style="color: #1e3a8a"
+                        >
+                          Total Coverage: ₱40,000
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+
+              <!-- Accidental Death -->
+              <v-col cols="12" md="6" class="text-center mb-6">
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <div class="text-center mb-4 mt-5">
+                    <h4
+                      class="text-h5 font-weight-bold mb-2"
+                      style="color: #dc2626"
+                    >
+                      Accidental Death
+                    </h4>
+                  </div>
+
+                  <!-- Requirements -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Requirements:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Triple benefits with 24 Hours contestability
+                      </p>
+                      <p class="text-subtitle-2 mb-0" style="color: #ef4444">
+                        (18–60 years old upon application)
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Payment Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Payment Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Total Contract Savings: ₱39,000
+                      </p>
+                      <p class="text-subtitle-2 mb-0">
+                        • 650 x 1 Month: ₱650 <br />
+                        &nbsp;&nbsp;
+                        <span style="color: #ef4444"
+                          >Balance (waived): ₱38,350</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <v-divider class="my-4" />
+
+                  <!-- Coverage Computation -->
+                  <div class="mb-4 text-left">
+                    <p class="text-subtitle-2 mb-1">
+                      <strong>Coverage Computation:</strong>
+                    </p>
+                    <div class="pl-3">
+                      <p class="text-subtitle-2 mb-1">
+                        • Basic Life Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Accidental Coverage: ₱25,000
+                      </p>
+                      <p class="text-subtitle-2 mb-1">
+                        • Cash Assistance Benefit: ₱15,000
+                      </p>
+                      <div class="mt-3 pt-2 text-center">
+                        <p
+                          class="text-h5 font-weight-bold mb-0"
+                          style="color: #dc2626"
+                        >
+                          Total Coverage: ₱65,000
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+
+        <!-- Comparison Summary - Minimalist -->
+        <v-row class="mt-8" data-aos="fade-up">
+          <v-col cols="12" md="8" class="mx-auto">
+            <v-card class="pa-6 elevation-0 outlined">
+              <div class="text-center">
+                <h4
+                  class="text-h5 font-weight-bold mb-4"
+                  style="color: #3e3a5b"
+                >
+                  Benefit Comparison
+                </h4>
+              </div>
+
+              <v-row class="text-center">
+                <v-col cols="12" md="6">
+                  <div class="pa-4">
+                    <div
+                      class="text-h4 font-weight-bold mb-2"
+                      style="color: #1e3a8a"
+                    >
+                      ₱40,000
+                    </div>
+                    <p class="text-body-2 text-grey-darken-2 mb-0">
+                      Natural Death Benefit
+                    </p>
+                  </div>
+                </v-col>
+
+                <v-col cols="12" md="6">
+                  <div class="pa-4">
+                    <div
+                      class="text-h4 font-weight-bold mb-2"
+                      style="color: #dc2626"
+                    >
+                      ₱65,000
+                    </div>
+                    <p class="text-body-2 text-grey-darken-2 mb-0">
+                      Accidental Death Benefit
+                    </p>
+                  </div>
+                </v-col>
+              </v-row>
+
+              <v-divider class="my-4" />
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-container id="special-benefit-coverage" class="py-16">
+        <!-- Section Header -->
+        <v-row class="text-center mb-12" data-aos="fade-up">
+          <v-col cols="12">
+            <h3 class="text-h4 font-weight-bold mb-4 section-title">
+              Special Benefit Coverage | FAMI
+            </h3>
+            <v-divider
+              class="mx-auto mb-6"
+              thickness="2"
+              style="max-width: 80px; background-color: #03a635"
+            />
+            <p class="text-body-2 text-grey-darken-1">
+              Comprehensive family protection coverage
+            </p>
+          </v-col>
+        </v-row>
+
+        <!-- Dependents Coverage - Minimalist Design -->
+        <v-row justify="center" data-aos="fade-up">
+          <v-col cols="12" md="10" lg="8">
+            <v-row>
+              <v-col
+                cols="12"
+                md="4"
+                v-for="(dependent, index) in [
+                  'DEPENDENT 1',
+                  'DEPENDENT 2',
+                  'DEPENDENT 3',
+                ]"
+                :key="dependent"
+                class="mb-6"
+              >
+                <v-card variant="outlined" class="rounded-lg pa-4 h-100">
+                  <!-- Header -->
+                  <div class="text-center mb-4">
+                    <v-icon
+                      size="32"
+                      :color="['primary', 'primary', 'primary'][index]"
+                      class="mb-2"
+                    >
+                      {{
+                        [
+                          "mdi-account",
+                          "mdi-account-multiple",
+                          "mdi-account-group",
+                        ][index]
+                      }}
+                    </v-icon>
+                    <div
+                      class="text-h6 font-weight-bold"
+                      style="color: #2d3748"
+                    >
+                      {{ dependent }}
+                    </div>
+                  </div>
+
+                  <!-- Coverage Details -->
+                  <div class="text-center">
+                    <div class="mb-4">
+                      <div class="text-overline text-grey-darken-2 mb-3">
+                        COVERAGE COMPUTATION
+                      </div>
+
+                      <div class="mb-3">
+                        <div class="text-caption text-grey-darken-2 mb-1">
+                          Basic Life Coverage
+                        </div>
+                        <div
+                          class="text-h6 font-weight-medium text-grey-darken-4"
+                        >
+                          ₱25,000
+                        </div>
+                      </div>
+
+                      <div class="mb-4">
+                        <div class="text-caption text-grey-darken-2 mb-1">
+                          Cash Assistance Benefit
+                        </div>
+                        <div
+                          class="text-h6 font-weight-medium text-grey-darken-4"
+                        >
+                          ₱5,000
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Total Coverage -->
+                    <div class="pt-3" style="border-top: 1px solid #e2e8f0">
+                      <div class="text-overline text-grey-darken-2 mb-1">
+                        TOTAL COVERAGE
+                      </div>
+                      <div class="text-h5 font-weight-bold text-primary">
+                        ₱30,000
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+
+        <!-- Total Coverage & Requirements -->
+        <v-row justify="center" class="mt-8" data-aos="fade-up">
+          <v-col cols="12" md="8" lg="6">
+            <v-card variant="outlined" class="rounded-lg pa-5">
+              <!-- Requirements -->
+              <div class="text-center mb-4">
+                <div class="d-flex align-center justify-center mb-2">
+                  <v-icon
+                    icon="mdi-file-document-check"
+                    size="20"
+                    color="grey-darken-2"
+                    class="mr-2"
+                  ></v-icon>
+                  <span
+                    class="text-body-2 font-weight-medium text-grey-darken-3"
+                  >
+                    Requirements
+                  </span>
+                </div>
+                <p class="text-body-1 text-grey-darken-2 mb-0">
+                  Double benefits with 1 year contestability
+                  <span class="text-red" style="font-weight: 500">
+                    (18–60 years old upon application)
+                  </span>
+                </p>
+              </div>
+
+              <!-- Divider -->
+              <v-divider class="my-4"></v-divider>
 
               <!-- Total Coverage -->
-              <div class="pt-3" style="border-top: 1px solid #e2e8f0;">
-                <div class="text-overline text-grey-darken-2 mb-1">
-                  TOTAL COVERAGE
+              <div class="text-center mb-4">
+                <div class="d-flex align-center justify-center mb-2">
+                  <span class="text-h5 font-weight-bold" style="color: #2d3748">
+                    TOTAL DEPENDENT COVERAGE
+                  </span>
                 </div>
-                <div class="text-h5 font-weight-bold text-primary">
-                  ₱30,000
+                <div class="text-h3 font-weight-medium text-primary">
+                  ₱ 90,000.00
                 </div>
               </div>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
 
-  <!-- Total Coverage & Requirements -->
-  <v-row justify="center" class="mt-8" data-aos="fade-up">
-    <v-col cols="12" md="8" lg="6">
-      <v-card variant="outlined" class="rounded-lg pa-5">
-        <!-- Requirements -->
-        <div class="text-center mb-4">
-          <div class="d-flex align-center justify-center mb-2">
-            <v-icon icon="mdi-file-document-check" size="20" color="grey-darken-2" class="mr-2"></v-icon>
-            <span class="text-body-2 font-weight-medium text-grey-darken-3">
-              Requirements
-            </span>
-          </div>
-          <p class="text-body-1 text-grey-darken-2 mb-0">
-            Double benefits with 1 year contestability
-            <span class="text-red" style="font-weight: 500;">
-              (18–60 years old upon application)
-            </span>
-          </p>
-        </div>
+              <!-- Divider -->
+              <v-divider class="my-4"></v-divider>
 
-        <!-- Divider -->
-        <v-divider class="my-4"></v-divider>
+              <!-- Note -->
+              <div class="text-center">
+                <div class="d-flex align-center justify-center mb-2">
+                  <v-icon
+                    icon="mdi-information"
+                    size="20"
+                    color="grey-darken-2"
+                    class="mr-2"
+                  ></v-icon>
+                  <span
+                    class="text-body-2 font-weight-medium text-grey-darken-3"
+                  >
+                    Important Note
+                  </span>
+                </div>
+                <p class="text-body-1 text-grey-darken-2 mb-2">
+                  Double benefits with 12 Months Contestability, Only for
+                  Qualified Immediate Family Members
+                </p>
+                <div class="text-caption font-weight-medium text-grey-darken-1">
+                  MOTHER | FATHER | BROTHER | SISTER | SPOUSE | CHILDREN
+                </div>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
 
-        <!-- Total Coverage -->
-        <div class="text-center mb-4">
-          <div class="d-flex align-center justify-center mb-2">
-            <span class="text-h5 font-weight-bold" style="color: #2d3748;">
-              TOTAL DEPENDENT COVERAGE
-            </span>
-          </div>
-          <div class="text-h3 font-weight-medium text-primary">
-            ₱ 90,000.00
-          </div>
-        </div>
-
-        <!-- Divider -->
-        <v-divider class="my-4"></v-divider>
-
-        <!-- Note -->
-        <div class="text-center">
-          <div class="d-flex align-center justify-center mb-2">
-            <v-icon icon="mdi-information" size="20" color="grey-darken-2" class="mr-2"></v-icon>
-            <span class="text-body-2 font-weight-medium text-grey-darken-3">
-              Important Note
-            </span>
-          </div>
-          <p class="text-body-1 text-grey-darken-2 mb-2">
-            Double benefits with 12 Months Contestability, Only for Qualified Immediate Family Members
-          </p>
-          <div class="text-caption font-weight-medium text-grey-darken-1">
-            MOTHER | FATHER | BROTHER | SISTER | SPOUSE | CHILDREN
-          </div>
-        </div>
-      </v-card>
-    </v-col>
-  </v-row>
-</v-container>
-
-<div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
+      <div
+        style="
+          border-top: 5px solid #e2e8f0;
+          width: 100%;
+          max-width: 1200px;
+          margin: 40px auto;
+        "
+      ></div>
 
       <v-container id="extended-arrangement" class="py-16">
         <!-- Section Header -->
@@ -1334,7 +1519,10 @@
         <v-container>
           <v-row class="text-center">
             <v-col cols="12" md="8" class="mx-auto">
-              <h2 class="text-h3 font-weight-bold mb-4 mt-13" style="color: white">
+              <h2
+                class="text-h3 font-weight-bold mb-4 mt-13"
+                style="color: white"
+              >
                 Need Help Choosing?
               </h2>
               <p class="text-h6 mb-8" style="color: rgba(255, 255, 255, 0.9)">
@@ -1555,38 +1743,38 @@ const goToProductsPage = (route) => {
 
 const contributionTerms = ref([
   {
-    name: 'Monthly',
-    amount: '₱375',
-    period: 'per month',
-    total: '₱31,500.00',
-    termLength: '5 Years',
-    color: 'primary'
+    name: "Monthly",
+    amount: "₱375",
+    period: "per month",
+    total: "₱31,500.00",
+    termLength: "5 Years",
+    color: "primary",
   },
   {
-    name: 'Quarterly',
-    amount: '₱1,100',
-    period: 'every 3 months',
-    total: '₱30,800.00',
-    termLength: '5 Years',
-    color: 'primary'
+    name: "Quarterly",
+    amount: "₱1,100",
+    period: "every 3 months",
+    total: "₱30,800.00",
+    termLength: "5 Years",
+    color: "primary",
   },
   {
-    name: 'Semi-Annual',
-    amount: '₱2,160',
-    period: 'every 6 months',
-    total: '₱30,240.00',
-    termLength: '5 Years',
-    color: 'primary'
+    name: "Semi-Annual",
+    amount: "₱2,160",
+    period: "every 6 months",
+    total: "₱30,240.00",
+    termLength: "5 Years",
+    color: "primary",
   },
   {
-    name: 'Annual',
-    amount: '₱4,200',
-    period: 'per year',
-    total: '₱29,400.00',
-    termLength: '5 Years',  
-    color: 'primary'
-  }
-])
+    name: "Annual",
+    amount: "₱4,200",
+    period: "per year",
+    total: "₱29,400.00",
+    termLength: "5 Years",
+    color: "primary",
+  },
+]);
 
 const familyContributionTerms = [
   {
@@ -1594,28 +1782,28 @@ const familyContributionTerms = [
     amount: "₱650",
     total: "₱39,000.00",
     termLength: "5 Year Term",
-    color: 'primary'
+    color: "primary",
   },
   {
     name: "Quarterly",
     amount: "₱1,900",
     total: "₱38,000.00",
     termLength: "5 Year Term",
-    color: 'primary'
+    color: "primary",
   },
   {
     name: "Semi-Annual",
     amount: "₱3,700",
     total: "₱37,000.00",
     termLength: "5 Year Term",
-    color: 'primary'
+    color: "primary",
   },
   {
     name: "Annual",
     amount: "₱7,200",
     total: "₱36,000.00",
     termLength: "5 Year Term",
-    color: 'primary'
+    color: "primary",
   },
 ];
 // Scroll to top when page loads

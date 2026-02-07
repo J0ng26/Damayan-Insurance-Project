@@ -173,36 +173,47 @@
         <!-- Color Background -->
         <div class="color-backgrounds-family"></div>
 
-        <div class="banner-content" data-aos="fade-up">
+        <div class="banner-content position-relative" data-aos="fade-up">
+          <!-- MICRO INSURANCE LOGO -->
+          <img
+            src="@/assets/images/micro-insurance.png"
+            alt="Micro Insurance Logo"
+            class="micro-insurance-logo"
+          />
+
           <v-container class="fill-height d-flex align-center justify-center">
             <v-row align="center" class="fill-height" justify="center">
-              <!-- Text Column - FIRST on mobile/tablet, LEFT on desktop -->
-              <v-col 
-                cols="12" 
-                md="7" 
+              <!-- Text Column -->
+              <v-col
+                cols="12"
+                md="7"
                 class="d-flex flex-column align-center justify-center text-center text-md-start text-first-mobile text-first-tablet"
               >
                 <div class="banner-containers d-flex flex-column align-center">
                   <h2 class="banner-title-family text-left w-100">
                     SECURE YOUR LIFE,<br />
-                    <span class="banner-title-highlight-family">SECURE WITH GOODLIFE</span>
+                    <span class="banner-title-highlight-family">
+                      SECURE WITH GOODLIFE
+                    </span>
                   </h2>
 
                   <p class="banner-subtitle-family text-left w-100">
-                    At Goodlife, we offer comprehensive individual or family type
-                    of insurance that caters to the needs of your immediate family
-                    members at the time of life's uncertainties
+                    At Goodlife, we offer comprehensive individual or family
+                    type of insurance that caters to the needs of your immediate
+                    family members at the time of life's uncertainties
                   </p>
                 </div>
               </v-col>
-              
-              <!-- Image Column - SECOND on mobile/tablet, RIGHT on desktop -->
-              <v-col 
-                cols="12" 
-                md="5" 
+
+              <!-- Image Column -->
+              <v-col
+                cols="12"
+                md="5"
                 class="banner-image-col-family d-flex align-center justify-center image-second-mobile image-second-tablet"
               >
-                <div class="banner-image-container-family d-flex justify-center justify-md-end w-100">
+                <div
+                  class="banner-image-container-family d-flex justify-center justify-md-end w-100"
+                >
                   <img
                     src="@/assets/images/damayan insurance family.png"
                     alt="Goodlife Damayan Insurance Family"
@@ -350,7 +361,14 @@
         </v-row>
       </v-container>
 
-<div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
+      <div
+        style="
+          border-top: 5px solid #e2e8f0;
+          width: 100%;
+          max-width: 1200px;
+          margin: 40px auto;
+        "
+      ></div>
 
       <!-- Legalities Section -->
       <v-container
@@ -507,7 +525,14 @@
         </v-dialog>
       </v-container>
 
-      <div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
+      <div
+        style="
+          border-top: 5px solid #e2e8f0;
+          width: 100%;
+          max-width: 1200px;
+          margin: 40px auto;
+        "
+      ></div>
 
       <!-- Features Section -->
       <v-container
@@ -723,7 +748,14 @@
         </v-container>
       </v-container>
 
-      <div style="border-top: 5px solid #e2e8f0; width: 100%; max-width: 1200px; margin: 40px auto;"></div>
+      <div
+        style="
+          border-top: 5px solid #e2e8f0;
+          width: 100%;
+          max-width: 1200px;
+          margin: 40px auto;
+        "
+      ></div>
 
       <!-- Achievements Section -->
       <v-container max-width="1200" class="pa-10">
@@ -741,7 +773,7 @@
           </v-col>
         </v-row>
 
-         <v-row class="d-flex justify-center g-6" align="stretch">
+        <v-row class="d-flex justify-center g-6" align="stretch">
           <v-col cols="12" sm="6" md="4" class="d-flex" data-aos="fade-right">
             <v-card class="service-card pa-6 text-center" elevation="2">
               <v-avatar size="195" class="mb-4" color="transparent">
@@ -761,7 +793,6 @@
             </v-card>
           </v-col>
 
-   
           <v-col cols="12" sm="6" md="4" class="d-flex" data-aos="fade-up">
             <v-card class="service-card pa-6 text-center" elevation="2">
               <v-avatar size="195" class="mb-4" color="transparent">
@@ -803,7 +834,6 @@
             </v-card>
           </v-col>
 
-
           <v-col cols="12" sm="6" md="4" class="d-flex" data-aos="fade-right">
             <v-card class="service-card pa-6 text-center" elevation="2">
               <v-avatar size="195" class="mb-4" color="transparent">
@@ -822,7 +852,6 @@
             </v-card>
           </v-col>
 
-
           <v-col cols="12" sm="6" md="4" class="d-flex" data-aos="fade-up">
             <v-card class="service-card pa-6 text-center" elevation="2">
               <v-avatar size="195" class="mb-4" color="transparent">
@@ -840,7 +869,6 @@
               </p>
             </v-card>
           </v-col>
-
 
           <v-col cols="12" sm="6" md="4" class="d-flex" data-aos="fade-left">
             <v-card class="service-card pa-6 text-center" elevation="2">
@@ -1033,19 +1061,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import '@/styles/css/style.css';
+import { ref, onMounted, onUnmounted, watch, nextTick } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "@/styles/css/style.css";
 
 // Component name can be defined using defineOptions
-import { defineOptions } from 'vue';
+import { defineOptions } from "vue";
 
 defineOptions({
-  name: 'HomePage'
+  name: "HomePage",
 });
-
 
 // REACTIVE STATE VARIABLES
 const route = useRoute();
@@ -1057,55 +1084,83 @@ const legalitiesDialog = ref(false);
 const zoomDialog = ref(false);
 
 // Navigation State
-const activeSection = ref('home');
-const currentProductsRoute = ref('');
-const zoomTitle = ref('');
+const activeSection = ref("home");
+const currentProductsRoute = ref("");
+const zoomTitle = ref("");
 const zoomImages = ref([]);
 const zoomIndex = ref(0);
 
 // Data Arrays
-const sections = ['home', 'about', 'legalities', 'features', 'contact'];
+const sections = ["home", "about", "legalities", "features", "contact"];
 const features = ref([
-  'Available Individual Insurance Product',
-  'Family Insurance Product',
-  'Goodlife Plans',
-  'Goodlife Benefits Association Inc.'
-
+  "Available Individual Insurance Product",
+  "Family Insurance Product",
+  "Goodlife Plans",
+  "Goodlife Benefits Association Inc.",
 ]);
 
 const productsMenuItems = ref([
-  { title: 'DAMAYAN', route: '/products/damayan' },
-  { title: 'GOODLIFE PLANS', route: '/products/goodlife-plans' },
-  { title: 'MBAI', route: '/products/mbai' }
+  { title: "DAMAYAN", route: "/products/damayan" },
+  { title: "GOODLIFE PLANS", route: "/products/goodlife-plans" },
+  { title: "MBAI", route: "/products/mbai" },
 ]);
 
 // Legal Documents Data - Using proper asset paths
 const legalDocuments = ref([
   {
-    category: 'Certificate of Registration',
+    category: "Certificate of Registration",
     images: [
-      new URL('@/assets/registration/COR-1.jpg', import.meta.url).href,
-      new URL('@/assets/registration/COR-2.jpg', import.meta.url).href,
-      new URL('@/assets/registration/COR-3.jpg', import.meta.url).href
-    ]
+      new URL("@/assets/registration/COR-1.jpg", import.meta.url).href,
+      new URL("@/assets/registration/COR-2.jpg", import.meta.url).href,
+      new URL("@/assets/registration/COR-3.jpg", import.meta.url).href,
+    ],
   },
   {
-    category: 'DAMAYAN 2ND Amended',
+    category: "DAMAYAN 2ND Amended",
     images: [
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0001.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0002.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0003.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0004.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0005.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0006.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0007.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0008.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0009.jpg', import.meta.url).href,
-      new URL('@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0010.jpg', import.meta.url).href
-    ]
-  }
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0001.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0002.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0003.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0004.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0005.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0006.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0007.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0008.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0009.jpg",
+        import.meta.url,
+      ).href,
+      new URL(
+        "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0010.jpg",
+        import.meta.url,
+      ).href,
+    ],
+  },
 ]);
-
 
 // NAVIGATION METHODS
 /**
@@ -1140,27 +1195,27 @@ const smoothScrollTo = (targetY, duration = 800) => {
   const startY = window.scrollY;
   const diff = targetY - startY;
   let startTime = null;
-  
+
   const step = (timestamp) => {
     if (!startTime) startTime = timestamp;
     const time = timestamp - startTime;
     const percent = Math.min(time / duration, 1);
-    
+
     // Easing function for smooth animation
-    const easing = percent < 0.5 
-      ? 4 * percent * percent * percent 
-      : 1 - Math.pow(-2 * percent + 2, 3) / 2;
-    
+    const easing =
+      percent < 0.5
+        ? 4 * percent * percent * percent
+        : 1 - Math.pow(-2 * percent + 2, 3) / 2;
+
     window.scrollTo(0, startY + diff * easing);
-    
+
     if (time < duration) {
       requestAnimationFrame(step);
     }
   };
-  
+
   requestAnimationFrame(step);
 };
-
 
 // LEGAL DOCUMENTS METHODS
 /**
@@ -1221,7 +1276,7 @@ const prevImage = () => {
  * Handle scroll events to update active section
  */
 const handleScroll = () => {
-  let current = '';
+  let current = "";
   sections.forEach((id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -1244,16 +1299,16 @@ onMounted(() => {
     duration: 1500,
     once: false,
     mirror: true,
-    offset: 120
+    offset: 120,
   });
-  
+
   // Add scroll listener for scrollspy
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
   // Clean up scroll listener
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener("scroll", handleScroll);
 });
 
 // --------------------------------------------------------------
@@ -1264,13 +1319,13 @@ onUnmounted(() => {
 watch(
   () => router.currentRoute.value.path,
   (newPath) => {
-    if (newPath.includes('/products')) {
+    if (newPath.includes("/products")) {
       currentProductsRoute.value = newPath;
     } else {
-      currentProductsRoute.value = '';
+      currentProductsRoute.value = "";
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 // Refresh AOS when route changes
@@ -1280,5 +1335,4 @@ watch(route, async () => {
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

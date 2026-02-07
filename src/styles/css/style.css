@@ -1,8 +1,9 @@
 /* ============================================
    1. GLOBAL STYLES & UTILITIES
    ============================================ */
-   
-html, body {
+
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -66,7 +67,9 @@ html, body {
 
 /* Login button hover effect */
 .login-btn {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .login-btn:hover {
@@ -138,9 +141,21 @@ html, body {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 15% 10%, rgba(83, 160, 247, 0.25) 0%, transparent 45%),
-    radial-gradient(circle at 85% 20%, rgba(255, 193, 7, 0.18) 0%, transparent 40%),
-    radial-gradient(circle at 50% 90%, rgba(255, 140, 0, 0.12) 0%, transparent 45%);
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(83, 160, 247, 0.25) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(255, 193, 7, 0.18) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(255, 140, 0, 0.12) 0%,
+      transparent 45%
+    );
   background-color: #eaf2fb;
   z-index: 1;
 }
@@ -156,8 +171,8 @@ html, body {
 
 /* POWER IMAGE */
 .banner-image-family {
-  width: 200%;              
-  max-width: 1200px;         
+  width: 200%;
+  max-width: 1200px;
   height: auto;
   object-fit: contain;
   border-radius: 0;
@@ -176,7 +191,47 @@ html, body {
   height: 100%;
   margin-top: 170px;
   padding-right: 0;
-  overflow: visible;      
+  overflow: visible;
+}
+
+/* micro homepage */
+.micro-insurance-logo {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  width: 180px;
+  height: auto;
+  z-index: 10;
+}
+
+/* micro damayan products */
+.products-banner-logo {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 180px;
+  height: auto;
+  z-index: 4;
+}
+
+/* micro goodlife plans products */
+.plans-banner-logo {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 180px;
+  height: auto;
+  z-index: 5;
+}
+
+/* micro mbai plans products */
+.mbai-banner-logo {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  width: 180px;
+  height: auto;
+  z-index: 5;
 }
 
 /* ===== GOODLIFE PLANS BANNER ===== */
@@ -187,25 +242,45 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(3, 166, 53, 0.9) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(2, 148, 47, 0.8) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(4, 184, 59, 0.7) 0%, transparent 50%);
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(3, 166, 53, 0.9) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(2, 148, 47, 0.8) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(4, 184, 59, 0.7) 0%,
+      transparent 50%
+    );
   background-color: #03a635;
   z-index: 1;
 }
 
 /* Subtle pattern overlay for Goodlife Plans */
 .color-background::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-image:
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 2px
+    );
   background-size: 50px 50px;
   z-index: 2;
 }
@@ -218,10 +293,22 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(74, 69, 97, 0.8) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(62, 58, 91, 0.6) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(84, 78, 112, 0.7) 0%, transparent 50%);
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(74, 69, 97, 0.8) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(62, 58, 91, 0.6) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(84, 78, 112, 0.7) 0%,
+      transparent 50%
+    );
   background-color: #4a4561;
   z-index: 1;
 }
@@ -254,7 +341,7 @@ html, body {
 
 /* ===== MAIN WEBSITE TYPOGRAPHY ===== */
 .banner-title-family {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(3.2rem, 6vw, 4.2rem);
   font-weight: 600;
   line-height: 1.15;
@@ -272,7 +359,7 @@ html, body {
 }
 
 .banner-subtitle-family {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   font-weight: 400;
   line-height: 1.75;
@@ -285,7 +372,7 @@ html, body {
 
 /* ===== MBAI PLAN TYPOGRAPHY ===== */
 .banner-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(4rem, 7vw, 8.6rem);
   font-weight: 400; /* light */
   line-height: 1.15;
@@ -301,7 +388,7 @@ html, body {
 }
 
 .banner-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: clamp(1.3rem, 2.4vw, 1.3rem);
   font-weight: 400;
   line-height: 1.75;
@@ -312,7 +399,7 @@ html, body {
 
 /* ===== GOODLIFE PLANS TYPOGRAPHY ===== */
 .banner-titles-plan {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
@@ -323,17 +410,17 @@ html, body {
 }
 
 .banner-subtitles-plan {
-  font-family: 'Inter', sans-serif; 
+  font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.95);
-   max-width: 800px;
+  max-width: 800px;
   margin-bottom: 2rem;
 }
 
 /* ===== MBAI TYPOGRAPHY ===== */
 .banner-titles {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
@@ -343,7 +430,7 @@ html, body {
 }
 
 .banner-subtitles {
-  font-family: 'Inter', sans-serif; 
+  font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
@@ -415,7 +502,7 @@ html, body {
 /* Main website buttons */
 .explore-btn {
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #F5F5F5, #e8e8e8) !important;
+  background: linear-gradient(135deg, #f5f5f5, #e8e8e8) !important;
   border: 2px solid transparent;
   width: fit-content;
 }
@@ -454,7 +541,7 @@ html, body {
 }
 
 /* Products page buttons */
-.products-btn { 
+.products-btn {
   font-weight: 600;
   letter-spacing: 0.6px;
   padding: 10px 22px;
@@ -491,7 +578,9 @@ html, body {
 
 /* ===== GENERAL CARD STYLES ===== */
 .v-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .v-card:hover {
@@ -561,16 +650,14 @@ html, body {
   width: 48px;
   height: 3px;
   border-radius: 2px;
-  background: linear-gradient(
-    90deg,
-    #1976d2,
-    #42a5f5
-  );
+  background: linear-gradient(90deg, #1976d2, #42a5f5);
 }
 
 /* Products page cards */
 .product-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .product-card:hover {
@@ -581,7 +668,9 @@ html, body {
 /* Document cards for legalities */
 .document-card {
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .document-card:hover {
@@ -592,7 +681,9 @@ html, body {
 /* ===== GOODLIFE PLANS CARD STYLES ===== */
 .transition-hover {
   border-radius: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .transition-hover:hover {
@@ -602,7 +693,9 @@ html, body {
 
 .hover-card {
   border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-card:hover {
@@ -860,7 +953,7 @@ html, body {
    ============================================ */
 
 .stats-section {
-  background: linear-gradient(135deg, #4A4561);
+  background: linear-gradient(135deg, #4a4561);
 }
 
 .stat-item {
@@ -877,7 +970,8 @@ html, body {
 
 /* Bounce animation */
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -908,17 +1002,17 @@ html, body {
     min-height: 90vh;
     height: 90vh;
   }
-  
- .banner-containers {
+
+  .banner-containers {
     transform: translateX(148px);
     text-align: center;
-     padding: 0 16px;
+    padding: 0 16px;
   }
 
   .banner-background .v-parallax__image {
     object-position: center center !important;
   }
-  
+
   .banner-overlay {
     background: linear-gradient(
       180deg,
@@ -928,16 +1022,16 @@ html, body {
       rgba(245, 245, 245, 0.5) 100%
     );
   }
-  
+
   .banner-text-column {
     text-align: center;
     align-items: center;
     justify-content: center;
   }
-  
+
   .banner-title {
     font-size: 2.5rem !important; /* Larger font */
-    text-align: center !important; 
+    text-align: center !important;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -952,7 +1046,7 @@ html, body {
     margin-right: auto;
     padding: 0 15px;
   }
-  
+
   .banner-subtitle {
     font-size: 1.3rem !important; /* Larger font */
     text-align: center !important;
@@ -960,7 +1054,7 @@ html, body {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .banner-subtitle-family {
     font-size: 1.25rem !important; /* Larger font */
     text-align: center;
@@ -977,22 +1071,46 @@ html, body {
     max-height: 50vh;
     margin-top: 2rem;
   }
-  
+
+  .micro-insurance-logo {
+    width: 110px;
+    top: 15px;
+    right: 20px;
+  }
+
+  .products-banner-logo {
+    width: 110px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .plans-banner-logo {
+    width: 110px;
+    top: 15px;
+    right: 20px;
+  }
+
+  .mbai-banner-logo {
+    width: 110px;
+    top: 15px;
+    right: 20px;
+  }
+
   .explore-btn {
     margin: 0 auto;
   }
-  
+
   /* Goodlife Plans adjustments */
   .products-hero {
     height: auto;
     min-height: 100vh;
   }
-  
+
   .banner-titles-plan {
     font-size: 3rem !important; /* Larger font */
     text-align: center;
   }
-  
+
   .banner-subtitles-plan {
     font-size: 1.3rem !important; /* Larger font */
     text-align: center;
@@ -1000,69 +1118,67 @@ html, body {
     margin-right: auto;
     padding: 0 20px;
   }
-  
+
   .banner-image {
     max-height: 350px; /* Larger image */
     margin-top: 2rem;
   }
-  
+
   .color-background::after {
     background-size: 40px 40px;
   }
-  
+
   .pr-md-8 {
     padding-right: 0 !important;
   }
-  
+
   .pl-md-8 {
     padding-left: 0 !important;
   }
-  
+
   .mt-12 {
     margin-top: 48px !important;
   }
-  
+
   .pa-4 {
     padding: 24px !important;
   }
-  
+
   /* MBAI adjustments */
   .products-hero {
     height: auto;
     min-height: 100vh;
   }
-  
+
   .banner-titles {
     font-size: 3rem !important; /* Larger font */
   }
-  
+
   .banner-subtitles {
     font-size: 1.3rem !important; /* Larger font */
     padding: 0 20px;
   }
-  
+
   .minimal-card-1,
   .minimal-card-2,
   .minimal-card-3 {
     margin-bottom: 32px;
   }
-  
+
   .pr-md-6 {
     padding-right: 0 !important;
   }
-  
+
   .pl-md-6 {
     padding-left: 0 !important;
   }
-  
+
   .side-panel {
     border-left: none;
     border-top: 3px solid #03a635;
     border-radius: 8px;
     margin-top: 24px;
   }
-  
-
 
   /* Fix banner content spacing for mobile */
   .banner-content {
@@ -1071,7 +1187,7 @@ html, body {
     align-items: center;
     justify-content: center;
   }
-  
+
   .banner-containers {
     margin-top: 0;
     margin-bottom: 30px;
@@ -1079,7 +1195,7 @@ html, body {
     flex-direction: column;
     align-items: center;
   }
-  
+
   /* Ensure proper stacking order - TEXT FIRST on mobile */
   .text-first-mobile {
     order: 1;
@@ -1089,7 +1205,7 @@ html, body {
     justify-content: center;
     width: 100%;
   }
-  
+
   .image-second-mobile {
     order: 2;
     display: flex;
@@ -1097,7 +1213,7 @@ html, body {
     justify-content: center;
     width: 100%;
   }
-  
+
   /* Center all text elements */
   .banner-content .v-row {
     display: flex;
@@ -1106,7 +1222,7 @@ html, body {
     justify-content: center;
     text-align: center;
   }
-  
+
   .banner-content .v-col {
     display: flex;
     flex-direction: column;
@@ -1114,7 +1230,7 @@ html, body {
     justify-content: center;
     text-align: center;
   }
-  
+
   /* Center section titles */
   .section-title {
     text-align: center !important;
@@ -1122,7 +1238,7 @@ html, body {
     padding: 0 20px;
     font-size: 2rem !important; /* Larger font */
   }
-  
+
   .section-subtitle {
     text-align: center !important;
     width: 100%;
@@ -1137,19 +1253,20 @@ html, body {
     min-height: 95vh;
     height: 95vh;
   }
-   .banner-containers {
+  .banner-containers {
     transform: translateX(148px);
     text-align: center;
-     padding: 0 16px;
+    padding: 0 16px;
   }
-  
+
   .banner-title {
     font-size: 3.2rem !important; /* Larger font */
     text-align: center !important;
     width: 100%;
   }
-  
+
   .banner-title-family {
+    margin-top: 100px;
     font-size: 4rem !important; /* Larger font */
     text-align: center;
     width: 100%;
@@ -1158,7 +1275,7 @@ html, body {
 
   .banner-subtitle-family {
     font-size: 1.5rem !important; /* Larger font */
-    text-align: center ;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -1167,7 +1284,7 @@ html, body {
     padding: 0 30px;
     line-height: 1.8;
   }
-  
+
   .banner-subtitle {
     font-size: 1.4rem !important; /* Larger font */
     text-align: center !important;
@@ -1176,31 +1293,31 @@ html, body {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .banner-side-image {
     max-height: 65vh; /* Larger image */
   }
-  
+
   /* TABLET-SPECIFIC BANNER IMAGE FIXES */
   .banner-image-family {
     width: 150%;
     max-width: none;
     transform: translateX(10px) translateY(8%);
   }
-  
+
   .banner-image-col-family {
     margin-top: 50px;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  
+
   .banner-image-container-family {
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  
+
   /* Center content on tablet */
   .banner-containers {
     text-align: center;
@@ -1211,14 +1328,37 @@ html, body {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .banner-content {
     justify-content: center;
     text-align: center;
     display: flex;
     align-items: center;
   }
-  
+
+  .micro-insurance-logo {
+    width: 140px;
+    top: 20px;
+    right: 30px;
+  }
+
+  .products-banner-logo {
+    width: 140px;
+    top: 25px;
+    right: 40px;
+  }
+
+  .plans-banner-logo {
+    width: 140px;
+    top: 20px;
+    right: 30px;
+  }
+  .mbai-banner-logo {
+    width: 140px;
+    top: 20px;
+    right: 30px;
+  }
+
   /* Ensure proper stacking order - TEXT FIRST, IMAGE SECOND */
   .text-first-tablet {
     order: 1;
@@ -1228,7 +1368,7 @@ html, body {
     justify-content: center;
     width: 100%;
   }
-  
+
   .image-second-tablet {
     order: 2;
     display: flex;
@@ -1236,7 +1376,7 @@ html, body {
     justify-content: center;
     width: 100%;
   }
-  
+
   /* Center all rows and columns */
   .banner-content .v-row {
     display: flex;
@@ -1244,7 +1384,7 @@ html, body {
     align-items: center;
     justify-content: center;
   }
-  
+
   .banner-content .v-col {
     display: flex;
     flex-direction: column;
@@ -1252,42 +1392,42 @@ html, body {
     justify-content: center;
     text-align: center;
   }
-  
+
   /* Center section titles for tablet */
   .section-title {
     text-align: center !important;
     width: 100%;
     font-size: 2.5rem !important; /* Larger font */
   }
-  
+
   .section-subtitle {
     text-align: center !important;
     width: 90%;
     max-width: 700px;
     font-size: 1.2rem !important; /* Larger font */
   }
-  
+
   /* Goodlife Plans tablet adjustments */
   .banner-titles-plan {
     font-size: 3.5rem !important; /* Larger font */
     text-align: center;
     width: 100%;
   }
-  
+
   .banner-subtitles-plan {
     font-size: 1.4rem !important; /* Larger font */
     text-align: center;
     width: 90%;
     max-width: 700px;
   }
-  
+
   /* MBAI tablet adjustments */
   .banner-titles {
     font-size: 3.5rem !important; /* Larger font */
     text-align: center;
     width: 100%;
   }
-  
+
   .banner-subtitles {
     font-size: 1.4rem !important; /* Larger font */
     text-align: center;
@@ -1308,27 +1448,27 @@ html, body {
     max-width: none;
     transform: translateX(10px) translateY(15%);
   }
-  
+
   .banner-title {
     font-size: 2.2rem !important; /* Adjusted for small mobile */
     text-align: center;
   }
-  
+
   .banner-title-family {
     font-size: 2.5rem !important; /* Adjusted for small mobile */
     text-align: center !important;
   }
 
-  .banner-subtitle-family{
-      font-size: 1.5rem !important; /* Adjusted for small mobile */
-    text-align: center !important
+  .banner-subtitle-family {
+    font-size: 1.5rem !important; /* Adjusted for small mobile */
+    text-align: center !important;
   }
-  
+
   .banner-subtitle {
     font-size: 1.15rem !important; /* Adjusted for small mobile */
     text-align: center;
   }
-  
+
   .banner-subtitle-family {
     font-size: 1.15rem !important; /* Adjusted for small mobile */
     text-align: center;
@@ -1337,11 +1477,11 @@ html, body {
     line-height: 1.6;
     max-width: 95%;
   }
-  
+
   .banner-side-image {
     max-height: 45vh; /* Adjusted for small mobile */
   }
-  
+
   .banner-overlay {
     background: linear-gradient(
       90deg,
@@ -1352,121 +1492,144 @@ html, body {
       transparent 100%
     );
   }
-  
+
+  .micro-insurance-logo {
+    width: 90px;
+    top: 10px;
+    right: 15px;
+  }
+  .products-banner-logo {
+    width: 90px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .plans-banner-logo {
+    width: 90px;
+    top: 12px;
+    right: 15px;
+  }
+
+  .mbai-banner-logo {
+    width: 90px;
+    top: 10px;
+    right: 15px;
+  }
+
   /* Goodlife Plans adjustments */
   .products-hero {
     height: auto;
     min-height: 100vh;
   }
-  
+
   .banner-title {
     font-size: 2.5rem !important; /* Adjusted for small mobile */
   }
-  
+
   .banner-subtitle {
     font-size: 1.15rem !important; /* Adjusted for small mobile */
   }
-  
+
   .banner-image {
     max-height: 300px; /* Adjusted for small mobile */
   }
-  
+
   .color-background::after {
     background-size: 30px 30px;
   }
-  
+
   .text-h3 {
     font-size: 1.75rem !important;
   }
-  
+
   .text-h5 {
     font-size: 1.25rem !important;
   }
-  
+
   .tag-item {
     font-size: 0.8rem !important;
     padding: 6px 10px !important;
   }
-  
+
   .text-h4 {
     font-size: 1.75rem !important;
   }
-  
+
   .text-h5 {
     font-size: 1.25rem !important;
   }
-  
+
   .text-h6 {
     font-size: 1rem !important;
   }
-  
+
   .pl-7 {
     padding-left: 16px !important;
   }
-  
+
   .text-h4 {
     font-size: 1.5rem !important;
   }
-  
+
   .pa-5 {
     padding: 20px !important;
   }
-  
+
   /* MBAI adjustments */
   .products-hero {
     height: auto;
     min-height: 100vh;
   }
-  
+
   .banner-titles {
     font-size: 2.5rem !important; /* Adjusted for small mobile */
   }
-  
+
   .banner-subtitles {
     font-size: 1.15rem !important; /* Adjusted for small mobile */
   }
-  
+
   .color-background::after {
     background-size: 30px 30px;
   }
-  
+
   .minimal-card-1,
   .minimal-card-2,
   .minimal-card-3 {
     padding: 24px !important;
   }
-  
+
   .benefits-grid,
   .coverage-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .insurance-badge {
     padding: 16px !important;
   }
-  
+
   .text-h5 {
     font-size: 1.5rem !important;
   }
-  
+
   .text-subtitle-1 {
     font-size: 1rem !important;
   }
-  
+
   .banner-image-col-family {
     margin-top: 25px;
   }
-  
+
   .banner-containers {
     margin-bottom: 25px;
   }
-  
+
   /* Center section titles for small mobile */
   .section-title {
     font-size: 1.8rem !important; /* Adjusted for small mobile */
     padding: 0 15px;
   }
-  
+
   .section-subtitle {
     font-size: 1rem !important; /* Adjusted for small mobile */
     padding: 0 15px;
@@ -1479,14 +1642,14 @@ html, body {
     font-size: 3rem !important;
     text-align: center !important; /* Slightly larger for medium mobile */
   }
-  
+
   .banner-subtitle-family {
     font-size: 1.3rem !important; /* Slightly larger for medium mobile */
     max-width: 85%;
     text-align: center !important;
   }
-  
-   .banner-image-family {
+
+  .banner-image-family {
     width: 150%;
     max-width: none;
     transform: translateX(10px) translateY(8%);
@@ -1499,38 +1662,48 @@ html, body {
     min-height: 100vh;
     height: 100vh;
   }
-  
+
   .banner-containers {
     margin-top: 40px;
     margin-left: 120px;
   }
 
-  .banner-title-family{
+  .banner-title-family {
     font-size: 3.6rem;
     text-align: left;
   }
 
-  .banner-subtitle-family{
+  .banner-subtitle-family {
     text-align: left;
   }
 
   .banner-content {
-     margin-left: 50px;
+    margin-left: 50px;
   }
-  
+
   .banner-title {
     font-size: 2.9rem;
   }
-  
+
   .banner-subtitle {
     font-size: 1.3rem;
   }
-  
+
   .banner-side-image {
     max-height: 75vh;
   }
-}
 
+  .micro-insurance-logo {
+    width: 180px;
+    top: 30px;
+    right: 60px;
+  }
+  .products-banner-logo {
+    width: 180px;
+    top: 35px;
+    right: 60px;
+  }
+}
 
 /* ===== ULTRA-WIDE SCREENS (min-width: 1600px) ===== */
 @media (min-width: 1600px) {
@@ -1539,24 +1712,21 @@ html, body {
     height: 100vh;
     max-height: 1200px;
   }
-  
+
   .banner-title {
     font-size: 3.3rem;
   }
-  
+
   .banner-subtitle {
     font-size: 1.3rem;
     max-width: 700px;
-    
   }
-  
+
   .banner-side-image {
     max-height: 80vh;
     max-width: 600px;
   }
 }
-
-
 
 /* ===== MOBILE LANDSCAPE (max-height: 600px) ===== */
 @media (max-height: 600px) and (orientation: landscape) {
@@ -1564,25 +1734,25 @@ html, body {
     min-height: 120vh;
     height: 120vh;
   }
-  
+
   .banner-title {
     font-size: 2rem;
   }
-  
+
   .banner-subtitle {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .banner-side-image {
     max-height: 80vh;
   }
-  
+
   /* Mobile landscape image adjustments */
   .banner-image-family {
     max-height: 70vh;
   }
-  
+
   .banner-image-col-family {
     margin-top: 20px;
   }
@@ -1602,7 +1772,7 @@ html, body {
     border: 2px solid #000;
     box-shadow: none !important;
   }
-  
+
   .minimal-card-1:hover {
     transform: none !important;
   }
