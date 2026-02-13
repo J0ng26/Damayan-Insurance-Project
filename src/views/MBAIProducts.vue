@@ -112,14 +112,6 @@
             Contact us
           </v-btn>
 
-          <v-btn
-            variant="outlined"
-            color="primary"
-            class="text-capitalize ml-4 login-btn"
-            size="small"
-          >
-            LOG IN
-          </v-btn>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -181,6 +173,200 @@
         ></v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    <!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
+<v-dialog v-model="contactDialog" max-width="600" persistent scrollable>
+  <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
+    <!-- Minimal Header -->
+    <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
+      <div class="d-flex align-center">
+        <span class="text-h6 font-weight-medium">Contact Support</span>
+      </div>
+      <v-btn 
+        icon="mdi-close" 
+        variant="text" 
+        size="small"
+        @click="contactDialog = false"
+      ></v-btn>
+    </div>
+
+    <v-divider class="mx-6"></v-divider>
+
+    <v-card-text class="pa-6">
+      <!-- Compact Contact Info -->
+      <div class="d-flex ga-4 mb-6">
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-email-outline</v-icon>
+          <span class="text-body-2 text-grey-darken-1">info@goodlifedamayan.com</span>
+        </div>
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-phone</v-icon>
+          <span class="text-body-2 text-grey-darken-1">(082) 333 1809</span>
+        </div>
+      </div>
+
+      <!-- Clean Form Layout -->
+      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+        <v-row dense>
+          <!-- Series No - Full width on mobile, 1/3 on desktop -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.seriesNo"
+              label="Series No."
+              placeholder="SER-2024-001"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Last Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.lastName"
+              label="Last name"
+              placeholder="Dela Cruz"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- First Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.firstName"
+              label="First name"
+              placeholder="Juan"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Email -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.email"
+              label="Email"
+              placeholder="juan@example.com"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.email]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Contact No -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.contactNo"
+              label="Contact no."
+              placeholder="+63 912 345 6789"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.phone]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Entity - Simplified Select -->
+          <v-col cols="12" md="6">
+            <v-select
+              v-model="contactForm.entity"
+              :items="entities"
+              label="Entity type"
+              placeholder="Select type"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+              return-object
+              item-title="title"
+              item-value="value"
+            >
+              <template v-slot:selection="{ item }">
+                <span>{{ item.raw.title }}</span>
+              </template>
+            </v-select>
+          </v-col>
+
+          <!-- Message Title -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.title"
+              label="Subject"
+              placeholder="Inquiry about plans"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Message - Clean Textarea -->
+          <v-col cols="12">
+            <v-textarea
+              v-model="contactForm.description"
+              label="Message"
+              placeholder="How can we help you?"
+              variant="outlined"
+              density="compact"
+              rows="3"
+              auto-grow
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+
+    <v-divider></v-divider>
+
+    <!-- Minimal Actions -->
+    <v-card-actions class="pa-4">
+      <v-spacer></v-spacer>
+      <v-btn
+        variant="text"
+        size="small"
+        @click="contactDialog = false"
+      >
+        Cancel
+      </v-btn>
+      <v-btn
+        color="primary"
+        variant="flat"
+        size="small"
+        class="ml-2"
+        :loading="submitting"
+        :disabled="!formValid || submitting"
+        @click="submitContactForm"
+      >
+        Send
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
 
     <v-main>
       <!-- Goodlife Plans Hero Section - FIXED GAP -->
@@ -2959,6 +3145,230 @@
         </v-card-text>
       </v-card>
     </v-dialog>
+        <!-- ============ FIXED CONTACT ICON WITH BOUNCE ANIMATION ============ -->
+   <div 
+  v-if="showContactIcon" 
+  class="fixed-contact-icon bounce-animation" 
+  @click="contactDialog = true"
+>
+  <v-icon size="28">mdi-headset</v-icon>
+  <span class="contact-icon-tooltip">Contact Support</span>
+</div>
+
+
+<!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
+<v-dialog v-model="contactDialog" max-width="600" persistent scrollable>
+  <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
+    <!-- Minimal Header -->
+    <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
+      <div class="d-flex align-center">
+        <span class="text-h6 font-weight-medium">Contact Support</span>
+      </div>
+      <v-btn 
+        icon="mdi-close" 
+        variant="text" 
+        size="small"
+        @click="contactDialog = false"
+      ></v-btn>
+    </div>
+
+    <v-divider class="mx-6"></v-divider>
+
+    <v-card-text class="pa-6">
+      <!-- Compact Contact Info -->
+      <div class="d-flex ga-4 mb-6">
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-email-outline</v-icon>
+          <span class="text-body-2 text-grey-darken-1">info@goodlifedamayan.com</span>
+        </div>
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-phone</v-icon>
+          <span class="text-body-2 text-grey-darken-1">(082) 333 1809</span>
+        </div>
+      </div>
+
+      <!-- Clean Form Layout -->
+      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+        <v-row dense>
+          <!-- Series No - Full width on mobile, 1/3 on desktop -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.seriesNo"
+              label="Series No."
+              placeholder="SER-2024-001"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Last Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.lastName"
+              label="Last name"
+              placeholder="Dela Cruz"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- First Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.firstName"
+              label="First name"
+              placeholder="Juan"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Email -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.email"
+              label="Email"
+              placeholder="juan@example.com"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.email]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Contact No -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.contactNo"
+              label="Contact no."
+              placeholder="+63 912 345 6789"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.phone]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Entity - Simplified Select -->
+          <v-col cols="12" md="6">
+            <v-select
+              v-model="contactForm.entity"
+              :items="entities"
+              label="Entity type"
+              placeholder="Select type"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+              return-object
+              item-title="title"
+              item-value="value"
+            >
+              <template v-slot:selection="{ item }">
+                <span>{{ item.raw.title }}</span>
+              </template>
+            </v-select>
+          </v-col>
+
+          <!-- Message Title -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.title"
+              label="Subject"
+              placeholder="Inquiry about plans"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Message - Clean Textarea -->
+          <v-col cols="12">
+            <v-textarea
+              v-model="contactForm.description"
+              label="Message"
+              placeholder="How can we help you?"
+              variant="outlined"
+              density="compact"
+              rows="3"
+              auto-grow
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+
+    <v-divider></v-divider>
+
+    <!-- Minimal Actions -->
+    <v-card-actions class="pa-4">
+      <v-spacer></v-spacer>
+      <v-btn
+        variant="text"
+        size="small"
+        @click="contactDialog = false"
+      >
+        Cancel
+      </v-btn>
+      <v-btn
+        color="primary"
+        variant="flat"
+        size="small"
+        class="ml-2"
+        :loading="submitting"
+        :disabled="!formValid || submitting"
+        @click="submitContactForm"
+      >
+        Send
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
+
+    <!-- Success Snackbar -->
+    <v-snackbar
+      v-model="snackbar.show"
+      :timeout="4000"
+      color="success"
+      location="top"
+      rounded="pill"
+    >
+      <div class="d-flex align-center">
+        <v-icon class="mr-3">mdi-check-circle</v-icon>
+        <span>{{ snackbar.text }}</span>
+      </div>
+      <template v-slot:actions>
+        <v-btn color="white" variant="text" @click="snackbar.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
   </v-app>
 </template>
 
@@ -3136,6 +3546,137 @@ const planDetails = {
   },
 };
 
+// ============ MINIMALIST CONTACT DIALOG STATE ============
+const contactDialog = ref(false);           // Dialog visibility
+const formValid = ref(false);              // Form validation state
+const submitting = ref(false);             // Submission loading state
+const contactFormRef = ref(null);          // Form reference for validation
+
+// Contact Form Data - Minimal fields only
+const contactForm = ref({
+  seriesNo: "",
+  lastName: "",
+  firstName: "",
+  email: "",
+  contactNo: "",
+  entity: null,
+  title: "",
+  description: "",
+});
+
+// Entity Options - Simplified for minimalist design
+const entities = ref([
+  { title: "Individual", value: "individual" },
+  { title: "Family", value: "family" },
+  { title: "Business", value: "business" },
+  { title: "Corporate", value: "corporate" },
+]);
+
+// Snackbar State for success messages
+const snackbar = ref({
+  show: false,
+  text: "",
+});
+
+// ============ VALIDATION RULES ============
+const rules = {
+  required: (v) => !!v?.trim() || "This field is required",
+  email: (v) => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(v) || "Please enter a valid email address";
+  },
+  phone: (v) => {
+    const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return pattern.test(v) || "Please enter a valid phone number";
+  },
+};
+
+// ============ MINIMALIST CONTACT FORM METHODS ============
+
+const submitContactForm = async () => {
+  const { valid } = await contactFormRef.value?.validate();
+  if (!valid) return;
+
+  submitting.value = true;
+
+  setTimeout(() => {
+    console.log("Contact Form Submission:", {
+      ...contactForm.value,
+      entity: contactForm.value.entity?.title || contactForm.value.entity,
+    });
+
+    snackbar.value = {
+      show: true,
+      text: "Your message has been sent successfully! We'll respond within 24 hours.",
+    };
+
+    contactFormRef.value?.reset();
+    contactForm.value = {
+      seriesNo: "",
+      lastName: "",
+      middleName: "",
+      firstName: "",
+      email: "",
+      contactNo: "",
+      entity: null,
+      title: "",
+      description: "",
+    };
+
+    submitting.value = false;
+    contactDialog.value = false;
+    // showContactIcon will be set to true by the watcher when dialog closes
+  }, 1500);
+};
+
+/**
+ * Reset contact form manually
+ */
+const resetContactForm = () => {
+  contactFormRef.value?.reset();
+  contactForm.value = {
+    seriesNo: "",
+    lastName: "",
+    firstName: "",
+    email: "",
+    contactNo: "",
+    entity: null,
+    title: "",
+    description: "",
+  };
+};
+
+/**
+ * Open contact dialog and optionally reset form
+ */
+const openContactDialog = () => {
+  contactDialog.value = true;
+  // Optional: Reset form when opening
+  // resetContactForm();
+};
+
+/**
+ * Close contact dialog and reset form
+ */
+const closeContactDialog = () => {
+  contactDialog.value = false;
+  resetContactForm();
+};
+
+const showContactIcon = ref(true);
+
+watch(contactDialog, (newVal) => {
+  if (newVal) {
+    // Dialog is opening - hide the icon
+    showContactIcon.value = false;
+  } else {
+    // Dialog is closing - show the icon
+    showContactIcon.value = true;
+  }
+});
+
+
+
 // Scroll to top when page loads
 onMounted(() => {
   window.scrollTo(0, 0);
@@ -3191,4 +3732,5 @@ const contactForPlan = () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

@@ -43,7 +43,6 @@
             About
           </v-btn>
 
-          <!-- Legalities Navigation Item -->
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
@@ -62,7 +61,6 @@
             Features
           </v-btn>
 
-          <!-- Products Dropdown Menu -->
           <v-menu offset-y open-on-hover>
             <template v-slot:activator="{ props }">
               <v-btn
@@ -98,15 +96,6 @@
           >
             Contact us
           </v-btn>
-
-          <v-btn
-            variant="outlined"
-            color="primary"
-            class="text-capitalize-1 ml-4 login-btn"
-            size="small"
-          >
-            LOG IN
-          </v-btn>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -138,8 +127,6 @@
           title="About"
           @click="scrollToSection('about')"
         ></v-list-item>
-
-        <!-- Legalities Mobile Menu Item -->
         <v-list-item
           title="Legalities"
           @click="scrollToSection('legalities')"
@@ -166,6 +153,231 @@
         ></v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    
+
+    <!-- ============ FIXED CONTACT ICON WITH BOUNCE ANIMATION ============ -->
+   <div 
+  v-if="showContactIcon" 
+  class="fixed-contact-icon bounce-animation" 
+  @click="contactDialog = true"
+>
+  <v-icon size="28">mdi-headset</v-icon>
+  <span class="contact-icon-tooltip">Contact Support</span>
+</div>
+
+<!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
+<v-dialog v-model="contactDialog" max-width="600" persistent scrollable>
+  <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
+    <!-- Minimal Header -->
+    <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
+      <div class="d-flex align-center">
+        <span class="text-h6 font-weight-medium">Contact Support</span>
+      </div>
+      <v-btn 
+        icon="mdi-close" 
+        variant="text" 
+        size="small"
+        @click="contactDialog = false"
+      ></v-btn>
+    </div>
+
+    <v-divider class="mx-6"></v-divider>
+
+    <v-card-text class="pa-6">
+      <!-- Compact Contact Info -->
+      <div class="d-flex ga-4 mb-6">
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-email-outline</v-icon>
+          <span class="text-body-2 text-grey-darken-1">info@goodlifedamayan.com</span>
+        </div>
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-phone</v-icon>
+          <span class="text-body-2 text-grey-darken-1">(082) 333 1809</span>
+        </div>
+      </div>
+
+      <!-- Clean Form Layout -->
+      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+        <v-row dense>
+          <!-- Series No - Full width on mobile, 1/3 on desktop -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.seriesNo"
+              label="Series No."
+              placeholder="SER-2024-001"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Last Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.lastName"
+              label="Last name"
+              placeholder="Dela Cruz"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- First Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.firstName"
+              label="First name"
+              placeholder="Juan"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Email -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.email"
+              label="Email"
+              placeholder="juan@example.com"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.email]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Contact No -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.contactNo"
+              label="Contact no."
+              placeholder="+63 912 345 6789"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.phone]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Entity - Simplified Select -->
+          <v-col cols="12" md="6">
+            <v-select
+              v-model="contactForm.entity"
+              :items="entities"
+              label="Entity type"
+              placeholder="Select type"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+              return-object
+              item-title="title"
+              item-value="value"
+            >
+              <template v-slot:selection="{ item }">
+                <span>{{ item.raw.title }}</span>
+              </template>
+            </v-select>
+          </v-col>
+
+          <!-- Message Title -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.title"
+              label="Subject"
+              placeholder="Inquiry about plans"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Message - Clean Textarea -->
+          <v-col cols="12">
+            <v-textarea
+              v-model="contactForm.description"
+              label="Message"
+              placeholder="How can we help you?"
+              variant="outlined"
+              density="compact"
+              rows="3"
+              auto-grow
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+
+    <v-divider></v-divider>
+
+    <!-- Minimal Actions -->
+    <v-card-actions class="pa-4">
+      <v-spacer></v-spacer>
+      <v-btn
+        variant="text"
+        size="small"
+        @click="contactDialog = false"
+      >
+        Cancel
+      </v-btn>
+      <v-btn
+        color="primary"
+        variant="flat"
+        size="small"
+        class="ml-2"
+        :loading="submitting"
+        :disabled="!formValid || submitting"
+        @click="submitContactForm"
+      >
+        Send
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
+
+    <!-- Success Snackbar -->
+    <v-snackbar
+      v-model="snackbar.show"
+      :timeout="4000"
+      color="success"
+      location="top"
+      rounded="pill"
+    >
+      <div class="d-flex align-center">
+        <v-icon class="mr-3">mdi-check-circle</v-icon>
+        <span>{{ snackbar.text }}</span>
+      </div>
+      <template v-slot:actions>
+        <v-btn color="white" variant="text" @click="snackbar.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
 
     <!-- Main Content -->
     <v-main>
@@ -247,7 +459,6 @@
               style="max-width: 60px"
             />
 
-            <!-- Description -->
             <p
               class="text-body-1 text-medium-emphasis mb-6"
               style="line-height: 1.8"
@@ -399,7 +610,6 @@
               ethical conduct in all our operations.
             </p>
 
-            <!-- CTA Button -->
             <v-btn
               color="primary"
               size="large"
@@ -429,7 +639,6 @@
 
             <v-card-text>
               <v-row>
-                <!-- Certificate of Registration Card -->
                 <v-col cols="12" sm="6" md="4">
                   <v-card
                     variant="outlined"
@@ -449,7 +658,6 @@
                   </v-card>
                 </v-col>
 
-                <!-- Data Privacy Registration Card -->
                 <v-col cols="12" sm="6" md="4">
                   <v-card
                     variant="outlined"
@@ -470,10 +678,8 @@
                 </v-col>
               </v-row>
 
-              <!-- Image Zoom Dialog -->
               <v-dialog v-model="zoomDialog" max-width="90vw">
                 <v-card rounded="xl">
-                  <!-- Title Section -->
                   <v-card-title
                     class="d-flex justify-space-between align-center"
                   >
@@ -492,16 +698,13 @@
 
                   <v-divider />
 
-                  <!-- Image Navigation Section -->
                   <v-card-text
                     class="text-center d-flex align-center justify-center"
                   >
-                    <!-- Previous Button -->
                     <v-btn icon :disabled="zoomIndex === 0" @click="prevImage">
                       <v-icon>mdi-chevron-left</v-icon>
                     </v-btn>
 
-                    <!-- Current Image -->
                     <v-img
                       :src="zoomImages[zoomIndex]"
                       max-height="100vh"
@@ -509,7 +712,6 @@
                       class="mx-4 rounded-lg"
                     />
 
-                    <!-- Next Button -->
                     <v-btn
                       icon
                       :disabled="zoomIndex === zoomImages.length - 1"
@@ -554,7 +756,6 @@
         </v-row>
 
         <v-row class="d-flex justify-center g-6" align="stretch">
-          <!-- Assignable Feature Card -->
           <v-col cols="10" md="4" class="d-flex" data-aos="fade-right">
             <v-card
               variant="outlined"
@@ -572,7 +773,6 @@
             </v-card>
           </v-col>
 
-          <!-- Transferable Feature Card -->
           <v-col cols="10" md="4" class="d-flex" data-aos="fade-up">
             <v-card
               variant="outlined"
@@ -590,7 +790,6 @@
             </v-card>
           </v-col>
 
-          <!-- Loanable Feature Card -->
           <v-col cols="10" md="4" class="d-flex" data-aos="fade-left">
             <v-card
               variant="outlined"
@@ -609,7 +808,6 @@
             </v-card>
           </v-col>
 
-          <!-- Non-Forfeiture Feature Card -->
           <v-col cols="10" md="4" class="d-flex" data-aos="fade-down">
             <v-card
               variant="outlined"
@@ -632,14 +830,11 @@
       <!-- Why Choose Goodlife Section -->
       <v-container fluid class="py-16 stats-section">
         <v-container max-width="700" class="text-center" data-aos="fade-up">
-          <!-- Section Header -->
           <h2 class="text-h4 font-weight-bold mb-6" style="color: white">
             WHY CHOOSE GOODLIFE ?
           </h2>
 
-          <!-- Expansion Panels -->
           <v-expansion-panels variant="popout" class="text-left">
-            <!-- Accessibility Panel -->
             <v-expansion-panel class="mb-4">
               <v-expansion-panel-title
                 expand-icon="mdi-menu-down"
@@ -657,7 +852,6 @@
               </v-expansion-panel-text>
             </v-expansion-panel>
 
-            <!-- Affordability Panel -->
             <v-expansion-panel>
               <v-expansion-panel-title
                 expand-icon="mdi-menu-down"
@@ -681,7 +875,6 @@
       <v-container fluid class="py-16">
         <v-container id="products" max-width="1200">
           <v-row align="center" justify="space-between">
-            <!-- Left Column - Text Content -->
             <v-col cols="12" md="6" data-aos="slide-right">
               <h2 class="text-h4 font-weight-bold mb-4 section-title">
                 Our Insurance Products
@@ -697,7 +890,6 @@
                 stage of life.
               </p>
 
-              <!-- Features List -->
               <v-list density="comfortable" class="pa-0">
                 <v-list-item
                   v-for="(feature, index) in features"
@@ -720,7 +912,6 @@
               </v-list>
             </v-col>
 
-            <!-- Right Column - Explore Button -->
             <v-col
               cols="12"
               md="12"
@@ -913,7 +1104,6 @@
           </v-col>
         </v-row>
 
-        <!-- Contact Form -->
         <v-row justify="center" data-aos="fade-up">
           <v-col cols="12" md="6" lg="5">
             <v-card color="transparent" flat>
@@ -966,7 +1156,6 @@
       >
         <v-container>
           <v-row>
-            <!-- Logo & Description -->
             <v-col cols="12" md="4" class="mb-6 mb-md-0">
               <div class="d-flex align-center mb-3">
                 <v-img
@@ -993,7 +1182,6 @@
               </p>
             </v-col>
 
-            <!-- Quick Links -->
             <v-col cols="6" md="4">
               <h4 class="text-subtitle-1 font-weight-bold mb-3">Quick Links</h4>
               <ul class="list-none pa-0">
@@ -1023,7 +1211,6 @@
               </ul>
             </v-col>
 
-            <!-- Contact Information -->
             <v-col cols="12" md="4">
               <h4 class="text-subtitle-1 font-weight-bold mb-3">
                 Contact Information
@@ -1047,10 +1234,8 @@
             </v-col>
           </v-row>
 
-          <!-- Footer Divider -->
           <v-divider class="my-6" color="black" opacity="0.15" />
 
-          <!-- Copyright -->
           <div class="text-center text-body-2 text-medium-emphasis">
             © 2026 Goodlife Damayan Insurance Agency Co. All rights reserved.
           </div>
@@ -1067,7 +1252,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "@/styles/css/style.css";
 
-// Component name can be defined using defineOptions
 import { defineOptions } from "vue";
 
 defineOptions({
@@ -1082,6 +1266,72 @@ const router = useRouter();
 const drawer = ref(false);
 const legalitiesDialog = ref(false);
 const zoomDialog = ref(false);
+
+// Contact Dialog State
+const contactDialog = ref(false);
+const formValid = ref(false);
+const submitting = ref(false);
+const contactFormRef = ref(null);
+
+// Contact Form Data
+const contactForm = ref({
+  seriesNo: "",
+  lastName: "",
+  middleName: "",
+  firstName: "",
+  email: "",
+  contactNo: "",
+  entity: null,
+  title: "",
+  description: "",
+});
+
+// Entity Options
+const entities = ref([
+  { 
+    title: "Individual", 
+    value: "individual", 
+    icon: "mdi-account", 
+    color: "#1976D2" 
+  },
+  { 
+    title: "Family", 
+    value: "family", 
+    icon: "mdi-account-group", 
+    color: "#4CAF50" 
+  },
+  { 
+    title: "Business", 
+    value: "business", 
+    icon: "mdi-office-building", 
+    color: "#FF9800" 
+  },
+  { 
+    title: "Corporate", 
+    value: "corporate", 
+    icon: "mdi-domain", 
+    color: "#9C27B0" 
+  },
+]);
+
+// Snackbar State
+const snackbar = ref({
+  show: false,
+  text: "",
+});
+
+// Validation Rules
+const rules = {
+  required: (v) => !!v?.trim() || "This field is required",
+  email: (v) => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(v) || "Please enter a valid email address";
+  },
+  phone: (v) => {
+    const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return pattern.test(v) || "Please enter a valid phone number";
+  },
+};
 
 // Navigation State
 const activeSection = ref("home");
@@ -1105,7 +1355,7 @@ const productsMenuItems = ref([
   { title: "MBAI", route: "/products/mbai" },
 ]);
 
-// Legal Documents Data - Using proper asset paths
+// Legal Documents Data
 const legalDocuments = ref([
   {
     category: "Certificate of Registration",
@@ -1163,34 +1413,21 @@ const legalDocuments = ref([
 ]);
 
 // NAVIGATION METHODS
-/**
- * Navigate to a specific products page
- * @param {string} productRoute - Route path to navigate to
- */
 const goToProductsPage = (productRoute) => {
-  drawer.value = false; // Close mobile drawer
+  drawer.value = false;
   router.push(productRoute);
 };
 
-/**
- * Smooth scroll to a section with offset for navbar
- * @param {string} id - Section ID to scroll to
- */
 const scrollToSection = (id) => {
-  drawer.value = false; // Close mobile drawer
+  drawer.value = false;
   const section = document.getElementById(id);
   if (section) {
-    const yOffset = -120; // Navbar height offset
+    const yOffset = -120;
     const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
     smoothScrollTo(y);
   }
 };
 
-/**
- * Smooth scroll animation
- * @param {number} targetY - Target scroll position
- * @param {number} duration - Animation duration in ms
- */
 const smoothScrollTo = (targetY, duration = 800) => {
   const startY = window.scrollY;
   const diff = targetY - startY;
@@ -1200,42 +1437,27 @@ const smoothScrollTo = (targetY, duration = 800) => {
     if (!startTime) startTime = timestamp;
     const time = timestamp - startTime;
     const percent = Math.min(time / duration, 1);
-
-    // Easing function for smooth animation
     const easing =
       percent < 0.5
         ? 4 * percent * percent * percent
         : 1 - Math.pow(-2 * percent + 2, 3) / 2;
-
     window.scrollTo(0, startY + diff * easing);
-
     if (time < duration) {
       requestAnimationFrame(step);
     }
   };
-
   requestAnimationFrame(step);
 };
 
 // LEGAL DOCUMENTS METHODS
-/**
- * Open the legal documents dialog
- */
 const openLegalitiesDialog = () => {
   legalitiesDialog.value = true;
 };
 
-/**
- * Close the legal documents dialog
- */
 const closeLegalitiesDialog = () => {
   legalitiesDialog.value = false;
 };
 
-/**
- * Open zoom dialog for a document
- * @param {Object} doc - Document object with images
- */
 const openZoom = (doc) => {
   zoomTitle.value = doc.category;
   zoomImages.value = doc.images;
@@ -1243,38 +1465,72 @@ const openZoom = (doc) => {
   zoomDialog.value = true;
 };
 
-/**
- * Close the zoom dialog
- */
 const closeZoomDialog = () => {
   zoomDialog.value = false;
 };
 
-/**
- * Navigate to next image in zoom dialog
- */
 const nextImage = () => {
   if (zoomIndex.value < zoomImages.value.length - 1) {
     zoomIndex.value++;
   }
 };
 
-/**
- * Navigate to previous image in zoom dialog
- */
 const prevImage = () => {
   if (zoomIndex.value > 0) {
     zoomIndex.value--;
   }
 };
 
-// --------------------------------------------------------------
-// SCROLLSPY FUNCTIONALITY
-// --------------------------------------------------------------
+// CONTACT FORM METHODS
+const submitContactForm = async () => {
+  const { valid } = await contactFormRef.value?.validate();
+  if (!valid) return;
 
-/**
- * Handle scroll events to update active section
- */
+  submitting.value = true;
+
+  setTimeout(() => {
+    console.log("Contact Form Submission:", {
+      ...contactForm.value,
+      entity: contactForm.value.entity?.title || contactForm.value.entity,
+    });
+
+    snackbar.value = {
+      show: true,
+      text: "Your message has been sent successfully! We'll respond within 24 hours.",
+    };
+
+    contactFormRef.value?.reset();
+    contactForm.value = {
+      seriesNo: "",
+      lastName: "",
+      middleName: "",
+      firstName: "",
+      email: "",
+      contactNo: "",
+      entity: null,
+      title: "",
+      description: "",
+    };
+
+    submitting.value = false;
+    contactDialog.value = false;
+    // showContactIcon will be set to true by the watcher when dialog closes
+  }, 1500);
+};
+
+const showContactIcon = ref(true);
+
+watch(contactDialog, (newVal) => {
+  if (newVal) {
+    // Dialog is opening - hide the icon
+    showContactIcon.value = false;
+  } else {
+    // Dialog is closing - show the icon
+    showContactIcon.value = true;
+  }
+});
+
+// SCROLLSPY FUNCTIONALITY
 const handleScroll = () => {
   let current = "";
   sections.forEach((id) => {
@@ -1289,33 +1545,22 @@ const handleScroll = () => {
   if (current) activeSection.value = current;
 };
 
-// --------------------------------------------------------------
 // LIFECYCLE HOOKS
-// --------------------------------------------------------------
-
 onMounted(() => {
-  // Initialize AOS animations
   AOS.init({
     duration: 1500,
     once: false,
     mirror: true,
     offset: 120,
   });
-
-  // Add scroll listener for scrollspy
   window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
-  // Clean up scroll listener
   window.removeEventListener("scroll", handleScroll);
 });
 
-// --------------------------------------------------------------
 // WATCHERS
-// --------------------------------------------------------------
-
-// Watch route changes for products navigation
 watch(
   () => router.currentRoute.value.path,
   (newPath) => {
@@ -1328,11 +1573,11 @@ watch(
   { immediate: true },
 );
 
-// Refresh AOS when route changes
 watch(route, async () => {
   await nextTick();
   AOS.refresh();
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

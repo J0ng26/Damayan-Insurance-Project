@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar - Consistent with GoodlifePlans.vue -->
     <v-app-bar
       color="#F5F5F5"
       elevation="1"
@@ -9,13 +9,14 @@
       fixed
       class="custom-app-bar"
     >
-      <v-container class="d-flex align-center px-7 mt-4" max-width="1650">
+      <v-container class="d-flex align-center px-7" max-width="1650">
         <div class="d-flex align-center">
           <img
             src="@/assets/images/damayan.png"
             alt="Goodlife Logo"
             style="width: 60px; height: 40px; margin-right: 12px"
           />
+
           <div class="d-flex flex-column">
             <span class="text-subtitle-1 font-weight-bold text-black">
               Goodlife Damayan Insurance Agency Co.
@@ -91,7 +92,7 @@
                   'active-submenu': $route.path === '/products/goodlife-plans',
                 }"
               >
-                <v-list-item-title>GOODLIFE PLANS</v-list-item-title>
+                <v-list-item-title>Goodlife Plans</v-list-item-title>
               </v-list-item>
               <v-list-item
                 @click="goToProductsPage('/products/mbai')"
@@ -111,14 +112,6 @@
             Contact us
           </v-btn>
 
-          <v-btn
-            variant="outlined"
-            color="primary"
-            class="text-capitalize ml-4 login-btn"
-            size="small"
-          >
-            LOG IN
-          </v-btn>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -211,89 +204,280 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main style="margin-top: 65px; padding-top: 0">
-      <!-- Products Hero Section with Image Background - MATCHING HEIGHT -->
-      <div
-        class="products-hero"
-        style="
-          margin-top: 0;
-          padding-top: 0;
-          position: relative;
-          min-height: 100vh;
-        "
+    <!-- ============ FIXED CONTACT ICON WITH BOUNCE ANIMATION ============ -->
+    <div 
+  v-if="showContactIcon" 
+  class="fixed-contact-icon bounce-animation" 
+  @click="contactDialog = true"
+>
+  <v-icon size="28">mdi-headset</v-icon>
+  <span class="contact-icon-tooltip">Contact Support</span>
+</div>
+
+<!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
+<v-dialog v-model="contactDialog" max-width="600" persistent scrollable>
+  <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
+    <!-- Minimal Header -->
+    <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
+      <div class="d-flex align-center">
+        <span class="text-h6 font-weight-medium">Contact Support</span>
+      </div>
+      <v-btn 
+        icon="mdi-close" 
+        variant="text" 
+        size="small"
+        @click="contactDialog = false"
+      ></v-btn>
+    </div>
+
+    <v-divider class="mx-6"></v-divider>
+
+    <v-card-text class="pa-6">
+      <!-- Compact Contact Info -->
+      <div class="d-flex ga-4 mb-6">
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-email-outline</v-icon>
+          <span class="text-body-2 text-grey-darken-1">info@goodlifedamayan.com</span>
+        </div>
+        <div class="d-flex align-center">
+          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-phone</v-icon>
+          <span class="text-body-2 text-grey-darken-1">(082) 333 1809</span>
+        </div>
+      </div>
+
+      <!-- Clean Form Layout -->
+      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+        <v-row dense>
+          <!-- Series No - Full width on mobile, 1/3 on desktop -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.seriesNo"
+              label="Series No."
+              placeholder="SER-2024-001"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Last Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.lastName"
+              label="Last name"
+              placeholder="Dela Cruz"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- First Name -->
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="contactForm.firstName"
+              label="First name"
+              placeholder="Juan"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Email -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.email"
+              label="Email"
+              placeholder="juan@example.com"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.email]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Contact No -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.contactNo"
+              label="Contact no."
+              placeholder="+63 912 345 6789"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required, rules.phone]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Entity - Simplified Select -->
+          <v-col cols="12" md="6">
+            <v-select
+              v-model="contactForm.entity"
+              :items="entities"
+              label="Entity type"
+              placeholder="Select type"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+              return-object
+              item-title="title"
+              item-value="value"
+            >
+              <template v-slot:selection="{ item }">
+                <span>{{ item.raw.title }}</span>
+              </template>
+            </v-select>
+          </v-col>
+
+          <!-- Message Title -->
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="contactForm.title"
+              label="Subject"
+              placeholder="Inquiry about plans"
+              variant="outlined"
+              density="compact"
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-text-field>
+          </v-col>
+
+          <!-- Message - Clean Textarea -->
+          <v-col cols="12">
+            <v-textarea
+              v-model="contactForm.description"
+              label="Message"
+              placeholder="How can we help you?"
+              variant="outlined"
+              density="compact"
+              rows="3"
+              auto-grow
+              hide-details="auto"
+              :rules="[rules.required]"
+              bg-color="transparent"
+              class="minimal-field"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+
+    <v-divider></v-divider>
+
+    <!-- Minimal Actions -->
+    <v-card-actions class="pa-4">
+      <v-spacer></v-spacer>
+      <v-btn
+        variant="text"
+        size="small"
+        @click="contactDialog = false"
       >
+        Cancel
+      </v-btn>
+      <v-btn
+        color="primary"
+        variant="flat"
+        size="small"
+        class="ml-2"
+        :loading="submitting"
+        :disabled="!formValid || submitting"
+        @click="submitContactForm"
+      >
+        Send
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
+
+    <!-- Success Snackbar -->
+    <v-snackbar
+      v-model="snackbar.show"
+      :timeout="4000"
+      color="success"
+      location="top"
+      rounded="pill"
+    >
+      <div class="d-flex align-center">
+        <v-icon class="mr-3">mdi-check-circle</v-icon>
+        <span>{{ snackbar.text }}</span>
+      </div>
+      <template v-slot:actions>
+        <v-btn color="white" variant="text" @click="snackbar.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
+
+    <v-main>
+      <!-- Products Hero Section - Consistent with other pages -->
+      <div class="products-hero">
         <!-- Background Image -->
         <img
           src="@/assets/images/family.jpg"
           alt="Insurance Products Banner"
-          style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            z-index: 1;
-          "
+          class="products-hero-image"
         />
 
-        <!-- Dark Overlay (similar to index.vue) -->
-        <div
-          style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-              135deg,
-              rgba(62, 58, 91, 0.85) 0%,
-              rgba(74, 69, 97, 0.75) 50%,
-              rgba(106, 100, 141, 0.5) 100%
-            );
-            z-index: 2;
-          "
-        ></div>
+        <!-- Dark Overlay -->
+        <div class="products-hero-overlay"></div>
 
-        <!-- MICRO INSURANCE LOGO (TOP RIGHT) -->
+        <!-- MICRO INSURANCE LOGO - Consistent positioning -->
         <img
           src="@/assets/images/micro-insurance.png"
           alt="Micro Insurance Logo"
           class="products-banner-logo"
         />
 
-        <v-container
-          class="fill-height d-flex align-center justify-center"
-          style="position: relative; z-index: 3; padding-top: 0; margin-top: 0"
-        >
-          <v-row class="align-center fill-height" data-aos="fade-up">
-            <v-col cols="12" md="8" class="text-center text-md-start">
-              <h1
-                class="banner-title mb-4"
-                style="color: #ffffff; text-align: left"
-              >
-                Our Insurance Products
-              </h1>
-              <p
-                class="banner-subtitle mb-8"
-                style="color: rgba(255, 255, 255, 0.9); text-align: left"
-              >
-                Discover comprehensive insurance solutions designed to protect
-                what matters most in your life.
-              </p>
-              <v-btn
-                color="white"
-                size="large"
-                class="text-primary text-capitalize explore-btn"
-                @click="scrollToSection('product-list')"
-              >
-                <span class="button-text">View All Products</span>
-                <v-icon end>mdi-chevron-down</v-icon>
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-container>
+        <div class="banner-content">
+          <v-container class="fill-height">
+            <v-row align="center" class="fill-height" data-aos="fade-up">
+              <v-col cols="12" sm="12" md="7" class="text-center text-md-start">
+                <h1 class="banner-title mb-4">
+                  Our Insurance Products
+                </h1>
+                
+                <p class="banner-subtitle mb-8">
+                  Discover comprehensive insurance solutions designed to protect
+                  what matters most in your life.
+                </p>
+                
+                <v-btn
+                  color="white"
+                  size="large"
+                  class="text-primary text-capitalize explore-btn"
+                  @click="scrollToSection('product-list')"
+                >
+                  <span class="button-text">View All Products</span>
+                  <v-icon end>mdi-chevron-down</v-icon>
+                </v-btn>
+              </v-col>
+
+              <v-col cols="12" md="5" class="text-center">
+                <!-- Optional: You can add an image here like other pages if needed -->
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
       </div>
 
       <v-container id="product-list" class="py-16">
@@ -326,7 +510,7 @@
           </v-col>
         </v-row>
 
-        <!-- Premium Table Section - Copy from Goodlife Plans Design -->
+        <!-- Premium Table Section -->
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
             <!-- Minimal Payment Grid -->
@@ -470,10 +654,10 @@
                   <v-icon size="30" color="primary">
                     {{
                       [
-                        "mdi-heart",
-                        "mdi-car-brake-alert",
-                        "mdi-shield-check",
-                        "mdi-cash",
+                        'mdi-heart',
+                        'mdi-car-brake-alert',
+                        'mdi-shield-check',
+                        'mdi-cash',
                       ][index]
                     }}
                   </v-icon>
@@ -634,9 +818,9 @@
         </v-row>
       </v-container>
 
-      <!-- PRINCIPAL BENEFIT COVERAGE SECTION - UPDATED -->
+      <!-- PRINCIPAL BENEFIT COVERAGE SECTION -->
       <v-container id="principal-benefit-coverage" class="py-16">
-        <!-- Section Header - Matching Benefit Coverage Section -->
+        <!-- Section Header -->
         <v-row class="text-center mb-12" data-aos="fade-up">
           <v-col cols="12">
             <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c">
@@ -656,7 +840,7 @@
           </v-col>
         </v-row>
 
-        <!-- Computation Cards - Using same structure as Benefit Coverage -->
+        <!-- Computation Cards -->
         <v-row justify="center" data-aos="fade-up">
           <v-col cols="12" md="10" lg="8">
             <v-row justify="center">
@@ -816,7 +1000,7 @@
           </v-col>
         </v-row>
 
-        <!-- Comparison Summary - Minimalist -->
+        <!-- Comparison Summary -->
         <v-row class="mt-8" data-aos="fade-up">
           <v-col cols="12" md="8" class="mx-auto">
             <v-card class="pa-6 elevation-0 outlined">
@@ -904,7 +1088,7 @@
           </v-col>
         </v-row>
 
-        <!-- Premium Table Section - Same Design as INDI -->
+        <!-- Premium Table Section -->
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
             <!-- Minimal Payment Grid -->
@@ -1030,7 +1214,7 @@
       </v-container>
 
       <v-container id="principal-benefit-coverage-fami" class="py-16">
-        <!-- Section Header - Matching Benefit Coverage Section -->
+        <!-- Section Header -->
         <v-row class="text-center mb-12" data-aos="fade-up">
           <v-col cols="12">
             <h3 class="text-h3 font-weight-bold mb-4" style="color: #1a202c">
@@ -1050,7 +1234,7 @@
           </v-col>
         </v-row>
 
-        <!-- Computation Cards - Using same structure as Benefit Coverage -->
+        <!-- Computation Cards -->
         <v-row justify="center" data-aos="fade-up">
           <v-col cols="12" md="10" lg="8">
             <v-row justify="center">
@@ -1210,7 +1394,7 @@
           </v-col>
         </v-row>
 
-        <!-- Comparison Summary - Minimalist -->
+        <!-- Comparison Summary -->
         <v-row class="mt-8" data-aos="fade-up">
           <v-col cols="12" md="8" class="mx-auto">
             <v-card class="pa-6 elevation-0 outlined">
@@ -1277,7 +1461,7 @@
           </v-col>
         </v-row>
 
-        <!-- Dependents Coverage - Minimalist Design -->
+        <!-- Dependents Coverage -->
         <v-row justify="center" data-aos="fade-up">
           <v-col cols="12" md="10" lg="8">
             <v-row>
@@ -1302,9 +1486,9 @@
                     >
                       {{
                         [
-                          "mdi-account",
-                          "mdi-account-multiple",
-                          "mdi-account-group",
+                          'mdi-account',
+                          'mdi-account-multiple',
+                          'mdi-account-group',
                         ][index]
                       }}
                     </v-icon>
@@ -1730,6 +1914,7 @@ import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "@/styles/css/style.css";
 
 const router = useRouter();
 const drawer = ref(false);
@@ -1806,6 +1991,136 @@ const familyContributionTerms = [
     color: "primary",
   },
 ];
+
+// ============ MINIMALIST CONTACT DIALOG STATE ============
+const contactDialog = ref(false);           // Dialog visibility
+const formValid = ref(false);              // Form validation state
+const submitting = ref(false);             // Submission loading state
+const contactFormRef = ref(null);          // Form reference for validation
+
+// Contact Form Data - Minimal fields only
+const contactForm = ref({
+  seriesNo: "",
+  lastName: "",
+  firstName: "",
+  email: "",
+  contactNo: "",
+  entity: null,
+  title: "",
+  description: "",
+});
+
+// Entity Options - Simplified for minimalist design
+const entities = ref([
+  { title: "Individual", value: "individual" },
+  { title: "Family", value: "family" },
+  { title: "Business", value: "business" },
+  { title: "Corporate", value: "corporate" },
+]);
+
+// Snackbar State for success messages
+const snackbar = ref({
+  show: false,
+  text: "",
+});
+
+// ============ VALIDATION RULES ============
+const rules = {
+  required: (v) => !!v?.trim() || "This field is required",
+  email: (v) => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(v) || "Please enter a valid email address";
+  },
+  phone: (v) => {
+    const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return pattern.test(v) || "Please enter a valid phone number";
+  },
+};
+
+// ============ MINIMALIST CONTACT FORM METHODS ============
+
+const submitContactForm = async () => {
+  const { valid } = await contactFormRef.value?.validate();
+  if (!valid) return;
+
+  submitting.value = true;
+
+  setTimeout(() => {
+    console.log("Contact Form Submission:", {
+      ...contactForm.value,
+      entity: contactForm.value.entity?.title || contactForm.value.entity,
+    });
+
+    snackbar.value = {
+      show: true,
+      text: "Your message has been sent successfully! We'll respond within 24 hours.",
+    };
+
+    contactFormRef.value?.reset();
+    contactForm.value = {
+      seriesNo: "",
+      lastName: "",
+      middleName: "",
+      firstName: "",
+      email: "",
+      contactNo: "",
+      entity: null,
+      title: "",
+      description: "",
+    };
+
+    submitting.value = false;
+    contactDialog.value = false;
+    // showContactIcon will be set to true by the watcher when dialog closes
+  }, 1500);
+};
+/**
+ * Reset contact form manually
+ */
+const resetContactForm = () => {
+  contactFormRef.value?.reset();
+  contactForm.value = {
+    seriesNo: "",
+    lastName: "",
+    firstName: "",
+    email: "",
+    contactNo: "",
+    entity: null,
+    title: "",
+    description: "",
+  };
+};
+
+/**
+ * Open contact dialog and optionally reset form
+ */
+const openContactDialog = () => {
+  contactDialog.value = true;
+  // Optional: Reset form when opening
+  // resetContactForm();
+};
+
+/**
+ * Close contact dialog and reset form
+ */
+const closeContactDialog = () => {
+  contactDialog.value = false;
+  resetContactForm();
+};
+
+const showContactIcon = ref(true);
+
+watch(contactDialog, (newVal) => {
+  if (newVal) {
+    // Dialog is opening - hide the icon
+    showContactIcon.value = false;
+  } else {
+    // Dialog is closing - show the icon
+    showContactIcon.value = true;
+  }
+});
+
+
 // Scroll to top when page loads
 onMounted(() => {
   window.scrollTo(0, 0);
@@ -1857,112 +2172,4 @@ const contactForProduct = () => {
 </script>
 
 <style scoped>
-/* Navigation Bar - Ensure it stays on top */
-.custom-app-bar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* FIXED: Hero section - remove gap */
-.products-hero {
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-  min-height: calc(80vh - 65px); /* Account for navbar height */
-  display: flex;
-  align-items: center;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* FIXED: Ensure main content has correct margin and no padding */
-.v-main {
-  margin-top: 65px !important; /* Navbar height */
-  padding-top: 0 !important;
-}
-
-/* Additional fixes to remove any potential gaps */
-.v-container {
-  padding-top: 0 !important;
-}
-
-.v-row {
-  margin-top: 0 !important;
-}
-
-.product-card {
-  transition: all 0.3s ease;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  border-color: rgba(25, 118, 210, 0.35);
-}
-
-.section-title {
-  color: #3e3a5b;
-}
-
-.nav-btn {
-  min-width: auto;
-}
-
-.nav-btn.active-link {
-  color: #0425cc !important;
-  font-weight: 600;
-  border-bottom: 2px solid #0425cc;
-  transition: all 0.3s ease;
-}
-
-/* Subtle hover effect for minimalist cards */
-.transition-hover {
-  border-radius: 12px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.transition-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-.hover-card {
-  border-radius: 12px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.hover-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-/* Slightly bigger font for list items */
-ol li {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .products-hero {
-    min-height: calc(70vh - 65px);
-    padding: 0 !important;
-  }
-
-  .v-main {
-    margin-top: 65px !important;
-    padding-top: 0 !important;
-  }
-}
-
-/* Ensure dialog appears above navbar */
-.v-dialog {
-  z-index: 2000 !important;
-}
 </style>

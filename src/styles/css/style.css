@@ -47,12 +47,12 @@ body {
 }
 
 :deep(.nav-btn:hover) {
-  color: #0425cc !important; /* optional hover text color */
+  color: #0425cc !important;
 }
 
 /* Active navigation link */
 .nav-btn.active-link {
-  color: #0425cc !important; /* Vuetify primary blue */
+  color: #0425cc !important;
   font-weight: 600;
   border-bottom: 2px solid #0425cc;
   transition: all 0.3s ease;
@@ -74,8 +74,8 @@ body {
 
 .login-btn:hover {
   transform: scale(1.08);
-  background-color: transparent !important; /* No background color change */
-  box-shadow: none !important; /* No hover shadow */
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 /* Dropdown menu positioning */
@@ -132,6 +132,44 @@ body {
   height: auto;
   display: flex;
   align-items: center;
+}
+
+/* DAMAYAN PRODUCTS HERO SECTION */
+.products-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.products-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.products-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(62, 58, 91, 0.85) 0%,
+    rgba(74, 69, 97, 0.75) 50%,
+    rgba(106, 100, 141, 0.5) 100%
+  );
+  z-index: 2;
 }
 
 .color-backgrounds-family {
@@ -374,7 +412,7 @@ body {
 .banner-title {
   font-family: "Playfair Display", serif;
   font-size: clamp(4rem, 7vw, 8.6rem);
-  font-weight: 400; /* light */
+  font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.4px;
   margin-bottom: 1.6rem;
@@ -658,11 +696,14 @@ body {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(25, 118, 210, 0.35);
 }
 
 /* Document cards for legalities */
@@ -968,19 +1009,24 @@ body {
    11. ANIMATIONS & EFFECTS
    ============================================ */
 
-/* Bounce animation */
+/* Bounce animation - Consolidated */
 @keyframes bounce {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-15px); /* bounce height */
+  40% {
+    transform: translateY(-12px);
+  }
+  60% {
+    transform: translateY(-6px);
+  }
+  80% {
+    transform: translateY(-3px);
   }
 }
 
 .bounce-animation {
-  animation: bounce 3s ease-in-out infinite;
+  animation: bounce 2.5s ease-in-out infinite;
 }
 
 /* ============================================
@@ -991,8 +1037,143 @@ body {
   z-index: 2000 !important;
 }
 
+/* ===== MINIMALIST DIALOG STYLES ===== */
+.contact-dialog-minimal {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.contact-dialog-minimal .text-h6 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.contact-dialog-minimal .v-divider {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Minimal Form Fields */
+.minimal-field :deep(.v-field) {
+  box-shadow: none !important;
+  border-radius: 6px !important;
+}
+
+.minimal-field :deep(.v-field__outline) {
+  --v-field-border-width: 1px;
+  color: rgba(0, 0, 0, 0.12);
+}
+
+.minimal-field :deep(.v-field--focused .v-field__outline) {
+  --v-field-border-width: 1.5px;
+  color: #1976D2;
+}
+
+.minimal-field :deep(.v-label) {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+
+.minimal-field :deep(.v-field__input) {
+  font-size: 14px;
+  padding: 8px 12px;
+  min-height: 40px;
+}
+
+.minimal-field :deep(.v-field__input::placeholder) {
+  color: rgba(0, 0, 0, 0.38);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Remove all decorative elements */
+.minimal-field :deep(.v-field__prepend-inner),
+.minimal-field :deep(.v-field__append-inner) {
+  display: none;
+}
+
+/* Compact select styling */
+.minimal-field :deep(.v-select) .v-field__input {
+  min-height: 40px;
+}
+
+/* Clean hover state */
+.minimal-field:hover :deep(.v-field__outline) {
+  --v-field-border-width: 1px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* Simple error state */
+.minimal-field :deep(.v-field--error .v-field__outline) {
+  color: #ef4444;
+}
+
+/* Remove all animations and transitions */
+.minimal-field :deep(*) {
+  transition: none !important;
+}
+
 /* ============================================
-   13. RESPONSIVE DESIGN - MOBILE & TABLET
+   13. FIXED CONTACT ICON STYLES
+   ============================================ */
+
+.fixed-contact-icon {
+  position: fixed;
+  right: calc((100% - 1200px) / 2 + 30px);
+  bottom: 30px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #1976D2, #1565C0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fixed-contact-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(25, 118, 210, 0.4);
+  animation: none;
+}
+
+.fixed-contact-icon:active {
+  transform: scale(0.96);
+}
+
+.contact-icon-tooltip {
+  position: absolute;
+  right: 70px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.3px;
+}
+
+.fixed-contact-icon:hover .contact-icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: 75px;
+}
+
+/* ============================================
+   14. RESPONSIVE DESIGN - MOBILE & TABLET
    ============================================ */
 
 /* ===== MOBILE (max-width: 768px) ===== */
@@ -1030,7 +1211,7 @@ body {
   }
 
   .banner-title {
-    font-size: 2.5rem !important; /* Larger font */
+    font-size: 2.5rem !important;
     text-align: center !important;
     width: 100%;
     margin-left: auto;
@@ -1038,7 +1219,7 @@ body {
   }
 
   .banner-title-family {
-    font-size: 2.8rem !important; /* Larger font */
+    font-size: 2.8rem !important;
     text-align: center;
     line-height: 1.2;
     width: 100%;
@@ -1048,7 +1229,7 @@ body {
   }
 
   .banner-subtitle {
-    font-size: 1.3rem !important; /* Larger font */
+    font-size: 1.3rem !important;
     text-align: center !important;
     width: 100%;
     margin-left: auto;
@@ -1056,7 +1237,7 @@ body {
   }
 
   .banner-subtitle-family {
-    font-size: 1.25rem !important; /* Larger font */
+    font-size: 1.25rem !important;
     text-align: center;
     margin-bottom: 40px;
     line-height: 1.7;
@@ -1077,7 +1258,6 @@ body {
     top: 15px;
     right: 20px;
   }
-
   .products-banner-logo {
     width: 110px;
     top: 20px;
@@ -1107,12 +1287,12 @@ body {
   }
 
   .banner-titles-plan {
-    font-size: 3rem !important; /* Larger font */
+    font-size: 3rem !important;
     text-align: center;
   }
 
   .banner-subtitles-plan {
-    font-size: 1.3rem !important; /* Larger font */
+    font-size: 1.3rem !important;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -1120,7 +1300,7 @@ body {
   }
 
   .banner-image {
-    max-height: 350px; /* Larger image */
+    max-height: 350px;
     margin-top: 2rem;
   }
 
@@ -1151,11 +1331,11 @@ body {
   }
 
   .banner-titles {
-    font-size: 3rem !important; /* Larger font */
+    font-size: 3rem !important;
   }
 
   .banner-subtitles {
-    font-size: 1.3rem !important; /* Larger font */
+    font-size: 1.3rem !important;
     padding: 0 20px;
   }
 
@@ -1236,14 +1416,63 @@ body {
     text-align: center !important;
     width: 100%;
     padding: 0 20px;
-    font-size: 2rem !important; /* Larger font */
+    font-size: 2rem !important;
   }
 
   .section-subtitle {
     text-align: center !important;
     width: 100%;
     padding: 0 20px;
-    font-size: 1.1rem !important; /* Larger font */
+    font-size: 1.1rem !important;
+  }
+
+  /* Mobile responsiveness for Damayan Products */
+  .products-hero {
+    min-height: calc(70vh - 65px);
+    padding: 0 !important;
+  }
+
+  .v-main {
+    margin-top: 65px !important;
+    padding-top: 0 !important;
+  }
+
+  /* Slightly bigger font for list items */
+  ol li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== FIXED CONTACT ICON MOBILE STYLES ===== */
+  .fixed-contact-icon {
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .fixed-contact-icon i {
+    font-size: 22px !important;
+  }
+  
+  .contact-icon-tooltip {
+    display: none;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+    80% { transform: translateY(-2px); }
+  }
+  
+  /* Mobile adjustments for dialog */
+  .contact-dialog-minimal .v-card-text {
+    padding: 16px !important;
+  }
+  
+  .minimal-field :deep(.v-field__input) {
+    font-size: 16px;
   }
 }
 
@@ -1260,21 +1489,21 @@ body {
   }
 
   .banner-title {
-    font-size: 3.2rem !important; /* Larger font */
+    font-size: 3.2rem !important;
     text-align: center !important;
     width: 100%;
   }
 
   .banner-title-family {
     margin-top: 100px;
-    font-size: 4rem !important; /* Larger font */
+    font-size: 4rem !important;
     text-align: center;
     width: 100%;
     padding: 0 30px;
   }
 
   .banner-subtitle-family {
-    font-size: 1.5rem !important; /* Larger font */
+    font-size: 1.5rem !important;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -1286,7 +1515,7 @@ body {
   }
 
   .banner-subtitle {
-    font-size: 1.4rem !important; /* Larger font */
+    font-size: 1.4rem !important;
     text-align: center !important;
     width: 90%;
     max-width: 700px;
@@ -1295,7 +1524,7 @@ body {
   }
 
   .banner-side-image {
-    max-height: 65vh; /* Larger image */
+    max-height: 65vh;
   }
 
   /* TABLET-SPECIFIC BANNER IMAGE FIXES */
@@ -1397,25 +1626,25 @@ body {
   .section-title {
     text-align: center !important;
     width: 100%;
-    font-size: 2.5rem !important; /* Larger font */
+    font-size: 2.5rem !important;
   }
 
   .section-subtitle {
     text-align: center !important;
     width: 90%;
     max-width: 700px;
-    font-size: 1.2rem !important; /* Larger font */
+    font-size: 1.2rem !important;
   }
 
   /* Goodlife Plans tablet adjustments */
   .banner-titles-plan {
-    font-size: 3.5rem !important; /* Larger font */
+    font-size: 3.5rem !important;
     text-align: center;
     width: 100%;
   }
 
   .banner-subtitles-plan {
-    font-size: 1.4rem !important; /* Larger font */
+    font-size: 1.4rem !important;
     text-align: center;
     width: 90%;
     max-width: 700px;
@@ -1423,16 +1652,28 @@ body {
 
   /* MBAI tablet adjustments */
   .banner-titles {
-    font-size: 3.5rem !important; /* Larger font */
+    font-size: 3.5rem !important;
     text-align: center;
     width: 100%;
   }
 
   .banner-subtitles {
-    font-size: 1.4rem !important; /* Larger font */
+    font-size: 1.4rem !important;
     text-align: center;
     width: 90%;
     max-width: 700px;
+  }
+
+  /* ===== FIXED CONTACT ICON TABLET STYLES ===== */
+  .fixed-contact-icon {
+    right: calc((100% - 720px) / 2 + 25px);
+    bottom: 25px;
+    width: 52px;
+    height: 52px;
+  }
+  
+  .fixed-contact-icon i {
+    font-size: 24px !important;
   }
 }
 
@@ -1450,27 +1691,27 @@ body {
   }
 
   .banner-title {
-    font-size: 2.2rem !important; /* Adjusted for small mobile */
+    font-size: 2.2rem !important;
     text-align: center;
   }
 
   .banner-title-family {
-    font-size: 2.5rem !important; /* Adjusted for small mobile */
+    font-size: 2.5rem !important;
     text-align: center !important;
   }
 
   .banner-subtitle-family {
-    font-size: 1.5rem !important; /* Adjusted for small mobile */
+    font-size: 1.5rem !important;
     text-align: center !important;
   }
 
   .banner-subtitle {
-    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    font-size: 1.15rem !important;
     text-align: center;
   }
 
   .banner-subtitle-family {
-    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    font-size: 1.15rem !important;
     text-align: center;
     margin-bottom: 35px;
     padding: 0 15px;
@@ -1479,7 +1720,7 @@ body {
   }
 
   .banner-side-image {
-    max-height: 45vh; /* Adjusted for small mobile */
+    max-height: 45vh;
   }
 
   .banner-overlay {
@@ -1523,15 +1764,15 @@ body {
   }
 
   .banner-title {
-    font-size: 2.5rem !important; /* Adjusted for small mobile */
+    font-size: 2.5rem !important;
   }
 
   .banner-subtitle {
-    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    font-size: 1.15rem !important;
   }
 
   .banner-image {
-    max-height: 300px; /* Adjusted for small mobile */
+    max-height: 300px;
   }
 
   .color-background::after {
@@ -1582,11 +1823,11 @@ body {
   }
 
   .banner-titles {
-    font-size: 2.5rem !important; /* Adjusted for small mobile */
+    font-size: 2.5rem !important;
   }
 
   .banner-subtitles {
-    font-size: 1.15rem !important; /* Adjusted for small mobile */
+    font-size: 1.15rem !important;
   }
 
   .color-background::after {
@@ -1626,13 +1867,25 @@ body {
 
   /* Center section titles for small mobile */
   .section-title {
-    font-size: 1.8rem !important; /* Adjusted for small mobile */
+    font-size: 1.8rem !important;
     padding: 0 15px;
   }
 
   .section-subtitle {
-    font-size: 1rem !important; /* Adjusted for small mobile */
+    font-size: 1rem !important;
     padding: 0 15px;
+  }
+
+  /* ===== FIXED CONTACT ICON SMALL MOBILE STYLES ===== */
+  .fixed-contact-icon {
+    right: 50px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .fixed-contact-icon i {
+    font-size: 20px !important;
   }
 }
 
@@ -1640,11 +1893,11 @@ body {
 @media (min-width: 601px) and (max-width: 768px) {
   .banner-title-family {
     font-size: 3rem !important;
-    text-align: center !important; /* Slightly larger for medium mobile */
+    text-align: center !important;
   }
 
   .banner-subtitle-family {
-    font-size: 1.3rem !important; /* Slightly larger for medium mobile */
+    font-size: 1.3rem !important;
     max-width: 85%;
     text-align: center !important;
   }
@@ -1653,6 +1906,46 @@ body {
     width: 150%;
     max-width: none;
     transform: translateX(10px) translateY(8%);
+  }
+
+  /* ===== FIXED CONTACT ICON MEDIUM MOBILE STYLES ===== */
+  .fixed-contact-icon {
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .contact-icon-tooltip {
+    display: none;
+  }
+}
+
+/* ===== TABLET PORTRAIT & MOBILE (below 768px) - Additional Styles ===== */
+@media (max-width: 767px) {
+  .contact-dialog-minimal .v-card-text {
+    padding: 16px !important;
+  }
+  
+  .minimal-field :deep(.v-field__input) {
+    font-size: 16px;
+  }
+}
+
+/* ===== SMALL MOBILE (below 576px) - Additional Styles ===== */
+@media (max-width: 575px) {
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+    80% { transform: translateY(-1px); }
+  }
+}
+
+/* ===== DESKTOP MEDIUM (992px - 1199px) ===== */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fixed-contact-icon {
+    right: calc((100% - 960px) / 2 + 30px);
   }
 }
 
@@ -1703,6 +1996,11 @@ body {
     top: 35px;
     right: 60px;
   }
+
+  /* ===== FIXED CONTACT ICON DESKTOP STYLES ===== */
+  .fixed-contact-icon {
+    right: calc((100% - 1200px) / 2 + 30px);
+  }
 }
 
 /* ===== ULTRA-WIDE SCREENS (min-width: 1600px) ===== */
@@ -1748,7 +2046,6 @@ body {
     max-height: 80vh;
   }
 
-  /* Mobile landscape image adjustments */
   .banner-image-family {
     max-height: 70vh;
   }
@@ -1776,4 +2073,32 @@ body {
   .minimal-card-1:hover {
     transform: none !important;
   }
+
+  .fixed-contact-icon {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   15. DAMAYAN PRODUCTS SPECIFIC STYLES
+   ============================================ */
+
+/* Benefit Coverage Icon Wrapper */
+.benefit-icon-wrapper {
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   16. UTILITY CLASSES
+   ============================================ */
+
+/* Additional Info text styling */
+.text-caption-2 {
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Ensure dialog appears above navbar */
+.v-dialog {
+  z-index: 2000 !important;
 }
