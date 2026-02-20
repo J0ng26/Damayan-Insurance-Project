@@ -205,140 +205,7 @@
         </div>
       </div>
 
-      <!-- Clean Form Layout -->
-      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
-        <v-row dense>
-          <!-- Series No - Full width on mobile, 1/3 on desktop -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.seriesNo"
-              label="Series No."
-              placeholder="SER-2024-001"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
 
-          <!-- Last Name -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.lastName"
-              label="Last name"
-              placeholder="Dela Cruz"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
-
-          <!-- First Name -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.firstName"
-              label="First name"
-              placeholder="Juan"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
-
-          <!-- Email -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.email"
-              label="Email"
-              placeholder="juan@example.com"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required, rules.email]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
-
-          <!-- Contact No -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.contactNo"
-              label="Contact no."
-              placeholder="+63 912 345 6789"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required, rules.phone]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
-
-          <!-- Entity - Simplified Select -->
-          <v-col cols="12" md="6">
-            <v-select
-              v-model="contactForm.entity"
-              :items="entities"
-              label="Entity type"
-              placeholder="Select type"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-              return-object
-              item-title="title"
-              item-value="value"
-            >
-              <template v-slot:selection="{ item }">
-                <span>{{ item.raw.title }}</span>
-              </template>
-            </v-select>
-          </v-col>
-
-          <!-- Message Title -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.title"
-              label="Subject"
-              placeholder="Inquiry about plans"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
-
-          <!-- Message - Clean Textarea -->
-          <v-col cols="12">
-            <v-textarea
-              v-model="contactForm.description"
-              label="Message"
-              placeholder="How can we help you?"
-              variant="outlined"
-              density="compact"
-              rows="3"
-              auto-grow
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-textarea>
-          </v-col>
-        </v-row>
-      </v-form>
     </v-card-text>
 
     <v-divider></v-divider>
@@ -3187,140 +3054,285 @@
         </div>
       </div>
 
-      <!-- Clean Form Layout -->
-      <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
-        <v-row dense>
-          <!-- Series No - Full width on mobile, 1/3 on desktop -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.seriesNo"
-              label="Series No."
-              placeholder="SER-2024-001"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+ <!-- Clean Form Layout -->
+<v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+  <!-- Series No Section - Separated at the top -->
+  <v-row dense class="mb-6">
+    <v-col cols="12">
+      <div class="d-flex align-center mb-2">
+        <v-icon color="primary" size="small" class="mr-1">mdi-tag</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Reference Information</span>
+      </div>
+      <v-divider class="mb-4"></v-divider>
+    </v-col>
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.seriesNo"
+        label="Series No."
+        placeholder="SER-2024-001"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+  </v-row>
 
-          <!-- Last Name -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.lastName"
-              label="Last name"
-              placeholder="Dela Cruz"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+  <!-- Personal Information Section -->
+  <v-row dense class="mb-6">
+    <v-col cols="12">
+      <div class="d-flex align-center mb-2">
+        <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Personal Information</span>
+      </div>
+      <v-divider class="mb-4"></v-divider>
+    </v-col>
+    
+    <!-- Last Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.lastName"
+        label="Last name"
+        placeholder="Dela Cruz"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
 
-          <!-- First Name -->
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="contactForm.firstName"
-              label="First name"
-              placeholder="Juan"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+    <!-- Middle Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.middleName"
+        label="Middle name"
+        placeholder="Santos"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
 
-          <!-- Email -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.email"
-              label="Email"
-              placeholder="juan@example.com"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required, rules.email]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+    <!-- First Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.firstName"
+        label="First name"
+        placeholder="Juan"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+  </v-row>
 
-          <!-- Contact No -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.contactNo"
-              label="Contact no."
-              placeholder="+63 912 345 6789"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required, rules.phone]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+  <!-- Contact Information Section -->
+  <v-row dense class="mb-6">
+    <v-col cols="12">
+      <div class="d-flex align-center mb-2">
+        <v-icon color="primary" size="small" class="mr-1">mdi-phone</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Contact Information</span>
+      </div>
+      <v-divider class="mb-4"></v-divider>
+    </v-col>
 
-          <!-- Entity - Simplified Select -->
-          <v-col cols="12" md="6">
-            <v-select
-              v-model="contactForm.entity"
-              :items="entities"
-              label="Entity type"
-              placeholder="Select type"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-              return-object
-              item-title="title"
-              item-value="value"
-            >
-              <template v-slot:selection="{ item }">
-                <span>{{ item.raw.title }}</span>
-              </template>
-            </v-select>
-          </v-col>
+    <!-- Email -->
+    <v-col cols="12" md="6">
+      <v-text-field
+        v-model="contactForm.email"
+        label="Email"
+        placeholder="juan@example.com"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required, rules.email]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
 
-          <!-- Message Title -->
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="contactForm.title"
-              label="Subject"
-              placeholder="Inquiry about plans"
-              variant="outlined"
-              density="compact"
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-text-field>
-          </v-col>
+    <!-- Contact No -->
+    <v-col cols="12" md="6">
+      <v-text-field
+        v-model="contactForm.contactNo"
+        label="Contact no."
+        placeholder="+63 912 345 6789"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required, rules.phone]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+  </v-row>
 
-          <!-- Message - Clean Textarea -->
-          <v-col cols="12">
-            <v-textarea
-              v-model="contactForm.description"
-              label="Message"
-              placeholder="How can we help you?"
-              variant="outlined"
-              density="compact"
-              rows="3"
-              auto-grow
-              hide-details="auto"
-              :rules="[rules.required]"
-              bg-color="transparent"
-              class="minimal-field"
-            ></v-textarea>
-          </v-col>
-        </v-row>
-      </v-form>
+  <!-- Plan Details Section -->
+  <v-row dense class="mb-6">
+    <v-col cols="12">
+      <div class="d-flex align-center mb-2">
+        <v-icon color="primary" size="small" class="mr-1">mdi-file-document</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Plan Details</span>
+      </div>
+      <v-divider class="mb-4"></v-divider>
+    </v-col>
+
+    <!-- Entity - Dropdown Select -->
+    <v-col cols="12" md="6">
+      <v-select
+        v-model="contactForm.entity"
+        :items="entities"
+        label="Entity type *"
+        placeholder="Select entity type"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+        return-object
+        item-title="title"
+        item-value="value"
+        clearable
+        @update:model-value="handleEntityChange"
+      >
+        <template v-slot:selection="{ item }">
+          <div class="d-flex align-center">
+            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
+            <span>{{ item.raw.title }}</span>
+          </div>
+        </template>
+        <template v-slot:item="{ props, item }">
+          <v-list-item v-bind="props" :title="item.raw.title">
+            <template v-slot:prepend>
+              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
+            </template>
+          </v-list-item>
+        </template>
+      </v-select>
+    </v-col>
+
+    <!-- Plan Type - Conditional Dropdown based on Entity -->
+    <v-col cols="12" md="6">
+      <template v-if="contactForm.entity">
+        <!-- Damayan Plans Dropdown -->
+        <v-select
+          v-if="contactForm.entity.value === 'damayan'"
+          v-model="contactForm.planType"
+          :items="damayanPlans"
+          label="Plan type *"
+          placeholder="Select plan type"
+          variant="outlined"
+          density="compact"
+          hide-details="auto"
+          :rules="[rules.required]"
+          bg-color="transparent"
+          class="minimal-field"
+          item-title="title"
+          item-value="value"
+          clearable
+        >
+          <template v-slot:selection="{ item }">
+            <div class="d-flex align-center">
+              <v-icon size="small" color="orange" class="mr-2">mdi-account-group</v-icon>
+              <span>{{ item.raw.title }}</span>
+            </div>
+          </template>
+        </v-select>
+
+        <!-- Goodlife Plans Dropdown -->
+        <v-select
+          v-else-if="contactForm.entity.value === 'goodlife_plans'"
+          v-model="contactForm.planType"
+          :items="goodlifePlans"
+          label="Plan type *"
+          placeholder="Select plan type"
+          variant="outlined"
+          density="compact"
+          hide-details="auto"
+          :rules="[rules.required]"
+          bg-color="transparent"
+          class="minimal-field"
+          item-title="title"
+          item-value="value"
+          clearable
+        >
+          <template v-slot:selection="{ item }">
+            <div class="d-flex align-center">
+              <v-icon size="small" color="blue" class="mr-2">mdi-account</v-icon>
+              <span>{{ item.raw.title }}</span>
+            </div>
+          </template>
+        </v-select>
+
+        <!-- MBAI Plans Dropdown -->
+        <v-select
+          v-else-if="contactForm.entity.value === 'mbai'"
+          v-model="contactForm.planType"
+          :items="mbaiPlans"
+          label="Plan type *"
+          placeholder="Select plan type"
+          variant="outlined"
+          density="compact"
+          hide-details="auto"
+          :rules="[rules.required]"
+          bg-color="transparent"
+          class="minimal-field"
+          item-title="title"
+          item-value="value"
+          clearable
+        >
+          <template v-slot:selection="{ item }">
+            <div class="d-flex align-center">
+              <v-icon size="small" color="green" class="mr-2">mdi-office-building</v-icon>
+              <span>{{ item.raw.title }}</span>
+            </div>
+          </template>
+        </v-select>
+      </template>
+      
+      <!-- Placeholder when no entity selected -->
+      <v-text-field
+        v-else
+        label="Plan type"
+        placeholder="Select entity type first"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        disabled
+        bg-color="grey-lighten-3"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+
+    <!-- Message - Clean Textarea -->
+    <v-col cols="12">
+      <v-textarea
+        v-model="contactForm.description"
+        label="Message"
+        placeholder="How can we help you?"
+        variant="outlined"
+        density="compact"
+        rows="3"
+        auto-grow
+        hide-details="auto"
+        :rules="[rules.required]"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-textarea>
+    </v-col>
+  </v-row>
+</v-form>
     </v-card-text>
 
     <v-divider></v-divider>
@@ -3564,12 +3576,45 @@ const contactForm = ref({
   description: "",
 });
 
-// Entity Options - Simplified for minimalist design
 const entities = ref([
-  { title: "Individual", value: "individual" },
-  { title: "Family", value: "family" },
-  { title: "Business", value: "business" },
-  { title: "Corporate", value: "corporate" },
+  { 
+    title: "Goodlife Plans", 
+    value: "goodlife_plans", 
+    icon: "mdi-account", 
+    color: "#1976D2" 
+  },
+  { 
+    title: "MBAI", 
+    value: "mbai", 
+    icon: "mdi-account-group", 
+    color: "#4CAF50" 
+  },
+  { 
+    title: "Damayan", 
+    value: "damayan", 
+    icon: "mdi-office-building", 
+    color: "#FF9800" 
+  },
+]);
+
+// Plan Type Options based on Entity
+const damayanPlans = ref([
+  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#FF9800" },
+  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#FF9800" },
+]);
+
+const goodlifePlans = ref([
+  { title: "Jade Plan", value: "goodlife_life", icon: "mdi-shield", color: "#1976D2" },
+]);
+
+const mbaiPlans = ref([
+  { title: "Micro-Loans Redemption Insurance (MLRI)", value: "mbai_insurance", icon: "mdi-crown", color: "#4CAF50" },
+  { title: "OFW Secure Life", value: "mbai_secure_life", icon: "mdi-star", color: "#4CAF50" },
+  { title: "Life Shield Plus", value: "mbai_shield_plus", icon: "mdi-diamond", color: "#4CAF50" },
+  { title: "Glife Protek Excel", value: "mbai_protek_excel", icon: "mdi-diamond", color: "#4CAF50" },
+  { title: "Glife Protek Insurance", value: "mbai_protek_insurance", icon: "mdi-diamond", color: "#4CAF50" },
+  { title: "Glife Healthease", value: "mbai_healthease", icon: "mdi-diamond", color: "#4CAF50" },
+  { title: "Glife Comfort", value: "mbai_comfort", icon: "mdi-diamond", color: "#4CAF50" },
 ]);
 
 // Snackbar State for success messages
