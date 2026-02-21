@@ -1561,7 +1561,14 @@ const smoothScrollTo = (targetY, duration = 800) => {
   requestAnimationFrame(step);
 };
 
-// LEGAL DOCUMENTS METHODS (keep your existing methods here...)
+// LEGAL DOCUMENTS METHODS
+const openLegalitiesDialog = () => {
+  legalitiesDialog.value = true;
+};
+
+const closeLegalitiesDialog = () => {
+  legalitiesDialog.value = false;
+};
 
 // CONTACT FORM METHODS
 const handleEntityChange = () => {
