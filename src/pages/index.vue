@@ -157,7 +157,7 @@
     
 
     <!-- ============ FIXED CONTACT ICON WITH BOUNCE ANIMATION ============ -->
-   <div 
+<div 
   v-if="showContactIcon" 
   class="fixed-contact-icon bounce-animation" 
   @click="contactDialog = true"
@@ -167,7 +167,7 @@
 </div>
 
 <!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
-<v-dialog v-model="contactDialog" max-width="600" persistent scrollable>
+<v-dialog v-model="contactDialog" max-width="800" persistent scrollable>
   <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
     <!-- Minimal Header -->
     <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
@@ -204,7 +204,7 @@
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
         <v-icon color="primary" size="small" class="mr-1">mdi-tag</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Reference Information</span>
+        <span class="text-subtitle-2 font-weight-medium">Reference Information:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
@@ -228,7 +228,7 @@
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
         <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Personal Information</span>
+        <span class="text-subtitle-2 font-weight-medium">Personal Information:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
@@ -284,7 +284,7 @@
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
         <v-icon color="primary" size="small" class="mr-1">mdi-phone</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Contact Information</span>
+        <span class="text-subtitle-2 font-weight-medium">Contact Information:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
@@ -325,7 +325,7 @@
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
         <v-icon color="primary" size="small" class="mr-1">mdi-file-document</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Plan Details</span>
+        <span class="text-subtitle-2 font-weight-medium">Plan Details:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
@@ -383,11 +383,12 @@
           class="minimal-field"
           item-title="title"
           item-value="value"
+          return-object
           clearable
         >
           <template v-slot:selection="{ item }">
             <div class="d-flex align-center">
-              <v-icon size="small" color="orange" class="mr-2">mdi-account-group</v-icon>
+              <v-icon size="small" color="#708090" class="mr-2">mdi-account-group</v-icon>
               <span>{{ item.raw.title }}</span>
             </div>
           </template>
@@ -408,11 +409,12 @@
           class="minimal-field"
           item-title="title"
           item-value="value"
+          return-object
           clearable
         >
           <template v-slot:selection="{ item }">
             <div class="d-flex align-center">
-              <v-icon size="small" color="blue" class="mr-2">mdi-account</v-icon>
+              <v-icon size="small" color="#708090" class="mr-2">mdi-account</v-icon>
               <span>{{ item.raw.title }}</span>
             </div>
           </template>
@@ -433,11 +435,12 @@
           class="minimal-field"
           item-title="title"
           item-value="value"
+          return-object
           clearable
         >
           <template v-slot:selection="{ item }">
             <div class="d-flex align-center">
-              <v-icon size="small" color="green" class="mr-2">mdi-office-building</v-icon>
+              <v-icon size="small" color="#708090" class="mr-2">mdi-office-building</v-icon>
               <span>{{ item.raw.title }}</span>
             </div>
           </template>
@@ -496,7 +499,7 @@
         size="small"
         class="ml-2"
         :loading="submitting"
-        :disabled="!formValid || submitting"
+        :disabled="submitting"
         @click="submitContactForm"
       >
         Send
@@ -505,16 +508,16 @@
   </v-card>
 </v-dialog>
 
-    <!-- Success Snackbar -->
+    <!-- Notification Snackbar -->
     <v-snackbar
       v-model="snackbar.show"
       :timeout="4000"
-      color="success"
+      :color="snackbar.color || 'success'"
       location="top"
       rounded="pill"
     >
       <div class="d-flex align-center">
-        <v-icon class="mr-3">mdi-check-circle</v-icon>
+        <v-icon class="mr-3">{{ snackbar.color === 'error' ? 'mdi-alert-circle' : 'mdi-check-circle' }}</v-icon>
         <span>{{ snackbar.text }}</span>
       </div>
       <template v-slot:actions>
@@ -1396,6 +1399,7 @@ import { useRoute, useRouter } from "vue-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "@/styles/css/style.css";
+import { messageService } from "@/plugins/api";
 
 import { defineOptions } from "vue";
 
@@ -1437,51 +1441,55 @@ const entities = ref([
     title: "Goodlife Plans", 
     value: "goodlife_plans", 
     icon: "mdi-account", 
-    color: "#1976D2" 
+    color: "#708090" 
   },
   { 
     title: "MBAI", 
     value: "mbai", 
     icon: "mdi-office-building", 
-    color: "#4CAF50" 
+    color: "#708090" 
   },
   { 
     title: "Damayan", 
     value: "damayan", 
     icon: "mdi-account-group", 
-    color: "#FF9800" 
+    color: "#708090" 
   },
 ]);
 
 // Plan Type Options based on Entity
 const damayanPlans = ref([
-  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#FF9800" },
-  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#FF9800" },
+  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090"  },
+  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090"  },
 ]);
 
 const goodlifePlans = ref([
-  { title: "Jade Plan", value: "goodlife_life", icon: "mdi-shield", color: "#1976D2" },
+  { title: "Jade Plan", value: "goodlife_life", icon: "mdi-shield", color: "#708090" },
 ]);
 
 const mbaiPlans = ref([
-  { title: "Micro-Loans Redemption Insurance (MLRI)", value: "mbai_insurance", icon: "mdi-crown", color: "#4CAF50" },
-  { title: "OFW Secure Life", value: "mbai_secure_life", icon: "mdi-star", color: "#4CAF50" },
-  { title: "Life Shield Plus", value: "mbai_shield_plus", icon: "mdi-diamond", color: "#4CAF50" },
-  { title: "Glife Protek Excel", value: "mbai_protek_excel", icon: "mdi-diamond", color: "#4CAF50" },
-  { title: "Glife Protek Insurance", value: "mbai_protek_insurance", icon: "mdi-diamond", color: "#4CAF50" },
-  { title: "Glife Healthease", value: "mbai_healthease", icon: "mdi-diamond", color: "#4CAF50" },
-  { title: "Glife Comfort", value: "mbai_comfort", icon: "mdi-diamond", color: "#4CAF50" },
+  { title: "Micro-Loans Redemption Insurance (MLRI)", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
+  { title: "OFW Secure Life", value: "mbai_secure_life", icon: "mdi-star", color: "#708090" },
+  { title: "Life Shield Plus", value: "mbai_shield_plus", icon: "mdi-diamond", color: "#708090" },
+  { title: "Glife Protek Excel", value: "mbai_protek_excel", icon: "mdi-diamond", color: "#708090" },
+  { title: "Glife Protek Insurance", value: "mbai_protek_insurance", icon: "mdi-diamond", color: "#708090" },
+  { title: "Glife Healthease", value: "mbai_healthease", icon: "mdi-diamond", color: "#708090" },
+  { title: "Glife Comfort", value: "mbai_comfort", icon: "mdi-diamond", color: "#708090" },
 ]);
 
 // Snackbar State
 const snackbar = ref({
   show: false,
   text: "",
+  color: "success",
 });
 
 // Validation Rules
 const rules = {
-  required: (v) => !!v?.trim() || "This field is required",
+  required: (v) => {
+    if (typeof v === 'string') return !!v.trim() || "This field is required";
+    return !!v || "This field is required";
+  },
   email: (v) => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(v) || "Please enter a valid email address";
@@ -1567,17 +1575,28 @@ const submitContactForm = async () => {
 
   submitting.value = true;
 
-  // Simulate API call
-  setTimeout(() => {
-    console.log("Contact Form Submission:", {
-      ...contactForm.value,
-      entity: contactForm.value.entity?.title || contactForm.value.entity,
-      planType: contactForm.value.planType,
-    });
+  try {
+    // Prepare the data for the ticket system API
+    const messageData = {
+      title: `Contact Support - ${contactForm.value.entity?.title || 'General Inquiry'}`,
+      description: contactForm.value.description,
+      email: contactForm.value.email,
+      contact_no: contactForm.value.contactNo,
+      series_no: contactForm.value.seriesNo,
+      last_name: contactForm.value.lastName,
+      middle_name: contactForm.value.middleName || '',
+      first_name: contactForm.value.firstName,
+      plan: contactForm.value.planType?.title || '',
+      entity: contactForm.value.entity?.title || '',
+    };
+
+    // Send to ticket system API
+    await messageService.add(messageData);
 
     snackbar.value = {
       show: true,
       text: "Your message has been sent successfully! We'll respond within 24 hours.",
+      color: "success",
     };
 
     contactFormRef.value?.reset();
@@ -1593,10 +1612,17 @@ const submitContactForm = async () => {
       description: "",
     };
 
-    submitting.value = false;
     contactDialog.value = false;
-    // showContactIcon will be set to true by the watcher when dialog closes
-  }, 1500);
+  } catch (error) {
+    console.error('Failed to submit contact form:', error);
+    snackbar.value = {
+      show: true,
+      text: error.message || "Failed to send message. Please try again.",
+      color: "error",
+    };
+  } finally {
+    submitting.value = false;
+  }
 };
 
 const showContactIcon = ref(true);
