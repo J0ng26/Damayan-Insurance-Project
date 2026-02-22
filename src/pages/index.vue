@@ -558,9 +558,10 @@
                   </h2>
 
                   <p class="banner-subtitle-family text-left w-100">
-                    At Goodlife, we offer comprehensive individual or family
-                    type of insurance that caters to the needs of your immediate
-                    family members at the time of life's uncertainties
+                    <strong>Choose from DAMAYAN's affordable micro-insurance plans starting at ₱375/month, 
+                    GOODLIFE PLANS with premium coverage from ₱800/month, or MBAI's comprehensive 
+                    protection packages from ₱2,500/month—all designed to give you peace of mind 
+                    with coverage up to ₱500,000+ including memorial service and critical illness benefits.</strong>
                   </p>
                 </div>
               </v-col>
@@ -1401,6 +1402,21 @@ import "aos/dist/aos.css";
 import "@/styles/css/style.css";
 import { messageService } from "@/plugins/api";
 
+// Legal Documents Images
+import cor1 from "@/assets/registration/COR-1.jpg";
+import cor2 from "@/assets/registration/COR-2.jpg";
+import cor3 from "@/assets/registration/COR-3.jpg";
+import amended1 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0001.jpg";
+import amended2 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0002.jpg";
+import amended3 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0003.jpg";
+import amended4 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0004.jpg";
+import amended5 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0005.jpg";
+import amended6 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0006.jpg";
+import amended7 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0007.jpg";
+import amended8 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0008.jpg";
+import amended9 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0009.jpg";
+import amended10 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0010.jpg";
+
 import { defineOptions } from "vue";
 
 defineOptions({
@@ -1522,7 +1538,17 @@ const productsMenuItems = ref([
   { title: "MBAI", route: "/products/mbai" },
 ]);
 
-// Legal Documents Data (keep your existing legalDocuments array here...)
+// Legal Documents Data
+const legalDocuments = ref([
+  {
+    title: "Certificate of Registration",
+    images: [cor1, cor2, cor3],
+  },
+  {
+    title: "Damayan 2nd Amended",
+    images: [amended1, amended2, amended3, amended4, amended5, amended6, amended7, amended8, amended9, amended10],
+  },
+]);
 
 // NAVIGATION METHODS
 const goToProductsPage = (productRoute) => {
@@ -1568,6 +1594,30 @@ const openLegalitiesDialog = () => {
 
 const closeLegalitiesDialog = () => {
   legalitiesDialog.value = false;
+};
+
+// ZOOM METHODS
+const openZoom = (document) => {
+  zoomTitle.value = document.title;
+  zoomImages.value = document.images;
+  zoomIndex.value = 0;
+  zoomDialog.value = true;
+};
+
+const closeZoomDialog = () => {
+  zoomDialog.value = false;
+};
+
+const prevImage = () => {
+  if (zoomIndex.value > 0) {
+    zoomIndex.value--;
+  }
+};
+
+const nextImage = () => {
+  if (zoomIndex.value < zoomImages.value.length - 1) {
+    zoomIndex.value++;
+  }
 };
 
 // CONTACT FORM METHODS

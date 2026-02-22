@@ -603,10 +603,22 @@
                 <h1 class="banner-title mb-4">
                   Our Insurance Products
                 </h1>
+
+                <!-- Marketing Highlight -->
+                <div class="marketing-badge mb-4">
+                  <v-chip color="success" variant="flat" size="large" class="font-weight-bold mr-2">
+                    <v-icon start>mdi-account</v-icon>
+                    Individual: ₱375/month
+                  </v-chip>
+                  <v-chip color="primary" variant="flat" size="large" class="font-weight-bold">
+                    <v-icon start>mdi-account-group</v-icon>
+                    Family: ₱650/month
+                  </v-chip>
+                </div>
                 
                 <p class="banner-subtitle mb-8">
                   Discover comprehensive insurance solutions designed to protect
-                  what matters most in your life.
+                  what matters most in your life. <strong>Get up to ₱30,000 coverage (Individual) or ₱50,000+ (Family) with 5-year payment term and premium waiver benefit!</strong>
                 </p>
                 
                 <v-btn

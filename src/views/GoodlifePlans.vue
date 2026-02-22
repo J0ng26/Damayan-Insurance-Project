@@ -192,9 +192,21 @@
               <v-col cols="12" sm="12" md="7" class="text-center text-md-start">
                 <h1 class="banner-titles-plan">GOODLIFE PLANS INC.</h1>
 
+                <!-- Marketing Highlight -->
+                <div class="marketing-badge mb-4">
+                  <v-chip color="success" variant="flat" size="large" class="font-weight-bold mr-2">
+                    <v-icon start>mdi-cash</v-icon>
+                    Only ₱800/month
+                  </v-chip>
+                  <v-chip color="primary" variant="flat" size="large" class="font-weight-bold">
+                    <v-icon start>mdi-gift</v-icon>
+                    ₱75,050 Total Benefits
+                  </v-chip>
+                </div>
+
                 <p class="banner-subtitles-plan">
                   With bigger benefits, we ensure that protection and financial
-                  stability are always within reach.
+                  stability are always within reach. <strong>Get ₱37,525 Cash Assistance + ₱37,525 Memorial Service Package — casket, embalming, chapel & more included!</strong>
                 </p>
 
                 <v-btn

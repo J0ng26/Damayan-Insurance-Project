@@ -193,11 +193,26 @@
               <v-col cols="12" md="7" class="text-center text-md-start">
                 <h1 class="banner-titles">MUTUAL BENEFITS ASSOCIATION INC.</h1>
 
+                <!-- Marketing Highlight -->
+                <div class="marketing-badge mb-4">
+                  <v-chip color="success" variant="flat" size="large" class="font-weight-bold mr-2">
+                    <v-icon start>mdi-shield-account</v-icon>
+                    ₱500,000 Coverage
+                  </v-chip>
+                  <v-chip color="primary" variant="flat" size="large" class="font-weight-bold mr-2">
+                    <v-icon start>mdi-family</v-icon>
+                    Family: ₱1,000,000
+                  </v-chip>
+                  <v-chip color="warning" variant="flat" size="large" class="font-weight-bold">
+                    <v-icon start>mdi-medical-bag</v-icon>
+                    36 Critical Illness
+                  </v-chip>
+                </div>
+
                 <p class="banner-subtitles">
                   Comprehensive insurance solutions in partnership with MBAI.
                   <br />
-                  Trusted protection for businesses and individuals across the
-                  Philippines.
+                  <strong>Life Secure Plus from ₱2,500/month | Family Protect Gold from ₱4,800/month — includes hospital income benefit, education fund & emergency assistance!</strong>
                 </p>
 
                 <v-btn
