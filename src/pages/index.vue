@@ -547,21 +547,25 @@
               <v-col
                 cols="12"
                 md="7"
-                class="d-flex flex-column align-center justify-center text-center text-md-start text-first-mobile text-first-tablet"
+                class="d-flex flex-column align-center align-md-start justify-center text-center text-md-start text-first-mobile text-first-tablet"
               >
-                <div class="banner-containers d-flex flex-column align-center">
+                <div class="banner-containers d-flex flex-column align-center align-md-start">
                   <h2 class="banner-title-family text-left w-100">
-                    SECURE YOUR LIFE,<br />
+                    SECURING THE LIVES OF EVERY FILIPINO FAMILY SINCE 2016, <br>
                     <span class="banner-title-highlight-family">
-                      SECURE WITH GOODLIFE
+                    WITH MORE THAN 195 BRANCHES NATIONWIDE
                     </span>
                   </h2>
 
                   <p class="banner-subtitle-family text-left w-100">
-                    <strong>Choose from DAMAYAN's affordable micro-insurance plans starting at ₱375/month, 
-                    GOODLIFE PLANS with premium coverage from ₱800/month, or MBAI's comprehensive 
-                    protection packages from ₱2,500/month—all designed to give you peace of mind 
-                    with coverage up to ₱500,000+ including memorial service and critical illness benefits.</strong>
+                    At Goodlife, we offer comprehensive individual or family
+                    type of insurance that caters to the needs of your immediate
+                    family members at the time of life's uncertainties.
+                    Through <strong>Goodlife Plans</strong> (starting at <strong>₱1,500</strong>), 
+                    <strong>Damayan Insurance</strong> (as low as <strong>₱500</strong>), 
+                    and <strong>MBAI</strong> (from <strong>₱800</strong>), 
+                    we provide trusted protection, financial security, and peace of mind 
+                    for every Filipino family.
                   </p>
                 </div>
               </v-col>
@@ -1402,21 +1406,6 @@ import "aos/dist/aos.css";
 import "@/styles/css/style.css";
 import { messageService } from "@/plugins/api";
 
-// Legal Documents Images
-import cor1 from "@/assets/registration/COR-1.jpg";
-import cor2 from "@/assets/registration/COR-2.jpg";
-import cor3 from "@/assets/registration/COR-3.jpg";
-import amended1 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0001.jpg";
-import amended2 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0002.jpg";
-import amended3 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0003.jpg";
-import amended4 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0004.jpg";
-import amended5 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0005.jpg";
-import amended6 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0006.jpg";
-import amended7 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0007.jpg";
-import amended8 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0008.jpg";
-import amended9 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0009.jpg";
-import amended10 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0010.jpg";
-
 import { defineOptions } from "vue";
 
 defineOptions({
@@ -1538,6 +1527,21 @@ const productsMenuItems = ref([
   { title: "MBAI", route: "/products/mbai" },
 ]);
 
+// Legal Documents Images
+import cor1 from "@/assets/registration/COR-1.jpg";
+import cor2 from "@/assets/registration/COR-2.jpg";
+import cor3 from "@/assets/registration/COR-3.jpg";
+import amended1 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0001.jpg";
+import amended2 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0002.jpg";
+import amended3 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0003.jpg";
+import amended4 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0004.jpg";
+import amended5 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0005.jpg";
+import amended6 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0006.jpg";
+import amended7 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0007.jpg";
+import amended8 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0008.jpg";
+import amended9 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0009.jpg";
+import amended10 from "@/assets/registration/amendment/DAMAYAN 2ND AMENDED_page-0010.jpg";
+
 // Legal Documents Data
 const legalDocuments = ref([
   {
@@ -1549,6 +1553,26 @@ const legalDocuments = ref([
     images: [amended1, amended2, amended3, amended4, amended5, amended6, amended7, amended8, amended9, amended10],
   },
 ]);
+
+// ZOOM DIALOG METHODS
+const openZoom = (doc) => {
+  zoomTitle.value = doc.title;
+  zoomImages.value = doc.images;
+  zoomIndex.value = 0;
+  zoomDialog.value = true;
+};
+
+const closeZoomDialog = () => {
+  zoomDialog.value = false;
+};
+
+const prevImage = () => {
+  if (zoomIndex.value > 0) zoomIndex.value--;
+};
+
+const nextImage = () => {
+  if (zoomIndex.value < zoomImages.value.length - 1) zoomIndex.value++;
+};
 
 // NAVIGATION METHODS
 const goToProductsPage = (productRoute) => {
@@ -1594,30 +1618,6 @@ const openLegalitiesDialog = () => {
 
 const closeLegalitiesDialog = () => {
   legalitiesDialog.value = false;
-};
-
-// ZOOM METHODS
-const openZoom = (document) => {
-  zoomTitle.value = document.title;
-  zoomImages.value = document.images;
-  zoomIndex.value = 0;
-  zoomDialog.value = true;
-};
-
-const closeZoomDialog = () => {
-  zoomDialog.value = false;
-};
-
-const prevImage = () => {
-  if (zoomIndex.value > 0) {
-    zoomIndex.value--;
-  }
-};
-
-const nextImage = () => {
-  if (zoomIndex.value < zoomImages.value.length - 1) {
-    zoomIndex.value++;
-  }
 };
 
 // CONTACT FORM METHODS

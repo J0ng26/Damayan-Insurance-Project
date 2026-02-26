@@ -379,9 +379,9 @@ body {
 
 /* ===== MAIN WEBSITE TYPOGRAPHY ===== */
 .banner-title-family {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.2rem, 6vw, 4.2rem);
-  font-weight: 600;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3.2rem, 6vw, 3.2rem);
+  font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.3px;
   margin-bottom: 1.6rem;
@@ -414,18 +414,9 @@ body {
   font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   font-weight: 500;
   line-height: 1.6;
+  transform: translateX(-150px);
   color: #2d3748;
   letter-spacing: 0.3px;
-  /* Desktop: left-aligned with offset */
-  transform: translateX(-150px);
-}
-
-/* Mobile/Tablet: Center the marketing tagline */
-@media (max-width: 959px) {
-  .marketing-tagline {
-    transform: none;
-    text-align: center !important;
-  }
 }
 
 /* ===== MBAI PLAN TYPOGRAPHY ===== */
@@ -2036,7 +2027,8 @@ body {
   }
 
   .banner-title-family {
-    font-size: 3.6rem;
+    letter-spacing: 3px;
+    font-size: 3.2rem;
     text-align: left;
   }
 
