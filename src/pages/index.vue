@@ -561,9 +561,9 @@
                     At Goodlife, we offer comprehensive individual or family
                     type of insurance that caters to the needs of your immediate
                     family members at the time of life's uncertainties.
-                    Through <strong>Goodlife Plans</strong> (starting at <strong>₱1,500</strong>), 
-                    <strong>Damayan Insurance</strong> (as low as <strong>₱500</strong>), 
-                    and <strong>MBAI</strong> (from <strong>₱800</strong>), 
+                    Through <strong>Goodlife Plans</strong> (starting at <strong>₱800</strong>), 
+                    <strong>Damayan Insurance</strong> (as low as <strong>₱375</strong>), 
+                    and <strong>MBAI</strong> (from <strong>₱2,500</strong>), 
                     we provide trusted protection, financial security, and peace of mind 
                     for every Filipino family.
                   </p>
