@@ -165,7 +165,7 @@
     </div>
 
     <!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
-    <v-dialog v-model="contactDialog" max-width="800" persistent scrollable>
+    <v-dialog v-model="contactDialog" max-width="1000" persistent scrollable>
       <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
         <!-- Minimal Header -->
         <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
@@ -480,6 +480,21 @@
             Send
           </v-btn>
         </v-card-actions>
+
+        <!-- Wait Indication -->
+        <v-expand-transition>
+          <div v-if="submitting" class="px-6 pb-4 text-center">
+            <v-progress-linear
+              indeterminate
+              color="primary"
+              height="2"
+              class="mb-2"
+            ></v-progress-linear>
+            <span class="text-caption text-medium-emphasis font-weight-medium">
+              Sending your message, please wait...
+            </span>
+          </div>
+        </v-expand-transition>
       </v-card>
     </v-dialog>
 
@@ -1495,6 +1510,22 @@
                 >
                   Send Message
                 </v-btn>
+
+                <!-- Wait Indication -->
+                <v-fade-transition>
+                  <div v-if="submittingMain" class="mt-2 mb-4 d-flex flex-column align-center">
+                    <v-progress-circular
+                      indeterminate
+                      color="white"
+                      size="24"
+                      width="2"
+                      class="mb-2"
+                    ></v-progress-circular>
+                    <span class="text-body-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
+                      Sending message, please wait...
+                    </span>
+                  </div>
+                </v-fade-transition>
               </v-form>
             </v-card>
           </v-col>
@@ -1599,7 +1630,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, watch, nextTick, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -1956,14 +1987,8 @@ const submitContactFormMain = async () => {
   }
 };
 
-const showContactIcon = ref(true);
-
-watch(contactDialog, (newVal) => {
-  if (newVal) {
-    showContactIcon.value = false;
-  } else {
-    showContactIcon.value = true;
-  }
+const showContactIcon = computed(() => {
+  return !contactDialog.value && activeSection.value !== 'contact';
 });
 
 // SCROLLSPY FUNCTIONALITY

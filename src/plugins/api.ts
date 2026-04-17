@@ -6,21 +6,50 @@
 
 import axios from 'axios';
 
-// Create axios instance with base URL from environment variables
+// ✅ Dynamic baseURL depending on environment
+const baseURL =
+  import.meta.env.VITE_RUNTYPE === "development"
+    ? import.meta.env.VITE_TICKET_API_DEV
+    : import.meta.env.VITE_TICKET_API_PROD;
+
+// ✅ Create axios instance
 const api = axios.create({
-  baseURL: import.meta.env.VITE_TICKET_API_URL || 'http://localhost:8000/api',
+  baseURL: baseURL || 'http://localhost:8000/api', // fallback
+  withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
 });
 
+let csrfCookiePromise: Promise<void> | null = null;
+
+const getApiOrigin = (url: string): string => {
+  try {
+    return new URL(url).origin;
+  } catch {
+    return '';
+  }
+};
+
+const ensureCsrfCookie = async (): Promise<void> => {
+  if (!csrfCookiePromise) {
+    const origin = getApiOrigin(api.defaults.baseURL || '');
+    const csrfCookieUrl = origin ? `${origin}/sanctum/csrf-cookie` : '/sanctum/csrf-cookie';
+
+    csrfCookiePromise = api.get(csrfCookieUrl).then(() => undefined).catch((error) => {
+      csrfCookiePromise = null;
+      throw error;
+    });
+  }
+
+  await csrfCookiePromise;
+};
+
 // Message Service for Contact Support Form
 export const messageService = {
   /**
    * Submit a new contact support message to the ticket system
-   * @param data - Message data to submit
-   * @returns Promise with the API response
    */
   async add(data: {
     title: string;
@@ -35,6 +64,7 @@ export const messageService = {
     entity: string;
   }) {
     try {
+      await ensureCsrfCookie();
       const response = await api.post('/message/add', data);
       return response.data;
     } catch (error: any) {
@@ -42,8 +72,17 @@ export const messageService = {
       if (error.response?.status === 422) {
         throw new Error(error.response.data.message || 'Validation failed');
       }
+
+      if (error.response?.status === 419) {
+        csrfCookiePromise = null;
+        throw new Error('Session expired. Please try submitting the form again.');
+      }
+
       // Handle other errors
-      throw new Error(error.response?.data?.message || 'Failed to submit message. Please try again.');
+      throw new Error(
+        error.response?.data?.message ||
+        'Failed to submit message. Please try again.'
+      );
     }
   },
 };
