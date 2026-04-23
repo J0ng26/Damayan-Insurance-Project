@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <!-- Navigation Bar - Consistent with GoodlifePlans.vue -->
     <v-app-bar
       color="#F5F5F5"
@@ -260,11 +260,11 @@
       <v-text-field
         v-model="contactForm.seriesNo"
         label="Series No."
-        placeholder="SER-2024-001"
+        placeholder="1001"
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.series]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -290,7 +290,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -305,7 +305,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -320,7 +320,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -672,7 +672,7 @@
 
         <!-- Premium Table Section -->
         <v-row justify="center">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <!-- Minimal Payment Grid -->
             <v-row class="mb-6" data-aos="fade-up">
               <v-col
@@ -796,7 +796,7 @@
 
         <!-- Centered Benefits List -->
         <v-row justify="center" class="mb-12" data-aos="fade-up">
-          <v-col cols="12" md="8" lg="6">
+          <v-col cols="12" md="6" lg="6">
             <v-row>
               <v-col
                 cols="6"
@@ -832,7 +832,7 @@
 
         <!-- Centered Cards -->
         <v-row justify="center" data-aos="fade-up">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <v-row justify="center">
               <!-- Basic Life Insurance -->
               <v-col cols="12" md="4" class="text-center mb-6">
@@ -1002,7 +1002,7 @@
 
         <!-- Computation Cards -->
         <v-row justify="center" data-aos="fade-up">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <v-row justify="center">
               <!-- Natural Death -->
               <v-col cols="12" md="6" class="text-center mb-6">
@@ -1250,7 +1250,7 @@
 
         <!-- Premium Table Section -->
         <v-row justify="center">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <!-- Minimal Payment Grid -->
             <v-row class="mb-6" data-aos="fade-up">
               <v-col
@@ -1396,7 +1396,7 @@
 
         <!-- Computation Cards -->
         <v-row justify="center" data-aos="fade-up">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <v-row justify="center">
               <!-- Natural Death -->
               <v-col cols="12" md="6" class="text-center mb-6">
@@ -1623,7 +1623,7 @@
 
         <!-- Dependents Coverage -->
         <v-row justify="center" data-aos="fade-up">
-          <v-col cols="12" md="10" lg="8">
+          <v-col cols="12" md="12" lg="11">
             <v-row>
               <v-col
                 cols="12"
@@ -1708,7 +1708,7 @@
 
         <!-- Total Coverage & Requirements -->
         <v-row justify="center" class="mt-8" data-aos="fade-up">
-          <v-col cols="12" md="8" lg="6">
+          <v-col cols="12" md="10" lg="9">
             <v-card variant="outlined" class="rounded-lg pa-5">
               <!-- Requirements -->
               <div class="text-center mb-4">
@@ -2066,7 +2066,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-app>
+  </div>
 </template>
 
 <script setup>
@@ -2234,7 +2234,17 @@ const rules = {
   },
   phone: (v) => {
     const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-    return pattern.test(v) || "Please enter a valid phone number";
+    return pattern.test(v) || "Please enter a valid phone number (e.g., +63 912 345 6789)";
+  },
+  alphabetic: (v) => {
+    if (!v) return true;
+    const pattern = /^[A-Za-z\s.-]+$/;
+    return pattern.test(v) || "Please enter letters only";
+  },
+  series: (v) => {
+    if (!v) return true;
+    const pattern = /^\d+$/;
+    return pattern.test(v) || "Please enter numbers only";
   },
 };
 

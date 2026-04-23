@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <!-- Navigation Bar -->
     <v-app-bar
       color="#F5F5F5"
@@ -1266,11 +1266,11 @@
       <v-text-field
         v-model="contactForm.seriesNo"
         label="Series No."
-        placeholder="SER-2024-001"
+        placeholder="1001"
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.series]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -1296,7 +1296,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -1311,7 +1311,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -1326,7 +1326,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required]"
+        :rules="[rules.required, rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -1581,7 +1581,7 @@
       </template>
     </v-snackbar>
 
-  </v-app>
+  </div>
 </template>
 
 <script setup>
@@ -1752,7 +1752,17 @@ const rules = {
   },
   phone: (v) => {
     const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-    return pattern.test(v) || "Please enter a valid phone number";
+    return pattern.test(v) || "Please enter a valid phone number (e.g., +63 912 345 6789)";
+  },
+  alphabetic: (v) => {
+    if (!v) return true;
+    const pattern = /^[A-Za-z\s.-]+$/;
+    return pattern.test(v) || "Please enter letters only";
+  },
+  series: (v) => {
+    if (!v) return true;
+    const pattern = /^\d+$/;
+    return pattern.test(v) || "Please enter numbers only";
   },
 };
 

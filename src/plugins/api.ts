@@ -70,7 +70,7 @@ export const messageService = {
     } catch (error: any) {
       // Handle validation errors from Laravel
       if (error.response?.status === 422) {
-        throw new Error(error.response.data.message || 'Validation failed');
+        throw error.response.data.errors || error.response.data.message || 'Validation failed';
       }
 
       if (error.response?.status === 419) {
@@ -85,6 +85,22 @@ export const messageService = {
       );
     }
   },
+};
+
+export const cookieConsentService = {
+  /**
+   * Submit cookie consent choice
+   */
+  async add(data: { status: 'accepted' | 'declined' }) {
+    try {
+      const response = await api.post('/cookie-consent', data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Failed to submit cookie consent', error);
+      // Fail silently for tracking
+      return null;
+    }
+  }
 };
 
 export default api;

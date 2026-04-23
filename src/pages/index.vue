@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <!-- Navigation Bar -->
     <v-app-bar
       color="#F5F5F5"
@@ -208,11 +208,12 @@
                 <v-text-field
                   v-model="contactForm.seriesNo"
                   label="Series No."
-                  placeholder="SER-2024-001"
+                  placeholder="1001"
                   variant="outlined"
                   density="compact"
                   hide-details="auto"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.series]"
+                  :error-messages="contactFormErrors.seriesNo"
                   bg-color="transparent"
                   class="minimal-field"
                 ></v-text-field>
@@ -235,7 +236,8 @@
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
-                    :rules="[rules.required]"
+                    :rules="[rules.required, rules.alphabetic]"
+                    :error-messages="contactFormErrors.lastName"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-text-field>
@@ -248,7 +250,8 @@
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
-                    :rules="[rules.required]"
+                    :rules="[rules.required, rules.alphabetic]"
+                    :error-messages="contactFormErrors.middleName"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-text-field>
@@ -261,7 +264,8 @@
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
-                    :rules="[rules.required]"
+                    :rules="[rules.required, rules.alphabetic]"
+                    :error-messages="contactFormErrors.firstName"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-text-field>
@@ -286,6 +290,7 @@
                     density="compact"
                     hide-details="auto"
                     :rules="[rules.required, rules.email]"
+                    :error-messages="contactFormErrors.email"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-text-field>
@@ -299,6 +304,7 @@
                     density="compact"
                     hide-details="auto"
                     :rules="[rules.required, rules.phone]"
+                    :error-messages="contactFormErrors.contactNo"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-text-field>
@@ -324,6 +330,7 @@
                     density="compact"
                     hide-details="auto"
                     :rules="[rules.required]"
+                    :error-messages="contactFormErrors.entity"
                     bg-color="transparent"
                     class="minimal-field"
                     return-object
@@ -359,6 +366,7 @@
                       density="compact"
                       hide-details="auto"
                       :rules="[rules.required]"
+                      :error-messages="contactFormErrors.planType"
                       bg-color="transparent"
                       class="minimal-field"
                       item-title="title"
@@ -383,6 +391,7 @@
                       density="compact"
                       hide-details="auto"
                       :rules="[rules.required]"
+                      :error-messages="contactFormErrors.planType"
                       bg-color="transparent"
                       class="minimal-field"
                       item-title="title"
@@ -407,6 +416,7 @@
                       density="compact"
                       hide-details="auto"
                       :rules="[rules.required]"
+                      :error-messages="contactFormErrors.planType"
                       bg-color="transparent"
                       class="minimal-field"
                       item-title="title"
@@ -447,6 +457,7 @@
                     auto-grow
                     hide-details="auto"
                     :rules="[rules.required]"
+                    :error-messages="contactFormErrors.description"
                     bg-color="transparent"
                     class="minimal-field"
                   ></v-textarea>
@@ -1256,10 +1267,12 @@
                   <v-text-field
                     v-model="contactFormMain.seriesNo"
                     label="Series No."
-                    placeholder="SER-2024-001"
+                    placeholder="1001"
                     variant="outlined"
                     density="comfortable"
-                    :rules="[rules.required]"
+                    hide-details="auto"
+                    :rules="[rules.required, rules.series]"
+                    :error-messages="contactFormMainErrors.seriesNo"
                     bg-color="white"
                     color="primary"
                     class="minimal-input"
@@ -1281,7 +1294,9 @@
                       placeholder="Dela Cruz"
                       variant="outlined"
                       density="comfortable"
-                      :rules="[rules.required]"
+                      hide-details="auto"
+                      :rules="[rules.required, rules.alphabetic]"
+                      :error-messages="contactFormMainErrors.lastName"
                       bg-color="white"
                       color="primary"
                       class="minimal-input"
@@ -1294,7 +1309,9 @@
                       placeholder="Santos"
                       variant="outlined"
                       density="comfortable"
-                      :rules="[rules.required]"
+                      hide-details="auto"
+                      :rules="[rules.required, rules.alphabetic]"
+                      :error-messages="contactFormMainErrors.middleName"
                       bg-color="white"
                       color="primary"
                       class="minimal-input"
@@ -1307,7 +1324,9 @@
                       placeholder="Juan"
                       variant="outlined"
                       density="comfortable"
-                      :rules="[rules.required]"
+                      hide-details="auto"
+                      :rules="[rules.required, rules.alphabetic]"
+                      :error-messages="contactFormMainErrors.firstName"
                       bg-color="white"
                       color="primary"
                       class="minimal-input"
@@ -1330,7 +1349,9 @@
                       placeholder="juan@example.com"
                       variant="outlined"
                       density="comfortable"
+                      hide-details="auto"
                       :rules="[rules.required, rules.email]"
+                      :error-messages="contactFormMainErrors.email"
                       bg-color="white"
                       color="primary"
                       class="minimal-input"
@@ -1343,7 +1364,9 @@
                       placeholder="+63 912 345 6789"
                       variant="outlined"
                       density="comfortable"
+                      hide-details="auto"
                       :rules="[rules.required, rules.phone]"
+                      :error-messages="contactFormMainErrors.contactNo"
                       bg-color="white"
                       color="primary"
                       class="minimal-input"
@@ -1367,7 +1390,9 @@
                       placeholder="Select entity type"
                       variant="outlined"
                       density="comfortable"
+                      hide-details="auto"
                       :rules="[rules.required]"
+                      :error-messages="contactFormMainErrors.entity"
                       bg-color="white"
                       color="primary"
                       return-object
@@ -1402,7 +1427,9 @@
                         placeholder="Select plan type"
                         variant="outlined"
                         density="comfortable"
+                        hide-details="auto"
                         :rules="[rules.required]"
+                        :error-messages="contactFormMainErrors.planType"
                         bg-color="white"
                         color="primary"
                         item-title="title"
@@ -1426,7 +1453,9 @@
                         placeholder="Select plan type"
                         variant="outlined"
                         density="comfortable"
+                        hide-details="auto"
                         :rules="[rules.required]"
+                        :error-messages="contactFormMainErrors.planType"
                         bg-color="white"
                         color="primary"
                         item-title="title"
@@ -1450,7 +1479,9 @@
                         placeholder="Select plan type"
                         variant="outlined"
                         density="comfortable"
+                        hide-details="auto"
                         :rules="[rules.required]"
+                        :error-messages="contactFormMainErrors.planType"
                         bg-color="white"
                         color="primary"
                         item-title="title"
@@ -1494,7 +1525,9 @@
                   variant="outlined"
                   rows="4"
                   auto-grow
+                  hide-details="auto"
                   :rules="[rules.required]"
+                  :error-messages="contactFormMainErrors.description"
                   bg-color="white"
                   color="primary"
                   class="minimal-textarea mb-4"
@@ -1587,9 +1620,19 @@
                     Insurance Plans
                   </a>
                 </li>
-                <li>
+                <li class="mb-2">
                   <a href="/contact" class="text-black text-decoration-none">
                     Contact
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="/privacy-policy" class="text-black text-decoration-none">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms-and-conditions" class="text-black text-decoration-none">
+                    Terms & Conditions
                   </a>
                 </li>
               </ul>
@@ -1626,7 +1669,7 @@
         </v-container>
       </v-footer>
     </v-main>
-  </v-app>
+  </div>
 </template>
 
 <script setup>
@@ -1657,11 +1700,13 @@ const contactDialog = ref(false);
 const formValid = ref(false);
 const submitting = ref(false);
 const contactFormRef = ref(null);
+const contactAttempts = ref(0);
 
 // Main Contact Form State
 const formValidMain = ref(false);
 const submittingMain = ref(false);
 const contactFormMainRef = ref(null);
+const contactMainAttempts = ref(0);
 
 // Contact Form Data (Dialog)
 const contactForm = ref({
@@ -1676,6 +1721,19 @@ const contactForm = ref({
   description: "",
 });
 
+// Contact Form Errors (Dialog)
+const contactFormErrors = ref({
+  seriesNo: "",
+  lastName: "",
+  middleName: "",
+  firstName: "",
+  email: "",
+  contactNo: "",
+  entity: "",
+  planType: "",
+  description: "",
+});
+
 // Contact Form Data (Main Section)
 const contactFormMain = ref({
   seriesNo: "",
@@ -1686,6 +1744,19 @@ const contactFormMain = ref({
   contactNo: "",
   entity: null,
   planType: null,
+  description: "",
+});
+
+// Contact Form Errors (Main Section)
+const contactFormMainErrors = ref({
+  seriesNo: "",
+  lastName: "",
+  middleName: "",
+  firstName: "",
+  email: "",
+  contactNo: "",
+  entity: "",
+  planType: "",
   description: "",
 });
 
@@ -1753,6 +1824,16 @@ const rules = {
   phone: (v) => {
     const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     return pattern.test(v) || "Please enter a valid phone number (e.g., +63 912 345 6789)";
+  },
+  alphabetic: (v) => {
+    if (!v) return true;
+    const pattern = /^[A-Za-z\s.-]+$/;
+    return pattern.test(v) || "Please enter letters only";
+  },
+  series: (v) => {
+    if (!v) return true;
+    const pattern = /^\d+$/;
+    return pattern.test(v) || "Please enter numbers only";
   },
 };
 
@@ -1877,10 +1958,34 @@ const handleEntityChange = () => {
 };
 
 const submitContactForm = async () => {
+  // Check attempts limit
+  if (contactAttempts.value >= 3) {
+    snackbar.value = {
+      show: true,
+      text: "Too many attempts. Please try again later.",
+      color: "warning",
+    };
+    return;
+  }
+
+  // Clear previous errors
+  contactFormErrors.value = {
+    seriesNo: "",
+    lastName: "",
+    middleName: "",
+    firstName: "",
+    email: "",
+    contactNo: "",
+    entity: "",
+    planType: "",
+    description: "",
+  };
+
   const { valid } = await contactFormRef.value?.validate();
   if (!valid) return;
 
   submitting.value = true;
+  contactAttempts.value++;
 
   try {
     const messageData = {
@@ -1904,6 +2009,8 @@ const submitContactForm = async () => {
       color: "success",
     };
 
+    contactAttempts.value = 0;
+
     contactFormRef.value?.reset();
     contactForm.value = {
       seriesNo: "",
@@ -1916,15 +2023,41 @@ const submitContactForm = async () => {
       planType: null,
       description: "",
     };
+    contactFormErrors.value = {
+      seriesNo: "",
+      lastName: "",
+      middleName: "",
+      firstName: "",
+      email: "",
+      contactNo: "",
+      entity: "",
+      planType: "",
+      description: "",
+    };
 
     contactDialog.value = false;
   } catch (error) {
     console.error('Failed to submit contact form:', error);
-    snackbar.value = {
-      show: true,
-      text: error.message || "Failed to send message. Please try again.",
-      color: "error",
-    };
+    if (typeof error === 'object' && error !== null) {
+      // Set field-specific errors
+      contactFormErrors.value = {
+        seriesNo: error.series_no?.[0] || "",
+        lastName: error.last_name?.[0] || "",
+        middleName: error.middle_name?.[0] || "",
+        firstName: error.first_name?.[0] || "",
+        email: error.email?.[0] || "",
+        contactNo: error.contact_no?.[0] || "",
+        entity: error.entity?.[0] || "",
+        planType: error.plan?.[0] || "",
+        description: error.description?.[0] || "",
+      };
+    } else {
+      snackbar.value = {
+        show: true,
+        text: error.message || "Failed to send message. Please try again.",
+        color: "error",
+      };
+    }
   } finally {
     submitting.value = false;
   }
@@ -1936,10 +2069,34 @@ const handleEntityChangeMain = () => {
 };
 
 const submitContactFormMain = async () => {
+  // Check attempts limit
+  if (contactMainAttempts.value >= 3) {
+    snackbar.value = {
+      show: true,
+      text: "Too many attempts. Please try again later.",
+      color: "warning",
+    };
+    return;
+  }
+
+  // Clear previous errors
+  contactFormMainErrors.value = {
+    seriesNo: "",
+    lastName: "",
+    middleName: "",
+    firstName: "",
+    email: "",
+    contactNo: "",
+    entity: "",
+    planType: "",
+    description: "",
+  };
+
   const { valid } = await contactFormMainRef.value?.validate();
   if (!valid) return;
 
   submittingMain.value = true;
+  contactMainAttempts.value++;
 
   try {
     const messageData = {
@@ -1963,6 +2120,8 @@ const submitContactFormMain = async () => {
       color: "success",
     };
 
+    contactMainAttempts.value = 0;
+
     contactFormMainRef.value?.reset();
     contactFormMain.value = {
       seriesNo: "",
@@ -1975,13 +2134,39 @@ const submitContactFormMain = async () => {
       planType: null,
       description: "",
     };
+    contactFormMainErrors.value = {
+      seriesNo: "",
+      lastName: "",
+      middleName: "",
+      firstName: "",
+      email: "",
+      contactNo: "",
+      entity: "",
+      planType: "",
+      description: "",
+    };
   } catch (error) {
     console.error('Failed to submit contact form:', error);
-    snackbar.value = {
-      show: true,
-      text: error.message || "Failed to send message. Please try again.",
-      color: "error",
-    };
+    if (typeof error === 'object' && error !== null) {
+      // Set field-specific errors
+      contactFormMainErrors.value = {
+        seriesNo: error.series_no?.[0] || "",
+        lastName: error.last_name?.[0] || "",
+        middleName: error.middle_name?.[0] || "",
+        firstName: error.first_name?.[0] || "",
+        email: error.email?.[0] || "",
+        contactNo: error.contact_no?.[0] || "",
+        entity: error.entity?.[0] || "",
+        planType: error.plan?.[0] || "",
+        description: error.description?.[0] || "",
+      };
+    } else {
+      snackbar.value = {
+        show: true,
+        text: error.message || "Failed to send message. Please try again.",
+        color: "error",
+      };
+    }
   } finally {
     submittingMain.value = false;
   }
