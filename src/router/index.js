@@ -5,6 +5,9 @@ import DamayanProducts from '@/views/DamayanProducts.vue'
 import GoodlifePlans from '@/views/GoodlifePlans.vue'
 import MBAIProducts from '@/views/MBAIProducts.vue'
 
+import PrivacyPolicy from '@/pages/privacy-policy.vue'
+import TermsAndConditions from '@/pages/terms-and-conditions.vue'
+
 const routes = [
   {
     path: '/',
@@ -30,6 +33,16 @@ const routes = [
     path: '/products/mbai',
     name: 'MBAIProducts',
     component: MBAIProducts
+  },
+  {
+    path: '/privacy-policy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
+  },
+  {
+    path: '/terms-and-conditions',
+    name: 'TermsAndConditions',
+    component: TermsAndConditions
   }
 ]
 
