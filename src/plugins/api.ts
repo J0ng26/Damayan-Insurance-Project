@@ -61,7 +61,7 @@ export const messageService = {
     middle_name?: string;
     first_name: string;
     plan?: string;
-    entity: string;
+    concern_info: any[];
   }) {
     try {
       await ensureCsrfCookie();

@@ -1863,8 +1863,7 @@ const submitContactForm = async () => {
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
-      concern: contactForm.value.concern?.title || '',
-      entity: '',
+      concern_info: [contactForm.value.concern],
     };
 
     await messageService.add(messageData);
@@ -1971,8 +1970,7 @@ const submitContactFormMain = async () => {
       middle_name: contactFormMain.value.middleName || '',
       first_name: contactFormMain.value.firstName,
       plan: contactFormMain.value.planType?.title || '',
-      concern: contactFormMain.value.concern?.title || '',
-      entity: '',
+      concern_info: [contactFormMain.value.concern],
     };
 
     await messageService.add(messageData);
