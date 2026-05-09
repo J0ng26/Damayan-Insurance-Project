@@ -1004,6 +1004,53 @@
         </v-container>
       </v-container>
 
+      <!-- Social Media & External Links Section -->
+      <v-container class="py-12" data-aos="fade-up">
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="8">
+            <v-card variant="outlined" class="rounded-xl pa-8 text-center border-dashed" style="border-width: 2px; border-color: #e2e8f0; background-color: #fafafa;">
+              <h2 class="text-h4 font-weight-bold mb-4" style="color: #1a202c">
+                Connect with Goodlife Plans
+              </h2>
+              <p class="text-body-1 text-grey-darken-1 mb-8">
+                Stay updated with our latest news and explore more of our services through our official platforms.
+              </p>
+              
+              <v-row justify="center" class="ga-4">
+                <v-col cols="12" sm="5">
+                  <v-btn
+                    block
+                    prepend-icon="mdi-facebook"
+                    color="#1877F2"
+                    size="x-large"
+                    variant="flat"
+                    class="text-capitalize rounded-lg font-weight-bold shadow-sm"
+                    href="https://www.facebook.com/share/16rMkUEhuR/?mibextid=wwXIfr"
+                    target="_blank"
+                  >
+                    Follow us on Facebook
+                  </v-btn>
+                </v-col>
+                <v-col cols="12" sm="5">
+                  <v-btn
+                    block
+                    prepend-icon="mdi-web"
+                    color="#03a635"
+                    size="x-large"
+                    variant="flat"
+                    class="text-capitalize rounded-lg font-weight-bold shadow-sm"
+                    href="https://www.goodlifeplans.ph/"
+                    target="_blank"
+                  >
+                    Visit Official Website
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
       <!-- Footer -->
       <v-footer
         class="pt-10 pb-6"
@@ -1039,6 +1086,27 @@
                 Filipino families through accessible, reliable, and
                 people-centered insurance solutions.
               </p>
+
+              <div class="d-flex mt-4 ga-3">
+                <v-btn
+                  icon="mdi-facebook"
+                  variant="tonal"
+                  color="#1877F2"
+                  size="small"
+                  href="https://www.facebook.com/share/16rMkUEhuR/?mibextid=wwXIfr"
+                  target="_blank"
+                  title="Follow us on Facebook"
+                ></v-btn>
+                <v-btn
+                  icon="mdi-web"
+                  variant="tonal"
+                  color="#03a635"
+                  size="small"
+                  href="https://www.goodlifeplans.ph/"
+                  target="_blank"
+                  title="Visit our official website"
+                ></v-btn>
+              </div>
             </v-col>
 
             <!-- Quick Links -->
@@ -1700,8 +1768,7 @@ const submitContactForm = async () => {
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
-      concern: contactForm.value.concern?.title || '',
-      entity: '',
+      concern_info: [contactForm.value.concern],
     };
 
     // Send to ticket system API

@@ -2182,8 +2182,7 @@ const submitContactForm = async () => {
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
-      concern: contactForm.value.concern?.title || '',
-      entity: '',
+      concern_info: [contactForm.value.concern],
     };
 
     // Send to ticket system API
