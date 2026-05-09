@@ -1448,6 +1448,39 @@
         </v-row>
       </v-container>
 
+      <!-- Social Media Section -->
+      <v-container class="py-12" data-aos="fade-up">
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="8">
+            <v-card variant="outlined" class="rounded-xl pa-8 text-center border-dashed" style="border-width: 2px; border-color: #e2e8f0; background-color: #fafafa;">
+              <h2 class="text-h6 font-weight-bold mb-2" style="color: #1a202c">
+                Connect with Goodlife
+              </h2>
+              <p class="text-body-2 text-grey-darken-1 mb-6">
+                Stay updated with our latest news, community events, and insurance tips by following our official Facebook page.
+              </p>
+              
+              <v-row justify="center">
+                <v-col cols="12" sm="6">
+                  <v-btn
+                    block
+                    prepend-icon="mdi-facebook"
+                    color="#1877F2"
+                    size="large"
+                    variant="flat"
+                    class="text-capitalize rounded-lg font-weight-bold shadow-sm"
+                    href="https://www.facebook.com/share/18orq16XQj/?mibextid=wwXIfr"
+                    target="_blank"
+                  >
+                    Follow us on Facebook
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
       <!-- Footer Section -->
       <v-footer
         class="pt-10 pb-6"
@@ -1475,11 +1508,23 @@
                   </span>
                 </div>
               </div>
-              <p class="text-body-2 text-medium-emphasis">
+               <p class="text-body-2 text-medium-emphasis">
                 A 100% Filipino-owned insurance agency dedicated to protecting
                 Filipino families through accessible, reliable, and
                 people-centered insurance solutions.
               </p>
+
+              <div class="d-flex mt-4">
+                <v-btn
+                  icon="mdi-facebook"
+                  variant="tonal"
+                  color="#1877F2"
+                  size="small"
+                  href="https://www.facebook.com/share/18orq16XQj/?mibextid=wwXIfr"
+                  target="_blank"
+                  title="Follow us on Facebook"
+                ></v-btn>
+              </div>
             </v-col>
 
             <v-col cols="6" md="4">
