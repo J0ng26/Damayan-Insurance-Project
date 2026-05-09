@@ -193,27 +193,15 @@
               <v-col cols="12" md="7" class="text-center text-md-start">
                 <h1 class="banner-titles">MUTUAL BENEFITS ASSOCIATION INC.</h1>
 
-                <!-- Marketing Highlight -->
-                <div class="marketing-badge mb-4">
-                  <v-chip color="success" variant="flat" size="large" class="font-weight-bold mr-2">
-                    <v-icon start>mdi-shield-account</v-icon>
-                    ₱500,000 Coverage
-                  </v-chip>
-                  <v-chip color="primary" variant="flat" size="large" class="font-weight-bold mr-2">
-                    <v-icon start>mdi-family</v-icon>
-                    Family: ₱1,000,000
-                  </v-chip>
-                  <v-chip color="warning" variant="flat" size="large" class="font-weight-bold">
-                    <v-icon start>mdi-medical-bag</v-icon>
-                    36 Critical Illness
-                  </v-chip>
+                <!-- Tagline & SEC Registration -->
+                <div class="mb-8">
+                  <h2 class="text-h5 font-weight-medium mb-2" style="color: #ffffff; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    “Love Your Life, Insure with Goodlife MBAI”
+                  </h2>
+                  <p class="text-subtitle-1 font-weight-light" style="color: rgba(255, 255, 255, 0.85);">
+                    S.E.C. Reg. No.: 203010081770-020
+                  </p>
                 </div>
-
-                <p class="banner-subtitles">
-                  Comprehensive insurance solutions in partnership with MBAI.
-                  <br />
-                  <strong>Life Secure Plus from ₱2,500/month | Family Protect Gold from ₱4,800/month — includes hospital income benefit, education fund & emergency assistance!</strong>
-                </p>
 
                 <v-btn
                   color="white"
@@ -239,275 +227,405 @@
         </div>
       </div>
 
-      <!-- Container 8: Bea MEMBER - Micro Insurance -->
-      <v-container id="mbai-list" class="py-16" data-aos="fade-up">
+
+      <!-- Salient Features Section -->
+      <v-container id="salient-features" class="py-16" data-aos="fade-up">
+        <v-row justify="center" class="mb-12">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold mb-3" style="color: #1a202c">
+              Salient Features for Membership
+            </h2>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #275fdf"
+            />
+          </v-col>
+        </v-row>
+
         <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered Bea MEMBER -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  BE A MEMBER
-                </h2>
-                <p
-                  class="text-h6 mb-2"
-                  style="color: #718096; font-weight: 300"
-                >
-                  Micro Insurance Membership
-                </p>
-              </div>
-
-              <!-- Eligibility -->
-              <div class="text-center mb-8">
-                <div class="d-flex align-center justify-center mb-3">
-                  <v-icon size="20" class="mr-2" style="color: #275fdf"
-                    >mdi-account-plus</v-icon
-                  >
-                  <span
-                    class="text-subtitle-1 font-weight-medium"
-                    style="color: #2d3748"
-                  >
-                    Entry age: 18-60 years old
-                  </span>
-                </div>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Member Benefits -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      ENJOY THE FOLLOWING BENEFITS:
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Annual Membership -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Annual Membership to Goodlife Mutual Benefits
-                            Association, Inc.
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Member Annual Insurance Coverage -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Member Annual Insurance Coverage
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Equity Contribution Savings -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Equity Contribution Savings
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Access to purchase various Microinsurance -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Access to purchase various Microinsurance bundled
-                            products sold by GLMBAI
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Member Insurance Coverage -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      MEMBER INSURANCE COVERAGE:
-                    </h5>
-
-                    <!-- Coverage for Age 18-60 -->
-                    <div
-                      class="details-box pa-4 mb-6"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <div class="d-flex align-center mb-3">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account-group</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                        >
-                          For members age 18-60 renewed up to 65 years old
-                        </span>
-                      </div>
-
-                      <!-- Basic Life Insurance Benefit -->
-                      <div class="d-flex align-center justify-between mb-3">
-                        <div class="d-flex align-center">
-                          <v-icon size="14" class="mr-2" style="color: #275fdf"
-                            >mdi-shield</v-icon
-                          >
-                          <span class="text-body-2" style="color: #4a5568"
-                            >Basic Life Insurance Benefit
-                          </span>
-                        </div>
-                        <span
-                          class="text-body-1 font-weight-medium"
-                          style="color: #2d3748"
-                          >Php 25,000.00</span
-                        >
-                      </div>
-
-                      <!-- Accidental Death & Disablement Benefit -->
-                      <div class="d-flex align-center justify-between mb-3">
-                        <div class="d-flex align-center">
-                          <v-icon size="14" class="mr-2" style="color: #275fdf"
-                            >mdi-alert-circle</v-icon
-                          >
-                          <span class="text-body-2" style="color: #4a5568"
-                            >Accidental Death & Disablement Benefit</span
-                          >
-                        </div>
-                        <span
-                          class="text-body-1 font-weight-medium"
-                          style="color: #2d3748"
-                          >Php 25,000.00</span
-                        >
-                      </div>
-
-                      <!-- Total Permanent Disability Benefit -->
-                      <div class="d-flex align-center justify-between">
-                        <div class="d-flex align-center">
-                          <v-icon size="14" class="mr-2" style="color: #275fdf"
-                            >mdi-wheelchair</v-icon
-                          >
-                          <span class="text-body-2" style="color: #4a5568"
-                            >Total Permanent Disability Benefit</span
-                          >
-                        </div>
-                        <span
-                          class="text-body-1 font-weight-medium"
-                          style="color: #2d3748"
-                          >Php 25,000.00</span
-                        >
-                      </div>
-                    </div>
-
-                    <!-- Coverage for Age 66-75 -->
-                    <div
-                      class="details-box pa-4"
-                      style="
-                        border: 1px solid #e2e8f0;
-                        border-radius: 8px;
-                        background-color: #f8fafc;
-                      "
-                    >
-                      <div class="d-flex align-center mb-3">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account-plus</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                        >
-                          For members renewed aged 66-75
-                        </span>
-                      </div>
-
-                      <!-- Basic Life insurance Benefit only -->
-                      <div class="d-flex align-center justify-between">
-                        <div class="d-flex align-center">
-                          <v-icon size="14" class="mr-2" style="color: #275fdf"
-                            >mdi-shield-check</v-icon
-                          >
-                          <span class="text-body-2" style="color: #4a5568"
-                            >Basic Life insurance Benefit (only)</span
-                          >
-                        </div>
-                        <span
-                          class="text-body-1 font-weight-medium"
-                          style="color: #2d3748"
-                          >Php 25,000.00</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
+          <v-col cols="12" md="10" lg="9">
+            <div class="text-left">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                The Micro Mutual Benefit Association
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                A mutual benefit association is a group that provides certain benefits to its members, including financial reimbursement for specific types of loss, Mutual Benefit Association do not pay insurance premium; however, they pay a membership fee or contribution, which serves a similar function.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                Mutual Benefit Associations are often structured around social groups, companies, cooperatives, small medium enterprise or associations.
+              </p>
+            </div>
           </v-col>
         </v-row>
       </v-container>
 
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
+      <!-- Membership Section -->
+      <v-container id="membership-eligibility" class="py-16" data-aos="fade-up">
+        <v-row justify="center" class="mb-12">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold mb-3" style="color: #1a202c">
+              MEMBERSHIP
+            </h2>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #275fdf"
+            />
+          </v-col>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="9">
+            <div class="text-left">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                ELIGIBILITY
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #275fdf; line-height: 1.8;">
+                The following may apply for membership in the Association by submitting an application in the prescribed form, provided they are not less than 18 years old but not more than 55 years old:
+              </p>
+              
+              <div class="pl-4">
+                <div class="d-flex align-start mb-4">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">1.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                    <strong>Members</strong> – Filipino citizen, member of cooperative, association or companies affiliated with Goodlife Group of Companies, and residing within the Philippines
+                  </p>
+                </div>
+                <div class="d-flex align-start">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">2.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                    <strong>Dependents</strong> – Immediate family of the Member.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- Basic Benefits Section -->
+      <v-container id="basic-benefits" class="py-16" data-aos="fade-up">
+        <v-row justify="center" class="mb-12">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold mb-3" style="color: #1a202c">
+              BASIC BENEFITS
+            </h2>
+            <v-divider
+              class="mx-auto mb-4"
+              thickness="2"
+              style="max-width: 60px; background-color: #275fdf"
+            />
+          </v-col>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="10">
+            <div class="text-left mb-10">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                DEATH BENEFIT
+              </h3>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                Upon death of a Member, his beneficiaries shall be entitled to the following:
+              </p>
+              <div class="pl-4 mb-8">
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">1.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">Basic Death Benefit, and</p>
+                </div>
+                <div class="d-flex align-start">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">2.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">The Member’s Equity Value</p>
+                </div>
+              </div>
+
+              <!-- Benefits Table -->
+              <v-table class="elevation-1 rounded-lg border" style="width: 100%;">
+                <thead>
+                  <tr style="background-color: #f8fafc">
+                    <th class="text-left font-weight-bold py-6 px-6" style="color: #1a202c; border-bottom: 2px solid #e2e8f0; font-size: 1.15rem;">Benefits</th>
+                    <th class="text-center font-weight-bold py-6 px-6" style="color: #1a202c; border-bottom: 2px solid #e2e8f0; font-size: 1.15rem;">For Members<br>18 – 60 years old</th>
+                    <th class="text-center font-weight-bold py-6 px-6" style="color: #1a202c; border-bottom: 2px solid #e2e8f0; font-size: 1.15rem;">For Members<br>66 – 75 years old</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-weight-bold py-6 px-6" style="color: #2d3748; font-size: 1.1rem;">Life Insurance</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">Php25,000.00</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">Php25,000.00</td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold py-6 px-6" style="color: #2d3748; font-size: 1.1rem;">Accidental Death</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">Php25,000.00</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold py-6 px-6" style="color: #2d3748; font-size: 1.1rem;">Total Permanent Disability</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">Php25,000.00</td>
+                    <td class="text-center py-6 px-6" style="color: #4a5568; font-size: 1.1rem;">N/A</td>
+                  </tr>
+                </tbody>
+              </v-table>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- Membership Details Section (Contributions, Effectivity, etc.) -->
+      <v-container id="membership-details" class="py-16" data-aos="fade-up">
+        <v-row justify="center">
+          <v-col cols="12" md="10" lg="10">
+            <!-- Contributions -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                CONTRIBUTIONS
+              </h3>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                Upon membership in the Association, each Member shall contribute:
+              </p>
+              <div class="pl-4">
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">1.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">
+                    <strong>Member</strong> : Nine hundred (PhP900.00) annual, Seventy Five (Php75.00) monthly
+                  </p>
+                </div>
+                <div class="d-flex align-start">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">2.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">
+                    <strong>Dependent</strong> : Nine hundred (PhP900.00) annual, Seventy Five (Php75.00) monthly
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Effectivity -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                EFFECTIVITY
+              </h3>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                The Association may accept or reject the application of an individual in accordance with its prevailing underwriting guidelines. An individual accepted for membership in the Association is hereinafter referred to as a Member.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                Membership in the Association becomes effective only when the individual is alive and in good health on the date of payment of the initial contribution.
+              </p>
+            </div>
+
+            <!-- Certificate of Membership -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                CERTIFICATE OF MEMBERSHIP
+              </h3>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                The Association shall issue a Certificate of Membership to each member setting forth a summary of the benefits and excerpts of the Rules and Regulation of the Individual as a Member of the Association.
+              </p>
+            </div>
+
+            <!-- Misstatement of Age -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                MISSTATEMENT OF AGE
+              </h3>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                In the event the age of a Member has been incorrectly stated and if found not eligible for membership, the Association shall refund all contributions paid.
+              </p>
+            </div>
+
+            <!-- Termination of Certificate of Membership -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                TERMINATION OF CERTIFICATE OF MEMBERSHIP
+              </h3>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                The Certificate of Membership shall automatically terminate whichever comes first:
+              </p>
+              <div class="pl-4 mb-6">
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">1.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">If the Member or Dependent dies; or</p>
+                </div>
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">2.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">If the Member or Dependent reaches insurance age <strong>seventy-five (75)</strong>; or</p>
+                </div>
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">3.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">If the Member or Dependent withdraws his Equity Value in full; or</p>
+                </div>
+                <div class="d-flex align-start mb-2">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">4.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">If the Member or Dependent elect to resign from the Association, he/she belongs to; or</p>
+                </div>
+                <div class="d-flex align-start">
+                  <span class="text-body-1 font-weight-bold mr-3" style="color: #2d3748">5.</span>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">As provided in the Contribution Loan provision of these Rules and Regulations.</p>
+                </div>
+              </div>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                Termination of Certificate of Membership shall not invalidate any claim arising before such termination, if found to be compensable under the terms of these Rules, and Regulations.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                Once terminated, further payments or acceptance of any contribution shall not create any liability under this Certificate of Membership other than to refund the same.
+              </p>
+            </div>
+
+            <!-- Equity Value -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                EQUITY VALUE
+              </h3>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                The Equity Value is equivalent to fifty percent (50%) of the basic contribution of the Member. The Equity Value shall earn interest as may be declared by the Association but in no case lower than the average deposit interest rate that the top three banks in the country offer for their savings deposit.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                The Member shall receive his Equity Value upon surrender of his Certificate of Membership or upon attainment of insurance age seventy-five (75) years old.
+              </p>
+            </div>
+
+            <!-- Cash Surrender Value -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                CASH SURRENDER VALUE
+              </h3>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                The cash surrender value is the amount of total payout when the Certificate of Membership is terminated before the member dies or before the member reaches insurance age seventy-five (75). The cash surrender value is equal to the member’s Equity Value less any outstanding loans and/or contributions due to the Association, but with no surrender charge.
+              </p>
+            </div>
+
+            <!-- Divisible Surplus -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                DIVISIBLE SURPLUS
+              </h3>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                The Association shall only maintain a free and unassigned surplus of not more than twenty percent (20%) of its total liabilities as verified by the Insurance Commissioner. Any amount in excess shall be returned to the Members by way of dividends, enhancing the equity value or providing benefits in kind and other relevant services.
+              </p>
+            </div>
+
+            <!-- Contribution Loan -->
+            <div class="mb-0">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                CONTRIBUTION LOAN
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                Any contribution due remaining unpaid at the end of the Grace Period is automatically paid as a loan against the Equity Value. The loan together with interest is payable on or before the Member’s next contribution due date, but if it is not paid, both loan and interest automatically become a new loan on such contribution due date on which interest will be charged at the rate in effect from that date.
+              </p>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                The contribution loan shall draw interest at a rate approved by the Insurance Commission but not to exceed eight percent (8%) per annum, compounded annually.
+              </p>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                When the Equity Value less any indebtedness becomes less than the monthly contribution due, the Certificate of Membership shall continue only for the proportion of a month which the Equity Value less the indebtedness bears to the monthly contribution. The Member shall be informed in writing of the remaining term of coverage.
+              </p>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                All loans and their interest are deducted automatically from any amount payable under this system. The Certificate of Membership automatically terminates if the total debt of a Member exceeds his Equity Value.
+              </p>
+              <p class="text-body-1 mb-4" style="color: #4a5568; line-height: 1.8;">
+                Subject to the Insurance Commission’s approval, the Association reserves the right to establish new contribution rates to take effect on any anniversary of the effective date whenever the terms of the Certificate of Membership are changed or if the emerging trends in mortality/morbidity would result in unfavorable claims experience.
+              </p>
+              <p class="text-body-1 mb-0 font-weight-bold" style="color: #d32f2f; line-height: 1.8;">
+                Notice of any new contribution rates shall be given to the members before the date specified by the Association for the rates to become effective.
+              </p>
+            </div>
+
+            <!-- Grace Period -->
+            <div class="mb-12 mt-16">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #275fdf">
+                GRACE PERIOD
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                A member who fails to pay his contributions after the first shall be given a grace period of forty-five (45) days within which to pay them. Any unpaid contribution shall be deductible from the benefits that may become payable during the grace period.
+              </p>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                If the contribution remains unpaid until the end of the grace period, the Certificate of Membership shall automatically terminate except as provided in the Contribution Loan provision.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                If Premiums for Optional or Additional Insurance Coverages remain unpaid until the end of the Grace Period, the insurance coverage under the Optional or Additional Insurance Coverages shall automatically terminate. Claims incurred during the Grace Period shall be payable if found valid.
+              </p>
+            </div>
+
+            <!-- Suicide -->
+            <div class="mb-12">
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                SUICIDE
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                The death benefit shall not be payable if the Member commits suicide within one (1) year from the effective date of his Certificate of Membership or of its last reinstatement; provided however that suicide committed in the state of insanity is compensable regardless of the date of commission.
+              </p>
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                Where suicide is not compensable, the liability of the Association is limited to the refund of the contributions that were received by the Association, without interest less all indebtedness under the account of the Member.
+              </p>
+            </div>
+
+            <!-- Claims & Beneficiaries -->
+            <div class="mb-0">
+              <h2 class="text-h4 font-weight-bold mb-8" style="color: #1a202c">
+                CLAIMS
+              </h2>
+              
+              <h3 class="text-h5 font-weight-bold mb-4" style="color: #2d3748">
+                BENEFICIARIES
+              </h3>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                A Member shall have the right to designate anybody, not disqualified by law, as his beneficiary or beneficiaries, and may at any time, designate new beneficiary or beneficiaries by filing a properly completed written request on a form satisfactory to the Association. Such a change shall take effect only when recorded in writing by the Association at its Home Office but without prejudice to the Association on any payment made before receipt of such notice.
+              </p>
+              <p class="text-body-1 mb-6" style="color: #4a5568; line-height: 1.8;">
+                The death benefit shall be payable to the Member’s designated beneficiary or beneficiaries, if surviving; or if there be no beneficiaries designated or surviving at the death of the Member, to the surviving class of the following classes of successive preference beneficiaries:
+              </p>
+
+              <div class="pl-8 mb-6">
+                <p class="text-body-1 mb-2" style="color: #4a5568;">The Member’s:</p>
+                <div class="pl-4">
+                  <p class="text-body-1 mb-1" style="color: #4a5568;">a. Widow or widower</p>
+                  <p class="text-body-1 mb-1" style="color: #4a5568;">b. Surviving children born to or legally adopted by the member</p>
+                  <p class="text-body-1 mb-1" style="color: #4a5568;">c. Surviving parents</p>
+                  <p class="text-body-1 mb-1" style="color: #4a5568;">d. Surviving brothers and sisters</p>
+                  <p class="text-body-1 mb-0" style="color: #4a5568;">e. Executors and administrators</p>
+                </div>
+              </div>
+              
+              <p class="text-body-1 mb-0" style="color: #4a5568; line-height: 1.8;">
+                Surviving beneficiaries in the same beneficiary classification share equally in the death benefit proceeds for that beneficiary classification, unless otherwise specified.
+              </p>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <!-- MBAI Details Image Section (Formatted like index.vue Legalities) -->
+      <v-container id="mbai-image-details" class="py-20 text-center">
+        <v-row justify="center">
+          <v-col cols="12" md="10">
+            <h2 class="text-h4 font-weight-bold mb-4" style="color: #1a202c">
+              MBAI Documents
+            </h2>
+
+            <v-divider
+              class="mx-auto mb-6"
+              thickness="2"
+              style="max-width: 60px"
+            />
+
+            <p class="text-body-1 text-medium-emphasis mb-8" style="line-height: 1.8">
+              Click the button below to view the full salient features and official membership guidelines for the MBAI product.
+            </p>
+
+            <v-btn
+              color="primary"
+              size="large"
+              rounded="xl"
+              elevation="2"
+              @click="zoomDialog = true"
+            >
+              <v-icon start>mdi-folder-eye-outline</v-icon>
+              View Documents
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
 
       <!-- Container 1: Life Secure Plus -->
-      <v-container class="py-16" data-aos="fade-up">
+      <v-container id="mbai-list" class="py-16" data-aos="fade-up">
         <v-row justify="center">
           <v-col cols="12" lg="10">
             <v-card variant="flat" class="minimal-card-1 pa-6">
@@ -796,1939 +914,6 @@
       <!-- Spacing between containers -->
       <div class="py-3"></div>
 
-      <!-- Container 2: OFW SecureLife -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered OFW SecureLife -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  OFW SECURELIFE
-                </h2>
-                <p
-                  class="text-h6 mb-2"
-                  style="color: #718096; font-weight: 300"
-                >
-                  That Flies With You
-                </p>
-                <v-divider
-                  class="mx-auto mb-4"
-                  style="max-width: 120px; border-color: #e2e8f0"
-                ></v-divider>
-                <i class="text-body-1 mb-0" style="color: #718096">
-                  Protecting Today, Securing Tomorrow.
-                </i>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Benefits Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      COVERAGE
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Basic Life Insurance -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Basic Life Insurance
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Accidental Death & Dismemberment -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death & Dismemberment
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Total Permanent Disability -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Total Permanent Disability
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Memorial Cash Assistance -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Memorial Cash Assistance
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <div class="mb-4">
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >AGE ELIGIBILITY</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          Covered Age: 18-65 years old
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #4a5568">
-                          **Covered age 66-75 years old (Basic Life Insurance
-                          only)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Tagline -->
-                  <div class="mb-6 text-center">
-                    <div class="d-flex align-center justify-center mb-4">
-                      <div
-                        class="icon-circle pa-3 mr-4 rounded-circle"
-                        style="background-color: #f0fdf4"
-                      >
-                        <v-icon size="28" style="color: #275fdf"
-                          >mdi-airplane</v-icon
-                        >
-                      </div>
-                      <div>
-                        <p
-                          class="text-body-1 font-weight-medium mb-0"
-                          style="color: #2d3748"
-                        >
-                          Magpa-seguro para Protektado!
-                        </p>
-                      </div>
-                    </div>
-                    <p
-                      class="text-body-2 mb-0"
-                      style="color: #718096; font-style: italic"
-                    >
-                      "Love Your Life, Insure with Goodlife MBAI"
-                    </p>
-                  </div>
-
-                  <!-- CTA & Contact -->
-                  <div class="text-center">
-                    <!-- Contact Information -->
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        APPLY NOW
-                      </h3>
-                      <!-- Address -->
-                      <div class="d-flex align-start justify-center mb-3">
-                        <v-icon
-                          size="16"
-                          class="mr-2 mt-1"
-                          style="color: #718096"
-                          >mdi-map-marker</v-icon
-                        >
-                        <div class="text-left">
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Room 104 Ground Floor GoodLife Emerald Building,
-                          </span>
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            San Jose Highway, Digos City 8002,
-                          </span>
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Davao del Sur Philippines
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-2">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Tel No: (082) 308-0414</span
-                        >
-                      </div>
-
-                      <!-- Hotline -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone-in-talk</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Hotline No. 09178074878</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >president.glmbai@goodlifegroups.com</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
-
-      <!-- Container 3: LIFE SHIELD PLUS -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered LIFE SHIELD PLUS -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  LIFE SHIELD PLUS
-                </h2>
-                <i
-                  class="text-h6 mb-2"
-                  style="color: #718096; font-weight: 300"
-                >
-                  Your Comprehensive Protection Partner
-                </i>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Key Benefits Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      KEY BENEFITS
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Life Protection -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Life Protection
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            Your beneficiaries receive financial support in case
-                            of your passing.
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Accidental Death & Dismemberment -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death & Dismemberment
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            Added protection for accidental loss of life or
-                            limbs.
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Total Permanent Disability Coverage -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Total Permanent Disability Coverage
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            Financial assistance if you can no longer work due
-                            to disability.
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Equity Value Savings -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Equity Value Savings
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            A portion of your contributions grows as savings,
-                            claimable upon surrender or maturity.
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- FREE Unlimited Tele-Konsulta -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            ELIGIBILITY
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            Open to all filipinos age 18-60 (coverage continues
-                            until 75)
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <!-- Coverage Details -->
-                    <div>
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-shield-check</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >COVERAGE AGE</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Covered Age: 18-65 years old
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #4a5568">
-                          • **Covered age 66-75 years old (Basic Life Insurance
-                          only)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Tagline Section -->
-                  <div class="mb-6">
-                    <div class="d-flex align-center mb-4">
-                      <div
-                        class="icon-circle pa-3 mr-4 rounded-circle"
-                        style="background-color: #f0fdf4"
-                      >
-                        <v-icon size="28" style="color: #275fdf"
-                          >mdi-shield-plus</v-icon
-                        >
-                      </div>
-                      <div>
-                        <p
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          "Love Your Life, Insure with Goodlife MBAI"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CTA & Contact -->
-                  <div class="text-center">
-                    <!-- Contact Information -->
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        GET PROTECTED NOW
-                      </h3>
-
-                      <!-- Address -->
-                      <div class="d-flex align-start justify-center mb-3">
-                        <v-icon
-                          size="16"
-                          class="mr-2 mt-1"
-                          style="color: #718096"
-                          >mdi-map-marker</v-icon
-                        >
-                        <div class="text-left">
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Room 104 Ground Floor GoodLife Emerald Building,
-                          </span>
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            San Jose Highway, Digos City 8002,
-                          </span>
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Davao del Sur Philippines
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-2">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Tel No: (082) 308-0414</span
-                        >
-                      </div>
-
-                      <!-- Hotline -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone-in-talk</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Hotline No. 09178074878</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >president.glmbai@goodlifegroups.com</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
-
-      <!-- Spacing between containers -->
-      <div class="py-4"></div>
-
-      <!-- Container 3: GLife Coverage Protek -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered GLife Protek Excel -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  GLife Protek Excel
-                </h2>
-                <p
-                  class="text-h6 mb-2"
-                  style="color: #718096; font-weight: 300"
-                >
-                  Your Partner in Protection
-                </p>
-                <v-divider
-                  class="mx-auto mb-4"
-                  style="max-width: 120px; border-color: #e2e8f0"
-                ></v-divider>
-                <p class="text-body-1 mb-0" style="color: #718096">
-                  Magpa-seguro para Protektado!
-                </p>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Coverage Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      COVERAGE
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Basic Life Insurance -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Basic Life Insurance
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Accidental Death & Dismemberment -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death & Dismemberment
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Total Permanent Disability -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Total Permanent Disability
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Equity Value Savings -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Calamity Protek
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Consultation Doctor -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Tele-Medical Consultation with a Doctor
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Calamity Protek Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      OTHER BENEFITS
-                    </h5>
-                    <div class="calamity-grid pl-4">
-                      <v-row>
-                        <v-col cols="6">
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="15"
-                              class="mr-2 mt-1"
-                              style="color: #275fdf"
-                              >mdi-shield-check</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568">
-                              Accidental death due to sudden, unforeseen &
-                              fortuitous event
-                            </span>
-                          </div>
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="16"
-                              class="mr-2"
-                              style="color: #275fdf"
-                              >mdi-fire</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568"
-                              >Fire</span
-                            >
-                          </div>
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="16"
-                              class="mr-2"
-                              style="color: #275fdf"
-                              >mdi-weather-lightning</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568"
-                              >Lightning</span
-                            >
-                          </div>
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="16"
-                              class="mr-2"
-                              style="color: #275fdf"
-                              >mdi-terrain</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568"
-                              >Earthquake</span
-                            >
-                          </div>
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="16"
-                              class="mr-2"
-                              style="color: #275fdf"
-                              >mdi-weather-hurricane</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568"
-                              >Typhoon</span
-                            >
-                          </div>
-                          <div class="d-flex align-center mb-3">
-                            <v-icon
-                              size="16"
-                              class="mr-2"
-                              style="color: #275fdf"
-                              >mdi-home-flood</v-icon
-                            >
-                            <span class="text-body-2" style="color: #4a5568"
-                              >Flood</span
-                            >
-                          </div>
-                        </v-col>
-                      </v-row>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Other Benefits Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      OTHER CONVULSIONS OF NATURE
-                    </h5>
-                    <v-col cols="6">
-                      <div class="d-flex align-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #275fdf"
-                          >mdi-terrain</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Landslide</span
-                        >
-                      </div>
-                      <div class="d-flex align-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #275fdf"
-                          >mdi-vector-square</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Subsidence</span
-                        >
-                      </div>
-                      <div class="d-flex align-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #275fdf"
-                          >mdi-volcano</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Volcanic Eruption</span
-                        >
-                      </div>
-                    </v-col>
-                  </div>
-
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <div class="mb-4">
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >COVERED AGE</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Covered Age: 18-65 years old
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #4a5568">
-                          • **Covered age 66-75 years old (Basic Life Insurance
-                          only)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Tagline Section -->
-                  <div class="mb-6 text-center">
-                    <div class="d-flex align-center justify-center mb-4">
-                      <div
-                        class="icon-circle pa-3 mr-4 rounded-circle"
-                        style="background-color: #f0fdf4"
-                      >
-                        <v-icon size="28" style="color: #275fdf"
-                          >mdi-shield-star</v-icon
-                        >
-                      </div>
-                      <div>
-                        <p
-                          class="text-body-1 font-weight-medium mb-0"
-                          style="color: #2d3748"
-                        >
-                          "Love Your Life, Insure with Goodlife MBAI"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CTA & Contact -->
-                  <div class="text-center">
-                    <!-- Contact Information -->
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        GET PROTECTION
-                      </h3>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Phone Number: +639178074878</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Email: goodlife.mbai@gmail.com</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
-
-      <!-- Container 5: Glife Protek Insurance -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered Glife Protek Insurance -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  Glife Protek Insurance
-                </h2>
-                <p
-                  class="text-h6 mb-2"
-                  style="color: #718096; font-weight: 300"
-                >
-                  Your Partner in Protection
-                </p>
-                <v-divider
-                  class="mx-auto mb-4"
-                  style="max-width: 120px; border-color: #e2e8f0"
-                ></v-divider>
-                <p class="text-body-1 mb-0" style="color: #718096">
-                  "Love Your Life, Insure with Goodlife MBAI"
-                </p>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Coverage Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      COVERAGE
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Basic Life -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Basic Life Insurance
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Accidental Death & Dismemberment -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death & Dismemberment
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Total Permanent Disability -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Total Permanent Disability
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Equity Value Savings -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Fire Assistance Benefit
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Other Benefits Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      OTHER BENEFITS
-                    </h5>
-                    <div class="other-benefits pl-4">
-                      <!-- Accidental Death (LIVELIHOOD ASSISTANCE) -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death (LIVELIHOOD ASSISTANCE)
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Permanent Disablement Benefit -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Permanent Disablement
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Unprovoked Murder and/or Assault -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Unprovoked Murder and/or Assault
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Hospital Income Benefit (MAXIMUM OF 10 DAYS) -->
-                      <div class="benefit-item d-flex align-start">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Hospital Income Benefit (MAXIMUM OF 10 DAYS)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Important Note -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="
-                      border: 1px solid #e2e8f0;
-                      border-radius: 8px;
-                      background-color: #f8fafc;
-                    "
-                  >
-                    <div class="d-flex align-center mb-3">
-                      <v-icon size="18" class="mr-2" style="color: #275fdf"
-                        >mdi-information</v-icon
-                      >
-                      <span
-                        class="text-subtitle-2 font-weight-medium"
-                        style="color: #2d3748"
-                        >IMPORTANT NOTE</span
-                      >
-                    </div>
-                    <p class="text-body-2 mb-0" style="color: #4a5568">
-                      The benefits herein stated are payable on top of or in
-                      addition to existing medical plans that the INSURED may
-                      have, such as PhilHealth or other private medical
-                      insurance.
-                    </p>
-                  </div>
-
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <div class="mb-4">
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >COVERED AGE</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Covered Age: 18-65 years old
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #4a5568">
-                          • **Covered age 66-75 years old (Basic Life Insurance
-                          only)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CTA & Contact -->
-                  <div class="text-center">
-                    <!-- Contact Information -->
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        GET PROTECTED
-                      </h3>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Phone Number: +639178087478</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >Email: goodlife.mbai@gmail.com</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
-
-      <!-- Container 6: GLIFE HEALTHEASE -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered GLIFE HEALTHEASE -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  GLIFE HEALTHEASE
-                </h2>
-                <v-divider
-                  class="mx-auto mb-4"
-                  style="max-width: 120px; border-color: #e2e8f0"
-                ></v-divider>
-                <i class="text-body-1 mb-0" style="color: #718096">
-                  For Health and Peace of Mind
-                </i>
-              </div>
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Coverage Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      COVERAGE
-                    </h5>
-                    <div class="benefits-grid pl-4">
-                      <!-- Basic Life Insurance -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Basic Life Insurance
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Accidental Death & Dismemberment -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Accidental Death & Dismemberment
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Total Permanent Disability -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Total Permanent Disability
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Hospital Income Benefit -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Hospital Income Benefit
-                          </span>
-                          <div
-                            class="text-caption mt-1"
-                            style="color: #718096; padding-left: 24px"
-                          >
-                            max 15 days (accident/illness)
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- ER CareFit Accident -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            ER CareFit Accident Emergency Room Benefit
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Tele-Medical Consultation with a Doctor -->
-                      <div class="benefit-item d-flex align-start mb-4">
-                        <v-icon
-                          size="16"
-                          class="mr-3 mt-1"
-                          style="color: #275fdf"
-                          >mdi-check-circle</v-icon
-                        >
-                        <div>
-                          <span
-                            class="text-body-1 font-weight-medium"
-                            style="color: #2d3748"
-                          >
-                            Tele-Medical Consultation with a Doctor
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <div class="mb-4">
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account-heart</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >COVERED AGE</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Covered Age: 18-65 years old
-                        </p>
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Covered Age: 66-75 years old Basic Life Insurance
-                          only
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Tagline Section -->
-                  <div class="mb-6 text-center">
-                    <div class="d-flex align-center justify-center mb-4">
-                      <div
-                        class="icon-circle pa-3 mr-4 rounded-circle"
-                        style="background-color: #f0fdf4"
-                      >
-                        <v-icon size="28" style="color: #275fdf"
-                          >mdi-heart-pulse</v-icon
-                        >
-                      </div>
-                      <div>
-                        <p
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          Segurong Pangkalusugan
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #718096">
-                          "Love Your Life, Insure with Goodlife MBAI"
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- More Information Section -->
-                  <div class="text-center">
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        MORE INFORMATION
-                      </h3>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >09178074878</span
-                        >
-                      </div>
-
-                      <!-- Website -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-web</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >www.goodlifembai.com</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >goodlife.mbai@gmail.com</span
-                        >
-                      </div>
-
-                      <!-- Address -->
-                      <div class="d-flex align-start justify-center">
-                        <v-icon
-                          size="16"
-                          class="mr-2 mt-1"
-                          style="color: #718096"
-                          >mdi-map-marker</v-icon
-                        >
-                        <div class="text-left">
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Rm 104 Ground Floor GL Emerald Bldg.
-                          </span>
-                          <span
-                            class="text-body-2 d-block"
-                            style="color: #4a5568"
-                          >
-                            Digos City
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div
-        style="
-          border-top: 5px solid #e2e8f0;
-          width: 100%;
-          max-width: 1450px;
-          margin: 40px auto;
-        "
-      ></div>
-
-      <!-- Container 7: GLIFE COMFORT -->
-      <v-container class="py-16" data-aos="fade-up">
-        <v-row justify="center">
-          <v-col cols="12" lg="10">
-            <v-card variant="flat" class="minimal-card-1 pa-6">
-              <!-- Header - Centered GLIFE COMFORT -->
-              <div class="text-center mb-12">
-                <h2
-                  class="text-h4 font-weight-bold mb-4"
-                  style="color: #275fdf"
-                >
-                  GLIFE COMFORT
-                </h2>
-                <v-divider
-                  class="mx-auto mb-4"
-                  style="max-width: 120px; border-color: #e2e8f0"
-                ></v-divider>
-                <i class="text-body-1 mb-0" style="color: #718096">
-                  "Love Your Life, Insure with Goodlife MBAI"
-                </i>
-              </div>
-
-              <!-- Content in two columns -->
-              <v-row>
-                <v-col cols="12" md="6" class="pr-md-6">
-                  <!-- Coverage Section -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      COVERAGE
-                    </h5>
-
-                    <!-- Basic Life Insurance -->
-                    <div class="benefit-item d-flex align-start mb-6">
-                      <v-icon size="16" class="mr-3 mt-1" style="color: #275fdf"
-                        >mdi-check-circle</v-icon
-                      >
-                      <div>
-                        <span
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          BASIC LIFE INSURANCE
-                        </span>
-                        <div
-                          class="text-caption mt-1"
-                          style="color: #718096; padding-left: 24px"
-                        >
-                          Your beneficiaries receive financial support in case
-                          of your passing.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Accidental Death & Dismemberment -->
-                    <div class="benefit-item d-flex align-start mb-6">
-                      <v-icon size="16" class="mr-3 mt-1" style="color: #275fdf"
-                        >mdi-check-circle</v-icon
-                      >
-                      <div>
-                        <span
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          ACCIDENTAL DEATH & DISMEMBERMENT
-                        </span>
-                        <div
-                          class="text-caption mt-1"
-                          style="color: #718096; padding-left: 24px"
-                        >
-                          Added protection for accidental loss of life or limbs.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Total Permanent Disability -->
-                    <div class="benefit-item d-flex align-start mb-6">
-                      <v-icon size="16" class="mr-3 mt-1" style="color: #275fdf"
-                        >mdi-check-circle</v-icon
-                      >
-                      <div>
-                        <span
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          TOTAL PERMANENT DISABILITY
-                        </span>
-                        <div
-                          class="text-caption mt-1"
-                          style="color: #718096; padding-left: 24px"
-                        >
-                          Financial assistance if you can no longer work due to
-                          disability.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Equity Value Savings -->
-                    <div class="benefit-item d-flex align-start">
-                      <v-icon size="16" class="mr-3 mt-1" style="color: #275fdf"
-                        >mdi-check-circle</v-icon
-                      >
-                      <div>
-                        <span
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          EQUITY VALUE SAVINGS
-                        </span>
-                        <div
-                          class="text-caption mt-1"
-                          style="color: #718096; padding-left: 24px"
-                        >
-                          A portion of your contributions grows as savings,
-                          claimable upon surrender or maturity.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Memorial Cash Assistance -->
-                    <div class="benefit-item d-flex align-start">
-                      <v-icon size="16" class="mr-3 mt-1" style="color: #275fdf"
-                        >mdi-check-circle</v-icon
-                      >
-                      <div>
-                        <span
-                          class="text-body-1 font-weight-medium mb-1"
-                          style="color: #2d3748"
-                        >
-                          MEMORIAL CASH ASSISTANCE
-                        </span>
-                        <div
-                          class="text-caption mt-1"
-                          style="color: #718096; padding-left: 24px"
-                        >
-                          Provides cash aid during bereavement
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6" class="pl-md-6">
-                  <!-- Funeral & Burial Coverage -->
-                  <div class="mb-6">
-                    <h5
-                      class="text-h5 font-weight-bold mb-4"
-                      style="
-                        color: #2d3748;
-                        border-left: 3px solid #275fdf;
-                        padding-left: 12px;
-                      "
-                    >
-                      FUNERAL & BURIAL COVERAGE
-                    </h5>
-                    <div
-                      class="funeral-benefits pa-4 mb-4"
-                      style="
-                        border: 1px solid #e2e8f0;
-                        border-radius: 8px;
-                        background-color: #f8fafc;
-                      "
-                    >
-                      <p class="text-body-2 mb-3" style="color: #4a5568">
-                        It pays off the lumpsum of Php 1,050,000.00 in the event
-                        of the Insured's death caused by accident.
-                      </p>
-
-                      <p
-                        class="text-subtitle-2 font-weight-medium mb-3"
-                        style="color: #2d3748"
-                      >
-                        Optional Benefits Included:
-                      </p>
-
-                      <div class="optional-benefits">
-                        <v-row>
-                          <v-col cols="6">
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-flower</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Floral Arrangement</span
-                              >
-                            </div>
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-account-tie</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Funeral Clothes</span
-                              >
-                            </div>
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-newspaper</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Publication Expenses</span
-                              >
-                            </div>
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-food</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Catering Expenses</span
-                              >
-                            </div>
-                          </v-col>
-
-                          <v-col cols="6">
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-bus</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Transportation Expense</span
-                              >
-                            </div>
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-bed</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Hotel Accommodation</span
-                              >
-                            </div>
-                            <div class="d-flex align-center mb-3">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-car</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Additional Transportation</span
-                              >
-                            </div>
-                            <div class="d-flex align-center">
-                              <v-icon
-                                size="14"
-                                class="mr-2"
-                                style="color: #275fdf"
-                                >mdi-cash-multiple</v-icon
-                              >
-                              <span class="text-caption" style="color: #4a5568"
-                                >Miscellaneous Expenses</span
-                              >
-                            </div>
-                          </v-col>
-                        </v-row>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Age Eligibility -->
-                  <div
-                    class="details-box pa-4 mb-6"
-                    style="border: 1px solid #e2e8f0; border-radius: 8px"
-                  >
-                    <div class="mb-4">
-                      <div class="d-flex align-center mb-2">
-                        <v-icon size="18" class="mr-2" style="color: #275fdf"
-                          >mdi-account</v-icon
-                        >
-                        <span
-                          class="text-subtitle-2 font-weight-medium"
-                          style="color: #2d3748"
-                          >COVERED AGE</span
-                        >
-                      </div>
-                      <div class="pl-6">
-                        <p class="text-body-2 mb-1" style="color: #4a5568">
-                          • Entry age 18 - 60 years old, coverage age 18 - 65
-                        </p>
-                        <p class="text-body-2 mb-0" style="color: #4a5568">
-                          • **Covered age 66-75 years old (Basic Life Insurance
-                          only)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Contact Section -->
-                  <div class="text-center">
-                    <div
-                      class="contact-info pa-4"
-                      style="border: 1px solid #e2e8f0; border-radius: 8px"
-                    >
-                      <h3
-                        class="mb-6"
-                        style="
-                          color: #275fdf;
-                          font-weight: 600;
-                          letter-spacing: 0.5px;
-                        "
-                      >
-                        CONTACT US FOR MORE INFORMATION
-                      </h3>
-
-                      <!-- Phone -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-phone</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >+639178074878</span
-                        >
-                      </div>
-
-                      <!-- Email -->
-                      <div class="d-flex align-center justify-center mb-3">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-email</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >goodlife.mbai@gmail.com</span
-                        >
-                      </div>
-
-                      <!-- Website -->
-                      <div class="d-flex align-center justify-center">
-                        <v-icon size="16" class="mr-2" style="color: #718096"
-                          >mdi-web</v-icon
-                        >
-                        <span class="text-body-2" style="color: #4a5568"
-                          >www.goodlifembai.com</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <div style="border-top: 5px solid #e2e8f0"></div>
 
       <!-- CTA Section -->
       <v-container
@@ -3068,7 +1253,7 @@
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required, rules.alphabetic]"
+        :rules="[rules.alphabetic]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -3131,34 +1316,32 @@
     </v-col>
   </v-row>
 
-  <!-- Plan Details Section -->
+  <!-- Plan Type Section -->
   <v-row dense class="mb-6">
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-file-document</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Plan Details:</span>
+        <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Plan Information:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
-
-    <!-- Entity - Dropdown Select -->
+    <!-- Plan Type - Dropdown Select -->
     <v-col cols="12" md="6">
       <v-select
-        v-model="contactForm.entity"
-        :items="entities"
-        label="Entity type *"
-        placeholder="Select entity type"
+        v-model="contactForm.planType"
+        :items="allPlans"
+        label="Plan type *"
+        placeholder="Select plan type"
         variant="outlined"
         density="compact"
         hide-details="auto"
         :rules="[rules.required]"
         bg-color="transparent"
         class="minimal-field"
-        return-object
         item-title="title"
         item-value="value"
+        return-object
         clearable
-        @update:model-value="handleEntityChange"
       >
         <template v-slot:selection="{ item }">
           <div class="d-flex align-center">
@@ -3176,101 +1359,40 @@
       </v-select>
     </v-col>
 
-    <!-- Plan Type - Conditional Dropdown based on Entity -->
+    <!-- Concerns - Dropdown Select -->
     <v-col cols="12" md="6">
-      <template v-if="contactForm.entity">
-        <!-- Damayan Plans Dropdown -->
-        <v-select
-          v-if="contactForm.entity.value === 'damayan'"
-          v-model="contactForm.planType"
-          :items="damayanPlans"
-          label="Plan type *"
-          placeholder="Select plan type"
-          variant="outlined"
-          density="compact"
-          hide-details="auto"
-          :rules="[rules.required]"
-          bg-color="transparent"
-          class="minimal-field"
-          item-title="title"
-          item-value="value"
-          return-object
-          clearable
-        >
-          <template v-slot:selection="{ item }">
-            <div class="d-flex align-center">
-              <v-icon size="small" color="#708090" class="mr-2">mdi-account-group</v-icon>
-              <span>{{ item.raw.title }}</span>
-            </div>
-          </template>
-        </v-select>
-
-        <!-- Goodlife Plans Dropdown -->
-        <v-select
-          v-else-if="contactForm.entity.value === 'goodlife_plans'"
-          v-model="contactForm.planType"
-          :items="goodlifePlans"
-          label="Plan type *"
-          placeholder="Select plan type"
-          variant="outlined"
-          density="compact"
-          hide-details="auto"
-          :rules="[rules.required]"
-          bg-color="transparent"
-          class="minimal-field"
-          item-title="title"
-          item-value="value"
-          return-object
-          clearable
-        >
-          <template v-slot:selection="{ item }">
-            <div class="d-flex align-center">
-              <v-icon size="small" color="#708090" class="mr-2">mdi-account</v-icon>
-              <span>{{ item.raw.title }}</span>
-            </div>
-          </template>
-        </v-select>
-
-        <!-- MBAI Plans Dropdown -->
-        <v-select
-          v-else-if="contactForm.entity.value === 'mbai'"
-          v-model="contactForm.planType"
-          :items="mbaiPlans"
-          label="Plan type *"
-          placeholder="Select plan type"
-          variant="outlined"
-          density="compact"
-          hide-details="auto"
-          :rules="[rules.required]"
-          bg-color="transparent"
-          class="minimal-field"
-          item-title="title"
-          item-value="value"
-          return-object
-          clearable
-        >
-          <template v-slot:selection="{ item }">
-            <div class="d-flex align-center">
-              <v-icon size="small" color="#708090" class="mr-2">mdi-office-building</v-icon>
-              <span>{{ item.raw.title }}</span>
-            </div>
-          </template>
-        </v-select>
-      </template>
-      
-      <!-- Placeholder when no entity selected -->
-      <v-text-field
-        v-else
-        label="Plan type"
-        placeholder="Select entity type first"
+      <v-select
+        v-model="contactForm.concern"
+        :items="concernsList"
+        label="Concern *"
+        placeholder="Select concern"
         variant="outlined"
         density="compact"
         hide-details="auto"
-        disabled
-        bg-color="grey-lighten-3"
+        :rules="[rules.required]"
+        bg-color="transparent"
         class="minimal-field"
-      ></v-text-field>
+        item-title="title"
+        item-value="value"
+        return-object
+        clearable
+      >
+        <template v-slot:selection="{ item }">
+          <div class="d-flex align-center">
+            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
+            <span>{{ item.raw.title }}</span>
+          </div>
+        </template>
+        <template v-slot:item="{ props, item }">
+          <v-list-item v-bind="props" :title="item.raw.title">
+            <template v-slot:prepend>
+              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
+            </template>
+          </v-list-item>
+        </template>
+      </v-select>
     </v-col>
+
 
     <!-- Message - Clean Textarea -->
     <v-col cols="12">
@@ -3338,6 +1460,29 @@
       </template>
     </v-snackbar>
 
+    <!-- Image Zoom Dialog -->
+    <v-dialog v-model="zoomDialog" max-width="95vw" class="image-zoom-dialog">
+      <v-card class="bg-transparent" flat>
+        <v-btn
+          icon="mdi-close"
+          position="fixed"
+          style="top: 20px; right: 20px; z-index: 100;"
+          @click="zoomDialog = false"
+          color="white"
+          variant="tonal"
+        ></v-btn>
+        <div class="d-flex justify-center align-center fill-height" style="min-height: 90vh;">
+          <v-img
+            src="@/assets/images/mbai insurance.jpeg"
+            max-height="90vh"
+            contain
+            @click="zoomDialog = false"
+            class="cursor-pointer"
+          ></v-img>
+        </div>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -3345,6 +1490,9 @@
 import { ref, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import AOS from "aos";
+
+// Dialog States
+const zoomDialog = ref(false);
 import "aos/dist/aos.css";
 import "@/styles/css/style.css";
 import { messageService } from "@/plugins/api";
@@ -3530,52 +1678,27 @@ const contactForm = ref({
   firstName: "",
   email: "",
   contactNo: "",
-  entity: null,
   planType: null,
+  concern: null,
   title: "",
   description: "",
 });
 
-// Entity Options
-const entities = ref([
-  { 
-    title: "Goodlife Plans", 
-    value: "goodlife_plans", 
-    icon: "mdi-account", 
-    color: "#708090" 
-  },
-  { 
-    title: "MBAI", 
-    value: "mbai", 
-    icon: "mdi-office-building", 
-    color: "#708090" 
-  },
-  { 
-    title: "Damayan", 
-    value: "damayan", 
-    icon: "mdi-account-group", 
-    color: "#708090" 
-  },
+// Merged Plan Type Options
+const allPlans = ref([
+  { title: "Micro-Loans Redemption Insurance ( MLRI )", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
+  { title: "Jade Plan", value: "goodlife_jade", icon: "mdi-shield", color: "#708090" },
+  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090" },
+  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090" }
 ]);
 
-// Plan Type Options based on Entity
-const damayanPlans = ref([
-  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090"  },
-  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090"  },
-]);
-
-const goodlifePlans = ref([
-  { title: "Jade Plan", value: "goodlife_life", icon: "mdi-shield", color: "#708090" },
-]);
-
-const mbaiPlans = ref([
-  { title: "Micro-Loans Redemption Insurance (MLRI)", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
-  { title: "OFW Secure Life", value: "mbai_secure_life", icon: "mdi-star", color: "#708090" },
-  { title: "Life Shield Plus", value: "mbai_shield_plus", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Protek Excel", value: "mbai_protek_excel", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Protek Insurance", value: "mbai_protek_insurance", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Healthease", value: "mbai_healthease", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Comfort", value: "mbai_comfort", icon: "mdi-diamond", color: "#708090" },
+// Concerns Options
+const concernsList = ref([
+  { title: "General Inquiry", value: "inquiry", icon: "mdi-information", color: "#708090" },
+  { title: "Claim", value: "claim", icon: "mdi-file-document", color: "#708090" },
+  { title: "Feedback", value: "feedback", icon: "mdi-comment", color: "#708090" },
+  { title: "Support", value: "support", icon: "mdi-lifebuoy", color: "#708090" },
+  { title: "Other", value: "other", icon: "mdi-dots-horizontal", color: "#708090" }
 ]);
 
 // Snackbar State for notifications
@@ -3611,10 +1734,7 @@ const rules = {
   },
 };
 
-// Handle entity change - reset plan type when entity changes
-const handleEntityChange = () => {
-  contactForm.value.planType = null;
-};
+
 
 // ============ MINIMALIST CONTACT FORM METHODS ============
 
@@ -3627,7 +1747,7 @@ const submitContactForm = async () => {
   try {
     // Prepare the data for the ticket system API
     const messageData = {
-      title: `Contact Support - ${contactForm.value.entity?.title || 'General Inquiry'}`,
+      title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
       description: contactForm.value.description,
       email: contactForm.value.email,
       contact_no: contactForm.value.contactNo,
@@ -3636,7 +1756,8 @@ const submitContactForm = async () => {
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
-      entity: contactForm.value.entity?.title || '',
+      concern: contactForm.value.concern?.title || '',
+      entity: '',
     };
 
     // Send to ticket system API
@@ -3658,6 +1779,7 @@ const submitContactForm = async () => {
       contactNo: "",
       entity: null,
       planType: null,
+      concern: null,
       title: "",
       description: "",
     };
@@ -3737,23 +1859,33 @@ onMounted(() => {
 });
 
 // Function to navigate to home page with section
-const goToHomeSection = (section) => {
+const goToHomeSection = (sectionId) => {
   router.push("/").then(() => {
     setTimeout(() => {
-      const element = document.getElementById(section);
+      const element = document.getElementById(sectionId);
       if (element) {
-        const yOffset = -120;
-        const y =
-          element.getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
+        const headerHeight = 65;
+        const extraOffset = 15;
+        const yOffset = -(headerHeight + extraOffset);
+        
+        // Use stable offsetTop to avoid AOS transformation issues
+        let el = element;
+        let y = 0;
+        while (el) {
+          y += el.offsetTop;
+          el = el.offsetParent;
+        }
+        
+        window.scrollTo({ top: y + yOffset, behavior: "smooth" });
       }
-    }, 100);
+    }, 300); // Increased delay for stability
   });
 };
 
 // Function to navigate to other product pages
 const goToProductsPage = (route) => {
   drawer.value = false;
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   router.push(route);
 };
 
@@ -3761,9 +1893,19 @@ const goToProductsPage = (route) => {
 const scrollToSection = (id) => {
   const element = document.getElementById(id);
   if (element) {
-    const yOffset = -120;
-    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    const headerHeight = 65;
+    const extraOffset = 15;
+    const yOffset = -(headerHeight + extraOffset);
+    
+    // Use stable offsetTop to avoid AOS transformation issues
+    let el = element;
+    let y = 0;
+    while (el) {
+      y += el.offsetTop;
+      el = el.offsetParent;
+    }
+    
+    window.scrollTo({ top: y + yOffset, behavior: "smooth" });
   }
 };
 

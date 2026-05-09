@@ -250,7 +250,7 @@
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
-                    :rules="[rules.required, rules.alphabetic]"
+                    :rules="[rules.alphabetic]"
                     :error-messages="contactFormErrors.middleName"
                     bg-color="transparent"
                     class="minimal-field"
@@ -312,32 +312,31 @@
               </v-row>
             </div>
 
-            <!-- Plan Details Section -->
+            <!-- Plan Type Section -->
             <div class="mb-6">
               <div class="d-flex align-center mb-2">
-                <v-icon color="primary" size="small" class="mr-1">mdi-file-document</v-icon>
-                <span class="text-subtitle-2 font-weight-medium">Plan Details:</span>
+                <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
+                <span class="text-subtitle-2 font-weight-medium">Plan Information:</span>
               </div>
               <v-divider class="mb-4"></v-divider>
               <v-row dense>
                 <v-col cols="12" md="6">
                   <v-select
-                    v-model="contactForm.entity"
-                    :items="entities"
-                    label="Entity type *"
-                    placeholder="Select entity type"
+                    v-model="contactForm.planType"
+                    :items="allPlans"
+                    label="Plan type *"
+                    placeholder="Select plan type"
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
                     :rules="[rules.required]"
-                    :error-messages="contactFormErrors.entity"
+                    :error-messages="contactFormErrors.planType"
                     bg-color="transparent"
                     class="minimal-field"
-                    return-object
                     item-title="title"
                     item-value="value"
+                    return-object
                     clearable
-                    @update:model-value="handleEntityChange"
                   >
                     <template v-slot:selection="{ item }">
                       <div class="d-flex align-center">
@@ -355,94 +354,37 @@
                   </v-select>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <template v-if="contactForm.entity">
-                    <v-select
-                      v-if="contactForm.entity.value === 'damayan'"
-                      v-model="contactForm.planType"
-                      :items="damayanPlans"
-                      label="Plan type *"
-                      placeholder="Select plan type"
-                      variant="outlined"
-                      density="compact"
-                      hide-details="auto"
-                      :rules="[rules.required]"
-                      :error-messages="contactFormErrors.planType"
-                      bg-color="transparent"
-                      class="minimal-field"
-                      item-title="title"
-                      item-value="value"
-                      return-object
-                      clearable
-                    >
-                      <template v-slot:selection="{ item }">
-                        <div class="d-flex align-center">
-                          <v-icon size="small" color="#708090" class="mr-2">mdi-account-group</v-icon>
-                          <span>{{ item.raw.title }}</span>
-                        </div>
-                      </template>
-                    </v-select>
-                    <v-select
-                      v-else-if="contactForm.entity.value === 'goodlife_plans'"
-                      v-model="contactForm.planType"
-                      :items="goodlifePlans"
-                      label="Plan type *"
-                      placeholder="Select plan type"
-                      variant="outlined"
-                      density="compact"
-                      hide-details="auto"
-                      :rules="[rules.required]"
-                      :error-messages="contactFormErrors.planType"
-                      bg-color="transparent"
-                      class="minimal-field"
-                      item-title="title"
-                      item-value="value"
-                      return-object
-                      clearable
-                    >
-                      <template v-slot:selection="{ item }">
-                        <div class="d-flex align-center">
-                          <v-icon size="small" color="#708090" class="mr-2">mdi-account</v-icon>
-                          <span>{{ item.raw.title }}</span>
-                        </div>
-                      </template>
-                    </v-select>
-                    <v-select
-                      v-else-if="contactForm.entity.value === 'mbai'"
-                      v-model="contactForm.planType"
-                      :items="mbaiPlans"
-                      label="Plan type *"
-                      placeholder="Select plan type"
-                      variant="outlined"
-                      density="compact"
-                      hide-details="auto"
-                      :rules="[rules.required]"
-                      :error-messages="contactFormErrors.planType"
-                      bg-color="transparent"
-                      class="minimal-field"
-                      item-title="title"
-                      item-value="value"
-                      return-object
-                      clearable
-                    >
-                      <template v-slot:selection="{ item }">
-                        <div class="d-flex align-center">
-                          <v-icon size="small" color="#708090" class="mr-2">mdi-office-building</v-icon>
-                          <span>{{ item.raw.title }}</span>
-                        </div>
-                      </template>
-                    </v-select>
-                  </template>
-                  <v-text-field
-                    v-else
-                    label="Plan type"
-                    placeholder="Select entity type first"
+                  <v-select
+                    v-model="contactForm.concern"
+                    :items="concernsList"
+                    label="Concern *"
+                    placeholder="Select concern"
                     variant="outlined"
                     density="compact"
                     hide-details="auto"
-                    disabled
-                    bg-color="grey-lighten-3"
+                    :rules="[rules.required]"
+                    :error-messages="contactFormErrors.concern"
+                    bg-color="transparent"
                     class="minimal-field"
-                  ></v-text-field>
+                    item-title="title"
+                    item-value="value"
+                    return-object
+                    clearable
+                  >
+                    <template v-slot:selection="{ item }">
+                      <div class="d-flex align-center">
+                        <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
+                        <span>{{ item.raw.title }}</span>
+                      </div>
+                    </template>
+                    <template v-slot:item="{ props, item }">
+                      <v-list-item v-bind="props" :title="item.raw.title">
+                        <template v-slot:prepend>
+                          <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
+                        </template>
+                      </v-list-item>
+                    </template>
+                  </v-select>
                 </v-col>
               </v-row>
               <v-row dense>
@@ -1283,7 +1225,7 @@
                 <div class="text-left mb-2">
                   <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
                     <v-icon size="small" color="white" class="mr-1">mdi-account</v-icon>
-                    Personal Information
+                    Personal Information :
                   </span>
                 </div>
                 <v-row dense>
@@ -1310,7 +1252,7 @@
                       variant="outlined"
                       density="comfortable"
                       hide-details="auto"
-                      :rules="[rules.required, rules.alphabetic]"
+                      :rules="[rules.alphabetic]"
                       :error-messages="contactFormMainErrors.middleName"
                       bg-color="white"
                       color="primary"
@@ -1338,7 +1280,7 @@
                 <div class="text-left mb-2 mt-4">
                   <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
                     <v-icon size="small" color="white" class="mr-1">mdi-phone</v-icon>
-                    Contact Information
+                    Contact Information :
                   </span>
                 </div>
                 <v-row dense>
@@ -1374,32 +1316,31 @@
                   </v-col>
                 </v-row>
 
-                <!-- Plan Details Row -->
+                <!-- Plan Type Row -->
                 <div class="text-left mb-2 mt-4">
                   <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                    <v-icon size="small" color="white" class="mr-1">mdi-file-document</v-icon>
-                    Plan Details
+                    <v-icon size="small" color="white" class="mr-1">mdi-account</v-icon>
+                    Plan Information :
                   </span>
                 </div>
                 <v-row dense>
                   <v-col cols="12" md="6">
                     <v-select
-                      v-model="contactFormMain.entity"
-                      :items="entities"
-                      label="Entity type *"
-                      placeholder="Select entity type"
+                      v-model="contactFormMain.planType"
+                      :items="allPlans"
+                      label="Plan type *"
+                      placeholder="Select plan type"
                       variant="outlined"
                       density="comfortable"
                       hide-details="auto"
                       :rules="[rules.required]"
-                      :error-messages="contactFormMainErrors.entity"
+                      :error-messages="contactFormMainErrors.planType"
                       bg-color="white"
                       color="primary"
-                      return-object
                       item-title="title"
                       item-value="value"
+                      return-object
                       clearable
-                      @update:model-value="handleEntityChangeMain"
                       class="minimal-select"
                     >
                       <template v-slot:selection="{ item }">
@@ -1418,96 +1359,38 @@
                     </v-select>
                   </v-col>
                   <v-col cols="12" md="6">
-                    <template v-if="contactFormMain.entity">
-                      <v-select
-                        v-if="contactFormMain.entity.value === 'damayan'"
-                        v-model="contactFormMain.planType"
-                        :items="damayanPlans"
-                        label="Plan type *"
-                        placeholder="Select plan type"
-                        variant="outlined"
-                        density="comfortable"
-                        hide-details="auto"
-                        :rules="[rules.required]"
-                        :error-messages="contactFormMainErrors.planType"
-                        bg-color="white"
-                        color="primary"
-                        item-title="title"
-                        item-value="value"
-                        return-object
-                        clearable
-                        class="minimal-select"
-                      >
-                        <template v-slot:selection="{ item }">
-                          <div class="d-flex align-center">
-                            <v-icon size="small" color="#708090" class="mr-2">mdi-account-group</v-icon>
-                            <span>{{ item.raw.title }}</span>
-                          </div>
-                        </template>
-                      </v-select>
-                      <v-select
-                        v-else-if="contactFormMain.entity.value === 'goodlife_plans'"
-                        v-model="contactFormMain.planType"
-                        :items="goodlifePlans"
-                        label="Plan type *"
-                        placeholder="Select plan type"
-                        variant="outlined"
-                        density="comfortable"
-                        hide-details="auto"
-                        :rules="[rules.required]"
-                        :error-messages="contactFormMainErrors.planType"
-                        bg-color="white"
-                        color="primary"
-                        item-title="title"
-                        item-value="value"
-                        return-object
-                        clearable
-                        class="minimal-select"
-                      >
-                        <template v-slot:selection="{ item }">
-                          <div class="d-flex align-center">
-                            <v-icon size="small" color="#708090" class="mr-2">mdi-account</v-icon>
-                            <span>{{ item.raw.title }}</span>
-                          </div>
-                        </template>
-                      </v-select>
-                      <v-select
-                        v-else-if="contactFormMain.entity.value === 'mbai'"
-                        v-model="contactFormMain.planType"
-                        :items="mbaiPlans"
-                        label="Plan type *"
-                        placeholder="Select plan type"
-                        variant="outlined"
-                        density="comfortable"
-                        hide-details="auto"
-                        :rules="[rules.required]"
-                        :error-messages="contactFormMainErrors.planType"
-                        bg-color="white"
-                        color="primary"
-                        item-title="title"
-                        item-value="value"
-                        return-object
-                        clearable
-                        class="minimal-select"
-                      >
-                        <template v-slot:selection="{ item }">
-                          <div class="d-flex align-center">
-                            <v-icon size="small" color="#708090" class="mr-2">mdi-office-building</v-icon>
-                            <span>{{ item.raw.title }}</span>
-                          </div>
-                        </template>
-                      </v-select>
-                    </template>
-                    <v-text-field
-                      v-else
-                      label="Plan type"
-                      placeholder="Select entity type first"
+                    <v-select
+                      v-model="contactFormMain.concern"
+                      :items="concernsList"
+                      label="Concern *"
+                      placeholder="Select concern"
                       variant="outlined"
                       density="comfortable"
-                      disabled
-                      bg-color="grey-lighten-2"
-                      class="minimal-input"
-                    ></v-text-field>
+                      hide-details="auto"
+                      :rules="[rules.required]"
+                      :error-messages="contactFormMainErrors.concern"
+                      bg-color="white"
+                      color="primary"
+                      item-title="title"
+                      item-value="value"
+                      return-object
+                      clearable
+                      class="minimal-select"
+                    >
+                      <template v-slot:selection="{ item }">
+                        <div class="d-flex align-center">
+                          <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
+                          <span>{{ item.raw.title }}</span>
+                        </div>
+                      </template>
+                      <template v-slot:item="{ props, item }">
+                        <v-list-item v-bind="props" :title="item.raw.title">
+                          <template v-slot:prepend>
+                            <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
+                          </template>
+                        </v-list-item>
+                      </template>
+                    </v-select>
                   </v-col>
                 </v-row>
 
@@ -1716,8 +1599,8 @@ const contactForm = ref({
   firstName: "",
   email: "",
   contactNo: "",
-  entity: null,
   planType: null,
+  concern: null,
   description: "",
 });
 
@@ -1729,8 +1612,8 @@ const contactFormErrors = ref({
   firstName: "",
   email: "",
   contactNo: "",
-  entity: "",
   planType: "",
+  concern: "",
   description: "",
 });
 
@@ -1742,8 +1625,8 @@ const contactFormMain = ref({
   firstName: "",
   email: "",
   contactNo: "",
-  entity: null,
   planType: null,
+  concern: null,
   description: "",
 });
 
@@ -1755,51 +1638,26 @@ const contactFormMainErrors = ref({
   firstName: "",
   email: "",
   contactNo: "",
-  entity: "",
   planType: "",
+  concern: "",
   description: "",
 });
 
-// Entity Options
-const entities = ref([
-  { 
-    title: "Goodlife Plans", 
-    value: "goodlife_plans", 
-    icon: "mdi-account", 
-    color: "#708090" 
-  },
-  { 
-    title: "MBAI", 
-    value: "mbai", 
-    icon: "mdi-office-building", 
-    color: "#708090" 
-  },
-  { 
-    title: "Damayan", 
-    value: "damayan", 
-    icon: "mdi-account-group", 
-    color: "#708090" 
-  },
+// Merged Plan Type Options
+const allPlans = ref([
+  { title: "Micro-Loans Redemption Insurance ( MLRI )", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
+  { title: "Jade Plan", value: "goodlife_jade", icon: "mdi-shield", color: "#708090" },
+  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090" },
+  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090" }
 ]);
 
-// Plan Type Options based on Entity
-const damayanPlans = ref([
-  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090"  },
-  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090"  },
-]);
-
-const goodlifePlans = ref([
-  { title: "Jade Plan", value: "goodlife_life", icon: "mdi-shield", color: "#708090" },
-]);
-
-const mbaiPlans = ref([
-  { title: "Micro-Loans Redemption Insurance (MLRI)", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
-  { title: "OFW Secure Life", value: "mbai_secure_life", icon: "mdi-star", color: "#708090" },
-  { title: "Life Shield Plus", value: "mbai_shield_plus", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Protek Excel", value: "mbai_protek_excel", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Protek Insurance", value: "mbai_protek_insurance", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Healthease", value: "mbai_healthease", icon: "mdi-diamond", color: "#708090" },
-  { title: "Glife Comfort", value: "mbai_comfort", icon: "mdi-diamond", color: "#708090" },
+// Concerns Options
+const concernsList = ref([
+  { title: "General Inquiry", value: "inquiry", icon: "mdi-information", color: "#708090" },
+  { title: "Claim", value: "claim", icon: "mdi-file-document", color: "#708090" },
+  { title: "Feedback", value: "feedback", icon: "mdi-comment", color: "#708090" },
+  { title: "Support", value: "support", icon: "mdi-lifebuoy", color: "#708090" },
+  { title: "Other", value: "other", icon: "mdi-dots-horizontal", color: "#708090" }
 ]);
 
 // Snackbar State
@@ -1845,7 +1703,7 @@ const zoomImages = ref([]);
 const zoomIndex = ref(0);
 
 // Data Arrays
-const sections = ["home", "about", "legalities", "features", "contact"];
+const sections = ["home", "about", "legalities", "features", "products", "contact"];
 const features = ref([
   "Available Individual Insurance Product",
   "Family Insurance Product",
@@ -1916,9 +1774,19 @@ const scrollToSection = (id) => {
   drawer.value = false;
   const section = document.getElementById(id);
   if (section) {
-    const yOffset = -120;
-    const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
-    smoothScrollTo(y);
+    const headerHeight = 65;
+    const extraOffset = 15; // Small gap for aesthetics
+    const yOffset = -(headerHeight + extraOffset);
+    
+    // Use offsetTop instead of getBoundingClientRect to avoid AOS transformation issues
+    let element = section;
+    let y = 0;
+    while (element) {
+      y += element.offsetTop;
+      element = element.offsetParent;
+    }
+    
+    smoothScrollTo(y + yOffset);
   }
 };
 
@@ -1953,9 +1821,7 @@ const closeLegalitiesDialog = () => {
 };
 
 // CONTACT FORM METHODS (Dialog)
-const handleEntityChange = () => {
-  contactForm.value.planType = null;
-};
+
 
 const submitContactForm = async () => {
   // Check attempts limit
@@ -1976,7 +1842,6 @@ const submitContactForm = async () => {
     firstName: "",
     email: "",
     contactNo: "",
-    entity: "",
     planType: "",
     description: "",
   };
@@ -1989,7 +1854,7 @@ const submitContactForm = async () => {
 
   try {
     const messageData = {
-      title: `Contact Support - ${contactForm.value.entity?.title || 'General Inquiry'}`,
+      title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
       description: contactForm.value.description,
       email: contactForm.value.email,
       contact_no: contactForm.value.contactNo,
@@ -1998,7 +1863,8 @@ const submitContactForm = async () => {
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
-      entity: contactForm.value.entity?.title || '',
+      concern: contactForm.value.concern?.title || '',
+      entity: '',
     };
 
     await messageService.add(messageData);
@@ -2019,8 +1885,8 @@ const submitContactForm = async () => {
       firstName: "",
       email: "",
       contactNo: "",
-      entity: null,
       planType: null,
+      concern: null,
       description: "",
     };
     contactFormErrors.value = {
@@ -2030,8 +1896,8 @@ const submitContactForm = async () => {
       firstName: "",
       email: "",
       contactNo: "",
-      entity: "",
       planType: "",
+      concern: "",
       description: "",
     };
 
@@ -2047,8 +1913,8 @@ const submitContactForm = async () => {
         firstName: error.first_name?.[0] || "",
         email: error.email?.[0] || "",
         contactNo: error.contact_no?.[0] || "",
-        entity: error.entity?.[0] || "",
         planType: error.plan?.[0] || "",
+        concern: error.concern?.[0] || "",
         description: error.description?.[0] || "",
       };
     } else {
@@ -2064,9 +1930,6 @@ const submitContactForm = async () => {
 };
 
 // CONTACT FORM METHODS (Main Section)
-const handleEntityChangeMain = () => {
-  contactFormMain.value.planType = null;
-};
 
 const submitContactFormMain = async () => {
   // Check attempts limit
@@ -2087,7 +1950,6 @@ const submitContactFormMain = async () => {
     firstName: "",
     email: "",
     contactNo: "",
-    entity: "",
     planType: "",
     description: "",
   };
@@ -2100,7 +1962,7 @@ const submitContactFormMain = async () => {
 
   try {
     const messageData = {
-      title: `Contact Support - ${contactFormMain.value.entity?.title || 'General Inquiry'}`,
+      title: `${contactFormMain.value.concern?.title || 'Contact Support'} - ${contactFormMain.value.planType?.title || 'General Inquiry'}`,
       description: contactFormMain.value.description,
       email: contactFormMain.value.email,
       contact_no: contactFormMain.value.contactNo,
@@ -2109,7 +1971,8 @@ const submitContactFormMain = async () => {
       middle_name: contactFormMain.value.middleName || '',
       first_name: contactFormMain.value.firstName,
       plan: contactFormMain.value.planType?.title || '',
-      entity: contactFormMain.value.entity?.title || '',
+      concern: contactFormMain.value.concern?.title || '',
+      entity: '',
     };
 
     await messageService.add(messageData);
@@ -2130,8 +1993,8 @@ const submitContactFormMain = async () => {
       firstName: "",
       email: "",
       contactNo: "",
-      entity: null,
       planType: null,
+      concern: null,
       description: "",
     };
     contactFormMainErrors.value = {
@@ -2141,8 +2004,8 @@ const submitContactFormMain = async () => {
       firstName: "",
       email: "",
       contactNo: "",
-      entity: "",
       planType: "",
+      concern: "",
       description: "",
     };
   } catch (error) {
@@ -2156,8 +2019,8 @@ const submitContactFormMain = async () => {
         firstName: error.first_name?.[0] || "",
         email: error.email?.[0] || "",
         contactNo: error.contact_no?.[0] || "",
-        entity: error.entity?.[0] || "",
         planType: error.plan?.[0] || "",
+        concern: error.concern?.[0] || "",
         description: error.description?.[0] || "",
       };
     } else {
@@ -2179,15 +2042,31 @@ const showContactIcon = computed(() => {
 // SCROLLSPY FUNCTIONALITY
 const handleScroll = () => {
   let current = "";
+  const headerHeight = 65;
+  const threshold = headerHeight + 100; // Trigger slightly before reaching the section
+  
   sections.forEach((id) => {
     const section = document.getElementById(id);
     if (section) {
-      const sectionTop = section.offsetTop - 160;
-      if (window.scrollY >= sectionTop) {
+      // Get absolute offsetTop
+      let element = section;
+      let sectionTop = 0;
+      while (element) {
+        sectionTop += element.offsetTop;
+        element = element.offsetParent;
+      }
+      
+      if (window.scrollY >= sectionTop - threshold) {
         current = id;
       }
     }
   });
+
+  // Special case: check if we are at the very bottom of the page
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20) {
+    current = sections[sections.length - 1];
+  }
+
   if (current) activeSection.value = current;
 };
 
