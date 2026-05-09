@@ -950,10 +950,10 @@
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
             <v-card variant="outlined" class="rounded-xl pa-8 text-center border-dashed" style="border-width: 2px; border-color: #e2e8f0; background-color: #fafafa;">
-              <h2 class="text-h4 font-weight-bold mb-4" style="color: #1a202c">
+              <h2 class="text-h6 font-weight-bold mb-2" style="color: #1a202c">
                 Connect with Goodlife MBAI
               </h2>
-              <p class="text-body-1 text-grey-darken-1 mb-8">
+              <p class="text-body-2 text-grey-darken-1 mb-6">
                 Follow our official Facebook page to stay updated with our latest membership benefits and community programs.
               </p>
               
@@ -963,7 +963,7 @@
                     block
                     prepend-icon="mdi-facebook"
                     color="#1877F2"
-                    size="x-large"
+                    size="large"
                     variant="flat"
                     class="text-capitalize rounded-lg font-weight-bold shadow-sm"
                     href="https://www.facebook.com/share/18orq16XQj/?mibextid=wwXIfr"
