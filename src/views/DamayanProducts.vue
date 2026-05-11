@@ -1794,25 +1794,25 @@
       <v-container
         fluid
         class="py-16"
-        style="background: linear-gradient(135deg, #4a4561, #3e3a5b)"
+        style="background: linear-gradient(135deg, #e2e8f0, #cbd5e1)"
       >
         <v-container>
           <v-row class="text-center">
             <v-col cols="12" md="8" class="mx-auto">
               <h2
                 class="text-h3 font-weight-bold mb-4 mt-13"
-                style="color: white"
+                style="color: #1a202c"
               >
                 Need Help Choosing?
               </h2>
-              <p class="text-h6 mb-8" style="color: rgba(255, 255, 255, 0.9)">
+              <p class="text-h6 mb-8" style="color: #4a5568">
                 Our insurance experts are ready to help you find the perfect
                 coverage for your needs.
               </p>
               <v-btn
-                color="white"
+                color="primary"
                 size="large"
-                class="text-primary text-capitalize"
+                class="text-white text-capitalize"
                 @click="goToHomeSection('contact')"
               >
                 Get Free Consultation

@@ -926,7 +926,7 @@
       <!-- Why Choose Goodlife Section -->
       <v-container fluid class="py-16 stats-section">
         <v-container max-width="700" class="text-center" data-aos="fade-up">
-          <h2 class="text-h4 font-weight-bold mb-6" style="color: white">
+          <h2 class="text-h4 font-weight-bold mb-6 section-title">
             WHY CHOOSE GOODLIFE ?
           </h2>
 
@@ -1185,7 +1185,7 @@
         id="contact"
         fluid
         class="py-16 contact-cta text-center"
-        style="background: linear-gradient(135deg, #4a4561); color: white"
+        style="background: linear-gradient(135deg, #e2e8f0, #cbd5e1); color: #1a202c"
       >
         <v-row justify="center" data-aos="fade-up">
           <v-col cols="12" md="8">
@@ -1223,8 +1223,8 @@
 
                 <!-- Personal Information Row -->
                 <div class="text-left mb-2">
-                  <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                    <v-icon size="small" color="white" class="mr-1">mdi-account</v-icon>
+                  <span class="text-subtitle-2 font-weight-medium" style="color: #4a5568;">
+                    <v-icon size="small" color="primary" class="mr-1">mdi-account</v-icon>
                     Personal Information :
                   </span>
                 </div>
@@ -1278,8 +1278,8 @@
 
                 <!-- Contact Information Row -->
                 <div class="text-left mb-2 mt-4">
-                  <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                    <v-icon size="small" color="white" class="mr-1">mdi-phone</v-icon>
+                  <span class="text-subtitle-2 font-weight-medium" style="color: #4a5568;">
+                    <v-icon size="small" color="primary" class="mr-1">mdi-phone</v-icon>
                     Contact Information :
                   </span>
                 </div>
@@ -1318,8 +1318,8 @@
 
                 <!-- Plan Type Row -->
                 <div class="text-left mb-2 mt-4">
-                  <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                    <v-icon size="small" color="white" class="mr-1">mdi-account</v-icon>
+                  <span class="text-subtitle-2 font-weight-medium" style="color: #4a5568;">
+                    <v-icon size="small" color="primary" class="mr-1">mdi-account</v-icon>
                     Plan Information :
                   </span>
                 </div>
@@ -1396,8 +1396,8 @@
 
                 <!-- Message -->
                 <div class="text-left mb-2 mt-2">
-                  <span class="text-subtitle-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                    <v-icon size="small" color="white" class="mr-1">mdi-message</v-icon>
+                  <span class="text-subtitle-2 font-weight-medium" style="color: #4a5568;">
+                    <v-icon size="small" color="primary" class="mr-1">mdi-message</v-icon>
                     Message
                   </span>
                 </div>
@@ -1417,8 +1417,8 @@
                 ></v-textarea>
 
                 <v-btn
-                  color="white"
-                  class="mt-3 mb-4 text-primary font-weight-medium px-6 py-3 rounded-pill elevation-3"
+                  color="primary"
+                  class="mt-3 mb-4 text-white font-weight-medium px-6 py-3 rounded-pill elevation-3"
                   type="submit"
                   :loading="submittingMain"
                   :disabled="submittingMain"
@@ -1428,20 +1428,19 @@
                 </v-btn>
 
                 <!-- Wait Indication -->
-                <v-fade-transition>
-                  <div v-if="submittingMain" class="mt-2 mb-4 d-flex flex-column align-center">
-                    <v-progress-circular
+                <v-expand-transition>
+                  <div v-if="submittingMain" class="mt-2 mb-4 text-center">
+                    <v-progress-linear
                       indeterminate
-                      color="white"
-                      size="24"
-                      width="2"
+                      color="primary"
+                      height="2"
                       class="mb-2"
-                    ></v-progress-circular>
-                    <span class="text-body-2 font-weight-medium" style="color: rgba(255,255,255,0.9);">
-                      Sending message, please wait...
+                    ></v-progress-linear>
+                    <span class="text-caption font-weight-medium" style="color: #4a5568;">
+                      Sending your message, please wait...
                     </span>
                   </div>
-                </v-fade-transition>
+                </v-expand-transition>
               </v-form>
             </v-card>
           </v-col>
