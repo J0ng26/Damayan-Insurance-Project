@@ -2294,11 +2294,6 @@ body {
    18. CONTACT FORM & INPUT STYLES (MERGED)
    ============================================ */
 
-/* Series No. Field - Fixed Width */
-.series-field-wrapper {
-  max-width: 280px;
-}
-
 /* Minimal Input Styles */
 .minimal-input :deep(.v-field) {
   border-radius: 8px;
@@ -2401,9 +2396,259 @@ body {
   color: #4a4561 !important;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .series-field-wrapper {
-    max-width: 100%;
+/* ============================================
+   Contact split layout (reference-style)
+   ============================================ */
+
+.contact-page-split {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.contact-page-split__inner {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* Space between Contact Us column and form */
+.contact-split-row {
+  row-gap: 1.75rem;
+}
+
+@media (min-width: 960px) {
+  .contact-split-row {
+    column-gap: clamp(2rem, 4.5vw, 3.25rem);
   }
+}
+
+@media (min-width: 960px) {
+  .contact-page-split .contact-split-sidebar {
+    padding-right: 0.5rem;
+  }
+
+  .contact-page-split .contact-split-form-col {
+    padding-left: 0.5rem;
+  }
+}
+
+.contact-split-sidebar {
+  text-align: left;
+}
+
+.contact-split-title {
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  font-weight: 700;
+  color: #1e3a5f;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.contact-split-subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.55;
+  max-width: 300px;
+}
+
+.contact-info-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 11px 13px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-info-tile:hover {
+  border-color: #d1d5db;
+}
+
+/* Softer highlight for email (lighter than previous charcoal card) */
+.contact-info-tile--email {
+  background: #e8edf5;
+  border-color: #c9d4e3;
+  color: #1e293b;
+  box-shadow: 0 4px 14px rgba(30, 58, 95, 0.07);
+}
+
+.contact-info-tile--email:hover {
+  border-color: #b8c6d9;
+}
+
+.contact-info-tile--email .contact-info-tile__text {
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+.contact-info-tile__icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  color: #1e3a5f;
+}
+
+.contact-info-tile--email .contact-info-tile__icon {
+  background: #d7e2f0;
+  color: #1e3a5f;
+}
+
+.contact-info-tile__text {
+  font-size: 0.8125rem;
+  color: #1e3a5f;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.contact-split-form {
+  text-align: left;
+}
+
+.contact-split-form .contact-form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 10px;
+  margin-top: 4px;
+  letter-spacing: 0.01em;
+}
+
+.contact-split-form .contact-form-label:first-of-type {
+  margin-top: 0;
+}
+
+.contact-split-form .minimal-input :deep(.v-field),
+.contact-split-form .minimal-select :deep(.v-field),
+.contact-split-form .minimal-textarea :deep(.v-field) {
+  border-radius: 6px !important;
+  --v-field-border-opacity: 0.22;
+}
+
+.contact-split-form .minimal-input :deep(.v-field__outline),
+.contact-split-form .minimal-select :deep(.v-field__outline),
+.contact-split-form .minimal-textarea :deep(.v-field__outline) {
+  color: #d1d5db !important;
+}
+
+.contact-split-form .minimal-input :deep(.v-field--focused .v-field__outline),
+.contact-split-form .minimal-select :deep(.v-field--focused .v-field__outline),
+.contact-split-form .minimal-textarea :deep(.v-field--focused .v-field__outline) {
+  color: #9ca3af !important;
+}
+
+.contact-split-form .minimal-input :deep(.v-field__input::placeholder),
+.contact-split-form .minimal-select :deep(.v-field__input::placeholder),
+.contact-split-form .minimal-textarea :deep(textarea::placeholder) {
+  color: #9ca3af !important;
+  opacity: 1;
+}
+
+.contact-split-form .minimal-input :deep(.v-label),
+.contact-split-form .minimal-select :deep(.v-label),
+.contact-split-form .minimal-textarea :deep(.v-label) {
+  display: none !important;
+}
+
+.contact-split-form .contact-file-field :deep(.v-label) {
+  display: block !important;
+}
+
+.contact-split-form .minimal-input :deep(.v-field__input),
+.contact-split-form .minimal-select :deep(.v-field__input) {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  min-height: 46px !important;
+}
+
+/* Extra vertical rhythm between stacked fields */
+.contact-split-form .minimal-input.mb-5,
+.contact-split-form .minimal-select.mb-5 {
+  margin-bottom: 1.375rem !important;
+}
+
+.contact-split-form .minimal-textarea.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.contact-split-form .v-row + .contact-form-label,
+.contact-split-form .v-checkbox + .contact-form-label,
+.contact-split-form .minimal-input + .contact-form-label,
+.contact-split-form .minimal-select + .contact-form-label,
+.contact-split-form .minimal-textarea + .contact-form-label {
+  margin-top: 10px;
+}
+
+.contact-split-form .contact-form-label + .v-row {
+  margin-top: 0;
+}
+
+.contact-btn-send {
+  width: 100%;
+  min-height: 46px !important;
+  border-radius: 6px !important;
+  background: #1e3a5f !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  text-transform: none !important;
+  box-shadow: none !important;
+}
+
+.contact-btn-send:hover {
+  background: #152a45 !important;
+}
+
+.contact-form-actions {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-form-submit {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 600px) {
+  .contact-form-actions .contact-btn-send {
+    width: auto;
+    min-width: 220px;
+  }
+}
+
+.contact-dialog-split {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12) !important;
+  overflow: hidden;
+}
+
+.contact-dialog-split::before {
+  display: none;
+}
+
+.contact-dialog-split:hover {
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.14) !important;
+}
+
+.contact-dialog-minimal.contact-dialog-split::before {
+  display: none !important;
+  height: 0 !important;
+  content: none !important;
+}
+
+.contact-dialog-minimal.contact-dialog-split:hover {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+@media (max-width: 600px) {
 }

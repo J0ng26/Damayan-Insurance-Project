@@ -247,24 +247,26 @@
 
  <!-- Clean Form Layout -->
 <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
-  <!-- Series No Section - Separated at the top -->
-  <v-row dense class="mb-6">
+  <!-- MAF No Section -->
+  <v-row dense class="mb-4">
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-tag</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Reference Information:</span>
+        <v-icon color="primary" size="small" class="mr-1">mdi-numeric</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">MAF No:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
     <v-col cols="12" md="4">
       <v-text-field
-        v-model="contactForm.seriesNo"
-        label="Series No."
-        placeholder="1001"
+        v-model="contactForm.mafNo"
+        type="text"
+        label="MAF No. *"
+        placeholder="e.g., 12345678"
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required, rules.series]"
+        :rules="[rules.required]"
+        :error-messages="contactFormErrors.mafNo"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -285,12 +287,13 @@
     <v-col cols="12" md="4">
       <v-text-field
         v-model="contactForm.lastName"
-        label="Last name"
+        label="Last name *"
         placeholder="Dela Cruz"
         variant="outlined"
         density="compact"
         hide-details="auto"
         :rules="[rules.required, rules.alphabetic]"
+        :error-messages="contactFormErrors.lastName"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -306,6 +309,7 @@
         density="compact"
         hide-details="auto"
         :rules="[rules.alphabetic]"
+        :error-messages="contactFormErrors.middleName"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -315,12 +319,84 @@
     <v-col cols="12" md="4">
       <v-text-field
         v-model="contactForm.firstName"
-        label="First name"
+        label="First name *"
         placeholder="Juan"
         variant="outlined"
         density="compact"
         hide-details="auto"
         :rules="[rules.required, rules.alphabetic]"
+        :error-messages="contactFormErrors.firstName"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+
+    <!-- Complainant Sync Checkbox -->
+    <v-col cols="12" class="mt-2">
+      <v-checkbox
+        v-model="contactForm.isSameAsComplainant"
+        label="Complainant is the same as the Personal Information"
+        density="compact"
+        hide-details
+        color="primary"
+        class="mt-0"
+      ></v-checkbox>
+    </v-col>
+  </v-row>
+
+  <!-- Complainant Information Section -->
+  <v-row dense class="mb-6" v-if="!contactForm.isSameAsComplainant">
+    <v-col cols="12">
+      <div class="d-flex align-center mb-2">
+        <v-icon color="primary" size="small" class="mr-1">mdi-account-alert</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">Complainant Information:</span>
+      </div>
+      <v-divider class="mb-4"></v-divider>
+    </v-col>
+    
+    <!-- Complainant Last Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.complainantLastName"
+        label="Last name *"
+        placeholder="Dela Cruz"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required, rules.alphabetic]"
+        :error-messages="contactFormErrors.complainantLastName"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+
+    <!-- Complainant Middle Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.complainantMiddleName"
+        label="Middle name"
+        placeholder="Santos"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.alphabetic]"
+        :error-messages="contactFormErrors.complainantMiddleName"
+        bg-color="transparent"
+        class="minimal-field"
+      ></v-text-field>
+    </v-col>
+
+    <!-- Complainant First Name -->
+    <v-col cols="12" md="4">
+      <v-text-field
+        v-model="contactForm.complainantFirstName"
+        label="First name *"
+        placeholder="Juan"
+        variant="outlined"
+        density="compact"
+        hide-details="auto"
+        :rules="[rules.required, rules.alphabetic]"
+        :error-messages="contactFormErrors.complainantFirstName"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -413,55 +489,59 @@
 
     <!-- Concerns - Dropdown Select -->
     <v-col cols="12" md="6">
-      <v-select
+      <v-text-field
         v-model="contactForm.concern"
-        :items="concernsList"
         label="Concern *"
-        placeholder="Select concern"
+        placeholder="e.g., Claim Inquiry"
         variant="outlined"
         density="compact"
         hide-details="auto"
         :rules="[rules.required]"
+        :error-messages="contactFormErrors.concern"
         bg-color="transparent"
         class="minimal-field"
-        item-title="title"
-        item-value="value"
-        return-object
-        clearable
-      >
-        <template v-slot:selection="{ item }">
-          <div class="d-flex align-center">
-            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
-            <span>{{ item.raw.title }}</span>
-          </div>
-        </template>
-        <template v-slot:item="{ props, item }">
-          <v-list-item v-bind="props" :title="item.raw.title">
-            <template v-slot:prepend>
-              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
-            </template>
-          </v-list-item>
-        </template>
-      </v-select>
+      ></v-text-field>
     </v-col>
 
-    <!-- Message - Clean Textarea -->
-    <v-col cols="12">
-      <v-textarea
-        v-model="contactForm.description"
-        label="Message"
-        placeholder="How can we help you?"
-        variant="outlined"
-        density="compact"
-        rows="3"
-        auto-grow
-        hide-details="auto"
-        :rules="[rules.required]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-textarea>
-    </v-col>
-  </v-row>
+        <!-- Message - Clean Textarea -->
+        <v-col cols="12">
+          <v-textarea
+            v-model="contactForm.description"
+            label="Message"
+            placeholder="How can we help you?"
+            variant="outlined"
+            density="compact"
+            rows="3"
+            auto-grow
+            hide-details="auto"
+            :rules="[rules.required]"
+            bg-color="transparent"
+            class="minimal-field"
+          ></v-textarea>
+        </v-col>
+
+        <!-- Attachment Section -->
+        <v-col cols="12">
+          <div class="d-flex align-center mb-1 mt-2">
+            <v-icon color="primary" size="x-small" class="mr-1">mdi-paperclip</v-icon>
+            <span class="text-caption font-weight-medium">Attachment (Optional):</span>
+          </div>
+          <v-file-input
+            v-model="contactForm.attachments"
+            label="Attach files or images"
+            variant="outlined"
+            density="compact"
+            prepend-icon=""
+            prepend-inner-icon="mdi-paperclip"
+            multiple
+            chips
+            show-size
+            bg-color="transparent"
+            class="minimal-field"
+            hide-details="auto"
+          ></v-file-input>
+        </v-col>
+      </v-row>
 </v-form>
     </v-card-text>
 
@@ -2143,15 +2223,35 @@ const contactFormRef = ref(null);          // Form reference for validation
 
 // Contact Form Data - Minimal fields only
 const contactForm = ref({
-  seriesNo: "",
   lastName: "",
   middleName: "",
   firstName: "",
+  complainantLastName: "",
+  complainantMiddleName: "",
+  complainantFirstName: "",
+  isSameAsComplainant: true,
   email: "",
   contactNo: "",
+  mafNo: "",
   planType: null,
-  concern: null,
+  concern: "",
   title: "",
+  description: "",
+  attachments: [],
+});
+
+const contactFormErrors = ref({
+  lastName: "",
+  middleName: "",
+  firstName: "",
+  complainantLastName: "",
+  complainantMiddleName: "",
+  complainantFirstName: "",
+  email: "",
+  contactNo: "",
+  mafNo: "",
+  planType: "",
+  concern: "",
   description: "",
 });
 
@@ -2195,12 +2295,12 @@ const rules = {
   },
   alphabetic: (v) => {
     if (!v) return true;
-    const pattern = /^[A-Za-z\s.-]+$/;
+    const pattern = /^[A-Za-z\sñÑ]+$/;
     return pattern.test(v) || "Please enter letters only";
   },
-  series: (v) => {
+  numeric: (v) => {
     if (!v) return true;
-    const pattern = /^\d+$/;
+    const pattern = /^[0-9]+$/;
     return pattern.test(v) || "Please enter numbers only";
   },
 };
@@ -2208,6 +2308,23 @@ const rules = {
 
 
 // ============ MINIMALIST CONTACT FORM METHODS ============
+
+// Sync complainant names if checkbox is checked
+watch(() => contactForm.value.isSameAsComplainant, (val) => {
+  if (val) {
+    contactForm.value.complainantLastName = contactForm.value.lastName;
+    contactForm.value.complainantMiddleName = contactForm.value.middleName;
+    contactForm.value.complainantFirstName = contactForm.value.firstName;
+  }
+});
+
+watch(() => [contactForm.value.lastName, contactForm.value.middleName, contactForm.value.firstName], () => {
+  if (contactForm.value.isSameAsComplainant) {
+    contactForm.value.complainantLastName = contactForm.value.lastName;
+    contactForm.value.complainantMiddleName = contactForm.value.middleName;
+    contactForm.value.complainantFirstName = contactForm.value.firstName;
+  }
+});
 
 const submitContactForm = async () => {
   const { valid } = await contactFormRef.value?.validate();
@@ -2222,12 +2339,16 @@ const submitContactForm = async () => {
       description: contactForm.value.description,
       email: contactForm.value.email,
       contact_no: contactForm.value.contactNo,
-      series_no: contactForm.value.seriesNo,
+      maf_no: contactForm.value.mafNo,
       last_name: contactForm.value.lastName,
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
+      complainant_last_name: contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName,
+      complainant_middle_name: contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || ''),
+      complainant_first_name: contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName,
       plan: contactForm.value.planType?.title || '',
-      concern_info: [contactForm.value.concern],
+      concern_info: [{ title: contactForm.value.concern, value: 'other' }],
+      files: contactForm.value.attachments,
     };
 
     // Send to ticket system API
@@ -2241,16 +2362,21 @@ const submitContactForm = async () => {
 
     contactFormRef.value?.reset();
     contactForm.value = {
-      seriesNo: "",
       lastName: "",
       middleName: "",
       firstName: "",
+      complainantLastName: "",
+      complainantMiddleName: "",
+      complainantFirstName: "",
+      isSameAsComplainant: true,
       email: "",
       contactNo: "",
+      mafNo: "",
       planType: null,
-      concern: null,
+      concern: "",
       title: "",
       description: "",
+      attachments: [],
     };
 
     contactDialog.value = false;
@@ -2271,13 +2397,18 @@ const submitContactForm = async () => {
 const resetContactForm = () => {
   contactFormRef.value?.reset();
   contactForm.value = {
-    seriesNo: "",
     lastName: "",
+    middleName: "",
     firstName: "",
+    complainantLastName: "",
+    complainantMiddleName: "",
+    complainantFirstName: "",
+    isSameAsComplainant: true,
     email: "",
     contactNo: "",
+    mafNo: "",
     planType: null,
-    concern: null,
+    concern: "",
     title: "",
     description: "",
   };

@@ -56,16 +56,41 @@ export const messageService = {
     description: string;
     email?: string;
     contact_no?: string;
-    series_no?: string;
+    maf_no?: string;
     last_name: string;
     middle_name?: string;
     first_name: string;
     plan?: string;
     concern_info: any[];
+    files?: File[];
   }) {
     try {
       await ensureCsrfCookie();
-      const response = await api.post('/message/add', data);
+
+      let payload: any = data;
+      let headers: any = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      };
+
+      if (data.files && data.files.length > 0) {
+        const formData = new FormData();
+        Object.keys(data).forEach(key => {
+          if (key === 'files') {
+            data.files?.forEach((file, index) => {
+              formData.append(`files[${index}]`, file);
+            });
+          } else if (key === 'concern_info') {
+            formData.append(key, JSON.stringify(data[key]));
+          } else {
+            formData.append(key, (data as any)[key] || '');
+          }
+        });
+        payload = formData;
+        headers['Content-Type'] = 'multipart/form-data';
+      }
+
+      const response = await api.post('/message/add', payload, { headers });
       return response.data;
     } catch (error: any) {
       // Handle validation errors from Laravel

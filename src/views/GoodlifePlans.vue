@@ -1321,24 +1321,25 @@
 
  <!-- Clean Form Layout -->
 <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
-  <!-- Series No Section - Separated at the top -->
-  <v-row dense class="mb-6">
+  <!-- MAF No Section -->
+  <v-row dense class="mb-4">
     <v-col cols="12">
       <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-tag</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Reference Information:</span>
+        <v-icon color="primary" size="small" class="mr-1">mdi-numeric</v-icon>
+        <span class="text-subtitle-2 font-weight-medium">MAF No:</span>
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
     <v-col cols="12" md="4">
       <v-text-field
-        v-model="contactForm.seriesNo"
-        label="Series No."
-        placeholder="1001"
+        v-model="contactForm.mafNo"
+        type="number"
+        label="MAF No."
+        placeholder="e.g., 12345678"
         variant="outlined"
         density="compact"
         hide-details="auto"
-        :rules="[rules.required, rules.series]"
+        :rules="[rules.numeric]"
         bg-color="transparent"
         class="minimal-field"
       ></v-text-field>
@@ -1520,23 +1521,45 @@
     </v-col>
 
 
-    <!-- Message - Clean Textarea -->
-    <v-col cols="12">
-      <v-textarea
-        v-model="contactForm.description"
-        label="Message"
-        placeholder="How can we help you?"
-        variant="outlined"
-        density="compact"
-        rows="3"
-        auto-grow
-        hide-details="auto"
-        :rules="[rules.required]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-textarea>
-    </v-col>
-  </v-row>
+        <!-- Message - Clean Textarea -->
+        <v-col cols="12">
+          <v-textarea
+            v-model="contactForm.description"
+            label="Message"
+            placeholder="How can we help you?"
+            variant="outlined"
+            density="compact"
+            rows="3"
+            auto-grow
+            hide-details="auto"
+            :rules="[rules.required]"
+            bg-color="transparent"
+            class="minimal-field"
+          ></v-textarea>
+        </v-col>
+
+        <!-- Attachment Section -->
+        <v-col cols="12">
+          <div class="d-flex align-center mb-1 mt-2">
+            <v-icon color="primary" size="x-small" class="mr-1">mdi-paperclip</v-icon>
+            <span class="text-caption font-weight-medium">Attachment (Optional):</span>
+          </div>
+          <v-file-input
+            v-model="contactForm.attachments"
+            label="Attach files or images"
+            variant="outlined"
+            density="compact"
+            prepend-icon=""
+            prepend-inner-icon="mdi-paperclip"
+            multiple
+            chips
+            show-size
+            bg-color="transparent"
+            class="minimal-field"
+            hide-details="auto"
+          ></v-file-input>
+        </v-col>
+      </v-row>
 </v-form>
     </v-card-text>
 
@@ -1685,16 +1708,17 @@ const contactFormRef = ref(null);          // Form reference for validation
 
 // Contact Form Data - Minimal fields only
 const contactForm = ref({
-  seriesNo: "",
   lastName: "",
   middleName: "",
   firstName: "",
   email: "",
   contactNo: "",
+  mafNo: "",
   planType: null,
   concern: null,
   title: "",
   description: "",
+  attachments: [],
 });
 
 // Merged Plan Type Options
@@ -1736,12 +1760,12 @@ const rules = {
   },
   alphabetic: (v) => {
     if (!v) return true;
-    const pattern = /^[A-Za-z\s.-]+$/;
+    const pattern = /^[A-Za-z\sñÑ]+$/;
     return pattern.test(v) || "Please enter letters only";
   },
-  series: (v) => {
+  numeric: (v) => {
     if (!v) return true;
-    const pattern = /^\d+$/;
+    const pattern = /^[0-9]+$/;
     return pattern.test(v) || "Please enter numbers only";
   },
 };
@@ -1763,12 +1787,13 @@ const submitContactForm = async () => {
       description: contactForm.value.description,
       email: contactForm.value.email,
       contact_no: contactForm.value.contactNo,
-      series_no: contactForm.value.seriesNo,
+      maf_no: contactForm.value.mafNo,
       last_name: contactForm.value.lastName,
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
       plan: contactForm.value.planType?.title || '',
       concern_info: [contactForm.value.concern],
+      files: contactForm.value.attachments,
     };
 
     // Send to ticket system API
@@ -1782,7 +1807,6 @@ const submitContactForm = async () => {
 
     contactFormRef.value?.reset();
     contactForm.value = {
-      seriesNo: "",
       lastName: "",
       middleName: "",
       firstName: "",
@@ -1792,6 +1816,7 @@ const submitContactForm = async () => {
       concern: null,
       title: "",
       description: "",
+      attachments: [],
     };
 
     contactDialog.value = false;
@@ -1813,7 +1838,6 @@ const submitContactForm = async () => {
 const resetContactForm = () => {
   contactFormRef.value?.reset();
   contactForm.value = {
-    seriesNo: "",
     lastName: "",
     firstName: "",
     email: "",
