@@ -28,7 +28,6 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('home')"
           >
             Home
@@ -37,17 +36,22 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('about')"
           >
             About
           </v-btn>
 
-          <!-- Legalities Navigation Item -->
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
+            @click="goToHomeSection('blog')"
+          >
+            Blog
+          </v-btn>
+
+          <v-btn
+            variant="text"
+            class="text-capitalize text-body-2 mx-2 nav-btn"
             @click="goToHomeSection('legalities')"
           >
             Legalities
@@ -56,7 +60,6 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('features')"
           >
             Features
@@ -79,26 +82,14 @@
             </template>
             <v-list density="compact">
               <v-list-item
-                @click="goToProductsPage('/products/damayan')"
+                v-for="item in productsMenuItems"
+                :key="item.route"
+                @click="goToProductsPage(item.route)"
                 :class="{
-                  'active-submenu': $route.path === '/products/damayan',
+                  'active-submenu': $route.path === item.route,
                 }"
               >
-                <v-list-item-title>DAMAYAN</v-list-item-title>
-              </v-list-item>
-              <v-list-item
-                @click="goToProductsPage('/products/goodlife-plans')"
-                :class="{
-                  'active-submenu': $route.path === '/products/goodlife-plans',
-                }"
-              >
-                <v-list-item-title>Goodlife Plans</v-list-item-title>
-              </v-list-item>
-              <v-list-item
-                @click="goToProductsPage('/products/mbai')"
-                :class="{ 'active-submenu': $route.path === '/products/mbai' }"
-              >
-                <v-list-item-title>MBAI</v-list-item-title>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -106,7 +97,6 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('contact')"
           >
             Contact us
@@ -142,6 +132,10 @@
           @click="goToHomeSection('about')"
         ></v-list-item>
         <v-list-item
+          title="Blog"
+          @click="goToHomeSection('blog')"
+        ></v-list-item>
+        <v-list-item
           title="Legalities"
           @click="goToHomeSection('legalities')"
         ></v-list-item>
@@ -155,14 +149,12 @@
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" title="Products"></v-list-item>
           </template>
-          <v-list-item @click="goToProductsPage('/products/damayan')">
-            <v-list-item-title>DAMAYAN</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="goToProductsPage('/products/goodlife-plans')">
-            <v-list-item-title>GOODLIFE PLANS</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="goToProductsPage('/products/mbai')">
-            <v-list-item-title>MBAI</v-list-item-title>
+          <v-list-item
+            v-for="item in productsMenuItems"
+            :key="item.route"
+            @click="goToProductsPage(item.route)"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list-group>
 
@@ -1289,306 +1281,449 @@
 </div>
 
 <!-- ============ CONTACT INFORMATION DIALOG - MINIMALIST DESIGN ============ -->
-<v-dialog v-model="contactDialog" max-width="800" persistent scrollable>
-  <v-card rounded="lg" elevation="0" class="contact-dialog-minimal">
-    <!-- Minimal Header -->
-    <div class="d-flex justify-space-between align-center px-6 pt-6 pb-2">
-      <div class="d-flex align-center">
-        <span class="text-h6 font-weight-medium">Contact Support</span>
-      </div>
-      <v-btn 
-        icon="mdi-close" 
-        variant="text" 
-        size="small"
-        @click="contactDialog = false"
-      ></v-btn>
-    </div>
-
-    <v-divider class="mx-6"></v-divider>
-
-    <v-card-text class="pa-6">
-      <!-- Compact Contact Info -->
-      <div class="d-flex ga-4 mb-6">
-        <div class="d-flex align-center">
-          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-email-outline</v-icon>
-          <span class="text-body-2 text-grey-darken-1">info@goodlifedamayan.com</span>
+<v-dialog v-model="contactDialog" max-width="1200" persistent scrollable>
+      <v-card rounded="lg" elevation="0" class="contact-dialog-minimal contact-dialog-split">
+        <div class="d-flex justify-space-between align-center px-6 pt-5 pb-2">
+          <span class="text-h6 font-weight-bold" style="color: #1f2937">Contact Us</span>
+          <v-btn
+            icon="mdi-close"
+            variant="text"
+            size="small"
+            aria-label="Close"
+            @click="contactDialog = false"
+          ></v-btn>
         </div>
-        <div class="d-flex align-center">
-          <v-icon size="small" color="grey-darken-1" class="mr-1">mdi-phone</v-icon>
-          <span class="text-body-2 text-grey-darken-1">(082) 333 1809</span>
-        </div>
-      </div>
+        <v-divider />
 
- <!-- Clean Form Layout -->
-<v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
-  <!-- MAF No Section -->
-  <v-row dense class="mb-4">
-    <v-col cols="12">
-      <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-numeric</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">MAF No:</span>
-      </div>
-      <v-divider class="mb-4"></v-divider>
-    </v-col>
-    <v-col cols="12" md="4">
-      <v-text-field
-        v-model="contactForm.mafNo"
-        type="number"
-        label="MAF No."
-        placeholder="e.g., 12345678"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.numeric]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
-  </v-row>
+        <v-card-text class="pa-0">
+          <v-row class="ma-0 flex-column flex-md-row contact-split-row">
+            <v-col cols="12" md="4" class="pa-5 pa-md-6 contact-split-sidebar">
+              <p class="contact-split-subtitle mb-5" style="max-width: none">
+                Any question? We would be happy to help you.
+              </p>
+              <div class="d-flex flex-column ga-4">
+                <div class="contact-info-tile">
+                  <div class="contact-info-tile__icon">
+                    <v-icon size="20">mdi-phone</v-icon>
+                  </div>
+                  <div>
+                    <div class="text-caption text-medium-emphasis text-uppercase letter-spacing mb-1">Phone</div>
+                    <div class="contact-info-tile__text font-weight-medium">(082) 333 1809</div>
+                  </div>
+                </div>
+                <a href="mailto:info@goodlifedamayan.com" class="text-decoration-none">
+                  <div class="contact-info-tile contact-info-tile--email">
+                    <div class="contact-info-tile__icon">
+                      <v-icon size="20">mdi-email-outline</v-icon>
+                    </div>
+                    <div>
+                      <div class="text-caption text-medium-emphasis text-uppercase letter-spacing mb-1">Email</div>
+                      <div class="contact-info-tile__text font-weight-medium">info@goodlifedamayan.com</div>
+                    </div>
+                  </div>
+                </a>
+                <div class="contact-info-tile">
+                  <div class="contact-info-tile__icon">
+                    <v-icon size="20">mdi-map-marker-outline</v-icon>
+                  </div>
+                  <div>
+                    <div class="text-caption text-medium-emphasis text-uppercase letter-spacing mb-1">Address</div>
+                    <div class="contact-info-tile__text font-weight-medium">
+                      Goodlife Building, National Highway, San Jose, Digos City
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </v-col>
 
-  <!-- Personal Information Section -->
-  <v-row dense class="mb-6">
-    <v-col cols="12">
-      <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Personal Information:</span>
-      </div>
-      <v-divider class="mb-4"></v-divider>
-    </v-col>
-    
-    <!-- Last Name -->
-    <v-col cols="12" md="4">
-      <v-text-field
-        v-model="contactForm.lastName"
-        label="Last name"
-        placeholder="Dela Cruz"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required, rules.alphabetic]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
+            <v-col cols="12" md="7" class="pa-5 pa-md-6 contact-split-form-col">
+              <v-form ref="contactFormRef" v-model="formValid" class="contact-split-form" @submit.prevent="submitContactForm">
+                <label class="contact-form-label" for="contact-dlg-maf">
+                  {{ CONTACT_SPLIT_FIELDS.maf.label }}
+                </label>
+                <v-text-field
+                  id="contact-dlg-maf"
+                  v-model="contactForm.mafNo"
+                  type="text"
+                  :placeholder="CONTACT_SPLIT_FIELDS.maf.hint"
+                  variant="outlined"
+                  density="comfortable"
+                  hide-details="auto"
+                  :rules="[rules.required]"
+                  :error-messages="contactFormErrors.mafNo"
+                  bg-color="white"
+                  color="grey-darken-2"
+                  class="minimal-input mb-5"
+                ></v-text-field>
 
-    <!-- Middle Name -->
-    <v-col cols="12" md="4">
-      <v-text-field
-        v-model="contactForm.middleName"
-        label="Middle name"
-        placeholder="Santos"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.alphabetic]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
+                <v-row dense class="mb-2">
+                  <v-col cols="12" sm="4">
+                    <label class="contact-form-label" for="contact-dlg-first">
+                      {{ CONTACT_SPLIT_FIELDS.firstName.label }}
+                    </label>
+                    <v-text-field
+                      id="contact-dlg-first"
+                      v-model="contactForm.firstName"
+                      :placeholder="CONTACT_SPLIT_FIELDS.firstName.hint"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="[rules.required, rules.alphabetic]"
+                      :error-messages="contactFormErrors.firstName"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-input mb-5"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="4">
+                    <label class="contact-form-label" for="contact-dlg-last">
+                      {{ CONTACT_SPLIT_FIELDS.lastName.label }}
+                    </label>
+                    <v-text-field
+                      id="contact-dlg-last"
+                      v-model="contactForm.lastName"
+                      :placeholder="CONTACT_SPLIT_FIELDS.lastName.hint"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="[rules.required, rules.alphabetic]"
+                      :error-messages="contactFormErrors.lastName"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-input mb-5"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="4">
+                    <label class="contact-form-label" for="contact-dlg-middle">
+                      {{ CONTACT_SPLIT_FIELDS.middleName.label }}
+                    </label>
+                    <v-text-field
+                      id="contact-dlg-middle"
+                      v-model="contactForm.middleName"
+                      :placeholder="CONTACT_SPLIT_FIELDS.middleName.hint"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="[rules.alphabetic]"
+                      :error-messages="contactFormErrors.middleName"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-input mb-5"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
 
-    <!-- First Name -->
-    <v-col cols="12" md="4">
-      <v-text-field
-        v-model="contactForm.firstName"
-        label="First name"
-        placeholder="Juan"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required, rules.alphabetic]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
-  </v-row>
+                <v-checkbox
+                  v-model="contactForm.isSameAsComplainant"
+                  label="Complainant is the same as the personal information above"
+                  density="compact"
+                  hide-details
+                  color="grey-darken-3"
+                  class="mt-0 mb-2"
+                ></v-checkbox>
 
-  <!-- Contact Information Section -->
-  <v-row dense class="mb-6">
-    <v-col cols="12">
-      <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-phone</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Contact Information:</span>
-      </div>
-      <v-divider class="mb-4"></v-divider>
-    </v-col>
+                <template v-if="!contactForm.isSameAsComplainant">
+                  <p class="text-body-2 font-weight-bold text-grey-darken-3 mb-3 mt-2">
+                    Complainant
+                  </p>
+                  <v-row dense class="mb-2">
+                    <v-col cols="12" sm="4">
+                      <label class="contact-form-label" for="contact-dlg-c-first">
+                        {{ CONTACT_SPLIT_FIELDS.firstName.label }}
+                      </label>
+                      <v-text-field
+                        id="contact-dlg-c-first"
+                        v-model="contactForm.complainantFirstName"
+                        :placeholder="CONTACT_SPLIT_FIELDS.firstName.hint"
+                        variant="outlined"
+                        density="comfortable"
+                        hide-details="auto"
+                        :rules="[rules.required, rules.alphabetic]"
+                        :error-messages="contactFormErrors.complainantFirstName"
+                        bg-color="white"
+                        color="grey-darken-2"
+                        class="minimal-input mb-5"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="4">
+                      <label class="contact-form-label" for="contact-dlg-c-last">
+                        {{ CONTACT_SPLIT_FIELDS.lastName.label }}
+                      </label>
+                      <v-text-field
+                        id="contact-dlg-c-last"
+                        v-model="contactForm.complainantLastName"
+                        :placeholder="CONTACT_SPLIT_FIELDS.lastName.hint"
+                        variant="outlined"
+                        density="comfortable"
+                        hide-details="auto"
+                        :rules="[rules.required, rules.alphabetic]"
+                        :error-messages="contactFormErrors.complainantLastName"
+                        bg-color="white"
+                        color="grey-darken-2"
+                        class="minimal-input mb-5"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="4">
+                      <label class="contact-form-label" for="contact-dlg-c-middle">
+                        {{ CONTACT_SPLIT_FIELDS.middleName.label }}
+                      </label>
+                      <v-text-field
+                        id="contact-dlg-c-middle"
+                        v-model="contactForm.complainantMiddleName"
+                        :placeholder="CONTACT_SPLIT_FIELDS.middleName.hint"
+                        variant="outlined"
+                        density="comfortable"
+                        hide-details="auto"
+                        :rules="[rules.alphabetic]"
+                        :error-messages="contactFormErrors.complainantMiddleName"
+                        bg-color="white"
+                        color="grey-darken-2"
+                        class="minimal-input mb-5"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </template>
 
-    <!-- Email -->
-    <v-col cols="12" md="6">
-      <v-text-field
-        v-model="contactForm.email"
-        label="Email"
-        placeholder="juan@example.com"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required, rules.email]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
+                <label class="contact-form-label" for="contact-dlg-email">
+                  {{ CONTACT_SPLIT_FIELDS.email.label }}
+                </label>
+                <v-text-field
+                  id="contact-dlg-email"
+                  v-model="contactForm.email"
+                  :placeholder="CONTACT_SPLIT_FIELDS.email.hint"
+                  variant="outlined"
+                  density="comfortable"
+                  hide-details="auto"
+                  :rules="[rules.required, rules.email]"
+                  :error-messages="contactFormErrors.email"
+                  bg-color="white"
+                  color="grey-darken-2"
+                  class="minimal-input mb-5"
+                ></v-text-field>
 
-    <!-- Contact No -->
-    <v-col cols="12" md="6">
-      <v-text-field
-        v-model="contactForm.contactNo"
-        label="Contact no."
-        placeholder="+63 912 345 6789"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required, rules.phone]"
-        bg-color="transparent"
-        class="minimal-field"
-      ></v-text-field>
-    </v-col>
-  </v-row>
+                <label class="contact-form-label" for="contact-dlg-phone">
+                  {{ CONTACT_SPLIT_FIELDS.phone.label }}
+                </label>
+                <v-text-field
+                  id="contact-dlg-phone"
+                  v-model="contactForm.contactNo"
+                  :placeholder="CONTACT_SPLIT_FIELDS.phone.hint"
+                  variant="outlined"
+                  density="comfortable"
+                  hide-details="auto"
+                  :rules="[rules.required, rules.phone]"
+                  :error-messages="contactFormErrors.contactNo"
+                  bg-color="white"
+                  color="grey-darken-2"
+                  class="minimal-input mb-5"
+                ></v-text-field>
 
-  <!-- Plan Type Section -->
-  <v-row dense class="mb-6">
-    <v-col cols="12">
-      <div class="d-flex align-center mb-2">
-        <v-icon color="primary" size="small" class="mr-1">mdi-account</v-icon>
-        <span class="text-subtitle-2 font-weight-medium">Plan Information:</span>
-      </div>
-      <v-divider class="mb-4"></v-divider>
-    </v-col>
-    <!-- Plan Type - Dropdown Select -->
-    <v-col cols="12" md="6">
-      <v-select
-        v-model="contactForm.planType"
-        :items="allPlans"
-        label="Plan type *"
-        placeholder="Select plan type"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required]"
-        bg-color="transparent"
-        class="minimal-field"
-        item-title="title"
-        item-value="value"
-        return-object
-        clearable
-      >
-        <template v-slot:selection="{ item }">
-          <div class="d-flex align-center">
-            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
-            <span>{{ item.raw.title }}</span>
-          </div>
-        </template>
-        <template v-slot:item="{ props, item }">
-          <v-list-item v-bind="props" :title="item.raw.title">
-            <template v-slot:prepend>
-              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
-            </template>
-          </v-list-item>
-        </template>
-      </v-select>
-    </v-col>
+                <v-row dense>
+                  <v-col cols="12" md="12">
+                    <label class="contact-form-label" for="contact-dlg-concern">
+                      {{ CONTACT_SPLIT_FIELDS.concern.label }}
+                    </label>
+                    <v-select
+                      id="contact-dlg-concern"
+                      v-model="contactForm.concern"
+                      :items="concernsList"
+                      :placeholder="CONTACT_SPLIT_FIELDS.concern.hint"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="[rules.required]"
+                      :error-messages="contactFormErrors.concern"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      item-title="title"
+                      item-value="id"
+                      return-object
+                      clearable
+                      class="minimal-select mb-5"
+                    ></v-select>
+                  </v-col>
+                </v-row>
 
-    <!-- Concerns - Dropdown Select -->
-    <v-col cols="12" md="6">
-      <v-select
-        v-model="contactForm.concern"
-        :items="concernsList"
-        label="Concern *"
-        placeholder="Select concern"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required]"
-        bg-color="transparent"
-        class="minimal-field"
-        item-title="title"
-        item-value="value"
-        return-object
-        clearable
-      >
-        <template v-slot:selection="{ item }">
-          <div class="d-flex align-center">
-            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
-            <span>{{ item.raw.title }}</span>
-          </div>
-        </template>
-        <template v-slot:item="{ props, item }">
-          <v-list-item v-bind="props" :title="item.raw.title">
-            <template v-slot:prepend>
-              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
-            </template>
-          </v-list-item>
-        </template>
-      </v-select>
-    </v-col>
+                <!-- Dynamic Form Fields (Dialog) -->
+                <template v-if="contactForm.concern && contactForm.concern.fields && contactForm.concern.fields.length > 0">
+                  <div
+                    v-for="field in contactForm.concern.fields"
+                    :key="field.title"
+                    class="mb-4"
+                  >
+                    <label class="contact-form-label">
+                      {{ field.label }}<span v-if="field.required" class="text-error"> *</span>
+                    </label>
+                    <v-text-field
+                      v-if="field.type === 'text' || !field.type"
+                      v-model="contactForm.dynamicAnswers[field.title]"
+                      :placeholder="field.title + (field.required ? ' *' : '')"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="field.required ? [rules.required] : []"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-field"
+                    ></v-text-field>
+                    <v-textarea
+                      v-else-if="field.type === 'textarea'"
+                      v-model="contactForm.dynamicAnswers[field.title]"
+                      :placeholder="field.title + (field.required ? ' *' : '')"
+                      variant="outlined"
+                      density="comfortable"
+                      rows="3"
+                      auto-grow
+                      hide-details="auto"
+                      :rules="field.required ? [rules.required] : []"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-field"
+                    ></v-textarea>
+                    <v-select
+                      v-else-if="field.type === 'select'"
+                      v-model="contactForm.dynamicAnswers[field.title]"
+                      :items="field.options || []"
+                      :placeholder="field.title + (field.required ? ' *' : '')"
+                      variant="outlined"
+                      density="comfortable"
+                      hide-details="auto"
+                      :rules="field.required ? [rules.required] : []"
+                      bg-color="white"
+                      color="grey-darken-2"
+                      class="minimal-field"
+                    ></v-select>
+                    <div v-else-if="field.type === 'radio'" class="d-flex flex-column">
+                      <v-radio-group
+                        v-model="contactForm.dynamicAnswers[field.title]"
+                        hide-details="auto"
+                        :rules="field.required ? [rules.required] : []"
+                        density="compact"
+                      >
+                        <v-radio
+                          v-for="opt in field.options || []"
+                          :key="opt"
+                          :label="opt"
+                          :value="opt"
+                          color="primary"
+                        ></v-radio>
+                      </v-radio-group>
+                    </div>
+                    <div v-else-if="field.type === 'checkbox'" class="d-flex flex-column">
+                      <v-input
+                        v-model="contactForm.dynamicAnswers[field.title]"
+                        :rules="field.required ? [rules.required] : []"
+                        hide-details="auto"
+                      >
+                        <div class="d-flex flex-wrap">
+                          <v-checkbox
+                            v-for="opt in field.options || []"
+                            :key="opt"
+                            v-model="contactForm.dynamicAnswers[field.title]"
+                            :value="opt"
+                            :label="opt"
+                            multiple
+                            hide-details
+                            density="compact"
+                            color="primary"
+                            class="mr-4"
+                          ></v-checkbox>
+                        </div>
+                      </v-input>
+                    </div>
+                  </div>
+                </template>
 
+                <label class="contact-form-label" for="contact-dlg-message">
+                  {{ CONTACT_SPLIT_FIELDS.message.label }}
+                </label>
+                <v-textarea
+                  id="contact-dlg-message"
+                  v-model="contactForm.description"
+                  :placeholder="CONTACT_SPLIT_FIELDS.message.hint"
+                  variant="outlined"
+                  rows="4"
+                  auto-grow
+                  hide-details="auto"
+                  :rules="[rules.required]"
+                  :error-messages="contactFormErrors.description"
+                  bg-color="white"
+                  color="grey-darken-2"
+                  class="minimal-textarea mb-4"
+                ></v-textarea>
 
-        <!-- Message - Clean Textarea -->
-        <v-col cols="12">
-          <v-textarea
-            v-model="contactForm.description"
-            label="Message"
-            placeholder="How can we help you?"
-            variant="outlined"
-            density="compact"
-            rows="3"
-            auto-grow
-            hide-details="auto"
-            :rules="[rules.required]"
-            bg-color="transparent"
-            class="minimal-field"
-          ></v-textarea>
-        </v-col>
+                <label class="contact-form-label" for="contact-dlg-files">
+                  {{ CONTACT_SPLIT_FIELDS.attachment.label }}
+                </label>
+                <v-file-input
+                  id="contact-dlg-files"
+                  v-model="contactForm.attachments"
+                  :placeholder="CONTACT_SPLIT_FIELDS.attachment.hint"
+                  variant="outlined"
+                  density="comfortable"
+                  prepend-icon=""
+                  prepend-inner-icon="mdi-paperclip"
+                  multiple
+                  chips
+                  show-size
+                  bg-color="white"
+                  color="grey-darken-2"
+                  class="minimal-input contact-file-field mb-6"
+                  hide-details="auto"
+                  accept=".jpg, .jpeg, .png, .pdf, image/jpeg, image/png, application/pdf"
+                  :rules="[rules.file]"
+                ></v-file-input>
 
-        <!-- Attachment Section -->
-        <v-col cols="12">
-          <div class="d-flex align-center mb-1 mt-2">
-            <v-icon color="primary" size="x-small" class="mr-1">mdi-paperclip</v-icon>
-            <span class="text-caption font-weight-medium">Attachment (Optional):</span>
-          </div>
-          <v-file-input
-            v-model="contactForm.attachments"
-            label="Attach files or images"
-            variant="outlined"
-            density="compact"
-            prepend-icon=""
-            prepend-inner-icon="mdi-paperclip"
-            multiple
-            chips
-            show-size
-            bg-color="transparent"
-            class="minimal-field"
-            hide-details="auto"
-          ></v-file-input>
-        </v-col>
-      </v-row>
-</v-form>
-    </v-card-text>
+                <v-expand-transition>
+                  <v-alert
+                    v-if="rateLimitError"
+                    type="warning"
+                    variant="tonal"
+                    class="mb-6 rounded-lg"
+                    border="start"
+                    icon="mdi-alert-octagon"
+                    closable
+                    @click:close="rateLimitError = ''"
+                  >
+                    <div class="text-subtitle-2 font-weight-bold mb-1">Submission Limit Reached</div>
+                    <div class="text-caption">{{ rateLimitError }}</div>
+                  </v-alert>
+                </v-expand-transition>
 
-    <v-divider></v-divider>
+                <div class="d-flex flex-column flex-sm-row ga-2 ga-sm-4 align-sm-center mb-2 contact-form-actions">
+                  <v-btn
+                    type="submit"
+                    block
+                    size="large"
+                    variant="flat"
+                    class="contact-btn-send flex-grow-1"
+                    :loading="submitting"
+                    :disabled="submitting"
+                  >
+                    Send Message
+                    <v-icon end size="20">mdi-send</v-icon>
+                  </v-btn>
+                </div>
 
-    <!-- Minimal Actions -->
-    <v-card-actions class="pa-4">
-      <v-spacer></v-spacer>
-      <v-btn
-        variant="text"
-        size="small"
-        @click="contactDialog = false"
-      >
-        Cancel
-      </v-btn>
-      <v-btn
-        color="primary"
-        variant="flat"
-        size="small"
-        class="ml-2"
-        :loading="submitting"
-        :disabled="submitting"
-        @click="submitContactForm"
-      >
-        Send
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-</v-dialog>
+                <v-expand-transition>
+                  <div v-if="submitting" class="mt-4 text-center">
+                    <v-progress-linear
+                      indeterminate
+                      color="grey-darken-2"
+                      height="2"
+                      class="mb-2 rounded"
+                    ></v-progress-linear>
+                    <span class="text-caption text-medium-emphasis">
+                      Sending your message, please wait…
+                    </span>
+                  </div>
+                </v-expand-transition>
+              </v-form>
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
 
     <!-- Notification Snackbar -->
     <v-snackbar
@@ -1613,71 +1748,54 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "@/styles/css/style.css";
-import { messageService } from "@/plugins/api";
+import { messageService, planTypeService, concernService } from "@/plugins/api";
+
+const CONTACT_SPLIT_FIELDS = {
+  maf: { label: "MAF No. *", hint: "12345678" },
+  firstName: { label: "First name *", hint: "Juan" },
+  lastName: { label: "Last name *", hint: "Dela Cruz" },
+  middleName: { label: "Middle name", hint: "Santos" },
+  email: { label: "Email *", hint: "juan@example.com" },
+  phone: { label: "Phone number *", hint: "+63 912 345 6789" },
+  planType: { label: "Plan type *", hint: "Jade Plan" },
+  concern: { label: "Concern *", hint: "Claim inquiry" },
+  message: { label: "Message *", hint: "How can we help you?" },
+  attachment: { label: "Attachment (optional)", hint: "PDF or photos" },
+};
 
 const router = useRouter();
 const drawer = ref(false);
+const productsMenuItems = [
+  { title: "DAMAYAN", route: "/products/damayan" },
+  { title: "Goodlife Plans", route: "/products/goodlife-plans" },
+  { title: "MBAI", route: "/products/mbai" },
+];
+
 const showPlanDialog = ref(false);
 const selectedPlan = ref(null);
 
 const hoveredItem = ref(null);
 const hoveredTag = ref(null);
 
-const itemHover = (index) => {
-  hoveredItem.value = index;
-};
-
-const tagHover = (tag) => {
-  hoveredTag.value = tag;
-};
+const itemHover = (index) => { hoveredItem.value = index; };
+const tagHover = (tag) => { hoveredTag.value = tag; };
 
 const paymentOptions = ref([
-  {
-    name: "Monthly",
-    amount: "800",
-    frequency: "per month",
-    contractPrice: "₱48,000.00",
-    duration: "",
-    savings: "",
-    color: "green",
-  },
-  {
-    name: "Quarterly",
-    icon: "mdi-calendar-quarter",
-    amount: "2,280",
-    frequency: "every 3 months",
-    contractPrice: "₱45,600.00",
-    color: "green",
-  },
-  {
-    name: "Semi-Annual",
-    icon: "mdi-calendar-half-year",
-    amount: "4,320",
-    frequency: "every 6 months",
-    contractPrice: "₱43,200.00",
-    color: "green",
-  },
-  {
-    name: "Annual",
-    icon: "mdi-calendar-year",
-    amount: "8,000",
-    frequency: "per year",
-    contractPrice: "₱40,000.00",
-    color: "green",
-  },
+  { name: "Monthly", amount: "800", frequency: "per month", contractPrice: "₱48,000.00", duration: "", savings: "", color: "green" },
+  { name: "Quarterly", icon: "mdi-calendar-quarter", amount: "2,280", frequency: "every 3 months", contractPrice: "₱45,600.00", color: "green" },
+  { name: "Semi-Annual", icon: "mdi-calendar-half-year", amount: "4,320", frequency: "every 6 months", contractPrice: "₱43,200.00", color: "green" },
+  { name: "Annual", icon: "mdi-calendar-year", amount: "8,000", frequency: "per year", contractPrice: "₱40,000.00", color: "green" },
 ]);
 
 // Inside <script setup>
 const benefits = ref({
   naturalDeath: {
     title: "NATURAL DEATH",
-    description:
-      "Double benefits with 1 year contestability period (18-60 years old)",
+    description: "Double benefits with 1 year contestability period (18-60 years old)",
     icon: "mdi-heart-pulse",
   },
   contractPrice: {
@@ -1700,88 +1818,128 @@ const benefits = ref({
   },
 });
 
-// ============ MINIMALIST CONTACT DIALOG STATE ============
-const contactDialog = ref(false);           // Dialog visibility
-const formValid = ref(false);              // Form validation state
-const submitting = ref(false);             // Submission loading state
-const contactFormRef = ref(null);          // Form reference for validation
+// ============ CONTACT DIALOG STATE ============
+const contactDialog = ref(false);
+const formValid = ref(false);
+const submitting = ref(false);
+const contactFormRef = ref(null);
+const showContactIcon = ref(true);
+const rateLimitError = ref("");
+const successMessage = ref("");
 
-// Contact Form Data - Minimal fields only
 const contactForm = ref({
   lastName: "",
   middleName: "",
   firstName: "",
+  complainantLastName: "",
+  complainantMiddleName: "",
+  complainantFirstName: "",
+  isSameAsComplainant: true,
   email: "",
   contactNo: "",
   mafNo: "",
   planType: null,
   concern: null,
-  title: "",
   description: "",
   attachments: [],
+  dynamicAnswers: {},
 });
 
-// Merged Plan Type Options
-const allPlans = ref([
-  { title: "Micro-Loans Redemption Insurance ( MLRI )", value: "mbai_insurance", icon: "mdi-crown", color: "#708090" },
-  { title: "Jade Plan", value: "goodlife_jade", icon: "mdi-shield", color: "#708090" },
-  { title: "Individual Insurance", value: "damayan_individual", icon: "mdi-account", color: "#708090" },
-  { title: "Family Insurance", value: "damayan_family", icon: "mdi-account-group", color: "#708090" }
-]);
-
-// Concerns Options
-const concernsList = ref([
-  { title: "General Inquiry", value: "inquiry", icon: "mdi-information", color: "#708090" },
-  { title: "Claim", value: "claim", icon: "mdi-file-document", color: "#708090" },
-  { title: "Feedback", value: "feedback", icon: "mdi-comment", color: "#708090" },
-  { title: "Support", value: "support", icon: "mdi-lifebuoy", color: "#708090" },
-  { title: "Other", value: "other", icon: "mdi-dots-horizontal", color: "#708090" }
-]);
-// Snackbar State for notifications
-const snackbar = ref({
-  show: false,
-  text: "",
-  color: "success",
+const contactFormErrors = ref({
+  lastName: "", middleName: "", firstName: "",
+  complainantLastName: "", complainantMiddleName: "", complainantFirstName: "",
+  email: "", contactNo: "", mafNo: "", planType: "", concern: "", description: "",
 });
+
+// Plan Types
+const allPlans = ref([]);
+const fetchPlanTypes = async () => {
+  try {
+    const planTypes = await planTypeService.getAll();
+    allPlans.value = planTypes.map((planType) => ({
+      ...planType, value: planType.id, icon: "mdi-shield-check-outline", color: "#708090",
+    }));
+  } catch (err) { console.error("Failed to fetch plan types:", err); }
+};
+
+// Concerns
+const concernsList = ref([]);
+const fetchConcerns = async () => {
+  try {
+    concernsList.value = await concernService.getAll();
+  } catch (err) { console.error("Failed to fetch concerns:", err); }
+};
+
+const filteredConcerns = computed(() => {
+  if (!contactForm.value.planType) return [];
+  const selectedPlanId = contactForm.value.planType.id || contactForm.value.planType.value;
+  return concernsList.value.filter(c => c.plan_type_id === selectedPlanId);
+});
+
+// Snackbar
+const snackbar = ref({ show: false, text: "", color: "success" });
 
 // ============ VALIDATION RULES ============
 const rules = {
   required: (v) => {
     if (typeof v === 'string') return !!v.trim() || "This field is required";
+    if (Array.isArray(v)) return v.length > 0 || "This field is required";
     return !!v || "This field is required";
   },
-  email: (v) => {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return pattern.test(v) || "Please enter a valid email address";
-  },
-  phone: (v) => {
-    const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-    return pattern.test(v) || "Please enter a valid phone number (e.g., +63 912 345 6789)";
-  },
-  alphabetic: (v) => {
-    if (!v) return true;
-    const pattern = /^[A-Za-z\sñÑ]+$/;
-    return pattern.test(v) || "Please enter letters only";
-  },
-  numeric: (v) => {
-    if (!v) return true;
-    const pattern = /^[0-9]+$/;
-    return pattern.test(v) || "Please enter numbers only";
+  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "Please enter a valid email address",
+  phone: (v) => /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(v) || "Please enter a valid phone number",
+  alphabetic: (v) => { if (!v) return true; return /^[A-Za-z\sñÑ]+$/.test(v) || "Please enter letters only"; },
+  numeric: (v) => { if (!v) return true; return /^[0-9]+$/.test(v) || "Please enter numbers only"; },
+  file: (v) => {
+    if (!v || v.length === 0) return true;
+    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    for (let i = 0; i < v.length; i++) {
+      if (!allowedTypes.includes(v[i].type)) {
+        return "Only JPG, PNG, and PDF files are allowed";
+      }
+      if (v[i].size > maxSize) {
+        return "File size must be less than 5MB";
+      }
+    }
+    return true;
   },
 };
 
+// ============ CONTACT FORM METHODS ============
+const resetContactForm = () => {
+  contactFormRef.value?.reset();
+  contactForm.value = {
+    lastName: "", middleName: "", firstName: "",
+    complainantLastName: "", complainantMiddleName: "", complainantFirstName: "",
+    isSameAsComplainant: true,
+    email: "", contactNo: "", mafNo: "",
+    planType: null, concern: null, description: "", attachments: [], dynamicAnswers: {},
+  };
+  contactFormErrors.value = {
+    lastName: "", middleName: "", firstName: "",
+    complainantLastName: "", complainantMiddleName: "", complainantFirstName: "",
+    email: "", contactNo: "", mafNo: "", planType: "", concern: "", description: "",
+  };
+  rateLimitError.value = "";
+};
 
-
-// ============ MINIMALIST CONTACT FORM METHODS ============
+const openContactDialog = () => { contactDialog.value = true; };
+const closeContactDialog = () => { contactDialog.value = false; resetContactForm(); };
 
 const submitContactForm = async () => {
+  contactFormErrors.value = {
+    lastName: "", middleName: "", firstName: "",
+    complainantLastName: "", complainantMiddleName: "", complainantFirstName: "",
+    email: "", contactNo: "", mafNo: "", planType: "", concern: "", description: "",
+  };
+  rateLimitError.value = "";
+
   const { valid } = await contactFormRef.value?.validate();
   if (!valid) return;
 
   submitting.value = true;
-
   try {
-    // Prepare the data for the ticket system API
     const messageData = {
       title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
       description: contactForm.value.description,
@@ -1791,106 +1949,75 @@ const submitContactForm = async () => {
       last_name: contactForm.value.lastName,
       middle_name: contactForm.value.middleName || '',
       first_name: contactForm.value.firstName,
+      complainant_last_name: contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName,
+      complainant_middle_name: contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || ''),
+      complainant_first_name: contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName,
       plan: contactForm.value.planType?.title || '',
-      concern_info: [contactForm.value.concern],
+      concern_info: [
+        { title: 'Concern', value: contactForm.value.concern?.title || '' },
+        ...(contactForm.value.concern?.fields || []).map(f => ({
+          title: f.label,
+          value: Array.isArray(contactForm.value.dynamicAnswers[f.title])
+            ? contactForm.value.dynamicAnswers[f.title].join(', ')
+            : contactForm.value.dynamicAnswers[f.title] || ''
+        }))
+      ],
       files: contactForm.value.attachments,
     };
 
-    // Send to ticket system API
     await messageService.add(messageData);
-
-    snackbar.value = {
-      show: true,
-      text: "Your message has been sent successfully! We'll respond within 24 hours.",
-      color: "success",
-    };
-
-    contactFormRef.value?.reset();
-    contactForm.value = {
-      lastName: "",
-      middleName: "",
-      firstName: "",
-      email: "",
-      contactNo: "",
-      planType: null,
-      concern: null,
-      title: "",
-      description: "",
-      attachments: [],
-    };
-
+    successMessage.value = "Your message has been sent successfully! We'll respond within 24 hours.";
+    snackbar.value = { show: true, text: successMessage.value, color: "success" };
+    resetContactForm();
     contactDialog.value = false;
   } catch (error) {
     console.error('Failed to submit contact form:', error);
-    snackbar.value = {
-      show: true,
-      text: error.message || "Failed to send message. Please try again.",
-      color: "error",
-    };
+    if (typeof error === 'object' && error !== null && !(error instanceof Error)) {
+      contactFormErrors.value = {
+        lastName: error.last_name?.[0] || "",
+        middleName: error.middle_name?.[0] || "",
+        firstName: error.first_name?.[0] || "",
+        complainantLastName: error.complainant_last_name?.[0] || "",
+        complainantMiddleName: error.complainant_middle_name?.[0] || "",
+        complainantFirstName: error.complainant_first_name?.[0] || "",
+        email: error.email?.[0] || "",
+        contactNo: error.contact_no?.[0] || "",
+        mafNo: error.maf_no?.[0] || "",
+        planType: error.plan?.[0] || "",
+        concern: error.concern?.[0] || "",
+        description: error.description?.[0] || "",
+      };
+    } else {
+      const errorMsg = error instanceof Error ? error.message : (error.message || "Failed to send message. Please try again.");
+      if (errorMsg.toLowerCase().includes('rate limit') || errorMsg.toLowerCase().includes('too many')) {
+        rateLimitError.value = errorMsg;
+      } else {
+        snackbar.value = { show: true, text: errorMsg, color: "error" };
+      }
+    }
   } finally {
     submitting.value = false;
   }
 };
 
-/**
- * Reset contact form manually
- */
-const resetContactForm = () => {
-  contactFormRef.value?.reset();
-  contactForm.value = {
-    lastName: "",
-    firstName: "",
-    email: "",
-    contactNo: "",
-    planType: null,
-    concern: null,
-    title: "",
-    description: "",
-  };
-};
-
-/**
- * Open contact dialog and optionally reset form
- */
-const openContactDialog = () => {
-  contactDialog.value = true;
-  // Optional: Reset form when opening
-  // resetContactForm();
-};
-
-/**
- * Close contact dialog and reset form
- */
-const closeContactDialog = () => {
-  contactDialog.value = false;
-  resetContactForm();
-};
-
-const showContactIcon = ref(true);
-
 watch(contactDialog, (newVal) => {
-  if (newVal) {
-    // Dialog is opening - hide the icon
-    showContactIcon.value = false;
-  } else {
-    // Dialog is closing - show the icon
-    showContactIcon.value = true;
-  }
+  showContactIcon.value = !newVal;
 });
 
-
+watch(
+  () => contactForm.value.planType,
+  () => {
+    contactForm.value.concern = null;
+    contactForm.value.dynamicAnswers = {};
+  }
+);
 
 // Scroll to top when page loads
 onMounted(() => {
   window.scrollTo(0, 0);
-
-  // Initialize AOS
-  AOS.init({
-    duration: 1500,
-    once: false,
-    mirror: true,
-    offset: 120,
-  });
+  AOS.init({ duration: 1500, once: false, mirror: true, offset: 120 });
+  fetchPlanTypes();
+  fetchConcerns();
 });
 
 // Function to navigate to home page with section
@@ -1902,22 +2029,15 @@ const goToHomeSection = (sectionId) => {
         const headerHeight = 65;
         const extraOffset = 15;
         const yOffset = -(headerHeight + extraOffset);
-        
-        // Use stable offsetTop to avoid AOS transformation issues
         let el = element;
         let y = 0;
-        while (el) {
-          y += el.offsetTop;
-          el = el.offsetParent;
-        }
-        
+        while (el) { y += el.offsetTop; el = el.offsetParent; }
         window.scrollTo({ top: y + yOffset, behavior: "smooth" });
       }
-    }, 300); // Increased delay for stability
+    }, 300);
   });
 };
 
-// Function to navigate to other product pages
 const goToProductsPage = (route) => {
   drawer.value = false;
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -1931,15 +2051,9 @@ const scrollToSection = (id) => {
     const headerHeight = 65;
     const extraOffset = 15;
     const yOffset = -(headerHeight + extraOffset);
-    
-    // Use stable offsetTop to avoid AOS transformation issues
     let el = element;
     let y = 0;
-    while (el) {
-      y += el.offsetTop;
-      el = el.offsetParent;
-    }
-    
+    while (el) { y += el.offsetTop; el = el.offsetParent; }
     window.scrollTo({ top: y + yOffset, behavior: "smooth" });
   }
 };

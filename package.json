@@ -4,7 +4,10 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "run-p dev:main dev:admin dev:backend",
+    "dev:main": "vite",
+    "dev:admin": "npm run dev --prefix \"../../customer-service-final/customer-service-frontend\"",
+    "dev:backend": "cd ../../ticket/ticket-backend && php artisan serve --port=8000",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",

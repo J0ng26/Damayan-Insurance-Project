@@ -28,7 +28,6 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('home')"
           >
             Home
@@ -37,17 +36,22 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('about')"
           >
             About
           </v-btn>
 
-          <!-- Legalities Navigation Item -->
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
+            @click="goToHomeSection('blog')"
+          >
+            Blog
+          </v-btn>
+
+          <v-btn
+            variant="text"
+            class="text-capitalize text-body-2 mx-2 nav-btn"
             @click="goToHomeSection('legalities')"
           >
             Legalities
@@ -56,7 +60,6 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('features')"
           >
             Features
@@ -79,26 +82,14 @@
             </template>
             <v-list density="compact">
               <v-list-item
-                @click="goToProductsPage('/products/damayan')"
+                v-for="item in productsMenuItems"
+                :key="item.route"
+                @click="goToProductsPage(item.route)"
                 :class="{
-                  'active-submenu': $route.path === '/products/damayan',
+                  'active-submenu': $route.path === item.route,
                 }"
               >
-                <v-list-item-title>DAMAYAN</v-list-item-title>
-              </v-list-item>
-              <v-list-item
-                @click="goToProductsPage('/products/goodlife-plans')"
-                :class="{
-                  'active-submenu': $route.path === '/products/goodlife-plans',
-                }"
-              >
-                <v-list-item-title>Goodlife Plans</v-list-item-title>
-              </v-list-item>
-              <v-list-item
-                @click="goToProductsPage('/products/mbai')"
-                :class="{ 'active-submenu': $route.path === '/products/mbai' }"
-              >
-                <v-list-item-title>MBAI</v-list-item-title>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -106,12 +97,10 @@
           <v-btn
             variant="text"
             class="text-capitalize text-body-2 mx-2 nav-btn"
-            :class="{ 'active-link': $route.path === '/' }"
             @click="goToHomeSection('contact')"
           >
             Contact us
           </v-btn>
-
         </div>
 
         <!-- Mobile Menu Button -->
@@ -143,6 +132,10 @@
           @click="goToHomeSection('about')"
         ></v-list-item>
         <v-list-item
+          title="Blog"
+          @click="goToHomeSection('blog')"
+        ></v-list-item>
+        <v-list-item
           title="Legalities"
           @click="goToHomeSection('legalities')"
         ></v-list-item>
@@ -156,14 +149,15 @@
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" title="Products"></v-list-item>
           </template>
-          <v-list-item @click="goToProductsPage('/products/damayan')">
-            <v-list-item-title>DAMAYAN</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="goToProductsPage('/products/goodlife-plans')">
-            <v-list-item-title>GOODLIFE PLANS</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="goToProductsPage('/products/mbai')">
-            <v-list-item-title>MBAI</v-list-item-title>
+          <v-list-item
+            v-for="item in productsMenuItems"
+            :key="item.route"
+            @click="
+              goToProductsPage(item.route);
+              drawer = false;
+            "
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list-group>
 
@@ -1447,42 +1441,8 @@
       </div>
       <v-divider class="mb-4"></v-divider>
     </v-col>
-    <!-- Plan Type - Dropdown Select -->
-    <v-col cols="12" md="6">
-      <v-select
-        v-model="contactForm.planType"
-        :items="allPlans"
-        label="Plan type *"
-        placeholder="Select plan type"
-        variant="outlined"
-        density="compact"
-        hide-details="auto"
-        :rules="[rules.required]"
-        bg-color="transparent"
-        class="minimal-field"
-        item-title="title"
-        item-value="value"
-        return-object
-        clearable
-      >
-        <template v-slot:selection="{ item }">
-          <div class="d-flex align-center">
-            <v-icon size="small" :color="item.raw.color" class="mr-2">{{ item.raw.icon }}</v-icon>
-            <span>{{ item.raw.title }}</span>
-          </div>
-        </template>
-        <template v-slot:item="{ props, item }">
-          <v-list-item v-bind="props" :title="item.raw.title">
-            <template v-slot:prepend>
-              <v-icon :color="item.raw.color" size="small">{{ item.raw.icon }}</v-icon>
-            </template>
-          </v-list-item>
-        </template>
-      </v-select>
-    </v-col>
-
     <!-- Concerns - Dropdown Select -->
-    <v-col cols="12" md="6">
+    <v-col cols="12" md="12">
       <v-text-field
         v-model="contactForm.concern"
         label="Concern *"
@@ -1534,6 +1494,8 @@
         bg-color="transparent"
         class="minimal-field"
         hide-details="auto"
+        accept=".jpg, .jpeg, .png, .pdf, image/jpeg, image/png, application/pdf"
+        :rules="[rules.file]"
       ></v-file-input>
     </v-col>
   </v-row>
@@ -1620,7 +1582,6 @@ import AOS from "aos";
 // Dialog States
 const zoomDialog = ref(false);
 import "aos/dist/aos.css";
-import "@/styles/css/style.css";
 import { messageService } from "@/plugins/api";
 
 const router = useRouter();
@@ -1857,6 +1818,7 @@ const snackbar = ref({
 const rules = {
   required: (v) => {
     if (typeof v === 'string') return !!v.trim() || "This field is required";
+    if (Array.isArray(v)) return v.length > 0 || "This field is required";
     return !!v || "This field is required";
   },
   email: (v) => {
@@ -1876,6 +1838,20 @@ const rules = {
     if (!v) return true;
     const pattern = /^[0-9]+$/;
     return pattern.test(v) || "Please enter numbers only";
+  },
+  file: (v) => {
+    if (!v || v.length === 0) return true;
+    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    for (let i = 0; i < v.length; i++) {
+      if (!allowedTypes.includes(v[i].type)) {
+        return "Only JPG, PNG, and PDF files are allowed";
+      }
+      if (v[i].size > maxSize) {
+        return "File size must be less than 5MB";
+      }
+    }
+    return true;
   },
 };
 
@@ -2072,7 +2048,14 @@ const goToHomeSection = (sectionId) => {
   });
 };
 
-// Function to navigate to other product pages
+
+
+const productsMenuItems = [
+  { title: "DAMAYAN", route: "/products/damayan" },
+  { title: "Goodlife Plans", route: "/products/goodlife-plans" },
+  { title: "MBAI", route: "/products/mbai" },
+];
+
 const goToProductsPage = (route) => {
   drawer.value = false;
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });

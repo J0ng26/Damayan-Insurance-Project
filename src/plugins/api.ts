@@ -15,7 +15,7 @@ const baseURL =
 // ✅ Create axios instance
 const api = axios.create({
   baseURL: baseURL || 'http://localhost:8000/api', // fallback
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -60,8 +60,11 @@ export const messageService = {
     last_name: string;
     middle_name?: string;
     first_name: string;
+    complainant_last_name?: string;
+    complainant_middle_name?: string;
+    complainant_first_name?: string;
     plan?: string;
-    concern_info: any[];
+    concern_info: any[] | Record<string, any>;
     files?: File[];
   }) {
     try {
@@ -124,6 +127,122 @@ export const cookieConsentService = {
       console.error('Failed to submit cookie consent', error);
       // Fail silently for tracking
       return null;
+    }
+  }
+};
+
+// Auth Service for Admin Portal
+export const authService = {
+  async login(credentials: { username: string; password: string }) {
+    try {
+      await ensureCsrfCookie();
+      const response = await api.post('/authenticate', credentials);
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.status === 422) {
+        throw error.response.data.errors || error.response.data.message || 'Validation failed';
+      }
+      throw new Error(error.response?.data?.message || 'Login failed. Please check your credentials.');
+    }
+  },
+
+  async logout() {
+    try {
+      const response = await api.post('/user-control/logout');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Logout failed.');
+    }
+  },
+
+  async getUser() {
+    try {
+      const response = await api.get('/user');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Unauthenticated');
+    }
+  }
+};
+
+// Legal Documents Service
+export const legalDocumentService = {
+  async getAll() {
+    try {
+      const response = await api.get('/legal-documents');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to fetch legal documents.');
+    }
+  },
+
+  async upload(title: string, files: File[]) {
+    try {
+      await ensureCsrfCookie();
+      const formData = new FormData();
+      formData.append('title', title);
+      files.forEach((file, index) => {
+        formData.append(`files[${index}]`, file);
+      });
+
+      const response = await api.post('/legal-documents', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.status === 422) {
+        throw error.response.data.errors || error.response.data.message || 'Validation failed';
+      }
+      throw new Error(error.response?.data?.message || 'Failed to upload document.');
+    }
+  },
+
+  async delete(id: string) {
+    try {
+      await ensureCsrfCookie();
+      const response = await api.delete(`/legal-documents/${id}`);
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to delete document.');
+    }
+  }
+};
+
+// Concerns Service
+export const concernService = {
+  async getAll() {
+    try {
+      const response = await api.get('/concerns');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to fetch concerns.');
+    }
+  }
+};
+
+// Plan Types Service
+export const planTypeService = {
+  async getAll() {
+    try {
+      const response = await api.get('/plan-types');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to fetch plan types.');
+    }
+  }
+};
+
+// Blogs Service
+// API returns: { id, title, content, image_path (thumbnail), images: string[], created_at, updated_at }
+export const blogService = {
+  async getAll() {
+    try {
+      const response = await api.get('/blogs');
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to fetch blogs.');
     }
   }
 };
