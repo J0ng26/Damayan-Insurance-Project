@@ -2756,13 +2756,25 @@ body {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  width: 100%;
+  height: 320px;          /* Fixed height for desktop */
 }
 
 .blog-featured-card__img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover;      /* Fills the area without distortion */
   display: block;
+}
+
+/* Ensure Vuetify v-img fills the thumb container */
+.blog-featured-card__thumb .v-img {
+  width: 100%;
+  height: 100%;
+}
+
+.blog-featured-card__thumb .v-img__img {
+  object-fit: cover;
 }
 
 .blog-featured-card__img-chip {
@@ -2853,6 +2865,44 @@ body {
     gap: 12px;
   }
 }
+
+/* ============================================
+   MOBILE BLOG CARD FIXES (ensures "Read more" button is visible)
+   ============================================ */
+@media (max-width: 768px) {
+  .blog-featured-card__thumb {
+    height: 220px !important;
+  }
+
+  .blog-featured-card {
+    min-height: auto !important;
+  }
+
+  .blog-featured-card__body {
+    padding: 20px 20px 24px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-featured-card__body .v-btn {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-featured-card__thumb {
+    height: 355px !important;
+  }
+    .blog-featured-card__body {
+    padding: 20px 20px 30px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 /* ============================================================
    WHY CHOOSE GOODLIFE — Modern Minimalist
    ============================================================ */
@@ -3001,7 +3051,7 @@ body {
 }
 
 .wcg-card--dark:hover::after {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .wcg-card--dark .wcg-card__num,
@@ -3011,7 +3061,7 @@ body {
 }
 
 .wcg-card--dark .wcg-card__num {
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 /* Card top row */
@@ -3034,7 +3084,7 @@ body {
 }
 
 .wcg-card__icon-wrap--light {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .wcg-card__num {
@@ -3083,8 +3133,8 @@ body {
 }
 
 .wcg-card__tag--light {
-  color: rgba(255,255,255,0.85);
-  background: rgba(255,255,255,0.12);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Responsive */
@@ -3192,9 +3242,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: background 0.2s ease, transform 0.2s ease;
 }
+
 .blog-dlg__close:hover {
   background: #f3f4f6;
   transform: scale(1.08);
@@ -3207,6 +3258,7 @@ body {
   flex-direction: column;
   background: #f8f7fc;
   overflow: hidden;
+  min-height: 0;
 }
 
 .blog-dlg__media--empty {
@@ -3228,12 +3280,16 @@ body {
   position: relative;
   overflow: hidden;
   background: #eeedf6;
+  min-height: 0;
 }
 
 .blog-dlg__main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -3242,6 +3298,7 @@ body {
 .blog-dlg-fade-leave-active {
   transition: opacity 0.25s ease;
 }
+
 .blog-dlg-fade-enter-from,
 .blog-dlg-fade-leave-to {
   opacity: 0;
@@ -3265,12 +3322,19 @@ body {
   transition: background 0.2s ease, transform 0.2s ease;
   z-index: 2;
 }
+
 .blog-dlg__arrow:hover {
   background: rgba(30, 28, 46, 0.80);
   transform: translateY(-50%) scale(1.08);
 }
-.blog-dlg__arrow--prev { left: 10px; }
-.blog-dlg__arrow--next { right: 10px; }
+
+.blog-dlg__arrow--prev {
+  left: 10px;
+}
+
+.blog-dlg__arrow--next {
+  right: 10px;
+}
 
 /* Counter badge */
 .blog-dlg__counter {
@@ -3314,16 +3378,19 @@ body {
   transition: border-color 0.2s ease, opacity 0.2s ease;
   opacity: 0.6;
 }
+
 .blog-dlg__thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .blog-dlg__thumb--active {
   border-color: #3e3a5b;
   opacity: 1;
 }
+
 .blog-dlg__thumb:hover:not(.blog-dlg__thumb--active) {
   opacity: 0.85;
   border-color: #c8c5e0;
@@ -3381,6 +3448,11 @@ body {
 
 /* Responsive: stack on mobile */
 @media (max-width: 680px) {
+
+    .blog-dlg__arrow {
+    display: none !important;
+  }
+  
   .blog-dlg {
     flex-direction: column;
     max-height: 92vh;
@@ -3388,11 +3460,13 @@ body {
 
   .blog-dlg__media {
     flex: 0 0 auto;
-    height: 240px;
+    height: 80vw;
+    min-height: 200px;
+    max-height: 280px;
   }
 
   .blog-dlg__main-img-wrap {
-    height: 180px;
+    height: 100%;
   }
 
   .blog-dlg__content {
@@ -3484,6 +3558,7 @@ body {
     gap: 20px;
     padding: 24px;
   }
+
   .abt-stat-divider {
     width: 48px;
     height: 1px;
@@ -3534,6 +3609,7 @@ body {
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 16px rgba(62, 58, 91, 0.18);
 }
+
 .leg-btn:hover {
   background: #2d2a44;
   transform: translateY(-2px);
@@ -3606,6 +3682,7 @@ body {
   background: #fafafa;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
+
 .ldlg__card:hover {
   border-color: #c8c5e0;
   box-shadow: 0 8px 24px rgba(62, 58, 91, 0.1);
@@ -3621,12 +3698,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .ldlg__card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .ldlg__card-thumb--pdf {
   flex-direction: column;
   gap: 6px;
@@ -3750,6 +3829,7 @@ body {
   letter-spacing: 0.01em;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
+
 .prod-tag:hover {
   background: #e8e6f4;
   border-color: #c8c5e0;
@@ -3774,8 +3854,10 @@ body {
   margin: 0 auto;
   display: flex;
 }
+
 .prod-cta:hover {
   background: #2d2a44;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(62, 58, 91, 0.24);
 }
+

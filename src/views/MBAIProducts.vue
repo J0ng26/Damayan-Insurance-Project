@@ -1234,6 +1234,8 @@
 
  <!-- Clean Form Layout -->
 <v-form ref="contactFormRef" v-model="formValid" @submit.prevent="submitContactForm">
+  <!-- Honeypot -->
+  <v-text-field v-model="contactFormHoneypot" class="d-none" autocomplete="off" tabindex="-1"></v-text-field>
   <!-- MAF No Section -->
   <v-row dense class="mb-4">
     <v-col cols="12">
@@ -1756,6 +1758,15 @@ const contactDialog = ref(false);           // Dialog visibility
 const formValid = ref(false);              // Form validation state
 const submitting = ref(false);             // Submission loading state
 const contactFormRef = ref(null);          // Form reference for validation
+const contactFormHoneypot = ref("");
+const lastSubmitTime = ref(0);
+const contactAttempts = ref(0);
+const rateLimitError = ref("");
+
+const sanitizeHTML = (str) => {
+  if (!str) return str;
+  return String(str).replace(/<[^>]*>?/gm, '');
+};
 
 const contactForm = ref({
   lastName: "",
@@ -1877,27 +1888,50 @@ watch(() => [contactForm.value.lastName, contactForm.value.middleName, contactFo
 });
 
 const submitContactForm = async () => {
+  if (contactFormHoneypot.value !== "") return; // Bot detected
+
+  const now = Date.now();
+  if (now - lastSubmitTime.value < 60000) {
+    snackbar.value = { show: true, text: "Please wait 60 seconds before submitting again.", color: "warning" };
+    return;
+  }
+
+  // Check attempts limit
+  if (contactAttempts.value >= 10) {
+    rateLimitError.value = "Too many attempts. Please try again later.";
+    snackbar.value = {
+      show: true,
+      text: "Too many attempts. Please try again later.",
+      color: "warning",
+    };
+    return;
+  }
+
+  rateLimitError.value = "";
+
   const { valid } = await contactFormRef.value?.validate();
   if (!valid) return;
 
   submitting.value = true;
+  contactAttempts.value++;
+  lastSubmitTime.value = now;
 
   try {
     // Prepare the data for the ticket system API
     const messageData = {
-      title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
-      description: contactForm.value.description,
-      email: contactForm.value.email,
-      contact_no: contactForm.value.contactNo,
+      title: sanitizeHTML(`${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`),
+      description: sanitizeHTML(contactForm.value.description),
+      email: sanitizeHTML(contactForm.value.email),
+      contact_no: sanitizeHTML(contactForm.value.contactNo),
       maf_no: contactForm.value.mafNo,
-      last_name: contactForm.value.lastName,
-      middle_name: contactForm.value.middleName || '',
-      first_name: contactForm.value.firstName,
-      complainant_last_name: contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName,
-      complainant_middle_name: contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || ''),
-      complainant_first_name: contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName,
-      plan: contactForm.value.planType?.title || '',
-      concern_info: [{ title: contactForm.value.concern, value: 'other' }],
+      last_name: sanitizeHTML(contactForm.value.lastName),
+      middle_name: sanitizeHTML(contactForm.value.middleName || ''),
+      first_name: sanitizeHTML(contactForm.value.firstName),
+      complainant_last_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName),
+      complainant_middle_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || '')),
+      complainant_first_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName),
+      plan: sanitizeHTML(contactForm.value.planType?.title || ''),
+      concern_info: [{ title: sanitizeHTML(contactForm.value.concern), value: 'other' }],
       files: contactForm.value.attachments,
     };
 

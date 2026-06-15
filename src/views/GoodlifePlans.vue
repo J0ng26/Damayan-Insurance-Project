@@ -1338,6 +1338,8 @@
 
             <v-col cols="12" md="7" class="pa-5 pa-md-6 contact-split-form-col">
               <v-form ref="contactFormRef" v-model="formValid" class="contact-split-form" @submit.prevent="submitContactForm">
+                <!-- Honeypot -->
+                <v-text-field v-model="contactFormHoneypot" class="d-none" autocomplete="off" tabindex="-1"></v-text-field>
                 <label class="contact-form-label" for="contact-dlg-maf">
                   {{ CONTACT_SPLIT_FIELDS.maf.label }}
                 </label>
@@ -1825,6 +1827,14 @@ const submitting = ref(false);
 const contactFormRef = ref(null);
 const showContactIcon = ref(true);
 const rateLimitError = ref("");
+const contactFormHoneypot = ref("");
+const lastSubmitTime = ref(0);
+const contactAttempts = ref(0);
+
+const sanitizeHTML = (str) => {
+  if (!str) return str;
+  return String(str).replace(/<[^>]*>?/gm, '');
+};
 const successMessage = ref("");
 
 const contactForm = ref({
@@ -1928,6 +1938,25 @@ const openContactDialog = () => { contactDialog.value = true; };
 const closeContactDialog = () => { contactDialog.value = false; resetContactForm(); };
 
 const submitContactForm = async () => {
+  if (contactFormHoneypot.value !== "") return; // Bot detected
+
+  const now = Date.now();
+  if (now - lastSubmitTime.value < 60000) {
+    snackbar.value = { show: true, text: "Please wait 60 seconds before submitting again.", color: "warning" };
+    return;
+  }
+
+  // Check attempts limit
+  if (contactAttempts.value >= 10) {
+    rateLimitError.value = "Too many attempts. Please try again later.";
+    snackbar.value = {
+      show: true,
+      text: "Too many attempts. Please try again later.",
+      color: "warning",
+    };
+    return;
+  }
+
   contactFormErrors.value = {
     lastName: "", middleName: "", firstName: "",
     complainantLastName: "", complainantMiddleName: "", complainantFirstName: "",
@@ -1939,27 +1968,30 @@ const submitContactForm = async () => {
   if (!valid) return;
 
   submitting.value = true;
+  contactAttempts.value++;
+  lastSubmitTime.value = now;
+
   try {
     const messageData = {
-      title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
-      description: contactForm.value.description,
-      email: contactForm.value.email,
-      contact_no: contactForm.value.contactNo,
+      title: sanitizeHTML(`${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`),
+      description: sanitizeHTML(contactForm.value.description),
+      email: sanitizeHTML(contactForm.value.email),
+      contact_no: sanitizeHTML(contactForm.value.contactNo),
       maf_no: contactForm.value.mafNo,
-      last_name: contactForm.value.lastName,
-      middle_name: contactForm.value.middleName || '',
-      first_name: contactForm.value.firstName,
-      complainant_last_name: contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName,
-      complainant_middle_name: contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || ''),
-      complainant_first_name: contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName,
-      plan: contactForm.value.planType?.title || '',
+      last_name: sanitizeHTML(contactForm.value.lastName),
+      middle_name: sanitizeHTML(contactForm.value.middleName || ''),
+      first_name: sanitizeHTML(contactForm.value.firstName),
+      complainant_last_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName),
+      complainant_middle_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || '')),
+      complainant_first_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName),
+      plan: sanitizeHTML(contactForm.value.planType?.title || ''),
       concern_info: [
-        { title: 'Concern', value: contactForm.value.concern?.title || '' },
+        { title: 'Concern', value: sanitizeHTML(contactForm.value.concern?.title || '') },
         ...(contactForm.value.concern?.fields || []).map(f => ({
           title: f.label,
-          value: Array.isArray(contactForm.value.dynamicAnswers[f.title])
+          value: sanitizeHTML(Array.isArray(contactForm.value.dynamicAnswers[f.title])
             ? contactForm.value.dynamicAnswers[f.title].join(', ')
-            : contactForm.value.dynamicAnswers[f.title] || ''
+            : contactForm.value.dynamicAnswers[f.title] || '')
         }))
       ],
       files: contactForm.value.attachments,

@@ -234,6 +234,8 @@
 
             <v-col cols="12" md="7" class="pa-5 pa-md-6 contact-split-form-col">
               <v-form ref="contactFormRef" v-model="formValid" class="contact-split-form" @submit.prevent="submitContactForm">
+                <!-- Honeypot -->
+                <v-text-field v-model="contactFormHoneypot" class="d-none" autocomplete="off" tabindex="-1"></v-text-field>
                 <label class="contact-form-label" for="contact-dlg-maf">
                   {{ CONTACT_SPLIT_FIELDS.maf.label }}
                 </label>
@@ -826,8 +828,8 @@
               interval="15000"
               hide-delimiter-background
               show-arrows="hover"
-              height="550"
-              class="mt-6 blog-carousel-wrapper"
+              height="650"
+              class="mt-6 blog-carousel-wrapper "
             >
               <v-carousel-item
                 v-for="(chunk, index) in blogChunks"
@@ -852,7 +854,6 @@
                           :src="blog.images && blog.images.length > 0 ? blog.images[0] : blog.image_path"
                           cover
                           class="blog-featured-card__img"
-                          height="200"
                         >
                           <v-chip
                             v-if="blog.images && blog.images.length > 1"
@@ -1474,6 +1475,8 @@
                 class="contact-split-form"
                 @submit.prevent="submitContactFormMain"
               >
+                <!-- Honeypot -->
+                <v-text-field v-model="contactFormMainHoneypot" class="d-none" autocomplete="off" tabindex="-1"></v-text-field>
                 <label class="contact-form-label" for="contact-main-maf">
                   {{ CONTACT_SPLIT_FIELDS.maf.label }}
                 </label>
@@ -1969,7 +1972,7 @@
           <v-divider class="my-6" color="black" opacity="0.15" />
 
           <div class="text-center text-body-2 text-medium-emphasis">
-            Â© 2026 Goodlife Damayan Insurance Agency Co. All rights reserved.
+            © 2026 Goodlife Damayan Insurance Agency Co. All rights reserved.
           </div>
         </v-container>
       </v-footer>
@@ -2044,6 +2047,8 @@ const submitting = ref(false);
 const contactFormRef = ref(null);
 const contactAttempts = ref(0);
 const rateLimitError = ref("");
+const contactFormHoneypot = ref("");
+const lastSubmitTime = ref(0);
 
 // Main Contact Form State
 const formValidMain = ref(false);
@@ -2051,6 +2056,13 @@ const submittingMain = ref(false);
 const contactFormMainRef = ref(null);
 const contactMainAttempts = ref(0);
 const rateLimitErrorMain = ref("");
+const contactFormMainHoneypot = ref("");
+const lastSubmitTimeMain = ref(0);
+
+const sanitizeHTML = (str) => {
+  if (!str) return str;
+  return String(str).replace(/<[^>]*>?/gm, '');
+};
 
 // Contact Form Data (Dialog)
 const contactForm = ref({
@@ -2372,6 +2384,14 @@ const openBlogDialog = (blog) => {
 // CONTACT FORM METHODS (Dialog)
   
 const submitContactForm = async () => {
+  // if (contactFormHoneypot.value !== "") return; // Bot detected
+
+  const now = Date.now();
+  if (now - lastSubmitTime.value < 60000) {
+    snackbar.value = { show: true, text: "Please wait 60 seconds before submitting again.", color: "warning" };
+    return;
+  }
+
   // Check attempts limit
   if (contactAttempts.value >= 10) {
     rateLimitError.value = "Too many attempts. Please try again later.";
@@ -2405,21 +2425,22 @@ const submitContactForm = async () => {
 
   submitting.value = true;
   contactAttempts.value++;
+  lastSubmitTime.value = now;
 
   try {
     const messageData = {
-      title: `${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`,
-      description: contactForm.value.description,
-      email: contactForm.value.email,
-      contact_no: contactForm.value.contactNo,
+      title: sanitizeHTML(`${contactForm.value.concern?.title || 'Contact Support'} - ${contactForm.value.planType?.title || 'General Inquiry'}`),
+      description: sanitizeHTML(contactForm.value.description),
+      email: sanitizeHTML(contactForm.value.email),
+      contact_no: sanitizeHTML(contactForm.value.contactNo),
       maf_no: contactForm.value.mafNo,
-      last_name: contactForm.value.lastName,
-      middle_name: contactForm.value.middleName || '',
-      first_name: contactForm.value.firstName,
-      complainant_last_name: contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName,
-      complainant_middle_name: contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || ''),
-      complainant_first_name: contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName,
-      plan: contactForm.value.planType?.title || '',
+      last_name: sanitizeHTML(contactForm.value.lastName),
+      middle_name: sanitizeHTML(contactForm.value.middleName || ''),
+      first_name: sanitizeHTML(contactForm.value.firstName),
+      complainant_last_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.lastName : contactForm.value.complainantLastName),
+      complainant_middle_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? (contactForm.value.middleName || '') : (contactForm.value.complainantMiddleName || '')),
+      complainant_first_name: sanitizeHTML(contactForm.value.isSameAsComplainant ? contactForm.value.firstName : contactForm.value.complainantFirstName),
+      plan: sanitizeHTML(contactForm.value.planType?.title || ''),
       concern_info: {
         'MAF No.': contactForm.value.mafNo || '',
         'Complainant': (() => {
@@ -2523,6 +2544,14 @@ const submitContactForm = async () => {
 // CONTACT FORM METHODS (Main Section)
 
 const submitContactFormMain = async () => {
+  // if (contactFormMainHoneypot.value !== "") return; // Bot detected
+
+  const now = Date.now();
+  if (now - lastSubmitTimeMain.value < 60000) {
+    snackbar.value = { show: true, text: "Please wait 60 seconds before submitting again.", color: "warning" };
+    return;
+  }
+
   // Check attempts limit
   if (contactMainAttempts.value >= 10) {
     rateLimitErrorMain.value = "Too many attempts. Please try again later.";
@@ -2556,21 +2585,22 @@ const submitContactFormMain = async () => {
 
   submittingMain.value = true;
   contactMainAttempts.value++;
+  lastSubmitTimeMain.value = now;
 
   try {
     const messageData = {
-      title: `${contactFormMain.value.concern?.title || 'Contact Support'} - ${contactFormMain.value.planType?.title || 'General Inquiry'}`,
-      description: contactFormMain.value.description,
-      email: contactFormMain.value.email,
-      contact_no: contactFormMain.value.contactNo,
+      title: sanitizeHTML(`${contactFormMain.value.concern?.title || 'Contact Support'} - ${contactFormMain.value.planType?.title || 'General Inquiry'}`),
+      description: sanitizeHTML(contactFormMain.value.description),
+      email: sanitizeHTML(contactFormMain.value.email),
+      contact_no: sanitizeHTML(contactFormMain.value.contactNo),
       maf_no: contactFormMain.value.mafNo,
-      last_name: contactFormMain.value.lastName,
-      middle_name: contactFormMain.value.middleName || '',
-      first_name: contactFormMain.value.firstName,
-      complainant_last_name: contactFormMain.value.isSameAsComplainant ? contactFormMain.value.lastName : contactFormMain.value.complainantLastName,
-      complainant_middle_name: contactFormMain.value.isSameAsComplainant ? (contactFormMain.value.middleName || '') : (contactFormMain.value.complainantMiddleName || ''),
-      complainant_first_name: contactFormMain.value.isSameAsComplainant ? contactFormMain.value.firstName : contactFormMain.value.complainantFirstName,
-      plan: contactFormMain.value.planType?.title || '',
+      last_name: sanitizeHTML(contactFormMain.value.lastName),
+      middle_name: sanitizeHTML(contactFormMain.value.middleName || ''),
+      first_name: sanitizeHTML(contactFormMain.value.firstName),
+      complainant_last_name: sanitizeHTML(contactFormMain.value.isSameAsComplainant ? contactFormMain.value.lastName : contactFormMain.value.complainantLastName),
+      complainant_middle_name: sanitizeHTML(contactFormMain.value.isSameAsComplainant ? (contactFormMain.value.middleName || '') : (contactFormMain.value.complainantMiddleName || '')),
+      complainant_first_name: sanitizeHTML(contactFormMain.value.isSameAsComplainant ? contactFormMain.value.firstName : contactFormMain.value.complainantFirstName),
+      plan: sanitizeHTML(contactFormMain.value.planType?.title || ''),
       concern_info: {
         'MAF No.': contactFormMain.value.mafNo || '',
         'Complainant': (() => {
@@ -2618,6 +2648,7 @@ const submitContactFormMain = async () => {
       concern: null,
       description: "",
       attachments: [],
+      dynamicAnswers: {},
     };
     contactFormMainErrors.value = {
       lastName: "",
