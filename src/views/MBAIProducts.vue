@@ -2128,4 +2128,9 @@ const contactForPlan = () => {
 </script>
 
 <style scoped>
+/* Justify all paragraph body text throughout the page content */
+p {
+  text-align: justify;
+}
 </style>
+
