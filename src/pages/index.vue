@@ -167,9 +167,9 @@
     </v-navigation-drawer>
 
     <!-- ============ FIXED CONTACT ICON WITH BOUNCE ANIMATION ============ -->
-    <div 
-      v-if="showContactIcon" 
-      class="fixed-contact-icon bounce-animation" 
+    <div
+      v-if="showContactIcon"
+      class="fixed-contact-icon bounce-animation"
       @click="contactDialog = true"
     >
       <v-icon size="28">mdi-headset</v-icon>
@@ -207,14 +207,14 @@
                     <div class="contact-info-tile__text font-weight-medium">(082) 333 1809</div>
                   </div>
                 </div>
-                <a href="mailto:info@goodlifedamayan.com" class="text-decoration-none">
+                <a href="mailto:goodlifecustomercareservice@gmail.com" class="text-decoration-none">
                   <div class="contact-info-tile contact-info-tile--email">
                     <div class="contact-info-tile__icon">
                       <v-icon size="20">mdi-email-outline</v-icon>
                     </div>
                     <div>
                       <div class="text-caption text-medium-emphasis text-uppercase letter-spacing mb-1">Email</div>
-                      <div class="contact-info-tile__text font-weight-medium">info@goodlifedamayan.com</div>
+                      <div class="contact-info-tile__text font-weight-medium">goodlifecustomercareservice@gmail.com</div>
                     </div>
                   </div>
                 </a>
@@ -612,7 +612,7 @@
                       class="mb-2 rounded"
                     ></v-progress-linear>
                     <span class="text-caption text-medium-emphasis">
-                      Sending your message, please waitâ€¦
+                      Sending your message, please wait…
                     </span>
                   </div>
                 </v-expand-transition>
@@ -1434,7 +1434,7 @@
                 </div>
 
                 <a
-                  href="mailto:info@goodlifedamayan.com"
+                  href="mailto:goodlifecustomercareservice@gmail.com"
                   class="text-decoration-none"
                 >
                   <div class="contact-info-tile contact-info-tile--email">
@@ -1446,7 +1446,7 @@
                         Email
                       </div>
                       <div class="contact-info-tile__text font-weight-medium">
-                        info@goodlifedamayan.com
+                        goodlifecustomercareservice@gmail.com
                       </div>
                     </div>
                   </div>
@@ -1851,7 +1851,7 @@
                       class="mb-2 rounded"
                     ></v-progress-linear>
                     <span class="text-caption text-medium-emphasis">
-                      Sending your message, please waitâ€¦
+                      Sending your message, please wait…
                     </span>
                   </div>
                 </v-expand-transition>
@@ -1870,25 +1870,22 @@
         <v-container>
           <v-row>
             <v-col cols="12" md="4" class="mb-6 mb-md-0">
-              <div class="d-flex align-center mb-3">
+              <!-- Updated brand area with larger logo and better alignment -->
+              <div class="d-flex align-start mb-3">
                 <v-img
                   src="@/assets/images/damayan.png"
                   alt="Goodlife Damayan Logo"
-                  max-width="70"
-                  class="me-3 rounded"
+                  max-width="85"
+                  class="me-4 rounded"
                   contain
                 />
-                <div>
-                  <h3 class="text-h6 font-weight-bold mb-1">
-                    Goodlife Damayan Insurance <br />
-                    Agency Co.
-                  </h3>
-                  <span class="text-body-2 text-medium-emphasis">
-                    Official Corporate Website
-                  </span>
+                <div class="d-flex flex-column" style="line-height: 1.2; margin-top: -2px;">
+                  <h3 class="text-h6 font-weight-bold mb-0">Goodlife Damayan Insurance</h3>
+                  <span class="text-h6 font-weight-bold" style="margin-top: -4px;">Agency Co.</span>
+                  <span class="text-body-2 text-medium-emphasis mt-1">Official Corporate Website</span>
                 </div>
               </div>
-               <p class="text-body-2 text-medium-emphasis">
+              <p class="text-body-2 text-medium-emphasis">
                 A 100% Filipino-owned insurance agency dedicated to protecting
                 Filipino families through accessible, reliable, and
                 people-centered insurance solutions.
@@ -1909,39 +1906,52 @@
 
             <v-col cols="6" md="4">
               <h4 class="text-subtitle-1 font-weight-bold mb-3">Quick Links</h4>
-              <ul class="list-none pa-0">
+              <ul class="pa-0 ma-0" style="list-style-type: none;">
                 <li class="mb-2">
-                  <a href="/" class="text-black text-decoration-none">Home</a>
+                  <a
+                    href="#"
+                    class="text-black text-decoration-none text-body-2"
+                    style="cursor: pointer;"
+                    @click.prevent="scrollToSection('home')"
+                  >Home</a>
                 </li>
                 <li class="mb-2">
-                  <a href="/about" class="text-black text-decoration-none"
-                    >About Us</a
-                  >
+                  <a
+                    href="#"
+                    class="text-black text-decoration-none text-body-2"
+                    style="cursor: pointer;"
+                    @click.prevent="scrollToSection('about')"
+                  >About Us</a>
                 </li>
                 <li class="mb-2">
-                  <a href="/legalities" class="text-black text-decoration-none">
-                    Legalities
-                  </a>
+                  <a
+                    href="#"
+                    class="text-black text-decoration-none text-body-2"
+                    style="cursor: pointer;"
+                    @click.prevent="scrollToSection('legalities')"
+                  >Legalities</a>
                 </li>
                 <li class="mb-2">
-                  <a href="/services" class="text-black text-decoration-none">
-                    Insurance Plans
-                  </a>
+                  <a
+                    href="#"
+                    class="text-black text-decoration-none text-body-2"
+                    style="cursor: pointer;"
+                    @click.prevent="scrollToSection('features')"
+                  >Insurance Plans</a>
                 </li>
                 <li class="mb-2">
-                  <a href="/contact" class="text-black text-decoration-none">
-                    Contact
-                  </a>
+                  <a
+                    href="#"
+                    class="text-black text-decoration-none text-body-2"
+                    style="cursor: pointer;"
+                    @click.prevent="scrollToSection('contact')"
+                  >Contact</a>
                 </li>
                 <li class="mb-2">
-                  <a href="/privacy-policy" class="text-black text-decoration-none">
-                    Privacy Policy
-                  </a>
+                  <a href="/privacy-policy" class="text-black text-decoration-none text-body-2">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="/terms-and-conditions" class="text-black text-decoration-none">
-                    Terms & Conditions
-                  </a>
+                  <a href="/terms-and-conditions" class="text-black text-decoration-none text-body-2">Terms &amp; Conditions</a>
                 </li>
               </ul>
             </v-col>
@@ -1952,7 +1962,7 @@
               </h4>
               <div class="d-flex align-center mb-2">
                 <v-icon class="me-2" color="black"> mdi-email-outline </v-icon>
-                <span>info@goodlifedamayan.com</span>
+                <span>goodlifecustomercareservice@gmail.com</span>
               </div>
               <div class="d-flex align-center mb-2">
                 <v-icon class="me-2" color="black"> mdi-phone </v-icon>
@@ -2462,7 +2472,8 @@ const submitContactForm = async () => {
       files: contactForm.value.attachments,
     };
 
-    await messageService.add(messageData);
+    // TODO: Re-enable when backend is ready for final setup
+    // await messageService.add(messageData);
 
     snackbar.value = {
       show: true,
@@ -2621,8 +2632,8 @@ const submitContactFormMain = async () => {
       },
       files: contactFormMain.value.attachments,
     };
-
-    await messageService.add(messageData);
+    // TODO: Re-enable when backend is ready for final setup
+    // await messageService.add(messageData);
 
     snackbar.value = {
       show: true,
